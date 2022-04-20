@@ -1,4 +1,4 @@
-baseURL = "ajsmit.netlify.app"
+baseURL = "https://ajsmit.netlify.app/"
 theme = "hugo-apero"
 languageCode = "en"
 title = "BCB R Stats Pages"
