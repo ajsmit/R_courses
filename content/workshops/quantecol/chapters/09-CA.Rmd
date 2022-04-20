@@ -1,7 +1,12 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
+links:
+  - icon: images
+    icon_pack: fas
+    name: Correspendence Analysis Slides
+    url: /pdf/BCB743_09_CCA.pdf
 subtitle: ""
 title: "9. Correspondence Analysis (CA)"
 weight: 12

@@ -1,7 +1,12 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
+links:
+  - icon: images
+    icon_pack: fas
+    name: non-Metric Multidimensional Scaling Slides
+    url: /pdf/BCB743_11_nMDS.pdf
 subtitle: ""
 title: "11a. non-Metric multidimensional scaling (nMDS)"
 weight: 14

@@ -1,7 +1,12 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
+links:
+  - icon: images
+    icon_pack: fas
+    name: Correlations Slides
+    url: /pdf/BCB743_06_correlations.pdf
 subtitle: ""
 title: "6. Correlations and Associations"
 weight: 7

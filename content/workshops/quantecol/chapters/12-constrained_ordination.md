@@ -1,7 +1,12 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
+links:
+  - icon: images
+    icon_pack: fas
+    name: Constrained Ordination Slides
+    url: /pdf/BCB743_12_constrained_ordination.pdf
 subtitle: ""
 title: "12. Constrained Ordination"
 weight: 16
@@ -355,7 +360,7 @@ anova(rda_final, by = "axis", parallel = 4) # ... yes!
 ##          Df SumOfSqs        F Pr(>F)    
 ## CAP1      1   5.6179 263.1786  0.001 ***
 ## CAP2      1   1.1242  52.6665  0.001 ***
-## CAP3      1   0.0725   3.3978  0.378    
+## CAP3      1   0.0725   3.3978  0.395    
 ## CAP4      1   0.0050   0.2320  1.000    
 ## CAP5      1   0.0027   0.1274  1.000    
 ## CAP6      1   0.0013   0.0632  1.000    
@@ -381,12 +386,12 @@ Extract the significant variables in `\(E3\)` that are influential in the final 
 ## Model: capscale(formula = Y1 ~ febRange + febSD + augMean + augRange + augSD + annRange + annSD, data = E3)
 ##          Df SumOfSqs        F Pr(>F)    
 ## febRange  1   1.0962  51.3541  0.001 ***
-## febSD     1   0.1850   8.6653  0.003 ** 
+## febSD     1   0.1850   8.6653  0.001 ***
 ## augMean   1   5.3815 252.1023  0.001 ***
-## augRange  1   0.0903   4.2286  0.025 *  
-## augSD     1   0.0212   0.9918  0.350    
-## annRange  1   0.0196   0.9191  0.385    
-## annSD     1   0.0313   1.4666  0.236    
+## augRange  1   0.0903   4.2286  0.031 *  
+## augSD     1   0.0212   0.9918  0.369    
+## annRange  1   0.0196   0.9191  0.381    
+## annSD     1   0.0313   1.4666  0.209    
 ## Residual 50   1.0673                    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1

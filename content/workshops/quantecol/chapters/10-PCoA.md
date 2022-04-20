@@ -1,7 +1,12 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
+links:
+  - icon: images
+    icon_pack: fas
+    name: Principal Coordinate Analysis Slides
+    url: /pdf/BCB743_10_PCoA.pdf
 subtitle: ""
 title: "10. Principal Coordinate Analysis (PCoA)"
 weight: 13
@@ -404,10 +409,10 @@ env <- dplyr::slice(env, -8)
 ##         MDS1     MDS2     r2 Pr(>r)    
 ## dfs  0.99710  0.07609 0.7210  0.001 ***
 ## alt -0.99807 -0.06208 0.5659  0.001 ***
-## slo -0.92225  0.38660 0.1078  0.136    
-## flo  0.99746 -0.07129 0.5324  0.001 ***
-## pH  -0.42673 -0.90438 0.0480  0.500    
-## har  0.98804  0.15417 0.2769  0.020 *  
+## slo -0.92225  0.38660 0.1078  0.149    
+## flo  0.99746 -0.07129 0.5324  0.002 ** 
+## pH  -0.42673 -0.90438 0.0480  0.529    
+## har  0.98804  0.15417 0.2769  0.016 *  
 ## pho  0.45343  0.89129 0.6912  0.001 ***
 ## nit  0.86338  0.50456 0.6117  0.001 ***
 ## amm  0.42719  0.90416 0.7076  0.001 ***

@@ -1,7 +1,12 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
+links:
+  - icon: images
+    icon_pack: fas
+    name: non-Metric Multidimensional Scaling Slides
+    url: /pdf/BCB743_11_nMDS.pdf
 subtitle: ""
 title: "11a. non-Metric multidimensional scaling (nMDS)"
 weight: 14
@@ -41,35 +46,36 @@ spe_nmds <- metaMDS(spe, distance = "bray")
 
 ```
 ## Run 0 stress 0.07477805 
-## Run 1 stress 0.0747781 
-## ... Procrustes: rmse 4.216098e-05  max resid 0.0001939895 
+## Run 1 stress 0.1248897 
+## Run 2 stress 0.1223247 
+## Run 3 stress 0.08696384 
+## Run 4 stress 0.07477818 
+## ... Procrustes: rmse 9.898015e-05  max resid 0.0004732488 
 ## ... Similar to previous best
-## Run 2 stress 0.1127484 
-## Run 3 stress 0.0738368 
+## Run 5 stress 0.1221737 
+## Run 6 stress 0.08901468 
+## Run 7 stress 0.0750668 
+## ... Procrustes: rmse 0.01473175  max resid 0.06365692 
+## Run 8 stress 0.08843915 
+## Run 9 stress 0.1250564 
+## Run 10 stress 0.07477812 
+## ... Procrustes: rmse 6.12521e-05  max resid 0.0002936674 
+## ... Similar to previous best
+## Run 11 stress 0.07478423 
+## ... Procrustes: rmse 0.003639739  max resid 0.01446982 
+## Run 12 stress 0.1110569 
+## Run 13 stress 0.1170163 
+## Run 14 stress 0.07376217 
 ## ... New best solution
-## ... Procrustes: rmse 0.01960721  max resid 0.09440957 
-## Run 4 stress 0.07376238 
-## ... New best solution
-## ... Procrustes: rmse 0.003821952  max resid 0.01489216 
-## Run 5 stress 0.1116937 
-## Run 6 stress 0.1250443 
-## Run 7 stress 0.0742934 
-## Run 8 stress 0.07429325 
-## Run 9 stress 0.1127481 
-## Run 10 stress 0.07506672 
-## Run 11 stress 0.1133731 
-## Run 12 stress 0.1133732 
-## Run 13 stress 0.08845304 
-## Run 14 stress 0.1125694 
-## Run 15 stress 0.07477829 
-## Run 16 stress 0.08841668 
-## Run 17 stress 0.1196708 
-## Run 18 stress 0.07477831 
-## Run 19 stress 0.1203423 
-## Run 20 stress 0.07477812 
+## ... Procrustes: rmse 0.0193905  max resid 0.09465655 
+## Run 15 stress 0.1141838 
+## Run 16 stress 0.1169775 
+## Run 17 stress 0.0922274 
+## Run 18 stress 0.1203424 
+## Run 19 stress 0.1121122 
+## Run 20 stress 0.07477817 
 ## *** No convergence -- monoMDS stopping criteria:
-##     19: stress ratio > sratmax
-##      1: scale factor of the gradient < sfgrmin
+##     20: stress ratio > sratmax
 ```
 
 ```r
@@ -87,7 +93,7 @@ spe_nmds
 ## Distance: bray 
 ## 
 ## Dimensions: 2 
-## Stress:     0.07376238 
+## Stress:     0.07376217 
 ## Stress type 1, weak ties
 ## No convergent solutions - best solution after 20 tries
 ## Scaling: centring, PC rotation, halfchange scaling 
@@ -179,17 +185,17 @@ env <- dplyr::slice(env, -8)
 ## ***VECTORS
 ## 
 ##        NMDS1    NMDS2     r2 Pr(>r)    
-## dfs  0.97108  0.23874 0.7489  0.001 ***
-## alt -0.98926 -0.14615 0.6114  0.001 ***
-## slo -0.74548  0.66653 0.3270  0.021 *  
-## flo  0.88622  0.46326 0.5683  0.001 ***
-## pH  -0.26642  0.96386 0.0177  0.794    
-## har  0.96287 -0.26995 0.3772  0.004 ** 
-## pho  0.46077 -0.88752 0.5436  0.001 ***
-## nit  0.87870 -0.47738 0.5820  0.001 ***
-## amm  0.43078 -0.90246 0.5542  0.001 ***
-## oxy -0.74376  0.66845 0.7394  0.001 ***
-## bod  0.44345 -0.89630 0.6567  0.001 ***
+## dfs  0.97103  0.23898 0.7488  0.001 ***
+## alt -0.98916 -0.14682 0.6114  0.001 ***
+## slo -0.74780  0.66392 0.3268  0.018 *  
+## flo  0.88591  0.46386 0.5684  0.001 ***
+## pH  -0.26380  0.96458 0.0179  0.771    
+## har  0.96329 -0.26847 0.3773  0.003 ** 
+## pho  0.45983 -0.88801 0.5439  0.001 ***
+## nit  0.87815 -0.47838 0.5819  0.001 ***
+## amm  0.42983 -0.90291 0.5547  0.001 ***
+## oxy -0.74290  0.66940 0.7395  0.001 ***
+## bod  0.44248 -0.89678 0.6572  0.001 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## Permutation: free

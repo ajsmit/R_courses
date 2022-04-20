@@ -1,7 +1,12 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
+links:
+  - icon: images
+    icon_pack: fas
+    name: Dissimilarities Slides
+    url: /pdf/BCB743_05_dissimilarity.pdf
 subtitle: ""
 title: "5. Species Dissimilarities"
 weight: 6
@@ -9,11 +14,11 @@ weight: 6
 
 <!--- # Topic 5: Species dissimilarities --->
 
-We have already covered all the necessary theory in Topic 3 - Biodiversity. The dissimilarity matrices that capture α-diversity and the contemporary measures of β-diversity are in fact *the same species dissmimilarity matrices I refer to in Topic 5*, and on which we will continue to rely on in the subsequent topics as input to many of the ordination techniques.
+We have already covered all the necessary theory in Topic 3 - Biodiversity. The dissimilarity matrices that capture α-diversity and the contemporary measures of β-diversity are in fact *the same species dissmimilarity matrices I refer to here under species dissmilarities*, and on which we will continue to rely on in the subsequent topics as input to many of the ordination techniques.
 
 So, refer back to [Topic 3 - Biodiversity](https://github.com/ajsmit/Quantitative_Ecology/blob/main/jupyter_lab/05-beta_diversity.ipynb) and remind yourselves what that's all about.
 
-[To test your understanding of this important topic, please address the following questions and submit next week Monday at 17:00 via GitHub.]{style="color:red"}
+To test your understanding of this important topic, please address the following questions and submit next week Monday at 17:00 via GitHub.
 
 ### Questions
 

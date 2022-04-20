@@ -1,7 +1,12 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
+links:
+  - icon: images
+    icon_pack: fas
+    name: Ordination Slides
+    url: /pdf/BCB743_08_PCA.pdf
 subtitle: ""
 title: "8a. Principal Component Analysis (PCA)"
 weight: 9

@@ -1,7 +1,12 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
+links:
+  - icon: images
+    icon_pack: fas
+    name: Environmental Distance Slides
+    url: /pdf/BCB743_04_environmental_distance.pdf
 subtitle: ""
 title: 4. Environmental Distance
 weight: 5

@@ -1,7 +1,16 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
+links:
+  - icon: images
+    icon_pack: fas
+    name: Biodiversity Slides (1)
+    url: /pdf/BCB743_02_biodiversity_1.pdf
+  - icon: images
+    icon_pack: fas
+    name: Biodiversity Slides (2)
+    url: /pdf/BCB743_02_biodiversity_2.pdf
 subtitle: ""
 title: "2. Biodiversity"
 weight: 3
