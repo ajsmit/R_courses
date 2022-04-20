@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BCB743 on BCB R Stats Pages</title>
+    <link>/collection/quantecol/</link>
+    <description>Recent content in BCB743 on BCB R Stats Pages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 25 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/collection/quantecol/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1. Multivariate data</title>
+      <link>/collection/quantecol/chapters/01-data/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/01-data/</guid>
+      <description>NSFW
+ This chapter is in development.</description>
+    </item>
+    
+    <item>
+      <title>2. Biodiversity</title>
+      <link>/collection/quantecol/chapters/02-biodiversity/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/02-biodiversity/</guid>
+      <description>Three measures of biodiversity Three measures of biodiversity were coined by Whittaker in 1972. They represent the measurement of biodiversity across different spatial scales. α- and γ-diversity simply express the total number of species in an area. α-diversity is a representation of the number of species at the small (local) scale, such as within a quadrat, transect, plot, or trawl. Multiples of these are nested within a larger region (or ecosystem etc.</description>
+    </item>
+    
+    <item>
+      <title>3. Deep Dive into Gradients</title>
+      <link>/collection/quantecol/chapters/03-deep_dive/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/03-deep_dive/</guid>
+      <description>In the previous two sections we looked at calculations involving biodiversity (specifically the dissimilarity matricies made from a species table) and environmental variables (distances). What can we do with the two forms of contemporary β-diversity? What do they mean? Can we look to environmental distances for more insight?
+Let’s do a deeper analysis and create a figure to demonstrate these findings. I regress \(\beta_{\text{sør}}\) on the spatial distance between section pairs (see below) and on the environmental distance (\(\beta_{\text{E}}\)) in each bioregion and used the magnitude of the slope (per 100 km) of this relationship as a metric of β-diversity or ‘distance decay’ of dissimilarity.</description>
+    </item>
+    
+    <item>
+      <title>4. Environmental Distance</title>
+      <link>/collection/quantecol/chapters/04-env_dist/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/04-env_dist/</guid>
+      <description>Set up the analysis environment library(vegan) library(ggplot2) library(geodist) # for calculating geographical distances between lats/lons library(ggpubr) # to arrange the multipanel graphs  Toy data The toy data have arbitrary columns to demonstrate the Euclidian distance calculation in the lecture slides:
+\[ d(a,b) = \sqrt{(a_x - b_x)^2 + (a_y - b_y)^2 + (a_z - b_z)^2} \]
+The distance is found between every pair of points named a to g whose locations are marked by the ‘coordinates’ \(x\), \(y\), and \(z\)—i.</description>
+    </item>
+    
+    <item>
+      <title>5. Species Dissimilarities</title>
+      <link>/collection/quantecol/chapters/05-spp_dissimilarity/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/05-spp_dissimilarity/</guid>
+      <description>We have already covered all the necessary theory in Topic 3 - Biodiversity. The dissimilarity matrices that capture α-diversity and the contemporary measures of β-diversity are in fact the same species dissmimilarity matrices I refer to in Topic 5, and on which we will continue to rely on in the subsequent topics as input to many of the ordination techniques.
+So, refer back to Topic 3 - Biodiversity and remind yourselves what that’s all about.</description>
+    </item>
+    
+    <item>
+      <title>6. Correlations and Associations</title>
+      <link>/collection/quantecol/chapters/06-correlations/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/06-correlations/</guid>
+      <description>Set-up the analysis environment library(tidyverse) library(vegan) library(Hmisc) # for rcorr()  The Doubs River data The background to the data is described by David Zelený on his excellent website and in the book Numerical Ecology with R by Borcard et al. (2011). These data are a beautiful example of how gradients structure biodiversity. It will be in your own interest to fully understand how the various environmental factors used as explanatory variables vary along a riverine gradient from the source to the terminus of the river.</description>
+    </item>
+    
+    <item>
+      <title>8a. Principal Component Analysis (PCA)</title>
+      <link>/collection/quantecol/chapters/08_pca/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/08_pca/</guid>
+      <description>PCA is one of many ordination techniques. Depening on the application of technical/scientific discipline it is applied in, you might see it mentioned under ‘dimensionality reduction’ techniques; other times it is named as a form of ‘unsupervised learning.’ Regardless of what it is called, ordination refers to multivariate techniques that reduces a multivariate (multi-dimensional) dataset in such a way that when it is projected onto a lower dimensional space, typically 2D or 3D space, any intrinsic structure in the data forms visually-discernable patterns (Pielou, 1984).</description>
+    </item>
+    
+    <item>
+      <title>8b. PCA of WHO SDGs</title>
+      <link>/collection/quantecol/chapters/08-pca_sdg/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/08-pca_sdg/</guid>
+      <description>The United Nations adopted an agenda for sustainable development and lists 17 development goals to achieve by 2030. These are called the Sustainable Development Goals (SDGs). The World Health Organization assembles a collection of indicators to track how countries are progression towards these goals so as to achieve “a world free of poverty, hunger, disease and want” (WHO).
+This is an ordination analysis of the SDG 3, “Good Health and Well-Being.</description>
+    </item>
+    
+    <item>
+      <title>9. Correspondence Analysis (CA)</title>
+      <link>/collection/quantecol/chapters/09-ca/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/09-ca/</guid>
+      <description>CA is an eigenvalue method that can be applied to calculate the degree of ‘correspondence’ between the rows and columns of a presence-absence or abundance species table. We say that CA maximises the correspondence between species scores and sample scores, whereas a PCA maximises the variance explained. The technique is best applied to a species dataset where the species (in the columns) show unimodal distributions across sites (down the rows).</description>
+    </item>
+    
+    <item>
+      <title>10. Principal Coordinate Analysis (PCoA)</title>
+      <link>/collection/quantecol/chapters/10-pcoa/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/10-pcoa/</guid>
+      <description>Rather than using raw data as in a CA, PCoA takes a (dis)similarity matrix as input; in other words, any of the dissimilarities calculated by vegan’s vegdist() function can be used, which is great as they are well-suited to species data. If dissimilarities are Euclidean distances, then PCoA is equal to PCA. Another thing that makes a PCoA more useful is that (dis)similarity matrices calculated from quantitative, semi-quantitative, qualitative, and mixed variables can be handled.</description>
+    </item>
+    
+    <item>
+      <title>11a. non-Metric multidimensional scaling (nMDS)</title>
+      <link>/collection/quantecol/chapters/11-nmds/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/11-nmds/</guid>
+      <description>nMDS is a rank-based indirect gradient analysis (i.e. not an eigen-analysis) that uses a distance or dissimilarity matrix as input. Whereas the ordination methods discussed thus far try to maximise the variance or correspondence between sites, nMDS strives to represent pairwise dissimilarities between sites in ordination space. It does not use the distances or dissimilarities directly (hence indirect), but these are substituted with their ranks (e.g. dissimilarities between pairs of sites are ordered by rank) (and hence non-metric in the name).</description>
+    </item>
+    
+    <item>
+      <title>11b. nMDS of Mayombo&#39;s diatom data</title>
+      <link>/collection/quantecol/chapters/11-nmds_diatoms/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/11-nmds_diatoms/</guid>
+      <description>Kelp forests are known to host a large biomass of epiphytic fauna and flora, including diatoms, which constitute the base of aquatic food webs and play an important role in the transfer of energy to higher trophic levels. Epiphytic diatom assemblages associated with two common species of South African kelps, Ecklonia maxima and Laminaria pallida, were investigated in this study. Primary blades of adult and juvenile thalli of both kelp species were sampled at False Bay in July 2017 and analysed using scanning electron microscopy.</description>
+    </item>
+    
+    <item>
+      <title>12. Constrained Ordination</title>
+      <link>/collection/quantecol/chapters/12-constrained_ordination/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/12-constrained_ordination/</guid>
+      <description>Up to now we have applied indirect gradient analyses. The lecture slides mention several constrained ordinations and provide some theory for three of them, viz. Redundancy Analysis (RDA), Canonical Correspondence Analysis (CCA), and distance-based Reducndancy Analysis (db-RDA). Constrained ordination is sometimes called ‘direct gradient analysis’.
+Constrained ordination is used to extract and summarise the variation in a set of response variables (species data in the case of ecology) that can be explained by some explanatory variables (‘constraints’), such as measurements of environmental properties at the places where the species data were collected from.</description>
+    </item>
+    
+    <item>
+      <title>13. Cluster analysis</title>
+      <link>/collection/quantecol/chapters/13-cluster_analysis/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/13-cluster_analysis/</guid>
+      <description>“There are two types of people in the world: 1) those who extrapolate from incomplete data.” – Anon.
+ We have seen that the WHO/SDG data seem to form neat groupings of countries within their respective parent locations. In this exercise we will apply a cluster analysis called ‘Partitioning Around Medoids’ to these data. Whereas ordination attempts to display the presence and influence of gradients, clustering tries to place our samples into a certain number of discrete units or clusters.</description>
+    </item>
+    
+  </channel>
+</rss>

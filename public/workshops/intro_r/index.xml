@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BCB744 (Intro R) on BCB R Stats Pages</title>
+    <link>/workshops/intro_r/</link>
+    <description>Recent content in BCB744 (Intro R) on BCB R Stats Pages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 25 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/workshops/intro_r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1. RStudio and R</title>
+      <link>/workshops/intro_r/chapters/02-rstudio/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/02-rstudio/</guid>
+      <description>“Strange events permit themselves the luxury of occurring.”
+— Charlie Chan
+  “Without data you’re just another person with an opinion.”
+— W. Edwards Deming
+ Setting up the workspace General settings Before we start using RStudio (which is a code editor and environment that runs R) let’s first set it up properly. Find the ‘Tools’ (‘Preferences’) menu item, navigate to ‘Global Options’ (‘Code Editing’) and select the tick boxes as shown in the figure below.</description>
+    </item>
+    
+    <item>
+      <title>2. GitHub</title>
+      <link>/workshops/intro_r/chapters/03-github/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/03-github/</guid>
+      <description>GitHub is a code hosting platform for version control and collaboration. It uses the software Git to let you and others work together on projects from anywhere. The following teaches you the GitHub essentials like Repositories, Branches, Commits, and Pull Requests. You will first create your own account and repository, and learn GitHub’s Pull and Push Request workflow, a popular way to create and review code.
+Installing Git on Windows By default, Git is installed on Linux and macOS computers as a command line option.</description>
+    </item>
+    
+    <item>
+      <title>3. An R workflow</title>
+      <link>/workshops/intro_r/chapters/04-workflow/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/04-workflow/</guid>
+      <description>“A dream doesn’t become reality through magic; it takes sweat, determination and hard work.”
+— Colin Powell
+  “Choose a job you love, and you will never have to work a day in your life.”
+— Confucius
+ R Scripts The first step for any project in R is to create a new script. We do this by clicking on the ‘New Document’ button (in the top left and selecting ‘R Script’).</description>
+    </item>
+    
+    <item>
+      <title>4. Graphics with ggplot2</title>
+      <link>/workshops/intro_r/chapters/05-graphics/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/05-graphics/</guid>
+      <description>“The greatest value of a picture is when it forces us to notice what we never expected to see.”
+— John Tukey
+  “If I can’t picture it, I can’t understand it.”
+— Albert Einstein
+ Though it may have started as statistical software, R has moved far beyond it’s mundane origins. The language is now capable of a wide range of applications, some of which you have already seen, and some others you will see over the rest of this course.</description>
+    </item>
+    
+    <item>
+      <title>5. Faceting figures</title>
+      <link>/workshops/intro_r/chapters/06-faceting/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/06-faceting/</guid>
+      <description>“But let the mind beware, that though the flesh be bugged, the circumstances of existence are pretty glorious.”
+— Kurt Vonnegut, Player Piano
+  “You miss 100% of the shots you don’t take.”
+— Wayne Gretzky
+ So far we have only looked at single panel figures. But as you may have guessed by now, ggplot2 is capable of creating any sort of data visualisation that a human mind could conceive.</description>
+    </item>
+    
+    <item>
+      <title>6. Brewing colours</title>
+      <link>/workshops/intro_r/chapters/07-brewing/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/07-brewing/</guid>
+      <description>“Every portrait that is painted with feeling is a portrait of the artist, not of the sitter.”
+— Oscar Wilde
+  “If you could say it in words, there would be no reason to paint.”
+— Edward Hopper
+ Now that we have seen the basics of ggplot2, let’s take a moment to delve further into the beauty of our figures. It may sound vain at first, but the colour palette of a figure is actually very important.</description>
+    </item>
+    
+    <item>
+      <title>7. Mapping with ggplot2</title>
+      <link>/workshops/intro_r/chapters/08-mapping/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/08-mapping/</guid>
+      <description>“There’s no map to human behaviour.”
+— Bjork
+  “Here be dragons”
+— Unknown
+ Yesterday we learned how to create ggplot2 figures, change their aesthetics, labels, colour palettes, and facet/arrange them. Now we are going to look at how to create maps.
+Most of the work that we perform as environmental/biological scientists involves going out to a location and sampling information there. Sometimes only once, and sometimes over a period of time.</description>
+    </item>
+    
+    <item>
+      <title>8. Mapping with style</title>
+      <link>/workshops/intro_r/chapters/09-mapping_style/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/09-mapping_style/</guid>
+      <description>“How beautiful the world was when one looked at it without searching, just looked, simply and innocently.”
+— Hermann Hesse, Siddartha
+  “You can’t judge a book by it’s cover but you can sure sell a bunch of books if you have a good one.”
+— Jayce O’Neal
+ Now that we have learned the basics of creating a beautiful map in ggplot2 it is time to look at some of the more particular things we will need to make our maps extra stylish.</description>
+    </item>
+    
+    <item>
+      <title>9. Mapping with OpenStreetMap</title>
+      <link>/workshops/intro_r/chapters/10-mapping_openstreetmap/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/10-mapping_openstreetmap/</guid>
+      <description>“The only thing Google has failed to do, so far, is fail.”
+— John Battelle
+  “I’m afraid that if you look at a thing long enough, it loses all of its meaning.”
+— Andy Warhol
+ Now that we’ve seen how to produce complex maps with ggplot2 we are going to learn how to bring some freely-available maps—OpenStreetMaps—into the mix. Some kind hearted person has made a package for R that allows us to do this relatively easily.</description>
+    </item>
+    
+    <item>
+      <title>10. Tidy data</title>
+      <link>/workshops/intro_r/chapters/11-tidy/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/11-tidy/</guid>
+      <description>“Order and simplification are the first steps toward the mastery of a subject.”
+— Thomas Mann
+  “Get your facts first, and then you can distort them as much as you please.”
+— Mark Twain
+ The Tidyverse is a collection of R packages that adhere to the tidy data principles of data analysis and graphing. The purpose of these packages is to make working with data more efficient.</description>
+    </item>
+    
+    <item>
+      <title>11. Tidier data</title>
+      <link>/workshops/intro_r/chapters/12-tidier/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/12-tidier/</guid>
+      <description>“Knowing where things are, and why, is essential to rational decision making.”
+— Jack Dangermond
+  “The mind commands the body and it obeys. The mind orders itself and meets resistance.”
+— Frank Herbert, Dune
+ On Day 1 already we walked ourselves through a tidy workflow. We saw how to import data, how to manipulate it, run a quick analysis or two, and create figures. In the previous session we filled in the missing piece of the workflow by also learning how to tidy up our data within R.</description>
+    </item>
+    
+    <item>
+      <title>12. Tidiest data</title>
+      <link>/workshops/intro_r/chapters/13-tidiest/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/13-tidiest/</guid>
+      <description>“Conducting data analysis is like drinking a fine wine. It is important to swirl and sniff the wine, to unpack the complex bouquet and to appreciate the experience. Gulping the wine doesn’t work.”
+— Daniel B. Wright
+  “If you torture the data long enough, it will confess to anything.”
+— Ronald Coase
+ In the previous session we covered the five main transformation functions one would use in a typical tidy workflow.</description>
+    </item>
+    
+    <item>
+      <title>13. Recap</title>
+      <link>/workshops/intro_r/chapters/14-recap/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/14-recap/</guid>
+      <description>“Everyone should have their mind blown once a day.”
+— Neil deGrasse Tyson
+  “Somewhere, something incredible is waiting to be known.”
+— Carl Sagan
+ Over the past four days we have covered quite a bit of ground. By now it is our hope that after having participated in this workshop you will feel confident enough using R to branch out on your own and begin applying what you have learned to your own research.</description>
+    </item>
+    
+    <item>
+      <title>14. Functions by chapter</title>
+      <link>/workshops/intro_r/chapters/15-functions/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/15-functions/</guid>
+      <description> Useful information Operators There are several operators you can use to help build expressions as shown in Table \(\ref{tab:operators}\).
+ Functions Some example functions covered so far are presented in Table \(\ref{tab:functions}\).
+Some summary functions are presented in Table \(\ref{tab:summaries}\).
+  </description>
+    </item>
+    
+    <item>
+      <title>15. Base R primer</title>
+      <link>/workshops/intro_r/chapters/16-base_r/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/16-base_r/</guid>
+      <description>Please note that the following chapter departs from the syntax employed by the tidyverse, as utilised throughout this workshop, in favour of the base R syntax. This may be changed in the future, but has been left for now in order to better highlight the fundamental machinations of the R language, upon which the tidyverse is based.
+Dataframes The ‘workhorse’ data-containing structures you will use extensively in R are called dataframes.</description>
+    </item>
+    
+    <item>
+      <title>16. Dates</title>
+      <link>/workshops/intro_r/chapters/17-dates/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/17-dates/</guid>
+      <description>This script covers some of the more common issues we may face while dealing with dates.
+## Load libraries library(tidyverse) library(lubridate) library(zoo) ## Load data sad_dates &amp;lt;- read.csv(&amp;quot;../../../../static/data/sad_dates.csv&amp;quot;) Date details Look at strip time format for guidance
+?strptime Check the local time zone
+Sys.timezone(location = TRUE) R&amp;gt; [1] &amp;quot;Africa/Johannesburg&amp;quot;  Creating daily dates Create date columns out of the mangled date data we have loaded.
+## Create good date column new_dates &amp;lt;- sad_dates %&amp;gt;% mutate(new_good = as.</description>
+    </item>
+    
+  </channel>
+</rss>

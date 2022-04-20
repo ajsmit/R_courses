@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Abouts on BCB R Stats Pages</title>
+    <link>/about/</link>
+    <description>Recent content in Abouts on BCB R Stats Pages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language><atom:link href="/about/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>/about/header/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/header/</guid>
+      <description>Welcome to my pages!
+This is my website about the applications of R in Biology, Ecology, and Oceanography.
+This page serves the Biodiversity and Conservation Biology Department at the University of the Western Cape. Specifically, content for three modules is provided here, viz. Introduction to R, Biostatistics, and Quantitative Ecology.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/about/sidebar/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/sidebar/</guid>
+      <description>** index doesn&amp;rsquo;t contain a body, just front matter above. See about/list.html in the layouts folder **</description>
+    </item>
+    
+    <item>
+      <title>Why R?</title>
+      <link>/about/main/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/main/</guid>
+      <description>** index doesn&amp;rsquo;t contain a body, just front matter above. See about/list.html in the layouts folder **</description>
+    </item>
+    
+  </channel>
+</rss>

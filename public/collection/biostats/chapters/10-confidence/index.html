@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  
+                           
+     
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.96.0" />
+<title>9. Confidence intervals | BCB R Stats Pages</title>
+
+
+<meta property="twitter:site" content="@ajsmit">
+<meta property="twitter:creator" content="@ajsmit">
+
+
+
+
+
+
+
+  
+    
+  
+<meta name="description" content="What you need to know upfront.">
+
+
+<meta property="og:site_name" content="BCB R Stats Pages">
+<meta property="og:title" content="9. Confidence intervals | BCB R Stats Pages">
+<meta property="og:description" content="What you need to know upfront." />
+<meta property="og:type" content="page" />
+<meta property="og:url" content="/collection/biostats/chapters/10-confidence/" />
+<meta property="og:locale" content="en">
+
+
+
+
+    
+        <meta property="og:image" content="/img/papillons.jpg" >
+        <meta property="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="/img/papillons.jpg" >
+    
+  <meta itemprop="name" content="9. Confidence intervals">
+<meta itemprop="description" content="A confidence interval (CI) tells us within what range we may be certain to find the true mean from which any sample has been taken. If we were to repeatedly sample the same population over and over and calculated a mean every time, the 95% CI indicates the range that 95% of those means would fall into.
+Calculating confidence intervals Input &lt;- (&quot; Student Grade Teacher Score Rating a Gr_1 Vladimir 80 7 b Gr_1 Vladimir 90 10 c Gr_1 Vladimir 100 9 d Gr_1 Vladimir 70 5 e Gr_1 Vladimir 60 4 f Gr_1 Vladimir 80 8 g Gr_10 Vladimir 70 6 h Gr_10 Vladimir 50 5 i Gr_10 Vladimir 90 10 j Gr_10 Vladimir 70 8 k Gr_1 Sadam 80 7 l Gr_1 Sadam 90 8 m Gr_1 Sadam 90 8 n Gr_1 Sadam 80 9 o Gr_10 Sadam 60 5 p Gr_10 Sadam 80 9 q Gr_10 Sadam 70 6 r Gr_1 Donald 100 10 s Gr_1 Donald 90 10 t Gr_1 Donald 80 8 u Gr_1 Donald 80 7 v Gr_1 Donald 60 7 w Gr_10 Donald 60 8 x Gr_10 Donald 80 10 y Gr_10 Donald 70 7 z Gr_10 Donald 70 7 &quot;) data &lt;- read."><meta itemprop="datePublished" content="2021-01-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-01-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1238">
+<meta itemprop="keywords" content="" />
+  
+  
+  <!--[if IE]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+  
+  
+  <link rel="stylesheet" href="/style.main.min.13dd27d3efb7ed4ad82be3040182ddbf5ab9d3b4d6d01f0ba3930845932fce66.css" integrity="sha256-E90n0&#43;&#43;37UrYK&#43;MEAYLdv1q507TW0B8Lo5MIRZMvzmY=" media="screen">
+  
+  
+  <script src="/panelset.min.8f4cba0107356728f266d94a12a4d18ef504eda8a9a284cda73675bae7884a68.js" type="text/javascript"></script>
+  
+  
+  <script src="/main.min.318ee9c0652bba0149e7503c97e37e638937f3a9cad9233e6d0ba00bf7a46a5e.js" type="text/javascript"></script>
+</head>
+<body>
+      <div class="grid-container single-series">
+<header class="site-header pt4 pb2 mb4 bb b--transparent ph5 headroom z-max" role="banner">
+  <nav class="site-nav db dt-l w-100" role="navigation">
+    <a class="site-brand db dtc-l v-mid link no-underline w-100 w-33-l tc tl-l" href="/" title="Home">
+      <img src="/img/xaringan-outline.png" class="dib db-l h2 w-auto" alt="BCB R Stats Pages">
+    </a>
+    <div class="site-links db dtc-l v-mid w-100 w-47-l tc tr-l mt3 mt0-l ttu tracked">
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/about/" title="About AJ Smit">About</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/workshops/" title="BCB Hons">BCB Hons</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/project/" title="Project Portfolio">Projects</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 active" href="/collection/" title="R Courses">R Courses</a>
+      
+      
+    </div>
+  </nav>
+</header>
+
+
+<main class="page-main ph4 pt4" role="main">
+  <section class="page-content mw7 center">
+    <article class="post-content pa0 pr3-l">
+      <header class="post-header">
+        <h4 class="breadcrumb pb5">
+
+  
+    
+      
+  
+    
+      
+  
+    
+      
+  
+
+    
+    
+      <a href="/collection/">B.Sc. (Hons.) R modules</a>
+    
+  
+
+    
+    
+      <a href="/collection/biostats/">BCB744 (Biostats)</a>
+    
+  
+
+    
+    
+      9. Confidence intervals
+    
+  
+
+</h4>
+
+
+
+
+        
+        <h1 class="f1 lh-solid measure-narrow mb3 fw4">9. Confidence intervals</h1>
+        
+        <p class="f6 measure lh-copy mv1"></p>
+        <p class="f7 db mv0 ttu">January 1, 2021</p>
+        
+        
+      
+      <div class="ph0 pt5">
+        
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+      
+  <a class="btn-links mr2 ba dib" href="https://ajsmit.github.io/BCB744/Confidence_intervals_slides.html" target="_blank" rel="noopener"><i class="fas fa-images fa-lg fa-fw mr2"></i>Confidence Interval Slides</a>
+
+    
+    
+    
+    
+    
+    
+    
+      
+      
+  <a class="btn-links mr2 ba dib" href="https://ajsmit.github.io/BCB744/Confidence_intervals_exercises.html" target="_blank" rel="noopener"><i class="fa fa-star fa-lg fa-fw mr2"></i>Confidence Interval Exercises</a>
+
+
+      </div>
+      
+        
+      </header>
+      <section class="post-body pt5 pb4">
+        
+
+
+<!-- # Confidence intervals --->
+<p>A confidence interval (CI) tells us within what range we may be certain to find the true mean from which any sample has been taken. If we were to repeatedly sample the same population over and over and calculated a mean every time, the 95% CI indicates the range that 95% of those means would fall into.</p>
+<div id="calculating-confidence-intervals" class="section level2">
+<h2>Calculating confidence intervals</h2>
+<pre class="r"><code>Input &lt;- (&quot;
+Student  Grade   Teacher   Score  Rating
+a        Gr_1    Vladimir  80     7
+b        Gr_1    Vladimir  90    10
+c        Gr_1    Vladimir 100     9
+d        Gr_1    Vladimir  70     5
+e        Gr_1    Vladimir  60     4
+f        Gr_1    Vladimir  80     8
+g        Gr_10   Vladimir  70     6
+h        Gr_10   Vladimir  50     5
+i        Gr_10   Vladimir  90    10
+j        Gr_10   Vladimir  70     8
+k        Gr_1    Sadam     80     7
+l        Gr_1    Sadam     90     8
+m        Gr_1    Sadam     90     8
+n        Gr_1    Sadam     80     9
+o        Gr_10   Sadam     60     5
+p        Gr_10   Sadam     80     9
+q        Gr_10   Sadam     70     6
+r        Gr_1    Donald   100    10
+s        Gr_1    Donald    90    10
+t        Gr_1    Donald    80     8
+u        Gr_1    Donald    80     7
+v        Gr_1    Donald    60     7
+w        Gr_10   Donald    60     8
+x        Gr_10   Donald    80    10
+y        Gr_10   Donald    70     7
+z        Gr_10   Donald    70     7
+&quot;)
+
+data &lt;- read.table(textConnection(Input), header = TRUE)
+summary(data)</code></pre>
+<pre><code>R&gt;    Student             Grade             Teacher              Score       
+R&gt;  Length:26          Length:26          Length:26          Min.   : 50.00  
+R&gt;  Class :character   Class :character   Class :character   1st Qu.: 70.00  
+R&gt;  Mode  :character   Mode  :character   Mode  :character   Median : 80.00  
+R&gt;                                                           Mean   : 76.92  
+R&gt;                                                           3rd Qu.: 87.50  
+R&gt;                                                           Max.   :100.00  
+R&gt;      Rating      
+R&gt;  Min.   : 4.000  
+R&gt;  1st Qu.: 7.000  
+R&gt;  Median : 8.000  
+R&gt;  Mean   : 7.615  
+R&gt;  3rd Qu.: 9.000  
+R&gt;  Max.   :10.000</code></pre>
+<p>The package <strong>rcompanion</strong> has a convenient function for estimating the confidence intervals for our sample data. The function is called <code>groupwiseMean()</code> and it has a few options (methods) for estimating the confidence intervals, e.g. the ‘traditional’ way using the <em>t</em>-distribution, and a bootstrapping procedure.</p>
+<p>Let us produce the confidence intervals using the traditional method for the group means:</p>
+<pre class="r"><code>library(rcompanion)
+# Ungrouped data are indicated with a 1 on the right side of the formula,
+# or the group = NULL argument; so, this produces the overall mean
+groupwiseMean(Score ~ 1, data = data, conf = 0.95, digits = 3)</code></pre>
+<pre><code>R&gt;    .id  n Mean Conf.level Trad.lower Trad.upper
+R&gt; 1 &lt;NA&gt; 26 76.9       0.95       71.7       82.1</code></pre>
+<pre class="r"><code># One-way data
+groupwiseMean(Score ~ Grade, data = data, conf = 0.95, digits = 3)</code></pre>
+<pre><code>R&gt;   Grade  n Mean Conf.level Trad.lower Trad.upper
+R&gt; 1  Gr_1 15   82       0.95       75.3       88.7
+R&gt; 2 Gr_10 11   70       0.95       62.6       77.4</code></pre>
+<pre class="r"><code># Two-way data
+groupwiseMean(Score ~ Teacher + Grade, data = data, conf = 0.95, digits = 3)</code></pre>
+<pre><code>R&gt;    Teacher Grade n Mean Conf.level Trad.lower Trad.upper
+R&gt; 1   Donald  Gr_1 5   82       0.95       63.6      100.0
+R&gt; 2   Donald Gr_10 4   70       0.95       57.0       83.0
+R&gt; 3    Sadam  Gr_1 4   85       0.95       75.8       94.2
+R&gt; 4    Sadam Gr_10 3   70       0.95       45.2       94.8
+R&gt; 5 Vladimir  Gr_1 6   80       0.95       65.2       94.8
+R&gt; 6 Vladimir Gr_10 4   70       0.95       44.0       96.0</code></pre>
+<p>Now let us do it through bootstrapping:</p>
+<pre class="r"><code>groupwiseMean(Score ~ Grade,
+              data = data,
+              conf = 0.95,
+              digits = 3,
+              R = 10000,
+              boot = TRUE,
+              traditional = FALSE,
+              normal = FALSE,
+              basic = FALSE,
+              percentile = FALSE,
+              bca = TRUE)</code></pre>
+<pre><code>R&gt;   Grade  n Mean Boot.mean Conf.level Bca.lower Bca.upper
+R&gt; 1  Gr_1 15   82        82       0.95      75.3      86.7
+R&gt; 2 Gr_10 11   70        70       0.95      62.7      75.5</code></pre>
+<pre class="r"><code>groupwiseMean(Score ~ Teacher + Grade,
+              data = data,
+              conf = 0.95,
+              digits = 3,
+              R = 10000,
+              boot = TRUE,
+              traditional = FALSE,
+              normal = FALSE,
+              basic = FALSE,
+              percentile = FALSE,
+              bca = TRUE)</code></pre>
+<pre><code>R&gt;    Teacher Grade n Mean Boot.mean Conf.level Bca.lower Bca.upper
+R&gt; 1   Donald  Gr_1 5   82      82.1       0.95      68.0      90.0
+R&gt; 2   Donald Gr_10 4   70      70.0       0.95      62.5      75.0
+R&gt; 3    Sadam  Gr_1 4   85      85.0       0.95      80.0      87.5
+R&gt; 4    Sadam Gr_10 3   70      70.0       0.95      60.0      76.7
+R&gt; 5 Vladimir  Gr_1 6   80      79.9       0.95      68.3      88.3
+R&gt; 6 Vladimir Gr_10 4   70      70.0       0.95      55.0      80.0</code></pre>
+<p>These upper and lower limits may then be used easily within a figure.</p>
+<pre class="r"><code># Load libraries
+library(tidyverse)
+
+# Create dummy data
+r_dat &lt;- data.frame(value = rnorm(n = 20, mean = 10, sd = 2),
+                    sample = rep(&quot;A&quot;, 20))
+
+# Create basic plot
+ggplot(data = r_dat, aes(x = sample, y = value)) +
+  geom_errorbar(aes(ymin = mean(value) - sd(value), ymax = mean(value) + sd(value))) +
+  geom_jitter(colour = &quot;firebrick1&quot;)</code></pre>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="/collection/biostats/chapters/10-confidence_files/figure-html/unnamed-chunk-4-1.png" alt="A very basic figure showing confidence intervals (CI) for a random normal distribution." width="70%" />
+<p class="caption">
+Figure 1: A very basic figure showing confidence intervals (CI) for a random normal distribution.
+</p>
+</div>
+</div>
+<div id="ci-of-compared-means" class="section level2">
+<h2>CI of compared means</h2>
+<p>AS stated above, we may also use CI to investigate the difference in means between two or more sample sets of data. We have already seen this in the ANOVA Chapter, but we shall look at it again here with our now expanded understanding of the concept.</p>
+<pre class="r"><code># First calculate ANOVA of seapl length of different iris species
+iris_aov &lt;- aov(Sepal.Length ~ Species, data = iris)
+
+# Then run a Tukey test
+iris_Tukey &lt;- TukeyHSD(iris_aov)
+
+# Lastly use base R to quickly plot the results
+plot(iris_Tukey)</code></pre>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<img src="/collection/biostats/chapters/10-confidence_files/figure-html/unnamed-chunk-5-1.png" alt="Results of a post-hoc Tukey test showing the confidence interval for the effect size between each group." width="70%" />
+<p class="caption">
+Figure 2: Results of a post-hoc Tukey test showing the confidence interval for the effect size between each group.
+</p>
+</div>
+<blockquote>
+<p><strong>Task 1:</strong> Judging from the figure above, which species have significantly different sepal lengths?</p>
+</blockquote>
+</div>
+<div id="harrell-plots" class="section level2">
+<h2>Harrell plots</h2>
+<p>The most complete use of CI that we have seen to date is the Harrell plot. This type of figure shows the distributions of each sample set in the data as boxplots in a lower panel. In the panel above those boxplots it then lays out the results of a post-hoc Tukey test. This very cleanly shows both the raw data as well as high level statistical results of the comparisons of those data. Thanks to the magic of the Internet we may create these figures with a single line of code. This does however require that we load several new libraries.</p>
+<pre class="r"><code># The easy creation of these figures has quite a few dependencies
+library(lsmeans)
+library(Hmisc)
+library(broom)
+library(car)
+library(data.table)
+library(cowplot)
+source(&quot;../../../../static/R/fit_model.R&quot;)
+source(&quot;../../../../static/R/make_formula_str.R&quot;)
+source(&quot;../../../../static/R/HarrellPlot.R&quot;)
+
+# Load data
+ecklonia &lt;- read.csv(&quot;../../../../static/data/ecklonia.csv&quot;)
+
+# Create Harrell Plot
+HarrellPlot(x = &quot;site&quot;, y = &quot;stipe_length&quot;, data = ecklonia, short = T)[1]</code></pre>
+<pre><code>R&gt; $gg</code></pre>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
+<img src="/collection/biostats/chapters/10-confidence_files/figure-html/unnamed-chunk-6-1.png" alt="Harrell plot showing the distributions of stipe lengths (cm) of the kelp _Ecklonia maxima_ at two different sites in the bottom panel. The top panel shows the confidence interval of the effect of the difference between these two sample sets based on a post-hoc Tukey test." width="70%" />
+<p class="caption">
+Figure 3: Harrell plot showing the distributions of stipe lengths (cm) of the kelp <em>Ecklonia maxima</em> at two different sites in the bottom panel. The top panel shows the confidence interval of the effect of the difference between these two sample sets based on a post-hoc Tukey test.
+</p>
+</div>
+<blockquote>
+<p><strong>Task 2:</strong> There are a lot of settings for <code>HarrellPlot()</code>, what do some of them do?</p>
+</blockquote>
+<p>The above figure shows that the CI of the difference between stipe lengths (cm) at the two sites does not cross 0. This means that there is a significant difference between these two sample sets. But let’s run a statistical test anyway to check the results.</p>
+<pre class="r"><code># assumptions
+ecklonia %&gt;% 
+  group_by(site) %&gt;% 
+  summarise(stipe_length_var = var(stipe_length),
+            stipe_length_Norm = as.numeric(shapiro.test(stipe_length)[2]))</code></pre>
+<pre><code>R&gt; # A tibble: 2 × 3
+R&gt;   site           stipe_length_var stipe_length_Norm
+R&gt;   &lt;chr&gt;                     &lt;dbl&gt;             &lt;dbl&gt;
+R&gt; 1 Batsata Rock             14683.            0.0128
+R&gt; 2 Boulders Beach            4970.            0.0589</code></pre>
+<pre class="r"><code># We fail both assumptions...
+
+# non-parametric test
+wilcox.test(stipe_length ~ site, data = ecklonia)</code></pre>
+<pre><code>R&gt; 
+R&gt;  Wilcoxon rank sum test with continuity correction
+R&gt; 
+R&gt; data:  stipe_length by site
+R&gt; W = 146, p-value = 0.001752
+R&gt; alternative hypothesis: true location shift is not equal to 0</code></pre>
+<p>The results of our Wilcox rank sum test, unsurprisingly, support the output of <code>HarrelPlot()</code>.</p>
+</div>
+
+      </section>
+      <footer class="post-footer">
+        <div class="post-pagination dt w-100 mt4 mb2">
+  
+  
+    <a class="prev dtc pr2 tl v-top fw6"
+    href="/collection/biostats/chapters/09-correlations/">&larr; 8. Correlation</a>
+  
+  
+  
+    <a class="next dtc pl2 tr v-top fw6"
+    href="/collection/biostats/chapters/11-transformations/">10. Data transformations &rarr;</a>
+  
+</div>
+
+      </footer>
+    </article>
+    
+  </section>
+</main>
+
+<aside class="page-sidebar" role="complementary">
+                         
+ 
+
+
+
+
+
+
+
+
+
+
+
+  <img src="/collection/featured-sidebar.jpg" class="db ma0">
+
+                         
+ 
+
+
+
+<div class="flex items-start sticky ph4 pb4 flex-row">
+  <div class="w-two-thirds w-50-l ph0">
+    <h2 class="mv3 f5 fw7 ttu tracked">
+      <a class="no-underline dim" href="/collection/">Outline</a></h2>
+    <nav id="SectionTableOfContents" aria-label="SectionTableOfContents">
+        <ul>
+        
+          
+          
+          
+          <details  class="">
+            <summary class="" hugo-nav="/collection/intro_r/"><a href="/collection/intro_r/">BCB744 (Intro R)</a></summary>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/02-rstudio/"><a href="/collection/intro_r/chapters/02-rstudio/">1. RStudio and R</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/03-github/"><a href="/collection/intro_r/chapters/03-github/">2. GitHub</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/04-workflow/"><a href="/collection/intro_r/chapters/04-workflow/">3. An R workflow</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/05-graphics/"><a href="/collection/intro_r/chapters/05-graphics/">4. Graphics with ggplot2</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/06-faceting/"><a href="/collection/intro_r/chapters/06-faceting/">5. Faceting figures</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/07-brewing/"><a href="/collection/intro_r/chapters/07-brewing/">6. Brewing colours</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/08-mapping/"><a href="/collection/intro_r/chapters/08-mapping/">7. Mapping with ggplot2</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/09-mapping_style/"><a href="/collection/intro_r/chapters/09-mapping_style/">8. Mapping with style</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/10-mapping_openstreetmap/"><a href="/collection/intro_r/chapters/10-mapping_openstreetmap/">9. Mapping with OpenStreetMap</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/11-tidy/"><a href="/collection/intro_r/chapters/11-tidy/">10. Tidy data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/12-tidier/"><a href="/collection/intro_r/chapters/12-tidier/">11. Tidier data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/13-tidiest/"><a href="/collection/intro_r/chapters/13-tidiest/">12. Tidiest data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/14-recap/"><a href="/collection/intro_r/chapters/14-recap/">13. Recap</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/15-functions/"><a href="/collection/intro_r/chapters/15-functions/">14. Functions by chapter</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/16-base_r/"><a href="/collection/intro_r/chapters/16-base_r/">15. Base R primer</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/17-dates/"><a href="/collection/intro_r/chapters/17-dates/">16. Dates</a></li>
+            
+          </details>
+          
+          </li>
+        
+          
+          
+          
+          <details open class="active">
+            <summary class="active" hugo-nav="/collection/biostats/"><a href="/collection/biostats/">BCB744 (Biostats)</a></summary>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/02-data/"><a href="/collection/biostats/chapters/02-data/">1. Types of data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/03-descriptive/"><a href="/collection/biostats/chapters/03-descriptive/">2. Central tendency and dispersion</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/04-graphics/"><a href="/collection/biostats/chapters/04-graphics/">3. Graphical data displays</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/06-t_tests/"><a href="/collection/biostats/chapters/06-t_tests/">5. Inferences about one or two populations</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/07-anova/"><a href="/collection/biostats/chapters/07-anova/">6. Analysis of Variance (ANOVA)</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/08-regressions/"><a href="/collection/biostats/chapters/08-regressions/">7. Simple linear regressions</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/09-correlations/"><a href="/collection/biostats/chapters/09-correlations/">8. Correlation</a></li>
+            
+              
+              <li class="active" hugo-nav="/collection/biostats/chapters/10-confidence/"><a href="/collection/biostats/chapters/10-confidence/">9. Confidence intervals</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/11-transformations/"><a href="/collection/biostats/chapters/11-transformations/">10. Data transformations</a></li>
+            
+          </details>
+          
+          </li>
+        
+          
+          
+          
+          <details  class="">
+            <summary class="" hugo-nav="/collection/quantecol/"><a href="/collection/quantecol/">BCB743</a></summary>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/01-data/"><a href="/collection/quantecol/chapters/01-data/">1. Multivariate data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/02-biodiversity/"><a href="/collection/quantecol/chapters/02-biodiversity/">2. Biodiversity</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/03-deep_dive/"><a href="/collection/quantecol/chapters/03-deep_dive/">3. Deep Dive into Gradients</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/04-env_dist/"><a href="/collection/quantecol/chapters/04-env_dist/">4. Environmental Distance</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/05-spp_dissimilarity/"><a href="/collection/quantecol/chapters/05-spp_dissimilarity/">5. Species Dissimilarities</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/06-correlations/"><a href="/collection/quantecol/chapters/06-correlations/">6. Correlations and Associations</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/08_pca/"><a href="/collection/quantecol/chapters/08_pca/">8a. Principal Component Analysis (PCA)</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/08-pca_sdg/"><a href="/collection/quantecol/chapters/08-pca_sdg/">8b. PCA of WHO SDGs</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/09-ca/"><a href="/collection/quantecol/chapters/09-ca/">9. Correspondence Analysis (CA)</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/10-pcoa/"><a href="/collection/quantecol/chapters/10-pcoa/">10. Principal Coordinate Analysis (PCoA)</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/11-nmds/"><a href="/collection/quantecol/chapters/11-nmds/">11a. non-Metric multidimensional scaling (nMDS)</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/11-nmds_diatoms/"><a href="/collection/quantecol/chapters/11-nmds_diatoms/">11b. nMDS of Mayombo&#39;s diatom data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/12-constrained_ordination/"><a href="/collection/quantecol/chapters/12-constrained_ordination/">12. Constrained Ordination</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/13-cluster_analysis/"><a href="/collection/quantecol/chapters/13-cluster_analysis/">13. Cluster analysis</a></li>
+            
+          </details>
+          
+          </li>
+        
+        </ul>
+    </nav>
+  </div>
+  <details id="PageTableOfContents">
+    <summary><h2 class="mv0 f5 fw7 ttu tracked dib">On this page<h2></summary>
+    <div class="pl2 pr0 mh0">
+    
+    </div>
+  </details>
+  
+</div>
+
+</aside>
+
+<footer class="site-footer pv4 bt b--transparent ph5" role="contentinfo">
+  <nav class="db dt-l w-100">
+    <p class="site-copyright f7 db dtc-l v-mid w-100 w-33-l tc tl-l pv2 pv0-l mv0 lh-copy">
+      &copy; 2022 University of the Western Cape, Cape Town
+      <span class="middot-divider"></span>
+      Made with <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/hugo-apero/" rel="dct:source">Hugo Apéro</a></span>.
+      <br />
+      
+Based on <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/formspree/blogophonic-hugo" rel="dct:source">Blogophonic</a></span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://formspree.io" property="cc:attributionName" rel="cc:attributionURL">Formspree</a>.
+    </p>
+    
+    <div class="site-social-links db dtc-l v-mid w-100 w-33-l tc pv2 pv0-l mv0">
+      <div class="social-icon-links" aria-hidden="true">
+  
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://github.com/ajsmit/" title="github" target="_blank" rel="noopener">
+      <i class="fab fa-github fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="http://orcid.org/0000-0002-3799-6126" title="orcid" target="_blank" rel="noopener">
+      <i class="ai ai-orcid fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.researchgate.net/profile/Albertus-Smit" title="researchgate" target="_blank" rel="noopener">
+      <i class="ai ai-researchgate fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://uwc.academia.edu/AlbertusSmit" title="academia" target="_blank" rel="noopener">
+      <i class="ai ai-academia fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://scholar.google.co.za/citations?user=ATsBBKoAAAAJ&amp;hl=en" title="google-scholar" target="_blank" rel="noopener">
+      <i class="ai ai-google-scholar fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.instagram.com/ajsmit/" title="instagram" target="_blank" rel="noopener">
+      <i class="fab fa-instagram fa-lg fa-fw"></i>
+    </a>
+  
+</div>
+
+    </div>
+    
+    <div class="site-links f6 db dtc-l v-mid w-100 w-67-l tc tr-l pv2 pv0-l mv0">
+      
+      <a class="dib pv1 ph2 link" href="/license/" title="License">License</a>
+      
+      <a class="dib pv1 ph2 link" href="/contact/" title="Contact form">Contact</a>
+      
+      <a class="dib pv1 ph2 link" href="/contributors/" title="Contributors">Contributors</a>
+      
+    </div>
+  </nav>
+  
+    <script>
+
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (let i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) ||
+            /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+</script>
+
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+
+    
+  
+  
+</footer>
+
+      </div>
+    </body>
+</html>

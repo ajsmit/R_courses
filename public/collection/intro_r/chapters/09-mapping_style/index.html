@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  
+                           
+     
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.96.0" />
+<title>8. Mapping with style | BCB R Stats Pages</title>
+
+
+<meta property="twitter:site" content="@ajsmit">
+<meta property="twitter:creator" content="@ajsmit">
+
+
+
+
+
+
+
+  
+    
+  
+<meta name="description" content="What you need to know upfront.">
+
+
+<meta property="og:site_name" content="BCB R Stats Pages">
+<meta property="og:title" content="8. Mapping with style | BCB R Stats Pages">
+<meta property="og:description" content="What you need to know upfront." />
+<meta property="og:type" content="page" />
+<meta property="og:url" content="/collection/intro_r/chapters/09-mapping_style/" />
+<meta property="og:locale" content="en">
+
+
+
+
+    
+        <meta property="og:image" content="/img/papillons.jpg" >
+        <meta property="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="/img/papillons.jpg" >
+    
+  <meta itemprop="name" content="8. Mapping with style">
+<meta itemprop="description" content="“How beautiful the world was when one looked at it without searching, just looked, simply and innocently.”
+— Hermann Hesse, Siddartha
+  “You can’t judge a book by it’s cover but you can sure sell a bunch of books if you have a good one.”
+— Jayce O’Neal
+ Now that we have learned the basics of creating a beautiful map in ggplot2 it is time to look at some of the more particular things we will need to make our maps extra stylish."><meta itemprop="datePublished" content="2021-01-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-01-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="662">
+<meta itemprop="keywords" content="" />
+  
+  
+  <!--[if IE]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+  
+  
+  <link rel="stylesheet" href="/style.main.min.13dd27d3efb7ed4ad82be3040182ddbf5ab9d3b4d6d01f0ba3930845932fce66.css" integrity="sha256-E90n0&#43;&#43;37UrYK&#43;MEAYLdv1q507TW0B8Lo5MIRZMvzmY=" media="screen">
+  
+  
+  <script src="/panelset.min.8f4cba0107356728f266d94a12a4d18ef504eda8a9a284cda73675bae7884a68.js" type="text/javascript"></script>
+  
+  
+  <script src="/main.min.318ee9c0652bba0149e7503c97e37e638937f3a9cad9233e6d0ba00bf7a46a5e.js" type="text/javascript"></script>
+</head>
+<body>
+      <div class="grid-container single-series">
+<header class="site-header pt4 pb2 mb4 bb b--transparent ph5 headroom z-max" role="banner">
+  <nav class="site-nav db dt-l w-100" role="navigation">
+    <a class="site-brand db dtc-l v-mid link no-underline w-100 w-33-l tc tl-l" href="/" title="Home">
+      <img src="/img/xaringan-outline.png" class="dib db-l h2 w-auto" alt="BCB R Stats Pages">
+    </a>
+    <div class="site-links db dtc-l v-mid w-100 w-47-l tc tr-l mt3 mt0-l ttu tracked">
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/about/" title="About AJ Smit">About</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/workshops/" title="BCB Hons">BCB Hons</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/project/" title="Project Portfolio">Projects</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 active" href="/collection/" title="R Courses">R Courses</a>
+      
+      
+    </div>
+  </nav>
+</header>
+
+
+<main class="page-main ph4 pt4" role="main">
+  <section class="page-content mw7 center">
+    <article class="post-content pa0 pr3-l">
+      <header class="post-header">
+        <h4 class="breadcrumb pb5">
+
+  
+    
+      
+  
+    
+      
+  
+    
+      
+  
+
+    
+    
+      <a href="/collection/">B.Sc. (Hons.) R modules</a>
+    
+  
+
+    
+    
+      <a href="/collection/intro_r/">BCB744 (Intro R)</a>
+    
+  
+
+    
+    
+      8. Mapping with style
+    
+  
+
+</h4>
+
+
+
+
+        
+        <h1 class="f1 lh-solid measure-narrow mb3 fw4">8. Mapping with style</h1>
+        
+        <p class="f6 measure lh-copy mv1"></p>
+        <p class="f7 db mv0 ttu">January 1, 2021</p>
+        
+        
+      
+        
+      </header>
+      <section class="post-body pt5 pb4">
+        
+
+
+<blockquote>
+<p>“How beautiful the world was when one looked at it without searching, just looked, simply and innocently.”</p>
+<p>— Hermann Hesse, Siddartha</p>
+</blockquote>
+<blockquote>
+<p>“You can’t judge a book by it’s cover but you can sure sell a bunch of books if you have a good one.”</p>
+<p>— Jayce O’Neal</p>
+</blockquote>
+<p>Now that we have learned the basics of creating a beautiful map in <strong><code>ggplot2</code></strong> it is time to look at some of the more particular things we will need to make our maps extra stylish. There are also a few more things we need to learn how to do before our maps can be truly publication quality.</p>
+<p>If we have not yet loaded the <strong><code>tidyverse</code></strong> let’s do so.</p>
+<pre class="r"><code># Load libraries
+library(tidyverse)
+library(scales)
+library(ggsn)
+
+# Load Africa map
+load(&quot;../../../../static/data/africa_map.RData&quot;)</code></pre>
+<div id="default-maps" class="section level2">
+<h2>Default maps</h2>
+<p>In order to access the default maps included with the <strong><code>tidyverse</code></strong> we will use the function <code>borders()</code>.</p>
+<pre class="r"><code>ggplot() +
+  borders(col = &quot;black&quot;, fill = &quot;cornsilk&quot;, size = 0.2) + # The global shape file
+  coord_equal() # Equal sizing for lon/lat </code></pre>
+<div class="figure"><span style="display:block;" id="fig:maps-world"></span>
+<img src="/collection/intro_r/chapters/09-mapping_style_files/figure-html/maps-world-1.png" alt="The built in global shape file." width="672" />
+<p class="caption">
+Figure 1: The built in global shape file.
+</p>
+</div>
+<p>Jikes! It’s as simple as that to load a map of the whole planet. Usually we are not going to want to make a map of the entire planet, so let’s see how to focus on just the area around South Africa.</p>
+<pre class="r"><code>sa_1 &lt;- ggplot() +
+  borders(size = 0.2, fill = &quot;cornsilk&quot;, colour = &quot;black&quot;) +
+  coord_equal(xlim = c(12, 36), ylim = c(-38, -22), expand = 0) # Force lon/lat extent
+sa_1</code></pre>
+<div class="figure"><span style="display:block;" id="fig:maps-SA-1"></span>
+<img src="/collection/intro_r/chapters/09-mapping_style_files/figure-html/maps-SA-1-1.png" alt="A better way to get the map of South Africa." width="672" />
+<p class="caption">
+Figure 2: A better way to get the map of South Africa.
+</p>
+</div>
+<p>That is a very tidy looking map of South(ern) Africa without needing to load any files.</p>
+</div>
+<div id="specific-labels" class="section level2">
+<h2>Specific labels</h2>
+<p>A map is almost always going to need some labels and other visual cues. We saw in the previous section how to add site labels. The following code chunk shows how this differs if we want to add just one label at a time. This can be useful if each label needs to be different from all other labels for whatever reason. We may also see that the text labels we are creating have <code>\n</code> in them. When R sees these two characters together like this it reads this as an instruction to return down a line. Let’s run the code to make sure we see what this means.</p>
+<pre class="r"><code>sa_2 &lt;- sa_1 +
+  annotate(&quot;text&quot;, label = &quot;Atlantic\nOcean&quot;, 
+           x = 15.1, y = -32.0, 
+           size = 5.0, 
+           angle = 30, 
+           colour = &quot;navy&quot;) +
+  annotate(&quot;text&quot;, label = &quot;Indian\nOcean&quot;, 
+           x = 33.2, y = -34.2, 
+           size = 5.0, 
+           angle = 330, 
+           colour = &quot;red4&quot;)
+sa_2</code></pre>
+<div class="figure"><span style="display:block;" id="fig:maps-labels"></span>
+<img src="/collection/intro_r/chapters/09-mapping_style_files/figure-html/maps-labels-1.png" alt="Map of southern Africa with specific labels." width="672" />
+<p class="caption">
+Figure 3: Map of southern Africa with specific labels.
+</p>
+</div>
+</div>
+<div id="scale-bars" class="section level2">
+<h2>Scale bars</h2>
+<p>With our fancy labels added, let’s insert a scale bar next. There is no default scale bar function in the <strong><code>tidyverse</code></strong>, which is why we have loaded the <strong><code>ggsn</code></strong> package. This package is devoted to adding scale bars and North arrows to <strong><code>ggplot2</code></strong> figures. There are heaps of options so we’ll just focus on one of them for now. It is a bit finicky so to get it looking exactly how we want it requires some guessing and checking. Please feel free to play around with the coordinates below. We may see the list of available North arrow shapes by running <code>northSymbols()</code>.</p>
+<pre class="r"><code>sa_3 &lt;- sa_2 +
+  scalebar(x.min = 22, x.max = 26, y.min = -36, y.max = -35, # Set location of bar
+           dist = 200, dist_unit = &quot;km&quot;, height = 0.3, st.dist = 0.8, st.size = 4, # Set particulars
+           transform = TRUE, border.size = 0.2, model = &quot;WGS84&quot;) + # Set appearance
+  north(x.min = 22.5, x.max = 25.5, y.min = -33, y.max = -31, # Set location of symbol
+        scale = 1.2, symbol = 16)
+sa_3</code></pre>
+<div class="figure"><span style="display:block;" id="fig:maps-scale"></span>
+<img src="/collection/intro_r/chapters/09-mapping_style_files/figure-html/maps-scale-1.png" alt="Map of southern Africa with labels and a scale bar." width="672" />
+<p class="caption">
+Figure 4: Map of southern Africa with labels and a scale bar.
+</p>
+</div>
+<!-- ## Insetting -->
+<!-- In order to inset a smaller map inside of a larger map we must first create the smaller map. We have already loaded just such a map of Africa so we will use that for this example. -->
+<!-- ```{r maps-mini, fig.align = "center"} -->
+<!-- africa_map -->
+<!-- ``` -->
+<!-- And now to inset this map of Africa into our map of southern Africa we will need to learn how to create a 'grob'. This is very simple and does not require any extra work on our part. Remember that **`ggplot2`** objects are different from normal objects (i.e. dataframes), and that they have their own way of storing and accessing data. In order to convert any sort of thing into a format that ggplot understands we convert it into a grob, as shown below. Once converted, we may then plop it onto our figure/map wherever we please. Both of these steps are accomplished with the single function `annotation_custom()`. This is also a good way to add logos or any other sort of image to a map/figure. You can really go completely bananas. It's even possible to add GIFs. Such happy. Much excite. Very wonderment. -->
+<!-- ```{r maps-inset, fig.cap="Map of southern Africa, with labels, scale bar, and an inset map of Africa."} -->
+<!-- sa_4 <- sa_3 + -->
+<!--   annotation_custom(grob = ggplotGrob(africa_map), -->
+<!--                     xmin = 20.9, xmax = 26.9, -->
+<!--                     ymin = -30, ymax = -24) -->
+<!-- sa_4 -->
+<!-- ``` -->
+<!-- ## Rounding it out -->
+<!-- There are a lot of exciting things going on in our figure now. To round out our adventures in mapping let's tweak the lon/lat labels to a more prestigious convention. There are two ways to do this. One of which requires us to install the **`scales`** package. Don't worry, it's a small one! -->
+<!-- ```{r maps-final, fig.cap="The final map with all of the bells and whistles."} -->
+<!-- sa_final <- sa_4 + -->
+<!--   scale_x_continuous(breaks = seq(16, 32, 4), -->
+<!--                      labels = c("16°E", "20°E", "24°E", "28°E", "32°E"), -->
+<!--                      position = "bottom") + -->
+<!--   scale_y_continuous(breaks = seq(-36, -24, 4), -->
+<!--                      labels = c("36.0°S", "32.0°S", "28.0°S", "24.0°S"), -->
+<!--                      position = "right") + -->
+<!--   labs(x = "", y = "") -->
+<!-- sa_final -->
+<!-- ``` -->
+<!-- And lastly we save the fruits of our labours. -->
+<!-- ```{r maps-final-save, eval=FALSE} -->
+<!-- ggsave(plot = sa_final, filename = "figures/southern_africa_final.pdf",  -->
+<!--        height = 6, width = 8) -->
+<!-- ``` -->
+</div>
+<div id="session-info" class="section level2">
+<h2>Session info</h2>
+<pre class="r"><code>installed.packages()[names(sessionInfo()$otherPkgs), &quot;Version&quot;]</code></pre>
+<pre><code>R&gt;      ggsn    scales   forcats   stringr     dplyr     purrr     readr     tidyr 
+R&gt;   &quot;0.5.0&quot;   &quot;1.1.1&quot;   &quot;0.5.1&quot;   &quot;1.4.0&quot;   &quot;1.0.8&quot;   &quot;0.3.4&quot;   &quot;2.1.2&quot;   &quot;1.2.0&quot; 
+R&gt;    tibble   ggplot2 tidyverse 
+R&gt;   &quot;3.1.6&quot;   &quot;3.3.5&quot;   &quot;1.3.1&quot;</code></pre>
+</div>
+
+      </section>
+      <footer class="post-footer">
+        <div class="post-pagination dt w-100 mt4 mb2">
+  
+  
+    <a class="prev dtc pr2 tl v-top fw6"
+    href="/collection/intro_r/chapters/08-mapping/">&larr; 7. Mapping with ggplot2</a>
+  
+  
+  
+    <a class="next dtc pl2 tr v-top fw6"
+    href="/collection/intro_r/chapters/10-mapping_openstreetmap/">9. Mapping with OpenStreetMap &rarr;</a>
+  
+</div>
+
+      </footer>
+    </article>
+    
+  </section>
+</main>
+
+<aside class="page-sidebar" role="complementary">
+                         
+ 
+
+
+
+
+
+
+
+
+
+
+
+  <img src="/collection/featured-sidebar.jpg" class="db ma0">
+
+                         
+ 
+
+
+
+<div class="flex items-start sticky ph4 pb4 flex-row">
+  <div class="w-two-thirds w-50-l ph0">
+    <h2 class="mv3 f5 fw7 ttu tracked">
+      <a class="no-underline dim" href="/collection/">Outline</a></h2>
+    <nav id="SectionTableOfContents" aria-label="SectionTableOfContents">
+        <ul>
+        
+          
+          
+          
+          <details open class="active">
+            <summary class="active" hugo-nav="/collection/intro_r/"><a href="/collection/intro_r/">BCB744 (Intro R)</a></summary>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/02-rstudio/"><a href="/collection/intro_r/chapters/02-rstudio/">1. RStudio and R</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/03-github/"><a href="/collection/intro_r/chapters/03-github/">2. GitHub</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/04-workflow/"><a href="/collection/intro_r/chapters/04-workflow/">3. An R workflow</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/05-graphics/"><a href="/collection/intro_r/chapters/05-graphics/">4. Graphics with ggplot2</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/06-faceting/"><a href="/collection/intro_r/chapters/06-faceting/">5. Faceting figures</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/07-brewing/"><a href="/collection/intro_r/chapters/07-brewing/">6. Brewing colours</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/08-mapping/"><a href="/collection/intro_r/chapters/08-mapping/">7. Mapping with ggplot2</a></li>
+            
+              
+              <li class="active" hugo-nav="/collection/intro_r/chapters/09-mapping_style/"><a href="/collection/intro_r/chapters/09-mapping_style/">8. Mapping with style</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/10-mapping_openstreetmap/"><a href="/collection/intro_r/chapters/10-mapping_openstreetmap/">9. Mapping with OpenStreetMap</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/11-tidy/"><a href="/collection/intro_r/chapters/11-tidy/">10. Tidy data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/12-tidier/"><a href="/collection/intro_r/chapters/12-tidier/">11. Tidier data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/13-tidiest/"><a href="/collection/intro_r/chapters/13-tidiest/">12. Tidiest data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/14-recap/"><a href="/collection/intro_r/chapters/14-recap/">13. Recap</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/15-functions/"><a href="/collection/intro_r/chapters/15-functions/">14. Functions by chapter</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/16-base_r/"><a href="/collection/intro_r/chapters/16-base_r/">15. Base R primer</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/17-dates/"><a href="/collection/intro_r/chapters/17-dates/">16. Dates</a></li>
+            
+          </details>
+          
+          </li>
+        
+          
+          
+          
+          <details  class="">
+            <summary class="" hugo-nav="/collection/biostats/"><a href="/collection/biostats/">BCB744 (Biostats)</a></summary>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/02-data/"><a href="/collection/biostats/chapters/02-data/">1. Types of data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/03-descriptive/"><a href="/collection/biostats/chapters/03-descriptive/">2. Central tendency and dispersion</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/04-graphics/"><a href="/collection/biostats/chapters/04-graphics/">3. Graphical data displays</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/06-t_tests/"><a href="/collection/biostats/chapters/06-t_tests/">5. Inferences about one or two populations</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/07-anova/"><a href="/collection/biostats/chapters/07-anova/">6. Analysis of Variance (ANOVA)</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/08-regressions/"><a href="/collection/biostats/chapters/08-regressions/">7. Simple linear regressions</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/09-correlations/"><a href="/collection/biostats/chapters/09-correlations/">8. Correlation</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/10-confidence/"><a href="/collection/biostats/chapters/10-confidence/">9. Confidence intervals</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/11-transformations/"><a href="/collection/biostats/chapters/11-transformations/">10. Data transformations</a></li>
+            
+          </details>
+          
+          </li>
+        
+          
+          
+          
+          <details  class="">
+            <summary class="" hugo-nav="/collection/quantecol/"><a href="/collection/quantecol/">BCB743</a></summary>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/01-data/"><a href="/collection/quantecol/chapters/01-data/">1. Multivariate data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/02-biodiversity/"><a href="/collection/quantecol/chapters/02-biodiversity/">2. Biodiversity</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/03-deep_dive/"><a href="/collection/quantecol/chapters/03-deep_dive/">3. Deep Dive into Gradients</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/04-env_dist/"><a href="/collection/quantecol/chapters/04-env_dist/">4. Environmental Distance</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/05-spp_dissimilarity/"><a href="/collection/quantecol/chapters/05-spp_dissimilarity/">5. Species Dissimilarities</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/06-correlations/"><a href="/collection/quantecol/chapters/06-correlations/">6. Correlations and Associations</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/08_pca/"><a href="/collection/quantecol/chapters/08_pca/">8a. Principal Component Analysis (PCA)</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/08-pca_sdg/"><a href="/collection/quantecol/chapters/08-pca_sdg/">8b. PCA of WHO SDGs</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/09-ca/"><a href="/collection/quantecol/chapters/09-ca/">9. Correspondence Analysis (CA)</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/10-pcoa/"><a href="/collection/quantecol/chapters/10-pcoa/">10. Principal Coordinate Analysis (PCoA)</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/11-nmds/"><a href="/collection/quantecol/chapters/11-nmds/">11a. non-Metric multidimensional scaling (nMDS)</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/11-nmds_diatoms/"><a href="/collection/quantecol/chapters/11-nmds_diatoms/">11b. nMDS of Mayombo&#39;s diatom data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/12-constrained_ordination/"><a href="/collection/quantecol/chapters/12-constrained_ordination/">12. Constrained Ordination</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/13-cluster_analysis/"><a href="/collection/quantecol/chapters/13-cluster_analysis/">13. Cluster analysis</a></li>
+            
+          </details>
+          
+          </li>
+        
+        </ul>
+    </nav>
+  </div>
+  <details id="PageTableOfContents">
+    <summary><h2 class="mv0 f5 fw7 ttu tracked dib">On this page<h2></summary>
+    <div class="pl2 pr0 mh0">
+    
+    </div>
+  </details>
+  
+</div>
+
+</aside>
+
+<footer class="site-footer pv4 bt b--transparent ph5" role="contentinfo">
+  <nav class="db dt-l w-100">
+    <p class="site-copyright f7 db dtc-l v-mid w-100 w-33-l tc tl-l pv2 pv0-l mv0 lh-copy">
+      &copy; 2022 University of the Western Cape, Cape Town
+      <span class="middot-divider"></span>
+      Made with <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/hugo-apero/" rel="dct:source">Hugo Apéro</a></span>.
+      <br />
+      
+Based on <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/formspree/blogophonic-hugo" rel="dct:source">Blogophonic</a></span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://formspree.io" property="cc:attributionName" rel="cc:attributionURL">Formspree</a>.
+    </p>
+    
+    <div class="site-social-links db dtc-l v-mid w-100 w-33-l tc pv2 pv0-l mv0">
+      <div class="social-icon-links" aria-hidden="true">
+  
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://github.com/ajsmit/" title="github" target="_blank" rel="noopener">
+      <i class="fab fa-github fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="http://orcid.org/0000-0002-3799-6126" title="orcid" target="_blank" rel="noopener">
+      <i class="ai ai-orcid fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.researchgate.net/profile/Albertus-Smit" title="researchgate" target="_blank" rel="noopener">
+      <i class="ai ai-researchgate fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://uwc.academia.edu/AlbertusSmit" title="academia" target="_blank" rel="noopener">
+      <i class="ai ai-academia fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://scholar.google.co.za/citations?user=ATsBBKoAAAAJ&amp;hl=en" title="google-scholar" target="_blank" rel="noopener">
+      <i class="ai ai-google-scholar fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.instagram.com/ajsmit/" title="instagram" target="_blank" rel="noopener">
+      <i class="fab fa-instagram fa-lg fa-fw"></i>
+    </a>
+  
+</div>
+
+    </div>
+    
+    <div class="site-links f6 db dtc-l v-mid w-100 w-67-l tc tr-l pv2 pv0-l mv0">
+      
+      <a class="dib pv1 ph2 link" href="/license/" title="License">License</a>
+      
+      <a class="dib pv1 ph2 link" href="/contact/" title="Contact form">Contact</a>
+      
+      <a class="dib pv1 ph2 link" href="/contributors/" title="Contributors">Contributors</a>
+      
+    </div>
+  </nav>
+  
+    <script>
+
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (let i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) ||
+            /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+</script>
+
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+
+    
+  
+  
+</footer>
+
+      </div>
+    </body>
+</html>

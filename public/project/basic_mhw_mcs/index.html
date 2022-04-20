@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  
+                           
+     
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.96.0" />
+<title>Basic Detection and Visualisation of Events | BCB R Stats Pages</title>
+
+
+<meta property="twitter:site" content="@ajsmit">
+<meta property="twitter:creator" content="@ajsmit">
+
+
+
+
+
+
+
+  
+    
+  
+<meta name="description" content="This vignette demonstrates the basic use of the heatwaveR package for the detection and         visualisation of events.">
+
+
+<meta property="og:site_name" content="BCB R Stats Pages">
+<meta property="og:title" content="Basic Detection and Visualisation of Events | BCB R Stats Pages">
+<meta property="og:description" content="This vignette demonstrates the basic use of the heatwaveR package for the detection and         visualisation of events." />
+<meta property="og:type" content="page" />
+<meta property="og:url" content="/project/basic_mhw_mcs/" />
+<meta property="og:locale" content="en">
+
+
+
+
+    
+        <meta property="og:image" content="/project/basic_mhw_mcs/featured-hex.png" >
+        <meta property="twitter:card" content="summary">
+        <meta name="twitter:image" content="/project/basic_mhw_mcs/featured-hex.png" >
+    
+    
+  <meta itemprop="name" content="Basic Detection and Visualisation of Events">
+<meta itemprop="description" content="This vignette demonstrates the basic use of the heatwaveR package for the detection and         visualisation of events."><meta itemprop="datePublished" content="2022-04-20T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-04-20T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2034"><meta itemprop="image" content="/project/basic_mhw_mcs/featured-hex.png">
+<meta itemprop="keywords" content="MHW," />
+  
+  
+  <!--[if IE]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+  
+  
+  <link rel="stylesheet" href="/style.main.min.13dd27d3efb7ed4ad82be3040182ddbf5ab9d3b4d6d01f0ba3930845932fce66.css" integrity="sha256-E90n0&#43;&#43;37UrYK&#43;MEAYLdv1q507TW0B8Lo5MIRZMvzmY=" media="screen">
+  
+  
+  <script src="/panelset.min.8f4cba0107356728f266d94a12a4d18ef504eda8a9a284cda73675bae7884a68.js" type="text/javascript"></script>
+  
+  
+  <script src="/main.min.318ee9c0652bba0149e7503c97e37e638937f3a9cad9233e6d0ba00bf7a46a5e.js" type="text/javascript"></script>
+</head>
+<body>
+      <div class="grid-container single">
+<header class="site-header pt4 pb2 mb4 bb b--transparent ph5 headroom z-max" role="banner">
+  <nav class="site-nav db dt-l w-100" role="navigation">
+    <a class="site-brand db dtc-l v-mid link no-underline w-100 w-33-l tc tl-l" href="/" title="Home">
+      <img src="/img/xaringan-outline.png" class="dib db-l h2 w-auto" alt="BCB R Stats Pages">
+    </a>
+    <div class="site-links db dtc-l v-mid w-100 w-47-l tc tr-l mt3 mt0-l ttu tracked">
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/about/" title="About AJ Smit">About</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/workshops/" title="BCB Hons">BCB Hons</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 active" href="/project/" title="Project Portfolio">Projects</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/collection/" title="R Courses">R Courses</a>
+      
+      
+    </div>
+  </nav>
+</header>
+
+<main class="page-main pa4" role="main">
+  <section class="page-content mw7 center">
+    <article class="post-content pa0 ph4-l">
+      <header class="post-header">
+        <h1 class="f1 lh-solid measure-narrow mb3 fw4">Basic Detection and Visualisation of Events</h1>
+        <h4 class="f4 mt0 mb4 lh-title measure">Marine heatwaves and cold spells as per Hobday et al (2016) and Schlegel et al (2017).</h4>
+        <p class="f6 measure lh-copy mv1">By AJ Smit and Robert W Schlegel in <a href="/categories/mhw">MHW</a>  <a href="/categories/mcs">MCS</a>  <a href="/categories/heatwaver">heatwaveR</a>  <a href="/categories/r">R</a>  <a href="/categories/package">package</a> </p>
+        <p class="f7 db mv0 ttu">April 20, 2022</p>
+
+      
+      <div class="ph0 pt5">
+        
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+      
+  <a class="btn-links mr2 ba dib" href="https://robwschlegel.github.io/heatwaveR/index.html" target="_blank" rel="noopener"><i class="fab fa-github fa-lg fa-fw mr2"></i>Repo</a>
+
+    
+    
+    
+    
+    
+    
+    
+      
+      
+  <a class="btn-links mr2 ba dib" href="https://doi.org/10.5281/zenodo.4431715" target="_blank" rel="noopener"><i class="ai ai-zenodo fa-lg fa-fw mr2"></i>heatwaveR</a>
+
+
+      </div>
+      
+
+      </header>
+      <section class="post-body pt5 pb4">
+        
+
+
+<p>This material also appears as a <a href="https://robwschlegel.github.io/heatwaveR/articles/detection_and_visualisation.html">heatwaveR vignette</a>.</p>
+<div id="data" class="section level2">
+<h2>Data</h2>
+<p>The <code>detect_event()</code> function is the core of this package, and it expects to be fed the output of the second core function, <code>ts2clm()</code>. By default, <code>ts2clm()</code> wants to receive a two-column dataframe with one column labelled <code>t</code> containing all of the date values, and a second column <code>temp</code> containing all of the temperature values. Please note that the date format it expects is “YYYY-MM-DD”. For example, please see the top five rows of one of the datasets included with the <strong><code>heatwaveR</code></strong> package:</p>
+<pre class="r"><code>head(heatwaveR::sst_WA)</code></pre>
+<pre><code>## # A tibble: 6 × 2
+##   t           temp
+##   &lt;date&gt;     &lt;dbl&gt;
+## 1 1982-01-01  20.9
+## 2 1982-01-02  21.2
+## 3 1982-01-03  21.4
+## 4 1982-01-04  21.2
+## 5 1982-01-05  21.3
+## 6 1982-01-06  21.6</code></pre>
+<p>It is possible to use different column names other than <code>t</code> and <code>temp</code> with which to calculate events. Please see the help files for <code>ts2clm()</code> or <code>detect_event()</code> for a thorough explanation of how to do so.</p>
+<p>Loading ones data from a <code>.csv</code> file or other text based format is the easiest approach for the calculation of events, assuming one is not working with gridded data (e.g. NetCDF). Please see <a href="https://robwschlegel.github.io/heatwaveR/articles/gridded_event_detection.html">this vignette</a> for a detailed walkthrough on using the functions in this package with gridded data.</p>
+</div>
+<div id="calculating-marine-heatwaves-mhws" class="section level2">
+<h2>Calculating marine heatwaves (MHWs)</h2>
+<p>Here are the <code>ts2clm()</code> and <code>detect_event()</code> function applied to the Western Australia test data included with this package (<code>sst_WA</code>), which are also discussed by Hobday et al. (2016):</p>
+<pre class="r"><code>library(dplyr)
+library(ggplot2)
+library(heatwaveR)
+
+# Detect the events in a time series
+ts &lt;- ts2clm(sst_WA, climatologyPeriod = c(&quot;1982-01-01&quot;, &quot;2011-12-31&quot;))
+mhw &lt;- detect_event(ts)
+
+# View just a few metrics
+mhw$event %&gt;% 
+  dplyr::ungroup() %&gt;%
+  dplyr::select(event_no, duration, date_start, date_peak, intensity_max, intensity_cumulative) %&gt;% 
+  dplyr::arrange(-intensity_max) %&gt;% 
+  head(5)</code></pre>
+<pre><code>## # A tibble: 5 × 6
+##   event_no duration date_start date_peak  intensity_max intensity_cumulative
+##      &lt;int&gt;    &lt;dbl&gt; &lt;date&gt;     &lt;date&gt;             &lt;dbl&gt;                &lt;dbl&gt;
+## 1       52      105 2010-12-24 2011-02-28          6.58                293. 
+## 2       41       35 2008-03-25 2008-04-14          3.83                 79.3
+## 3       29       95 1999-05-13 1999-05-22          3.64                240. 
+## 4       60       14 2012-12-27 2012-12-31          3.42                 32.3
+## 5       59      101 2012-01-10 2012-01-27          3.38                214.</code></pre>
+</div>
+<div id="visualising-marine-heatwaves-mhws" class="section level2">
+<h2>Visualising marine heatwaves (MHWs)</h2>
+<div id="default-mhw-visuals" class="section level3">
+<h3>Default MHW visuals</h3>
+<p>One may use <code>event_line()</code> and <code>lolli_plot()</code> directly on the output of <code>detect_event()</code> in order to visualise MHWs. Here are the functions being used to visualise the massive Western Australian heatwave of 2011:</p>
+<pre class="r"><code>event_line(mhw, spread = 180, metric = &quot;intensity_max&quot;, 
+           start_date = &quot;1982-01-01&quot;, end_date = &quot;2014-12-31&quot;)</code></pre>
+<p><img src="/project/basic_mhw_mcs/index_files/figure-html/fig-example1-1.png" width="768" /></p>
+<pre class="r"><code>lolli_plot(mhw, metric = &quot;intensity_max&quot;)</code></pre>
+<p><img src="/project/basic_mhw_mcs/index_files/figure-html/fig-example1-2.png" width="768" />
+<!-- ![](vignettes/fig-example1-1.png) -->
+<!-- ![](vignettes/fig-example2-1.png) --></p>
+</div>
+<div id="custom-mhw-visuals" class="section level3">
+<h3>Custom MHW visuals</h3>
+<p>The <code>event_line()</code> and <code>lolli_plot()</code> functions were designed to work directly on the list returned by <code>detect_event()</code>. If more control over the figures is required, it may be useful to create them in <strong><code>ggplot2</code></strong> by stacking <code>geoms</code>. We specifically created two new <strong><code>ggplot2</code></strong> <code>geoms</code> to reproduce the functionality of <code>event_line()</code> and <code>lolli_plot()</code>. These functions are more general in their functionality and can be used outside of the <strong><code>heatwaveR</code></strong> package, too. To apply them to MHWs and MCSs first requires that we access the <code>climatology</code> or <code>event</code> dataframes within the list that is produced by <code>detect_event()</code>. Here is how:</p>
+<pre class="r"><code># Select the region of the time series of interest
+mhw2 &lt;- mhw$climatology %&gt;% 
+  slice(10580:10720)
+
+ggplot(mhw2, aes(x = t, y = temp, y2 = thresh)) +
+  geom_flame() +
+  geom_text(aes(x = as.Date(&quot;2011-02-25&quot;), y = 25.8, label = &quot;the Destroyer\nof Kelps&quot;))</code></pre>
+<p><img src="/project/basic_mhw_mcs/index_files/figure-html/fig-example2-1.png" width="768" /></p>
+<pre class="r"><code>ggplot(mhw$event, aes(x = date_start, y = intensity_max)) +
+  geom_lolli(colour = &quot;salmon&quot;, colour_n = &quot;red&quot;, n = 3) +
+  geom_text(colour = &quot;black&quot;, aes(x = as.Date(&quot;2006-08-01&quot;), y = 5,
+                label = &quot;The marine heatwaves\nTend to be left skewed in a\nGiven time series&quot;)) +
+  labs(y = expression(paste(&quot;Max. intensity [&quot;, degree, &quot;C]&quot;)), x = NULL)</code></pre>
+<p><img src="/project/basic_mhw_mcs/index_files/figure-html/fig-example2-2.png" width="768" />
+<!-- ![](vignettes/fig-example3-1.png) -->
+<!-- ![](vignettes/fig-example3-2.png) --></p>
+</div>
+<div id="spicy-mhw-visuals" class="section level3">
+<h3>Spicy MHW visuals</h3>
+<p>The default output of these function may not be to your liking. If so, not to worry. As <strong><code>ggplot2</code></strong> <code>geoms</code>, they are highly malleable. For example, if we were to choose to reproduce the format of the MHWs as seen in Hobday et al. (2016), the code would look something like this:</p>
+<pre class="r"><code># It is necessary to give geom_flame() at least one row on either side of 
+# the event in order to calculate the polygon corners smoothly
+mhw_top &lt;- mhw2 %&gt;% 
+  slice(5:111)
+
+ggplot(data = mhw2, aes(x = t)) +
+  geom_flame(aes(y = temp, y2 = thresh, fill = &quot;all&quot;), show.legend = T) +
+  geom_flame(data = mhw_top, aes(y = temp, y2 = thresh, fill = &quot;top&quot;),  show.legend = T) +
+  geom_line(aes(y = temp, colour = &quot;temp&quot;)) +
+  geom_line(aes(y = thresh, colour = &quot;thresh&quot;), size = 1.0) +
+  geom_line(aes(y = seas, colour = &quot;seas&quot;), size = 1.2) +
+  scale_colour_manual(name = &quot;Line Colour&quot;,
+                      values = c(&quot;temp&quot; = &quot;black&quot;, 
+                                 &quot;thresh&quot; =  &quot;forestgreen&quot;, 
+                                 &quot;seas&quot; = &quot;grey80&quot;)) +
+  scale_fill_manual(name = &quot;Event Colour&quot;, 
+                    values = c(&quot;all&quot; = &quot;salmon&quot;, 
+                               &quot;top&quot; = &quot;red&quot;)) +
+  scale_x_date(date_labels = &quot;%b %Y&quot;) +
+  guides(colour = guide_legend(override.aes = list(fill = NA))) +
+  labs(y = expression(paste(&quot;Temperature [&quot;, degree, &quot;C]&quot;)), x = NULL)</code></pre>
+<p><img src="/project/basic_mhw_mcs/index_files/figure-html/fig-example3-1.png" width="768" />
+<!-- ![](vignettes/fig-example4-1.png) --></p>
+<p>It is also worth pointing out that when we use <code>geom_flame()</code> directly like this, but we don’t want to highlight events greater less than our standard five day length, allowing for a two day gap, we want to use the arguments <code>n</code> and <code>n_gap</code> respectively.</p>
+<pre class="r"><code>mhw3 &lt;- mhw$climatology %&gt;% 
+  slice(850:950)
+
+ggplot(mhw3, aes(x = t, y = temp, y2 = thresh)) +
+  geom_flame(fill = &quot;black&quot;, alpha = 0.5) +
+  # Note the use of n = 5 and n_gap = 2 below
+  geom_flame(n = 5, n_gap = 2, fill = &quot;red&quot;, alpha = 0.5) +
+  ylim(c(22, 25)) +
+    geom_text(colour = &quot;black&quot;, aes(x = as.Date(&quot;1984-05-16&quot;), y = 24.5,
+                label = &quot;heat\n\n\n\n\nspike&quot;))</code></pre>
+<p><img src="/project/basic_mhw_mcs/index_files/figure-html/flame_gaps-1.png" width="768" /></p>
+<p>Should we not wish to highlight any events with <code>geom_lolli()</code>, plot them with a colour other than the default, and use a different theme, it would look like this:</p>
+<pre class="r"><code>ggplot(mhw$event, aes(x = date_peak, y = intensity_max)) +
+  geom_lolli(colour = &quot;firebrick&quot;) +
+  labs(x = &quot;Peak Date&quot;, 
+       y = expression(paste(&quot;Max. intensity [&quot;, degree, &quot;C]&quot;)), x = NULL) +
+  theme_linedraw()</code></pre>
+<p><img src="/project/basic_mhw_mcs/index_files/figure-html/fig-example4-1.png" width="768" />
+<!-- ![](vignettes/fig-example5-1.png) --></p>
+<p>Because these are simple <strong><code>ggplot2</code></strong> geoms possibilities are nearly infinite.</p>
+</div>
+</div>
+<div id="calculating-marine-cold-spells-mcss" class="section level2">
+<h2>Calculating marine cold-spells (MCSs)</h2>
+<p>The calculation and visualisation of cold-spells is also provided for within this package. The data to be fed into the functions is the same as for MHWs. The main difference is that one is now calculating the 10th percentile threshold, rather than the 90th percentile threshold. Here are the top five cold-spells (cumulative intensity) detected in the OISST data for Western Australia:</p>
+<pre class="r"><code># First calculate the cold-spells
+ts_10th &lt;- ts2clm(sst_WA, climatologyPeriod = c(&quot;1982-01-01&quot;, &quot;2011-12-31&quot;), pctile = 10)
+mcs &lt;- detect_event(ts_10th, coldSpells = TRUE)
+
+# Then look at the top few events
+mcs$event %&gt;% 
+  dplyr::ungroup() %&gt;%
+  dplyr::select(event_no, duration, date_start,
+                date_peak, intensity_mean, intensity_max, intensity_cumulative) %&gt;%
+  dplyr::arrange(intensity_cumulative) %&gt;% 
+  head(5)</code></pre>
+<pre><code>## # A tibble: 5 × 7
+##   event_no duration date_start date_peak  intensity_mean intensity_max
+##      &lt;int&gt;    &lt;dbl&gt; &lt;date&gt;     &lt;date&gt;              &lt;dbl&gt;         &lt;dbl&gt;
+## 1       15       76 1990-04-13 1990-05-11          -2.50         -3.19
+## 2       49       58 2003-12-19 2004-01-23          -1.73         -2.59
+## 3       83       41 2020-04-26 2020-05-25          -2.34         -3.14
+## 4       64       52 2014-04-14 2014-05-05          -1.78         -2.54
+## 5       77       46 2018-07-24 2018-08-02          -1.81         -2.43
+## # … with 1 more variable: intensity_cumulative &lt;dbl&gt;</code></pre>
+</div>
+<div id="visualising-marine-cold-spells-mcss" class="section level2">
+<h2>Visualising marine cold-spells (MCSs)</h2>
+<div id="default-mcs-visuals" class="section level3">
+<h3>Default MCS visuals</h3>
+<p>The default plots showing cold-spells look like this:</p>
+<pre class="r"><code>event_line(mcs, spread = 200, metric = &quot;intensity_cumulative&quot;,
+           start_date = &quot;1982-01-01&quot;, end_date = &quot;2014-12-31&quot;)</code></pre>
+<p><img src="/project/basic_mhw_mcs/index_files/figure-html/fig-example5-1.png" width="768" /></p>
+<pre class="r"><code>lolli_plot(mcs, metric = &quot;intensity_cumulative&quot;, xaxis = &quot;event_no&quot;)</code></pre>
+<p><img src="/project/basic_mhw_mcs/index_files/figure-html/fig-example5-2.png" width="768" />
+<!-- ![](vignettes/fig-example6-1.png) -->
+<!-- ![](vignettes/fig-example6-2.png) --></p>
+<p>Note that one does not need to specify that MCSs are to be visualised, the functions are able to understand this on their own.</p>
+</div>
+<div id="custom-mcs-visuals" class="section level3">
+<h3>Custom MCS visuals</h3>
+<p>Cold spell figures may be created as <code>geoms</code> in <strong><code>ggplot2</code></strong>, too:</p>
+<pre class="r"><code># Select the region of the time series of interest
+mcs2 &lt;- mcs$climatology %&gt;% 
+  slice(2900:3190)
+
+# Note that one must specify a colour other than the default &#39;salmon&#39;
+ggplot(mcs2, aes(x = t, y = thresh, y2 = temp)) +
+  geom_flame(fill = &quot;steelblue3&quot;)</code></pre>
+<p><img src="/project/basic_mhw_mcs/index_files/figure-html/fig-example6-1.png" width="768" /></p>
+<pre class="r"><code>ggplot(mcs$event, aes(x = date_start, y = intensity_max)) +
+  geom_lolli(colour = &quot;steelblue3&quot;, colour_n = &quot;navy&quot;, n = 3) +
+  labs(x = &quot;Start Date&quot;,
+       y = expression(paste(&quot;Max. intensity [&quot;, degree, &quot;C]&quot;)))</code></pre>
+<p><img src="/project/basic_mhw_mcs/index_files/figure-html/fig-example6-2.png" width="768" /></p>
+</div>
+<div id="minty-mcs-visuals" class="section level3">
+<h3>Minty MCS visuals</h3>
+<p>Again, because <code>geom_flame()</code> and <code>geom_lolli()</code> are simple <strong><code>ggplot2</code></strong> geoms, one can go completely bananas with them:</p>
+<pre class="r"><code>mcs_top &lt;- mcs2 %&gt;% 
+  slice(125:202)
+
+ggplot(data = mcs2, aes(x = t)) +
+  geom_flame(aes(y = thresh, y2 = temp, fill = &quot;all&quot;), show.legend = T) +
+  geom_flame(data = mcs_top, aes(y = thresh, y2 = temp, fill = &quot;top&quot;), show.legend = T) +
+  geom_line(aes(y = temp, colour = &quot;temp&quot;)) +
+  geom_line(aes(y = thresh, colour = &quot;thresh&quot;), size = 1.0) +
+  geom_line(aes(y = seas, colour = &quot;seas&quot;), size = 1.2) +
+  scale_colour_manual(name = &quot;Line Colour&quot;,
+                      values = c(&quot;temp&quot; = &quot;black&quot;, &quot;thresh&quot; =  &quot;forestgreen&quot;, &quot;seas&quot; = &quot;grey80&quot;)) +
+  scale_fill_manual(name = &quot;Event Colour&quot;, values = c(&quot;all&quot; = &quot;steelblue3&quot;, &quot;top&quot; = &quot;navy&quot;)) +
+  scale_x_date(date_labels = &quot;%b %Y&quot;) +
+  guides(colour = guide_legend(override.aes = list(fill = NA))) +
+  labs(y = expression(paste(&quot;Temperature [&quot;, degree, &quot;C]&quot;)), x = NULL)</code></pre>
+<p><img src="/project/basic_mhw_mcs/index_files/figure-html/fig-example7-1.png" width="768" /></p>
+<pre class="r"><code>ggplot(mcs$event, aes(x = date_start, y = intensity_cumulative)) +
+  geom_lolli(colour = &quot;steelblue3&quot;, colour_n = &quot;navy&quot;, n = 7) +
+  labs( x = &quot;Start Date&quot;, y = expression(paste(&quot;Cumulative intensity [days x &quot;, degree, &quot;C]&quot;)))</code></pre>
+<p><img src="/project/basic_mhw_mcs/index_files/figure-html/fig-example7-2.png" width="768" />
+<!-- ![](vignettes/fig-example7-1.png) -->
+<!-- ![](vignettes/fig-example7-2.png) --></p>
+</div>
+</div>
+<div id="interactive-visuals" class="section level2">
+<h2>Interactive visuals</h2>
+<p>As of <strong><code>heatwaveR</code></strong> v0.3.6.9002, <code>geom_flame()</code> was also able to be used with <strong><code>plotly</code></strong> to allow for interactive MHW visuals. Unfortunately around December of 2020 the <strong><code>plotly</code></strong> packaged was orphaned and CRAN decided it didn’t want packages to include it as an imported package. Therefore as of v0.4.4.9005 <strong><code>heatwaveR</code></strong> no longer has built in support for using <code>geom_flame()</code> with <strong><code>plotly</code></strong>. It is however still possible with a bit of work and a simple working example is given below. It is not currently possible to use <code>geom_lolli()</code> with <strong><code>plotly</code></strong>. Rather one is advised to just create the dots and segments separately with <code>geom_point()</code> and <code>geom_segment()</code> respectively as these are already recognised by <strong><code>plotly</code></strong>.</p>
+<p>Note that the following code chunk is not run as it makes this vignette a bit too large.</p>
+<pre class="r"><code># Must load plotly library first
+library(plotly)
+
+# Function needed for making geom_flame() work with plotly
+geom2trace.GeomFlame &lt;- function (data,
+                                  params,
+                                  p) {
+  
+  x &lt;- y &lt;- y2 &lt;- NULL
+  
+  # Create data.frame for ease of use
+  data1 &lt;- data.frame(x = data[[&quot;x&quot;]],
+                      y = data[[&quot;y&quot;]],
+                      y2 = data[[&quot;y2&quot;]])
+  
+  # Grab parameters
+  n &lt;- params[[&quot;n&quot;]]
+  n_gap &lt;- params[[&quot;n_gap&quot;]]
+  
+  # Find events that meet minimum length requirement
+  data_event &lt;- heatwaveR::detect_event(data1, x = x, y = y,
+                                        seasClim = y,
+                                        threshClim = y2,
+                                        minDuration = n,
+                                        maxGap = n_gap,
+                                        protoEvents = T)
+  
+  # Detect spikes
+  data_event$screen &lt;- base::ifelse(data_event$threshCriterion == FALSE, FALSE,
+                                    ifelse(data_event$event == FALSE, TRUE, FALSE))
+  
+  # Screen out spikes
+  data1 &lt;- data1[data_event$screen != TRUE,]
+  
+  # Prepare to find the polygon corners
+  x1 &lt;- data1$y
+  x2 &lt;- data1$y2
+  
+  # # Find points where x1 is above x2.
+  above &lt;- x1 &gt; x2
+  above[above == TRUE] &lt;- 1
+  above[is.na(above)] &lt;- 0
+  
+  # Points always intersect when above=TRUE, then FALSE or reverse
+  intersect.points &lt;- which(diff(above) != 0)
+  
+  # Find the slopes for each line segment.
+  x1.slopes &lt;- x1[intersect.points + 1] - x1[intersect.points]
+  x2.slopes &lt;- x2[intersect.points + 1] - x2[intersect.points]
+  
+  # # Find the intersection for each segment.
+  x.points &lt;- intersect.points + ((x2[intersect.points] - x1[intersect.points]) / (x1.slopes - x2.slopes))
+  y.points &lt;- x1[intersect.points] + (x1.slopes * (x.points - intersect.points))
+  
+  # Coerce x.points to the same scale as x
+  x_gap &lt;- data1$x[2] - data1$x[1]
+  x.points &lt;- data1$x[intersect.points] + (x_gap*(x.points - intersect.points))
+  
+  # Create new data frame and merge to introduce new rows of data
+  data2 &lt;- data.frame(y = c(data1$y, y.points), x = c(data1$x, x.points))
+  data2 &lt;- data2[order(data2$x),]
+  data3 &lt;- base::merge(data1, data2, by = c(&quot;x&quot;,&quot;y&quot;), all.y = T)
+  data3$y2[is.na(data3$y2)] &lt;- data3$y[is.na(data3$y2)]
+  
+  # Remove missing values for better plotting
+  data3$y[data3$y &lt; data3$y2] &lt;- NA
+  missing_pos &lt;- !stats::complete.cases(data3[c(&quot;x&quot;, &quot;y&quot;, &quot;y2&quot;)])
+  ids &lt;- cumsum(missing_pos) + 1
+  ids[missing_pos] &lt;- NA
+  
+  # Get the correct positions
+  positions &lt;- data.frame(x = c(data3$x, rev(data3$x)),
+                          y = c(data3$y, rev(data3$y2)),
+                          ids = c(ids, rev(ids)))
+  
+  # Convert to a format geom2trace is happy with
+  positions &lt;- plotly::group2NA(positions, groupNames = &quot;ids&quot;)
+  positions &lt;- positions[stats::complete.cases(positions$ids),]
+  positions &lt;- dplyr::left_join(positions, data[,-c(2,3)], by = &quot;x&quot;)
+  if(length(stats::complete.cases(positions$PANEL)) &gt; 1) 
+    positions$PANEL &lt;- positions$PANEL[stats::complete.cases(positions$PANEL)][1]
+  if(length(stats::complete.cases(positions$group)) &gt; 1) 
+    positions$group &lt;- positions$group[stats::complete.cases(positions$group)][1]
+  
+  # Run the plotly polygon code
+  if(length(unique(positions$PANEL)) == 1){
+    getFromNamespace(&quot;geom2trace.GeomPolygon&quot;, asNamespace(&quot;plotly&quot;))(positions)
+  } else{
+    return()
+  }
+}
+
+# Time series
+ts_res &lt;- heatwaveR::ts2clm(data = heatwaveR::sst_WA,
+                            climatologyPeriod = c(&quot;1982-01-01&quot;, &quot;2011-12-31&quot;))
+ts_res_sub &lt;- ts_res[10500:10800,]
+
+# Flame Figure
+p &lt;- ggplot(data = ts_res_sub, aes(x = t, y = temp)) +
+  heatwaveR::geom_flame(aes(y2 = thresh), n = 5, n_gap = 2) +
+  geom_line(aes(y = temp)) +
+  geom_line(aes(y = seas), colour = &quot;green&quot;) +
+  geom_line(aes(y = thresh), colour = &quot;red&quot;) +
+  labs(x = &quot;&quot;, y = &quot;Temperature (°C)&quot;)
+
+# Create interactive visuals
+ggplotly(p)</code></pre>
+</div>
+
+        
+        <details closed class="f6 fw7 input-reset">
+  <dl class="f6 lh-copy">
+    <dt class="fw7">Posted on:</dt>
+    <dd class="fw5 ml0">April 20, 2022</dd>
+  </dl>
+  <dl class="f6 lh-copy">
+    <dt class="fw7">Length:</dt>
+    <dd class="fw5 ml0">10 minute read, 2034 words</dd>
+  </dl>
+  
+  <dl class="f6 lh-copy">
+    <dt class="fw7">Categories:</dt>
+    <dd class="fw5 ml0"> <a href="/categories/mhw">MHW</a>  <a href="/categories/mcs">MCS</a>  <a href="/categories/heatwaver">heatwaveR</a>  <a href="/categories/r">R</a>  <a href="/categories/package">package</a> </dd>
+  </dl>
+  
+  
+  
+  <dl class="f6 lh-copy">
+    <dt class="fw7">Tags:</dt>
+    <dd class="fw5 ml0"> <a href="/tags/mhw">MHW</a> </dd>
+  </dl>
+  
+  <dl class="f6 lh-copy">
+    <dt class="fw7">See Also:</dt>
+    
+    <dd class="fw5 ml0"><a href="/project/gridded_data/">Detecting Events in Gridded Data</a></dd>
+    
+    <dd class="fw5 ml0"><a href="/project/oisst_prep/">Downloading and Preparing NOAA OISST Data</a></dd>
+    
+  </dl>
+</details>
+
+      </section>
+      <footer class="post-footer">
+        <div class="post-pagination dt w-100 mt4 mb2">
+  
+  
+  
+  
+    <a class="next dtc pl2 tr v-top fw6"
+    href="/project/oisst_prep/">Downloading and Preparing NOAA OISST Data &rarr;</a>
+  
+</div>
+
+      </footer>
+    </article>
+    
+  </section>
+</main>
+<footer class="site-footer pv4 bt b--transparent ph5" role="contentinfo">
+  <nav class="db dt-l w-100">
+    <p class="site-copyright f7 db dtc-l v-mid w-100 w-33-l tc tl-l pv2 pv0-l mv0 lh-copy">
+      &copy; 2022 University of the Western Cape, Cape Town
+      <span class="middot-divider"></span>
+      Made with <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/hugo-apero/" rel="dct:source">Hugo Apéro</a></span>.
+      <br />
+      
+Based on <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/formspree/blogophonic-hugo" rel="dct:source">Blogophonic</a></span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://formspree.io" property="cc:attributionName" rel="cc:attributionURL">Formspree</a>.
+    </p>
+    
+    <div class="site-social-links db dtc-l v-mid w-100 w-33-l tc pv2 pv0-l mv0">
+      <div class="social-icon-links" aria-hidden="true">
+  
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://github.com/ajsmit/" title="github" target="_blank" rel="noopener">
+      <i class="fab fa-github fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="http://orcid.org/0000-0002-3799-6126" title="orcid" target="_blank" rel="noopener">
+      <i class="ai ai-orcid fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.researchgate.net/profile/Albertus-Smit" title="researchgate" target="_blank" rel="noopener">
+      <i class="ai ai-researchgate fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://uwc.academia.edu/AlbertusSmit" title="academia" target="_blank" rel="noopener">
+      <i class="ai ai-academia fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://scholar.google.co.za/citations?user=ATsBBKoAAAAJ&amp;hl=en" title="google-scholar" target="_blank" rel="noopener">
+      <i class="ai ai-google-scholar fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.instagram.com/ajsmit/" title="instagram" target="_blank" rel="noopener">
+      <i class="fab fa-instagram fa-lg fa-fw"></i>
+    </a>
+  
+</div>
+
+    </div>
+    
+    <div class="site-links f6 db dtc-l v-mid w-100 w-67-l tc tr-l pv2 pv0-l mv0">
+      
+      <a class="dib pv1 ph2 link" href="/license/" title="License">License</a>
+      
+      <a class="dib pv1 ph2 link" href="/contact/" title="Contact form">Contact</a>
+      
+      <a class="dib pv1 ph2 link" href="/contributors/" title="Contributors">Contributors</a>
+      
+    </div>
+  </nav>
+  
+    <script>
+
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (let i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) ||
+            /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+</script>
+
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+
+    
+  
+  
+</footer>
+
+      </div>
+    </body>
+</html>

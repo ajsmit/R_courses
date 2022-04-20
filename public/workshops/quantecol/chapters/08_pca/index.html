@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  
+                           
+     
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.96.0" />
+<title>8a. Principal Component Analysis (PCA) | BCB R Stats Pages</title>
+
+
+<meta property="twitter:site" content="@ajsmit">
+<meta property="twitter:creator" content="@ajsmit">
+
+
+
+
+
+
+
+  
+    
+  
+<meta name="description" content="What you need to know upfront.">
+
+
+<meta property="og:site_name" content="BCB R Stats Pages">
+<meta property="og:title" content="8a. Principal Component Analysis (PCA) | BCB R Stats Pages">
+<meta property="og:description" content="What you need to know upfront." />
+<meta property="og:type" content="page" />
+<meta property="og:url" content="/workshops/quantecol/chapters/08_pca/" />
+<meta property="og:locale" content="en">
+
+
+
+
+    
+        <meta property="og:image" content="/img/papillons.jpg" >
+        <meta property="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="/img/papillons.jpg" >
+    
+  <meta itemprop="name" content="8a. Principal Component Analysis (PCA)">
+<meta itemprop="description" content="PCA is one of many ordination techniques. Depening on the application of technical/scientific discipline it is applied in, you might see it mentioned under ‘dimensionality reduction’ techniques; other times it is named as a form of ‘unsupervised learning.’ Regardless of what it is called, ordination refers to multivariate techniques that reduces a multivariate (multi-dimensional) dataset in such a way that when it is projected onto a lower dimensional space, typically 2D or 3D space, any intrinsic structure in the data forms visually-discernable patterns (Pielou, 1984)."><meta itemprop="datePublished" content="2021-01-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-01-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2994">
+<meta itemprop="keywords" content="" />
+  
+  
+  <!--[if IE]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+  
+  
+  <link rel="stylesheet" href="/style.main.min.13dd27d3efb7ed4ad82be3040182ddbf5ab9d3b4d6d01f0ba3930845932fce66.css" integrity="sha256-E90n0&#43;&#43;37UrYK&#43;MEAYLdv1q507TW0B8Lo5MIRZMvzmY=" media="screen">
+  
+  
+  <script src="/panelset.min.8f4cba0107356728f266d94a12a4d18ef504eda8a9a284cda73675bae7884a68.js" type="text/javascript"></script>
+  
+  
+  <script src="/main.min.318ee9c0652bba0149e7503c97e37e638937f3a9cad9233e6d0ba00bf7a46a5e.js" type="text/javascript"></script>
+</head>
+<body>
+      <div class="grid-container single-series">
+<header class="site-header pt4 pb2 mb4 bb b--transparent ph5 headroom z-max" role="banner">
+  <nav class="site-nav db dt-l w-100" role="navigation">
+    <a class="site-brand db dtc-l v-mid link no-underline w-100 w-33-l tc tl-l" href="/" title="Home">
+      <img src="/img/xaringan-outline.png" class="dib db-l h2 w-auto" alt="BCB R Stats Pages">
+    </a>
+    <div class="site-links db dtc-l v-mid w-100 w-47-l tc tr-l mt3 mt0-l ttu tracked">
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/about/" title="About AJ Smit">About</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 active" href="/workshops/" title="BCB Hons">BCB Hons</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/project/" title="Project Portfolio">Projects</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/collection/" title="R Courses">R Courses</a>
+      
+      
+    </div>
+  </nav>
+</header>
+
+
+<main class="page-main ph4 pt4" role="main">
+  <section class="page-content mw7 center">
+    <article class="post-content pa0 pr3-l">
+      <header class="post-header">
+        <h4 class="breadcrumb pb5">
+
+  
+    
+      
+  
+    
+      
+  
+    
+      
+  
+
+    
+    
+      <a href="/workshops/">B.Sc. (Hons.) R modules</a>
+    
+  
+
+    
+    
+      <a href="/workshops/quantecol/">BCB743</a>
+    
+  
+
+    
+    
+      8a. Principal Component Analysis (PCA)
+    
+  
+
+</h4>
+
+
+
+
+        
+        <h1 class="f1 lh-solid measure-narrow mb3 fw4">8a. Principal Component Analysis (PCA)</h1>
+        
+        <p class="f6 measure lh-copy mv1"></p>
+        <p class="f7 db mv0 ttu">January 1, 2021</p>
+        
+        
+      
+        
+      </header>
+      <section class="post-body pt5 pb4">
+        
+
+
+<!--- # Topic 8: Principal Component Analysis (PCA) --->
+<p>PCA is one of many ordination techniques. Depening on the application of technical/scientific discipline it is applied in, you might see it mentioned under ‘dimensionality reduction’ techniques; other times it is named as a form of ‘unsupervised learning.’ Regardless of what it is called, ordination refers to multivariate techniques that reduces a multivariate (multi-dimensional) dataset in such a way that when it is projected onto a lower dimensional space, typically 2D or 3D space, any intrinsic structure in the data forms visually-discernable patterns (Pielou, 1984). Ordination summarises community data (e.g. samples of species presence-absence or abundance across muliple sites) by producing a low-dimensional ordination space where similar samples (typically species) plot close together, and dissimilar samples far apart. Dimensions of this low dimensional space represent important and interpretable environmental gradients.</p>
+<p>In ecology, ordination techniques are used to describe relationships between community structure patterns and underlying environmental gradients. So, we can ask questions such as, “Which environmental variables cause a community to vary across a landscape?” Ordinations allow us to determine the relative importance of different gradients, and graphical presentations of the results can lead to intuitive interpretations of species-environment relationships.</p>
+<div id="set-up-the-analysis-environment" class="section level2">
+<h2>Set-up the analysis environment</h2>
+<pre class="r"><code>library(tidyverse)
+library(vegan)
+library(ggcorrplot) # for the correlations
+library(ggpubr)</code></pre>
+</div>
+<div id="the-doubs-river-data" class="section level2">
+<h2>The Doubs River data</h2>
+<pre class="r"><code>env &lt;- read.csv(&quot;/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/Num_Ecol_R_book_ed1/DoubsEnv.csv&quot;)
+env &lt;- dplyr::select(env, -1)
+head(env)</code></pre>
+<pre><code>##    dfs alt  slo  flo  pH har  pho  nit  amm  oxy bod
+## 1  0.3 934 48.0 0.84 7.9  45 0.01 0.20 0.00 12.2 2.7
+## 2  2.2 932  3.0 1.00 8.0  40 0.02 0.20 0.10 10.3 1.9
+## 3 10.2 914  3.7 1.80 8.3  52 0.05 0.22 0.05 10.5 3.5
+## 4 18.5 854  3.2 2.53 8.0  72 0.10 0.21 0.00 11.0 1.3
+## 5 21.5 849  2.3 2.64 8.1  84 0.38 0.52 0.20  8.0 6.2
+## 6 32.4 846  3.2 2.86 7.9  60 0.20 0.15 0.00 10.2 5.3</code></pre>
+</div>
+<div id="first-do-a-correlation" class="section level2">
+<h2>First do a correlation</h2>
+<pre class="r"><code># computing a correalation matrix
+corr &lt;- round(cor(env), 1)
+
+# visualization of the correlation matrix
+ggcorrplot(corr, type = &#39;upper&#39;, outline.col = &quot;white&quot;,
+          colors = c(&quot;#1679a1&quot;, &quot;white&quot;, &quot;#f8766d&quot;),
+          lab = TRUE)</code></pre>
+<p><img src="/collection/quantecol/chapters/08_PCA_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>Some variables are very correlatated, and they might be ommitted from the subsequent analyses. We say that these variables are ‘collinear.’ Collinear variables cannot be teased apart in terms of finding out which one is most influential in structuring the community. There are more advanced ways to search for collinear variables (e.g. Variance Inflation Factors, VIF) and in this way we can systematically exclude them from the PCA. See Graham (2003) for a discussion on collinearity. Here we will proceed with all the variables.</p>
+</div>
+<div id="see-the-spatial-context" class="section level2">
+<h2>See the spatial context</h2>
+<p>The patterns in the data and the correlatons between them will make more sense if we can visualise a spatial context. Thankfully spatial data are available:</p>
+<pre class="r"><code>spa &lt;- read.csv(&quot;/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/Num_Ecol_R_book_ed1/DoubsSpa.csv&quot;)
+spa &lt;- dplyr::select(spa, -1)
+head(spa)</code></pre>
+<pre><code>##        X      Y
+## 1 85.678 20.000
+## 2 84.955 20.100
+## 3 92.301 23.796
+## 4 91.280 26.431
+## 5 92.005 29.163
+## 6 95.954 36.315</code></pre>
+<pre class="r"><code>ggplot(spa, aes(x = X, y = Y, label = rownames(spa))) +
+  geom_point(shape = 1) +
+  geom_label(vjust = 0, nudge_y = 0.5, check_overlap = TRUE)</code></pre>
+<pre><code>## Warning: Ignoring unknown parameters: check_overlap</code></pre>
+<p><img src="/collection/quantecol/chapters/08_PCA_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>These site numbers correspond approximately to the ones in Verneaux et al. (2003) but some of the numbers may have been shifted slightly in the example Doubs dataset used here compared to how they were originally numbered in Verneaux’s thesis and subsequent publication. This should not affect the interpretation. We can also scale the symbol size by the magnitude of the environmental variables. Lets look at two pairs of variables that are strongly correlated with one-another:</p>
+<pre class="r"><code># We scale the data first so as to better represent the full
+# magnitude of all variables with a common symbol size
+env_std &lt;- decostand(env, method = &quot;standardize&quot;)
+
+# positive correlations
+plt1 &lt;- ggplot(spa, aes(x = X, y = Y, label = rownames(spa))) +
+  geom_point(shape = 1, col = &quot;red&quot;, aes(size = env_std$amm, shape = 3)) +
+  geom_text(vjust = -0.5, nudge_y = 0.5, check_overlap = TRUE) +
+  labs(size = &quot;Magnitude&quot;, title = &quot;Ammonium concentration&quot;)
+
+plt2 &lt;- ggplot(spa, aes(x = X, y = Y, label = rownames(spa))) +
+  geom_point(shape = 1, col = &quot;red&quot;, aes(size = env_std$bod)) +
+  geom_text(vjust = -0.5, nudge_y = 0.5, check_overlap = TRUE) +
+  labs(title = &quot;Biological oxygen demand&quot;)
+
+# inverse correlations
+plt3 &lt;- ggplot(spa, aes(x = X, y = Y, label = rownames(spa))) +
+  geom_point(shape = 1, col = &quot;blue&quot;, aes(size = env_std$alt)) +
+  geom_text(vjust = -0.5, nudge_y = 0.5, check_overlap = TRUE) +
+  labs(title = &quot;Altitude&quot;)
+
+plt4 &lt;- ggplot(spa, aes(x = X, y = Y, label = rownames(spa))) +
+  geom_point(shape = 1, col = &quot;blue&quot;, aes(size = env_std$flo)) +
+  geom_text(vjust = -0.5, nudge_y = 0.5, check_overlap = TRUE) +
+  labs(title = &quot;Flow rate&quot;)
+
+ggarrange(plt1, plt2, plt3, plt4, nrow = 2, ncol = 2,
+          common.legend = TRUE, labels = &quot;AUTO&quot;)</code></pre>
+<p><img src="/collection/quantecol/chapters/08_PCA_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<div id="questions-a" class="section level3">
+<h3>Questions (A)</h3>
+<blockquote>
+<p><strong>Question 1:</strong> With reference to the sampling design (i.e. position of sample sites along the length of the river), provide mechanistics/ecological reasons for the strongly correlated environmental variables shown above in the pairwise correlation diagram. You might have to create additional spatial maps of scaled variables (as immediately above) to support your answer.</p>
+</blockquote>
+<blockquote>
+<p><strong>Question 2:</strong> Provide a summary of the main findings of the Doubs River fish community structure study, focusing in this instance mainly on the environmental drivers.</p>
+</blockquote>
+</div>
+</div>
+<div id="do-the-pca" class="section level2">
+<h2>Do the PCA</h2>
+<p>We use the function <code>rda()</code> to do the PCA. This is the same function that we will use later for a Redundancy Analysis, but when used without specifying constrants (as we do here) it amounts to simply doing a PCA. Typically we standardise environmental data to unit variance, but the PCA accomplishes this step automagically when the argument <code>scale = TRUE</code>. PCA can also be applied directly to the raw quantitative data. When applied to environmental data (as we typically do with a PCA) it works with correlations amongst the scaled variables. PCA preserves Euclidean distance and the relationships detected are linear, and for this reason it is not typically applied to species data without suitable transformations. In fact, in this module we will seldom apply a PCA to species data at all.</p>
+<pre class="r"><code>env_pca &lt;- rda(env, scale = TRUE)
+env_pca</code></pre>
+<pre><code>## Call: rda(X = env, scale = TRUE)
+## 
+##               Inertia Rank
+## Total              11     
+## Unconstrained      11   11
+## Inertia is correlations 
+## 
+## Eigenvalues for unconstrained axes:
+##   PC1   PC2   PC3   PC4   PC5   PC6   PC7   PC8   PC9  PC10  PC11 
+## 5.969 2.164 1.065 0.739 0.400 0.336 0.173 0.108 0.024 0.017 0.006</code></pre>
+<p>Ecologists use the term <strong>inertia</strong> as a synonym for ‘variation’. In PCA, when we use a correlation matrix (as we do here), the inertia is the sum of the diagonal values of the correlation matrix, which is simply the number of variables (11 in this example). When a PCA uses a covariance matrix the inertia is the sum of the variances of the variables.</p>
+<p>You will also see in the output the mention of the term ‘<strong>unconstrained</strong>’. In a PCA the analysis is always unconstrained (i.e. not influenced by some environmental variables).</p>
+<p>The section headed <strong>Eigenvalues for unconstrained axes</strong> shows the relative importance of the resultant reduced axes, and they can be used to determine the proportion of the total inertia (sum of the eigenvalues) captured by any one of the axes. The first eigenvalue (the one associated with PC1) always explains the most variation (the largest fraction), and each subsequent one explains the largest proportion of the <em>remaining</em> variance. We say the axes are <em>orthogonal</em> and ranked in decreasing order of importance. The sum of all eigenvalue is the total inertia, so collectively they theoretically can explain all of the variation in the dataset (but clearly they <em>should not</em> be used to explain <em>all</em> the variance). To extract the first eigenvalue we can do:</p>
+<pre class="r"><code>round(env_pca$CA$eig[1], 3)</code></pre>
+<pre><code>##   PC1 
+## 5.969</code></pre>
+<p>The total inertia is:</p>
+<pre class="r"><code>sum(env_pca$CA$eig)</code></pre>
+<pre><code>## [1] 11</code></pre>
+<p>So the proportion of variation explained by the first PC is:</p>
+<pre class="r"><code>round(env_pca$CA$eig[1] / sum(env_pca$CA$eig) * 100, 1) # result in %</code></pre>
+<pre><code>##  PC1 
+## 54.3</code></pre>
+<div id="questions-b" class="section level3">
+<h3>Questions (B)</h3>
+<blockquote>
+<p><strong>Question 4:</strong> Why can a PCA, or <em>any</em> ordination for that matter, not explain all of the variation in a dataset? In other words, why is it best to only use the first few Principal Components for insight into the drivers of variability? What is ‘explained’ by the remaining PC axes?</p>
+</blockquote>
+<p>We can show the same information as part of a more verbose summary. Here we see the pre-calculated <strong>Proportion Explained</strong> and <strong>Cumulative Proportion</strong> (it should be obvious what this is). There is also an assortment of other information, viz. <strong>Scaling 2 for species and site scores</strong>, <strong>Species scores</strong>, and <strong>Site scores</strong>. See <em>Numerical Ecology in R</em> for their meanings.</p>
+<pre class="r"><code>summary(env_pca)</code></pre>
+<pre><code>## 
+## Call:
+## rda(X = env, scale = TRUE) 
+## 
+## Partitioning of correlations:
+##               Inertia Proportion
+## Total              11          1
+## Unconstrained      11          1
+## 
+## Eigenvalues, and their contribution to the correlations 
+## 
+## Importance of components:
+##                          PC1    PC2     PC3     PC4     PC5     PC6     PC7
+## Eigenvalue            5.9687 2.1639 1.06517 0.73875 0.40019 0.33563 0.17263
+## Proportion Explained  0.5426 0.1967 0.09683 0.06716 0.03638 0.03051 0.01569
+## Cumulative Proportion 0.5426 0.7393 0.83616 0.90332 0.93970 0.97022 0.98591
+##                            PC8      PC9     PC10     PC11
+## Eigenvalue            0.108228 0.023701 0.017083 0.005983
+## Proportion Explained  0.009839 0.002155 0.001553 0.000544
+## Cumulative Proportion 0.995748 0.997903 0.999456 1.000000
+## 
+## Scaling 2 for species and site scores
+## * Species are scaled proportional to eigenvalues
+## * Sites are unscaled: weighted dispersion equal on all dimensions
+## * General scaling constant of scores:  4.226177 
+## 
+## 
+## Species scores
+## 
+##          PC1     PC2      PC3      PC4      PC5      PC6
+## dfs  1.08657  0.5342 -0.27333 -0.13477  0.07336 -0.22566
+## alt -1.04396 -0.6148  0.20712  0.12854  0.14610 -0.02111
+## slo -0.57703 -0.4893 -0.63490 -0.71684  0.33349  0.11782
+## flo  0.95843  0.6608 -0.32456 -0.16183  0.11542 -0.13935
+## pH  -0.06364  0.4629  1.01317 -0.58606  0.17094 -0.07360
+## har  0.90118  0.5850  0.06449  0.25696  0.30995  0.53390
+## pho  1.05821 -0.6014  0.13866 -0.17883 -0.11125  0.13751
+## nit  1.15013 -0.1005 -0.05167 -0.24537 -0.35105 -0.02145
+## amm  1.00679 -0.6969  0.14077 -0.14684 -0.19200  0.11904
+## oxy -0.97459  0.4991 -0.09017 -0.31040 -0.38066  0.36500
+## bod  0.97315 -0.7148  0.15145  0.07193  0.23633  0.05540
+## 
+## 
+## Site scores (weighted sums of species scores)
+## 
+##            PC1      PC2      PC3      PC4       PC5       PC6
+## sit1  -1.41274 -1.40098 -2.03484 -2.67759  1.117150  0.184951
+## sit2  -1.03725 -0.77955  0.24400  0.25635 -1.192043 -1.849810
+## sit3  -0.94507 -0.46765  1.25042 -0.49330 -0.234194 -1.319198
+## sit4  -0.87371 -0.26988  0.19304  0.51979 -0.494639  0.116092
+## sit5  -0.42088 -0.66944  0.83191  0.71729  0.867751  0.112219
+## sit6  -0.77224 -0.72067 -0.07357  0.77902 -0.386130 -0.654273
+## sit7  -0.77466 -0.08103  0.39630  0.19224  0.416470  1.026304
+## sit8  -0.28840 -0.60589  0.83822  1.01440  1.707316  0.295861
+## sit9  -0.28305 -0.47710  0.39908  1.13075  0.882098  0.002961
+## sit10 -0.48714 -0.41860 -1.27555  0.90267  0.013704  0.542270
+## sit11 -0.26940  0.45384  0.09119 -0.15127 -0.233814  1.157483
+## sit12 -0.43834  0.36049 -0.52352  0.57279 -0.650095  0.817673
+## sit13 -0.37794  0.70379  0.10339  0.06127 -0.101571  1.376623
+## sit14 -0.23878  0.75522  0.83648 -0.55822 -0.011527  1.221217
+## sit15 -0.30425  0.95026  1.80274 -1.48211  0.135021  0.031795
+## sit16 -0.13354  0.33951 -0.23252  0.19177 -0.667112  0.227348
+## sit17  0.10111  0.32379 -0.20380  0.18495 -0.676546  0.364915
+## sit18  0.06913  0.37913 -0.25881  0.06998 -0.851379  0.289054
+## sit19  0.05746  0.43915  0.04566 -0.32171 -0.899449 -0.090759
+## sit20  0.17478  0.39927 -0.36244 -0.15647 -1.300718 -0.093396
+## sit21  0.16944  0.35608 -0.73929  0.42751 -0.509249 -0.653892
+## sit22  0.14898  0.55339 -0.08008 -0.04972  0.196636 -0.621753
+## sit23  1.39778 -1.19102  0.66424 -0.46178  0.252908  0.573369
+## sit24  0.99357 -0.52036  0.07186  0.48088  1.068785 -0.373991
+## sit25  2.22002 -2.03168  0.17940 -0.52606 -1.148014  0.786506
+## sit26  0.89388 -0.10410 -0.61440  0.42034  0.343649 -0.800522
+## sit27  0.64866  0.41296 -0.17444 -0.26105  0.274443 -1.259099
+## sit28  0.77100  0.82592  0.43387 -1.00092 -0.001674 -0.703378
+## sit29  0.66413  1.11562 -1.58043  0.65099  0.650327 -0.020001
+## sit30  0.74743  1.36955 -0.22810 -0.43281  1.431895 -0.686570</code></pre>
+<p><strong>Species scores</strong> are the loadings (a.k.a. rotated and scaled eigenvectors) that indicate the <em>strength of contribution</em> of the original environmental variables to the new variables, the Principal Components (PC1, PC2, etc.). Even though we work with environmental data here, these scores are still called species scores by the software—don’t let the name confuse you! They indicate how much each of the original environmental variables contribute to PC1, PC2, etc. The larger (more positive) and smaller (more negative) values indicate a greater contribution, albeit in opposite directions. In the example, PC1 is made up of uneven contributions from most of the original variables, with the largest value being nitrate (1.15013) and smallest oxygen (-0.97459). Nitrate and oxygen therefore contribute most towards the differences between sites so that places with more nitrate are also the places with the lowest dissolved oxygen concentration. This makes ecological sense too. pH and slope are the least important variables, i.e. they are least able to explain the differences between sites along PC1. Given the strength of PC1 (it explains 54.3% of the inertia), one might hypothesise that its constituent variables, particularly nitrate and oxygen, influence many aspects of the community. <strong><em>The species scores are presented as arrows on the ordination diagrams</em></strong> (see below). Longer vectors have a greater influence (are stronger drivers) on environmental (and possibly species) differences between sites, and their direction indicates along which PC axes their influence is greatest.</p>
+<p><strong>Site scores</strong> are the scaled and rotated coordinates of the objects (sites or samples, one for each row of the raw data table). <strong><em>They are used to plot the position of the sites in 2D or 3D ordination space</em></strong>. Sites spread further apart from others in this space differ much in terms of the environmental conditions. How far they spread apart depends on the major environmental gradients indicated by the species scores—i.e. along PC1, sites that are spread far apart in this dimension experience very different concentrations of nitrate and oxygen (see the species scores for the identity of the influential variables).</p>
+<p><strong>Scaling 1</strong> and <strong>Scaling 2</strong>, depending on what was specified in the <code>rda()</code> function call, are useful for whether one wants to interpret species (scaling 1) or variables (scaling 2). When calling scaling 1, the distances between points plotted on the ordination diagram will retain their Euclidian distances, which allows for better interpretation of how sites relate to one-another. Calling scaling 2 preserves more accurately the angles between variables with the consequence that in the biplot smaller angles between variable vectors will reflect stronger correlations. More on scaling below.</p>
+</div>
+</div>
+<div id="graphical-represenations-of-ordinations" class="section level2">
+<h2>Graphical represenations of ordinations</h2>
+<p>Graphical representations of ordination results are called ordination diagrams. See David Zelený’s <a href="https://www.davidzeleny.net/anadat-r/doku.php/en:ordiagrams">exelent writing on the topic</a>.</p>
+<p>In a PCA ordination diagram (called a biplot, because it plots two <em>things</em>, viz. sites as points and envionmental variables as vectors), following the tradition of scatter diagrams in Cartesian coordinate systems, objects are represented as points and variables are displayed as arrows. We first use the standard <strong>vegan</strong> <code>biplot()</code> function:</p>
+<pre class="r"><code>biplot(env_pca, scaling = 1, main = &quot;PCA scaling 1&quot;, choices = c(1, 2))</code></pre>
+<p><img src="/collection/quantecol/chapters/08_PCA_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<pre class="r"><code>biplot(env_pca, scaling = 2, main = &quot;PCA scaling 2&quot;, choices = c(1, 2))</code></pre>
+<p><img src="/collection/quantecol/chapters/08_PCA_files/figure-html/unnamed-chunk-11-2.png" width="672" /></p>
+<p><strong>Scaling 1:</strong> This scaling <em>emphasises relationships between rows</em> accurately in low-dimensional ordination space. Distances among objects (samples or sites) in the biplot are approximations of their Euclidian distances in multidimensional space. Objects positioned closer together show a greater degree of environmental dimilarity. The angles among descriptor vectors should not be interpreted as indicating the degree of correlation between the variables.</p>
+<p><strong>Scaling 2:</strong> This scaling <em>emphasises relationships between columns</em> accurately in low-dimensional ordination space. Distances among objects (samples or sites) in the biplot are not approximations of their Euclidian distances in multidimensional space. The angles among descriptor vectors can be interpreted as indicating the degree of correlation between the variables.</p>
+<p>Now we create biplots using the <code>cleanplot.pca()</code> function that comes with <em>Numerical Ecology in R</em> book:</p>
+<pre class="r"><code># we need to load the function first from its R file:
+source(&quot;/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/Num_Ecol_R_book_ed1/cleanplot.pca.R&quot;)
+cleanplot.pca(env_pca, scaling = 1)</code></pre>
+<pre><code>## circle2 = TRUE</code></pre>
+<pre><code>## Warning in if (class(mat) == &quot;matrix&quot;) {: the condition has length &gt; 1 and only
+## the first element will be used</code></pre>
+<p><img src="/collection/quantecol/chapters/08_PCA_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<pre class="r"><code>cleanplot.pca(env_pca, scaling = 2)</code></pre>
+<pre><code>## circle2 = TRUE</code></pre>
+<pre><code>## Warning in if (class(mat) == &quot;matrix&quot;) {: the condition has length &gt; 1 and only
+## the first element will be used</code></pre>
+<p><img src="/collection/quantecol/chapters/08_PCA_files/figure-html/unnamed-chunk-12-2.png" width="672" /></p>
+<p><strong>At this point it is essential that you refer to <em>Numerical Ecology in R</em> (pp. 118 to 126) for help with interpreting the ordination diagrams.</strong></p>
+<p>We can plot the underlying environmental gradients using the <code>ordisurf()</code> function in <strong>vegan</strong>. We plot the response surfaces for altitude and biological oxygen demand:</p>
+<pre class="r"><code>biplot(env_pca, type = c(&quot;text&quot;, &quot;points&quot;), col = c(&quot;black&quot;, &quot;black&quot;))
+ordisurf(env_pca ~ bod, env, add = TRUE, col = &quot;turquoise&quot;, knots = 1)</code></pre>
+<pre><code>## 
+## Family: gaussian 
+## Link function: identity 
+## 
+## Formula:
+## y ~ poly(x1, 1) + poly(x2, 1)
+## Total model degrees of freedom 3 
+## 
+## REML score: 46.65864</code></pre>
+<pre class="r"><code>ordisurf(env_pca ~ alt, env, add = TRUE, col = &quot;salmon&quot;, knots = 1)</code></pre>
+<p><img src="/collection/quantecol/chapters/08_PCA_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<pre><code>## 
+## Family: gaussian 
+## Link function: identity 
+## 
+## Formula:
+## y ~ poly(x1, 1) + poly(x2, 1)
+## Total model degrees of freedom 3 
+## 
+## REML score: 160.6339</code></pre>
+<p>We see that the contours form a linear trend surface, i.e. they are perpendicular to their vectors. This is the main weakness of PCA, as community data are nonlinear (in fact, environmental gradients are also seldom very linear, but they can be more linear than species data). In general, therefore, PCA should not be used for community data.</p>
+<div id="questions-c" class="section level3">
+<h3>Questions (C)</h3>
+<blockquote>
+<p><strong>Question 5:</strong> Replicate the analysis shown above on the <strong>environmental data</strong> included with these datasets: 1. <a href="https://www.davidzeleny.net/anadat-r/doku.php/en:data:ybirds">bird communities along elevation gradient in Yushan Mountain, Taiwan</a>; 2. <a href="https://www.davidzeleny.net/anadat-r/doku.php/en:data:aravo">alpine plant communities in Aravo, France</a>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Question 6:</strong> Discuss the patterns observed: 1. explain the ordination diagram with particular reference to the major patterns shown; 2. provide a mechanistic explanation for the existence of the patterns seen with respect to elevation/altitude; and 3. if there are significant positive or negative correlations between the environmental variables, provide mechanistic reasons for how they came about.</p>
+</blockquote>
+<p><span style="color:red">Submit an R script wherein you provide answers to these questions by no later than 17:00 on Tuesday 13 July 2021.</span></p>
+</div>
+</div>
+<div id="references" class="section level2">
+<h2>References</h2>
+<p>Graham, M. H. (2003). Confronting multicollinearity in ecological multiple regression. Ecology 84, 2809–2815.</p>
+</div>
+
+      </section>
+      <footer class="post-footer">
+        <div class="post-pagination dt w-100 mt4 mb2">
+  
+  
+    <a class="prev dtc pr2 tl v-top fw6"
+    href="/workshops/quantecol/chapters/06-correlations/">&larr; 6. Correlations and Associations</a>
+  
+  
+  
+    <a class="next dtc pl2 tr v-top fw6"
+    href="/workshops/quantecol/chapters/08-pca_sdg/">8b. PCA of WHO SDGs &rarr;</a>
+  
+</div>
+
+      </footer>
+    </article>
+    
+      
+<div class="post-comments pa0 pa4-l mt4">
+  
+  <script src="https://utteranc.es/client.js"
+          repo="robwschlegel/heatwaveR"
+          issue-term="pathname"
+          theme="boxy-light"
+          label="comments :crystal_ball:"
+          crossorigin="anonymous"
+          async
+          type="text/javascript">
+  </script>
+  
+</div>
+
+    
+  </section>
+</main>
+
+<aside class="page-sidebar" role="complementary">
+                         
+ 
+
+
+
+
+
+
+
+
+
+
+
+  <img src="/workshops/featured-sidebar.jpg" class="db ma0">
+
+                         
+ 
+
+
+
+<div class="flex items-start sticky ph4 pb4 flex-row">
+  <div class="w-two-thirds w-50-l ph0">
+    <h2 class="mv3 f5 fw7 ttu tracked">
+      <a class="no-underline dim" href="/workshops/">Outline</a></h2>
+    <nav id="SectionTableOfContents" aria-label="SectionTableOfContents">
+        <ul>
+        
+          
+          
+          
+          <details  class="">
+            <summary class="" hugo-nav="/workshops/intro_r/"><a href="/workshops/intro_r/">BCB744 (Intro R)</a></summary>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/02-rstudio/"><a href="/workshops/intro_r/chapters/02-rstudio/">1. RStudio and R</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/03-github/"><a href="/workshops/intro_r/chapters/03-github/">2. GitHub</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/04-workflow/"><a href="/workshops/intro_r/chapters/04-workflow/">3. An R workflow</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/05-graphics/"><a href="/workshops/intro_r/chapters/05-graphics/">4. Graphics with ggplot2</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/06-faceting/"><a href="/workshops/intro_r/chapters/06-faceting/">5. Faceting figures</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/07-brewing/"><a href="/workshops/intro_r/chapters/07-brewing/">6. Brewing colours</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/08-mapping/"><a href="/workshops/intro_r/chapters/08-mapping/">7. Mapping with ggplot2</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/09-mapping_style/"><a href="/workshops/intro_r/chapters/09-mapping_style/">8. Mapping with style</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/10-mapping_openstreetmap/"><a href="/workshops/intro_r/chapters/10-mapping_openstreetmap/">9. Mapping with OpenStreetMap</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/11-tidy/"><a href="/workshops/intro_r/chapters/11-tidy/">10. Tidy data</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/12-tidier/"><a href="/workshops/intro_r/chapters/12-tidier/">11. Tidier data</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/13-tidiest/"><a href="/workshops/intro_r/chapters/13-tidiest/">12. Tidiest data</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/14-recap/"><a href="/workshops/intro_r/chapters/14-recap/">13. Recap</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/15-functions/"><a href="/workshops/intro_r/chapters/15-functions/">14. Functions by chapter</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/16-base_r/"><a href="/workshops/intro_r/chapters/16-base_r/">15. Base R primer</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/17-dates/"><a href="/workshops/intro_r/chapters/17-dates/">16. Dates</a></li>
+            
+          </details>
+          
+          </li>
+        
+          
+          
+          
+          <details  class="">
+            <summary class="" hugo-nav="/workshops/biostats/"><a href="/workshops/biostats/">BCB744 (Biostats)</a></summary>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/02-data/"><a href="/workshops/biostats/chapters/02-data/">1. Types of data</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/03-descriptive/"><a href="/workshops/biostats/chapters/03-descriptive/">2. Central tendency and dispersion</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/04-graphics/"><a href="/workshops/biostats/chapters/04-graphics/">3. Graphical data displays</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/06-t_tests/"><a href="/workshops/biostats/chapters/06-t_tests/">5. Inferences about one or two populations</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/07-anova/"><a href="/workshops/biostats/chapters/07-anova/">6. Analysis of Variance (ANOVA)</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/08-regressions/"><a href="/workshops/biostats/chapters/08-regressions/">7. Simple linear regressions</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/09-correlations/"><a href="/workshops/biostats/chapters/09-correlations/">8. Correlation</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/10-confidence/"><a href="/workshops/biostats/chapters/10-confidence/">9. Confidence intervals</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/11-transformations/"><a href="/workshops/biostats/chapters/11-transformations/">10. Data transformations</a></li>
+            
+          </details>
+          
+          </li>
+        
+          
+          
+          
+          <details open class="active">
+            <summary class="active" hugo-nav="/workshops/quantecol/"><a href="/workshops/quantecol/">BCB743</a></summary>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/01-data/"><a href="/workshops/quantecol/chapters/01-data/">1. Multivariate data</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/02-biodiversity/"><a href="/workshops/quantecol/chapters/02-biodiversity/">2. Biodiversity</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/03-deep_dive/"><a href="/workshops/quantecol/chapters/03-deep_dive/">3. Deep Dive into Gradients</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/04-env_dist/"><a href="/workshops/quantecol/chapters/04-env_dist/">4. Environmental Distance</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/05-spp_dissimilarity/"><a href="/workshops/quantecol/chapters/05-spp_dissimilarity/">5. Species Dissimilarities</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/06-correlations/"><a href="/workshops/quantecol/chapters/06-correlations/">6. Correlations and Associations</a></li>
+            
+              
+              <li class="active" hugo-nav="/workshops/quantecol/chapters/08_pca/"><a href="/workshops/quantecol/chapters/08_pca/">8a. Principal Component Analysis (PCA)</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/08-pca_sdg/"><a href="/workshops/quantecol/chapters/08-pca_sdg/">8b. PCA of WHO SDGs</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/09-ca/"><a href="/workshops/quantecol/chapters/09-ca/">9. Correspondence Analysis (CA)</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/10-pcoa/"><a href="/workshops/quantecol/chapters/10-pcoa/">10. Principal Coordinate Analysis (PCoA)</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/11-nmds/"><a href="/workshops/quantecol/chapters/11-nmds/">11a. non-Metric multidimensional scaling (nMDS)</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/11-nmds_diatoms/"><a href="/workshops/quantecol/chapters/11-nmds_diatoms/">11b. nMDS of Mayombo&#39;s diatom data</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/12-constrained_ordination/"><a href="/workshops/quantecol/chapters/12-constrained_ordination/">12. Constrained Ordination</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/13-cluster_analysis/"><a href="/workshops/quantecol/chapters/13-cluster_analysis/">13. Cluster analysis</a></li>
+            
+          </details>
+          
+          </li>
+        
+        </ul>
+    </nav>
+  </div>
+  <details id="PageTableOfContents">
+    <summary><h2 class="mv0 f5 fw7 ttu tracked dib">On this page<h2></summary>
+    <div class="pl2 pr0 mh0">
+    
+    </div>
+  </details>
+  
+</div>
+
+</aside>
+
+<footer class="site-footer pv4 bt b--transparent ph5" role="contentinfo">
+  <nav class="db dt-l w-100">
+    <p class="site-copyright f7 db dtc-l v-mid w-100 w-33-l tc tl-l pv2 pv0-l mv0 lh-copy">
+      &copy; 2022 University of the Western Cape, Cape Town
+      <span class="middot-divider"></span>
+      Made with <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/hugo-apero/" rel="dct:source">Hugo Apéro</a></span>.
+      <br />
+      
+Based on <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/formspree/blogophonic-hugo" rel="dct:source">Blogophonic</a></span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://formspree.io" property="cc:attributionName" rel="cc:attributionURL">Formspree</a>.
+    </p>
+    
+    <div class="site-social-links db dtc-l v-mid w-100 w-33-l tc pv2 pv0-l mv0">
+      <div class="social-icon-links" aria-hidden="true">
+  
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://github.com/ajsmit/" title="github" target="_blank" rel="noopener">
+      <i class="fab fa-github fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="http://orcid.org/0000-0002-3799-6126" title="orcid" target="_blank" rel="noopener">
+      <i class="ai ai-orcid fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.researchgate.net/profile/Albertus-Smit" title="researchgate" target="_blank" rel="noopener">
+      <i class="ai ai-researchgate fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://uwc.academia.edu/AlbertusSmit" title="academia" target="_blank" rel="noopener">
+      <i class="ai ai-academia fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://scholar.google.co.za/citations?user=ATsBBKoAAAAJ&amp;hl=en" title="google-scholar" target="_blank" rel="noopener">
+      <i class="ai ai-google-scholar fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.instagram.com/ajsmit/" title="instagram" target="_blank" rel="noopener">
+      <i class="fab fa-instagram fa-lg fa-fw"></i>
+    </a>
+  
+</div>
+
+    </div>
+    
+    <div class="site-links f6 db dtc-l v-mid w-100 w-67-l tc tr-l pv2 pv0-l mv0">
+      
+      <a class="dib pv1 ph2 link" href="/license/" title="License">License</a>
+      
+      <a class="dib pv1 ph2 link" href="/contact/" title="Contact form">Contact</a>
+      
+      <a class="dib pv1 ph2 link" href="/contributors/" title="Contributors">Contributors</a>
+      
+    </div>
+  </nav>
+  
+    <script>
+
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (let i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) ||
+            /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+</script>
+
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+
+    
+  
+  
+</footer>
+
+      </div>
+    </body>
+</html>

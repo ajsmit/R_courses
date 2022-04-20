@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  
+                           
+     
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.96.0" />
+<title>12. Constrained Ordination | BCB R Stats Pages</title>
+
+
+<meta property="twitter:site" content="@ajsmit">
+<meta property="twitter:creator" content="@ajsmit">
+
+
+
+
+
+
+
+  
+    
+  
+<meta name="description" content="What you need to know upfront.">
+
+
+<meta property="og:site_name" content="BCB R Stats Pages">
+<meta property="og:title" content="12. Constrained Ordination | BCB R Stats Pages">
+<meta property="og:description" content="What you need to know upfront." />
+<meta property="og:type" content="page" />
+<meta property="og:url" content="/collection/quantecol/chapters/12-constrained_ordination/" />
+<meta property="og:locale" content="en">
+
+
+
+
+    
+        <meta property="og:image" content="/img/papillons.jpg" >
+        <meta property="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="/img/papillons.jpg" >
+    
+  <meta itemprop="name" content="12. Constrained Ordination">
+<meta itemprop="description" content="Up to now we have applied indirect gradient analyses. The lecture slides mention several constrained ordinations and provide some theory for three of them, viz. Redundancy Analysis (RDA), Canonical Correspondence Analysis (CCA), and distance-based Reducndancy Analysis (db-RDA). Constrained ordination is sometimes called ‘direct gradient analysis’.
+Constrained ordination is used to extract and summarise the variation in a set of response variables (species data in the case of ecology) that can be explained by some explanatory variables (‘constraints’), such as measurements of environmental properties at the places where the species data were collected from."><meta itemprop="datePublished" content="2021-01-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-01-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3065">
+<meta itemprop="keywords" content="" />
+  
+  
+  <!--[if IE]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+  
+  
+  <link rel="stylesheet" href="/style.main.min.13dd27d3efb7ed4ad82be3040182ddbf5ab9d3b4d6d01f0ba3930845932fce66.css" integrity="sha256-E90n0&#43;&#43;37UrYK&#43;MEAYLdv1q507TW0B8Lo5MIRZMvzmY=" media="screen">
+  
+  
+  <script src="/panelset.min.8f4cba0107356728f266d94a12a4d18ef504eda8a9a284cda73675bae7884a68.js" type="text/javascript"></script>
+  
+  
+  <script src="/main.min.318ee9c0652bba0149e7503c97e37e638937f3a9cad9233e6d0ba00bf7a46a5e.js" type="text/javascript"></script>
+</head>
+<body>
+      <div class="grid-container single-series">
+<header class="site-header pt4 pb2 mb4 bb b--transparent ph5 headroom z-max" role="banner">
+  <nav class="site-nav db dt-l w-100" role="navigation">
+    <a class="site-brand db dtc-l v-mid link no-underline w-100 w-33-l tc tl-l" href="/" title="Home">
+      <img src="/img/xaringan-outline.png" class="dib db-l h2 w-auto" alt="BCB R Stats Pages">
+    </a>
+    <div class="site-links db dtc-l v-mid w-100 w-47-l tc tr-l mt3 mt0-l ttu tracked">
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/about/" title="About AJ Smit">About</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/workshops/" title="BCB Hons">BCB Hons</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/project/" title="Project Portfolio">Projects</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 active" href="/collection/" title="R Courses">R Courses</a>
+      
+      
+    </div>
+  </nav>
+</header>
+
+
+<main class="page-main ph4 pt4" role="main">
+  <section class="page-content mw7 center">
+    <article class="post-content pa0 pr3-l">
+      <header class="post-header">
+        <h4 class="breadcrumb pb5">
+
+  
+    
+      
+  
+    
+      
+  
+    
+      
+  
+
+    
+    
+      <a href="/collection/">B.Sc. (Hons.) R modules</a>
+    
+  
+
+    
+    
+      <a href="/collection/quantecol/">BCB743</a>
+    
+  
+
+    
+    
+      12. Constrained Ordination
+    
+  
+
+</h4>
+
+
+
+
+        
+        <h1 class="f1 lh-solid measure-narrow mb3 fw4">12. Constrained Ordination</h1>
+        
+        <p class="f6 measure lh-copy mv1"></p>
+        <p class="f7 db mv0 ttu">January 1, 2021</p>
+        
+        
+      
+        
+      </header>
+      <section class="post-body pt5 pb4">
+        
+
+
+<!--- # Topic 12: Constrained ordination --->
+<p>Up to now we have applied indirect gradient analyses. The lecture slides mention several constrained ordinations and provide some theory for three of them, viz. <strong>Redundancy Analysis (RDA)</strong>, <strong>Canonical Correspondence Analysis (CCA)</strong>, and <strong>distance-based Reducndancy Analysis (db-RDA)</strong>. Constrained ordination is sometimes called ‘direct gradient analysis’.</p>
+<p>Constrained ordination is used to extract and summarise the variation in a set of response variables (species data in the case of ecology) that can be explained by some explanatory variables (‘constraints’), such as measurements of environmental properties at the places where the species data were collected from.</p>
+<p><strong>RDA</strong> is a direct gradient analysis that highlights linear relationships between components of response variables, i.e. variables that are ‘redundant’ with (i.e. ‘explained’ by) a set of predictors. RDA is an extension of a PCA with a multiple linear regression. The same constraints inherent in a PCA present themselves in an RDA. Use <strong>vegan</strong>’s <code>rda()</code> to perform an RDA.</p>
+<p><strong>CCA</strong> is the extension of a CA with multiple regression, and is therefore also based on 𝝌2-metric (dissimilarities). We do not have a choice of spcifying which dissimilarity meric to use. CCA performs best when species distribution follows a unimodal model. Use <strong>vegan</strong>’s <code>cca()</code> to perform an RDA.</p>
+<p><strong>db-RDA</strong> can be viewed as the extension of a PCoA with multiple regressions. As with a PCoA, we also benefit from being able to specify any dissimilarity matrix as input, and hence this approach is more versatile compared to RDA or CCA. I prefer the db-RDA implemented in <strong>vegan</strong>’s <code>capscale()</code>. The help file states: “Distance-based redundancy analysis (dbRDA) is an ordination method similar to Redundancy Analysis (rda), but it allows non-Euclidean dissimilarity indices, such as Manhattan or Bray–Curtis distance.”</p>
+<div id="the-seaweed-dataset" class="section level2">
+<h2>The seaweed dataset</h2>
+<p>For this example we will use the seaweed data of Smit et al. (2017). For information about the study, see <a href="https://github.com/ajsmit/Quantitative_Ecology/blob/main/_GitBook/LaTeX/The_seaweed_data.pdf">here</a>.</p>
+<p>I use two data sets. The first, <span class="math inline">\(Y\)</span> (in the file <code>seaweeds.csv</code>), comprises distribution records of 847 macroalgal species within each of 58 × 50 km-long sections of the South African coast (updated from Bolton and Stegenga 2002). This represents <em>ca</em>. 90% of the known seaweed flora of South Africa, but excludes some very small and/or very rare species for which data are insufficient. The data are from verifiable literature sources and John Bolton and Rob Anderson’s own collections, assembled from information collected by teams of phycologists over three decades (Bolton 1986; Stegenga et al. 1997; Bolton and Stegenga 2002; De Clerck et al. 2005).</p>
+<p>The second, <span class="math inline">\(E\)</span> (in <code>env.csv</code>), is a dataset of <em>in situ</em> coastal seawater temperatures (Smit et al. 2013) derived from daily measurements over up to 40 years.</p>
+</div>
+<div id="set-up-the-analysis-environment" class="section level2">
+<h2>Set-up the analysis environment</h2>
+<pre class="r"><code>library(tidyverse)
+library(betapart)
+library(vegan)
+library(gridExtra)
+library(grid)
+library(gridBase)</code></pre>
+<p>Load the seaweed data:</p>
+<pre class="r"><code>spp &lt;- read.csv(&#39;/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/diversity/SeaweedsSpp.csv&#39;)
+spp &lt;- dplyr::select(spp, -1)
+dim(spp)</code></pre>
+<pre><code>## [1]  58 847</code></pre>
+</div>
+<div id="set-up-the-data" class="section level2">
+<h2>Set-up the data</h2>
+<p>The first step involves the species table (<span class="math inline">\(Y\)</span>). First I compute the Sørensen dissimilarity, which I then decompose into ‘nestedness-resultant’ (<span class="math inline">\(\beta_\text{sne}\)</span>) and ‘turnover’ (<span class="math inline">\(\beta_\text{sim}\)</span>) components using the <code>betapart.core()</code> and <code>betapart.pair()</code> functions of the <strong>betapart</strong> package (Baselga et al., 2017). These are placed into the matrices <span class="math inline">\(Y1\)</span> and <span class="math inline">\(Y2\)</span>. It is not necessary to decompose into <span class="math inline">\(Y1\)</span> and <span class="math inline">\(Y2\)</span>, but I do so here because I want to focus on the turnover component without a nestedness-resultant influence. Optionally, I can apply a CA, PCoA, or nMDS on <span class="math inline">\(Y\)</span> to find the major patterns in the community data. The formal analysis will use the species data in a distance-based redundancy analyses (db-RDA as per <strong>vegan</strong>’s <code>capscale()</code> function) by coupling it with <span class="math inline">\(E\)</span>.</p>
+<pre class="r"><code>Y.core &lt;- betapart.core(spp) 
+Y.pair &lt;- beta.pair(Y.core, index.family = &quot;sor&quot;)
+
+# Let Y1 be the turnover component (beta-sim):
+Y1 &lt;- as.matrix(Y.pair$beta.sim)</code></pre>
+<p>It is now necessary to load the environmental data and some setup files that partition the 58 coastal sections (and the species and environmental data that fall within these sections) into bioregions.</p>
+<p>The thermal (environmental) data contain various variables, but in the analysis I use only some of them. These data were obtained from many sites along the South African coast, but using interpolation (not included here) I calculated the thermal properties for each of the coastal sections for which seaweed data are available. Consequently we have a data frame with 58 rows and a column for each of the thermal metrics.</p>
+<pre class="r"><code>load(&quot;/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/diversity/SeaweedEnv.RData&quot;)
+dim(env)</code></pre>
+<pre><code>## [1] 58 18</code></pre>
+<p>Note that they have the same number of rows as the seaweed data.</p>
+<p>I select only some of the thermal vars; the rest are collinear with some of the ones I import:</p>
+<pre class="r"><code>E1 &lt;- dplyr::select(env, febMean, febRange, febSD, augMean,
+                    augRange, augSD, annMean, annRange, annSD)</code></pre>
+<p>Next I calculate <em>z</em>-scores:</p>
+<pre class="r"><code>E1 &lt;- decostand(E1, method = &quot;standardize&quot;)</code></pre>
+<p>Four bioregions are recognised for South Africa by Bolton and Anderson (2004) (the variable called <code>bolton</code>), namely the Benguela Marine Province (BMP; coastal sections <strong>1</strong>–<strong>17</strong>), the Benguela-Agulhas Transition Zone (B-ATZ; <strong>18</strong>–<strong>22</strong>), the Agulhas Marine Province (AMP; <strong>19</strong>–<strong>43</strong>/<strong>44</strong>) and the East Coast Transition Zone (ECTZ; <strong>44</strong>/<strong>45</strong>–<strong>58</strong>). My plotting functions partition the data into the bioregions and colour code the figures accordingly so I can see regional patterns in <span class="math inline">\(\beta\)</span>-diversity emerging.</p>
+<pre class="r"><code>bioreg &lt;- read.csv(&#39;/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/diversity/bioregions.csv&#39;, header = TRUE)
+head(bioreg)</code></pre>
+<pre><code>##   spal.prov spal.ecoreg lombard bolton
+## 1       BMP          NE   NamBR    BMP
+## 2       BMP          NE   NamBR    BMP
+## 3       BMP          NE   NamBR    BMP
+## 4       BMP          NE   NamBR    BMP
+## 5       BMP          NE   NamBR    BMP
+## 6       BMP          NE   NamBR    BMP</code></pre>
+<p>Load the geographic coordinates for the coastal sections:</p>
+<pre class="r"><code>sites &lt;- read.csv(&quot;/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/diversity/sites.csv&quot;)
+sites &lt;- sites[, c(2, 1)]
+head(sites)</code></pre>
+<pre><code>##   Longitude  Latitude
+## 1  16.72429 -28.98450
+## 2  16.94238 -29.38053
+## 3  17.08194 -29.83253
+## 4  17.25928 -30.26426
+## 5  17.47638 -30.67874
+## 6  17.72167 -31.08580</code></pre>
+<pre class="r"><code>dim(sites)</code></pre>
+<pre><code>## [1] 58  2</code></pre>
+<p>Again, we have 58 rows of data for both the coastal section coordinates and the bioregions. You may omit the dataset with spatial coordinates as it is not actually used further below. Can you think of ways in which to use this dataset to graphically represent the spatial distribution of some environmental or biodiversity data?</p>
+</div>
+<div id="start-the-db-rda" class="section level2">
+<h2>Start the db-RDA</h2>
+<p>I test the niche difference mechanism as the primary species compositional assembly process operating along South African shores. I suggest that the thermal gradient along the coast provides a suite of abiotic (thermal) conditions from which species can select based on their physiological tolerances, and hence this will structure <span class="math inline">\(\beta\)</span>-diversity. For this mechanism to function one would assume that all species have equal access to all sections along this stretch of coast, thus following ‘Beijerinck’s Law’ that everything is everywhere but the environment selects (Sauer, 1988).</p>
+<p>I do a RDA involving all the thermal variables in <span class="math inline">\(E1\)</span> (the ‘global analysis’ resulting in the full model, <code>rda_full</code>). Analysis shown for <span class="math inline">\(Y1\)</span>:</p>
+<pre class="r"><code># fit the full model:
+rda_full &lt;- capscale(Y1 ~., E1)
+rda_full</code></pre>
+<pre><code>## Call: capscale(formula = Y1 ~ febMean + febRange + febSD + augMean +
+## augRange + augSD + annMean + annRange + annSD, data = E1)
+## 
+##                Inertia Proportion Rank
+## Total          7.52344    1.00000     
+## Constrained    6.86398    0.91235    8
+## Unconstrained  1.02840    0.13669   28
+## Imaginary     -0.36895   -0.04904   24
+## Inertia is squared Unknown distance 
+## Some constraints were aliased because they were collinear (redundant)
+## 
+## Eigenvalues for constrained axes:
+##  CAP1  CAP2  CAP3  CAP4  CAP5  CAP6  CAP7  CAP8 
+## 5.620 1.155 0.074 0.006 0.004 0.003 0.001 0.001 
+## 
+## Eigenvalues for unconstrained axes:
+##   MDS1   MDS2   MDS3   MDS4   MDS5   MDS6   MDS7   MDS8 
+## 0.5768 0.1687 0.1096 0.0413 0.0322 0.0243 0.0179 0.0103 
+## (Showing 8 of 28 unconstrained eigenvalues)</code></pre>
+<pre class="r"><code># summary(rda_full)
+# notice that the species scores are missing
+# refer to PCoA for why</code></pre>
+<p>Species information is lost during the calculation of the dissimilarity matrix, but if the original matrix of species composition is available, the species scores can be added back into the ordination diagram as weighted means of site scores in which case they occur or as vectors fitted onto the ordination space.</p>
+<p>Is the fit significant? I run a permutation test to check:</p>
+<pre class="r"><code>anova(rda_full, parallel = 4) # ... yes!</code></pre>
+<pre><code>## Permutation test for capscale under reduced model
+## Permutation: free
+## Number of permutations: 999
+## 
+## Model: capscale(formula = Y1 ~ febMean + febRange + febSD + augMean + augRange + augSD + annMean + annRange + annSD, data = E1)
+##          Df SumOfSqs      F Pr(&gt;F)    
+## Model     8   6.8640 40.881  0.001 ***
+## Residual 49   1.0284                  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Since the fit is significant (the environmental variables capture the variation seen in the species data), I compute the adjusted <span class="math inline">\(R^{2}\)</span>:</p>
+<pre class="r"><code>rda_full_R2 &lt;- RsquareAdj(rda_full)$adj.r.squared
+round(rda_full_R2, 2)</code></pre>
+<pre><code>## [1] 0.9</code></pre>
+<p>The inertia accounted for by constraints:</p>
+<pre class="r"><code>round(sum(rda_full$CCA$eig), 2)</code></pre>
+<pre><code>## [1] 6.86</code></pre>
+<p>The remaining (unconstrained) inertia:</p>
+<pre class="r"><code>round(sum(rda_full$CA$eig), 2)</code></pre>
+<pre><code>## [1] 1.03</code></pre>
+<p>The total inertia:</p>
+<pre class="r"><code>round(rda_full$tot.chi, 2)</code></pre>
+<pre><code>## [1] 7.52</code></pre>
+<p>What is the proportion of variation explained by the full set environmental variables?</p>
+<pre class="r"><code>round(sum(rda_full$CCA$eig) / rda_full$tot.chi * 100, 2) # in %</code></pre>
+<pre><code>## [1] 91.23</code></pre>
+<p>I check for collinearity using variance inflation factors (VIF), and retain a subset of non-collinear variables to include in the ‘reduced’ or ‘final’ model. A common rule is that values over 10 indicate redundant constraints. I run the VIF procedure iteratively, each time removing the highest VIF and examining the remaining ones until these are mostly below 10.</p>
+<p>First on the full model:</p>
+<pre class="r"><code>vif.cca(rda_full)</code></pre>
+<pre><code>##    febMean   febRange      febSD    augMean   augRange      augSD    annMean 
+##  91.129700   6.775959   7.734436  73.090382   8.486631  12.118914 233.400746 
+##   annRange      annSD 
+##         NA   5.396343</code></pre>
+<p>Drop annMean:</p>
+<pre class="r"><code>E2 &lt;- dplyr::select(E1, -annMean)
+rda_sel1 &lt;- capscale(Y1 ~., E2)
+vif.cca(rda_sel1)</code></pre>
+<pre><code>##   febMean  febRange     febSD   augMean  augRange     augSD  annRange     annSD 
+## 24.996152  6.149245  7.160637 17.717936  8.066340 10.726117        NA  5.396275</code></pre>
+<p>Drop febMean:</p>
+<pre class="r"><code>E3 &lt;- dplyr::select(E2, -febMean)
+rda_sel2 &lt;- capscale(Y1 ~., E3)
+vif.cca(rda_sel2)</code></pre>
+<pre><code>##  febRange     febSD   augMean  augRange     augSD  annRange     annSD 
+##  6.149245  7.160637  1.619233  8.066340 10.726117  5.529971  5.396275</code></pre>
+<p>We select E3 as the variables to construct the final model (<code>rda_final</code>) from.</p>
+<p><strong>Note:</strong> you can switch to the formula interface within <code>capscale()</code> and specify the variables to use on the right-hand side of the formula (as shown but not executed). You will (obviously) no longer analyse only the turnover component of <span class="math inline">\(\beta\)</span>-diversity as you’ll be using the raw <code>spp</code> data that encapsulate both nestedness-resultant and turnover processes, but the upshot of this is that you’ll now have species scores. Run this bit of code by yourself and see what the outcome is (the ordiplot is affected, as well as the <span class="math inline">\(R^{2}\)</span>, number of significant reduced axes, etc.).</p>
+<pre class="r"><code>rda_final &lt;- rda_sel2
+# rda_final &lt;- capscale(spp ~ febRange + febSD + augMean + augRange + augSD + annRange + annSD, data = E3, distance = &quot;jaccard&quot;)</code></pre>
+<p>We calculate the significance of the model, the variance explained by all the constraints (in <span class="math inline">\(E3\)</span>) in the final model, as well as the <span class="math inline">\(R^{2}\)</span>:</p>
+<pre class="r"><code># is the fit significant?
+anova(rda_final, parallel = 4) # ... yes!</code></pre>
+<pre><code>## Permutation test for capscale under reduced model
+## Permutation: free
+## Number of permutations: 999
+## 
+## Model: capscale(formula = Y1 ~ febRange + febSD + augMean + augRange + augSD + annRange + annSD, data = E3)
+##          Df SumOfSqs      F Pr(&gt;F)    
+## Model     7   6.8251 45.675  0.001 ***
+## Residual 50   1.0673                  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Which axes are significant?</p>
+<pre class="r"><code>anova(rda_final, by = &quot;axis&quot;, parallel = 4) # ... yes!</code></pre>
+<pre><code>## Permutation test for capscale under reduced model
+## Forward tests for axes
+## Permutation: free
+## Number of permutations: 999
+## 
+## Model: capscale(formula = Y1 ~ febRange + febSD + augMean + augRange + augSD + annRange + annSD, data = E3)
+##          Df SumOfSqs        F Pr(&gt;F)    
+## CAP1      1   5.6179 263.1786  0.001 ***
+## CAP2      1   1.1242  52.6665  0.001 ***
+## CAP3      1   0.0725   3.3978  0.394    
+## CAP4      1   0.0050   0.2320  1.000    
+## CAP5      1   0.0027   0.1274  1.000    
+## CAP6      1   0.0013   0.0632  1.000    
+## CAP7      1   0.0013   0.0622  1.000    
+## Residual 50   1.0673                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Extract the significant variables in <span class="math inline">\(E3\)</span> that are influential in the final model as influencers of seaweed community differences amongsth coastal sections:</p>
+<pre class="r"><code>(rda_final_axis_test &lt;- anova(rda_final, by = &quot;terms&quot;, parallel = 4))</code></pre>
+<pre><code>## Permutation test for capscale under reduced model
+## Terms added sequentially (first to last)
+## Permutation: free
+## Number of permutations: 999
+## 
+## Model: capscale(formula = Y1 ~ febRange + febSD + augMean + augRange + augSD + annRange + annSD, data = E3)
+##          Df SumOfSqs        F Pr(&gt;F)    
+## febRange  1   1.0962  51.3541  0.001 ***
+## febSD     1   0.1850   8.6653  0.001 ***
+## augMean   1   5.3815 252.1023  0.001 ***
+## augRange  1   0.0903   4.2286  0.025 *  
+## augSD     1   0.0212   0.9918  0.355    
+## annRange  1   0.0196   0.9191  0.338    
+## annSD     1   0.0313   1.4666  0.225    
+## Residual 50   1.0673                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>The significant variables are:</p>
+<pre class="r"><code>rda_final_ax &lt;- which(rda_final_axis_test[, 4] &lt; 0.05)
+rda_final_sign_ax &lt;- colnames(E3[,rda_final_ax])
+rda_final_sign_ax</code></pre>
+<pre><code>## [1] &quot;febRange&quot; &quot;febSD&quot;    &quot;augMean&quot;  &quot;augRange&quot;</code></pre>
+<p>The adjusted <span class="math inline">\(R^{2}\)</span> for the constraints:</p>
+<pre class="r"><code>round(rda_final_R2 &lt;- RsquareAdj(rda_final)$adj.r.squared, 2) # %</code></pre>
+<pre><code>## [1] 0.89</code></pre>
+<p>The variance explained by reduced (final) model:</p>
+<pre class="r"><code>round(sum(rda_final$CCA$eig) / rda_final$tot.chi * 100, 2)</code></pre>
+<pre><code>## [1] 90.72</code></pre>
+<p>The biplot scores for constraining variables:</p>
+<pre class="r"><code>scores(rda_final, display = &quot;bp&quot;, choices = c(1:2))</code></pre>
+<pre><code>##                 CAP1        CAP2
+## febRange -0.17951109 -0.90202271
+## febSD    -0.08259676 -0.50969451
+## augMean   0.98516406  0.15657181
+## augRange  0.03499429 -0.14728687
+## augSD    -0.01944793 -0.07441746
+## annRange  0.41313533 -0.18050396
+## annSD     0.20412535 -0.56833391
+## attr(,&quot;const&quot;)
+## [1] 4.550643</code></pre>
+<p>These biplot scores will mark the position of the termini of the arrows that indicate the direction and strength of the constraining variables.</p>
+</div>
+<div id="ordination-diagrams" class="section level2">
+<h2>Ordination diagrams</h2>
+<p>This code recreates Figure 2a in Smit et al. (2017):</p>
+<pre class="r"><code># use scaling = 1 or scaling = 2 for site and species scaling, respectively
+rda_final_scrs &lt;- scores(rda_final, display = c(&quot;sp&quot;, &quot;wa&quot;, &quot;lc&quot;, &quot;bp&quot;))
+# see ?plot.cca for insight into the use of lc vs wa scores
+# below I splot the wa (site) scores rather than lc (constraints) scores
+site_scores &lt;- data.frame(rda_final_scrs$site) # the wa scores
+site_scores$bioreg &lt;- bioreg$bolton
+site_scores$section &lt;- seq(1:58)
+
+biplot_scores &lt;- data.frame(rda_final_scrs$biplot)
+biplot_scores$labels &lt;- rownames(biplot_scores)
+biplot_scores_sign &lt;- biplot_scores[biplot_scores$labels %in% rda_final_sign_ax,]
+
+ggplot(data = site_scores, aes(x = CAP1, y = CAP2, colour = bioreg)) +
+  geom_point(size = 5.0, shape = 24, fill = &quot;white&quot;) +
+  geom_text(aes(label = section), size = 3.0, col = &quot;black&quot;) +
+  geom_label(data = biplot_scores_sign,
+             aes(CAP1, CAP2, label = rownames(biplot_scores_sign)),
+             color = &quot;black&quot;) +
+  geom_segment(data = biplot_scores_sign,
+               aes(x = 0, y = 0, xend = CAP1, yend = CAP2),
+               arrow = arrow(length = unit(0.2, &quot;cm&quot;), type = &quot;closed&quot;),
+               color = &quot;lightseagreen&quot;, alpha = 1, size = 0.7) +
+  xlab(&quot;CAP1&quot;) + ylab(&quot;CAP2&quot;) +
+  ggtitle(expression(paste(&quot;Significant thermal variables and &quot;, beta[sim]))) +
+  theme_grey() +
+  theme(panel.grid.minor = element_blank(),
+        legend.position = &quot;none&quot;,
+        aspect.ratio = 0.8)</code></pre>
+<p><img src="/collection/quantecol/chapters/12-constrained_ordination_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p>Note that in Smit et al. (2017, Fig. 2a) I plot the linear constraints (lc scores) rather than the site scores (wa scores). The fact that the positioning of the site scores in ordination space in the figure, above, represents a crude map of South Africa corresponding with geographical coordinates (N-E-S-W) is coincidental (yet it can be logically explained). The coenoclines and gradients are clearly discernible, and the west to east numbering of sites and transitioning of one bioregon into the next are obvious. This map-like arrangement of sites disappears when lc scores are used, but the interpretation of how the thermal drivers structure seaweed biodiversity remains the same.</p>
+</div>
+<div id="dealing-with-factor-variables" class="section level2">
+<h2>Dealing with factor variables</h2>
+<pre class="r"><code>E4 &lt;- E3
+# append the bioregs after the thermal vars
+E4$bioreg &lt;- bioreg$bolton
+head(E4)</code></pre>
+<pre><code>##      febRange      febSD   augMean    augRange        augSD   annRange
+## 1 -0.04433865 -0.2713395 -1.376511 -0.47349787 -0.409770805 -1.0460150
+## 2 -0.14318268 -0.1083868 -1.433925 -0.06998551 -0.096490845 -0.7657214
+## 3 -0.39321619 -0.1719978 -1.526950  0.02484832  0.009053095 -0.6311568
+## 4 -0.60199306 -0.3120605 -1.579735 -0.05076148  0.005487982 -0.5861267
+## 5 -0.64081940 -0.4095900 -1.546420 -0.09833845  0.041336545 -0.8799034
+## 6 -0.55083241 -0.4294142 -1.458642 -0.11132528  0.095589389 -1.2225182
+##       annSD bioreg
+## 1 -1.636461    BMP
+## 2 -1.307622    BMP
+## 3 -1.143445    BMP
+## 4 -1.074994    BMP
+## 5 -1.200028    BMP
+## 6 -1.343088    BMP</code></pre>
+<pre class="r"><code>rda_cat &lt;- capscale(Y1 ~., E4)
+plot(rda_cat)</code></pre>
+<p><img src="/collection/quantecol/chapters/12-constrained_ordination_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p>The default plot works okay and shows all necessary info, but the various pieces (site, species, and centroid scores) are not clearly discernable. Plot the class (factor) centroids in <code>ggplot()</code>:</p>
+<pre class="r"><code># also extractthe factor centroids for the bioregions
+rda_cat_scrs &lt;- scores(rda_cat, display = c(&quot;sp&quot;, &quot;wa&quot;, &quot;lc&quot;, &quot;bp&quot;, &quot;cn&quot;))
+site_scores &lt;- data.frame(rda_cat_scrs$site) # the wa scores
+site_scores$bioreg &lt;- bioreg$bolton
+site_scores$section &lt;- seq(1:58)
+
+biplot_scores &lt;- data.frame(rda_cat_scrs$biplot)
+biplot_scores$labels &lt;- rownames(biplot_scores)
+biplot_scores_sign &lt;- biplot_scores[biplot_scores$labels %in% rda_final_sign_ax,]
+
+bioreg_centroids &lt;- data.frame(rda_cat_scrs$centroids)
+bioreg_centroids$labels &lt;- rownames(bioreg_centroids)
+  
+ggplot(data = site_scores, aes(CAP1, CAP2, colour = bioreg)) +
+  geom_point(size = 5.0, shape = 24, fill = &quot;white&quot;) +
+  geom_text(aes(label = section), size = 3.0, col = &quot;black&quot;) +
+  geom_label(data = biplot_scores_sign,
+             aes(CAP1, CAP2, label = rownames(biplot_scores_sign)),
+             color = &quot;black&quot;) +
+  geom_segment(data = biplot_scores_sign,
+               aes(x = 0, y = 0, xend = CAP1, yend = CAP2),
+               arrow = arrow(length = unit(0.2, &quot;cm&quot;), type = &quot;closed&quot;),
+               color = &quot;lightseagreen&quot;, alpha = 1, size = 0.7) +
+  geom_label(data = bioreg_centroids,
+             aes(x = CAP1, y = CAP2,
+                 label = labels), size = 4.0,
+             col = &quot;black&quot;, fill = &quot;yellow&quot;) +
+  xlab(&quot;CAP1&quot;) + ylab(&quot;CAP2&quot;) +
+  ggtitle(expression(paste(&quot;Significant thermal variables and &quot;, beta[sim]))) +
+  theme_grey() +
+  theme(panel.grid.minor = element_blank(),
+        legend.position = &quot;none&quot;,
+        aspect.ratio = 0.8)</code></pre>
+<p><img src="/collection/quantecol/chapters/12-constrained_ordination_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+</div>
+<div id="references" class="section level2">
+<h2>References</h2>
+<p>Baselga, A., Orme, D., Villeger, S., De Bortoli, J., and Leprieur, F. (2017). betapart: Partitioning Beta Diversity into Turnover and Nestedness Components. R package version 1.4-1. Available online at: <a href="https://CRAN.R-project.org/package=betapart" class="uri">https://CRAN.R-project.org/package=betapart</a></p>
+<p>Bolton, J. J. (1986). Marine phytogeography of the Benguela upwelling region on the west coast of southern Africa: A temperature dependent approach. Botanica Marina 29, 251–256.</p>
+<p>Bolton, J. J., and Anderson, R. J. (2004). “Marine vegetation,” in Vegetation of Southern Africa, eds R. M. Cowling, D. M. Richardson, and S. M. Pierce, (Cambridge, UK: Cambridge University Press), 348–370.</p>
+<p>Bolton, J. J., and Stegenga, H. (2002). Seaweed species diversity in South Africa. South African Journal of Marine Science 24, 9–18.</p>
+<p>De Clerck, O., Bolton, J. J., Anderson, R. J., and Coppejans, E. (2005). Guide to the seaweeds of KwaZulu- Natal. Scripta Botanica Belgica 33, 294 pp.</p>
+<p>Sauer, J. D. (1988). Plant migration: The dynamics of geographic patterning in seed plant species. University of California Press.</p>
+<p>Smit, A. J., Bolton, J. J., and Anderson, R. J. (2017). Seaweeds in two oceans: beta-diversity. Frontiers in Marine Science, 4, 404.</p>
+<p>Stegenga, H., Bolton, J. J., and Anderson, R. J. (1997). Seaweeds of the South African west coast. Contributions of the Bolus Herbarium 18, 3–637.</p>
+</div>
+
+      </section>
+      <footer class="post-footer">
+        <div class="post-pagination dt w-100 mt4 mb2">
+  
+  
+    <a class="prev dtc pr2 tl v-top fw6"
+    href="/collection/quantecol/chapters/11-nmds_diatoms/">&larr; 11b. nMDS of Mayombo&#39;s diatom data</a>
+  
+  
+  
+    <a class="next dtc pl2 tr v-top fw6"
+    href="/collection/quantecol/chapters/13-cluster_analysis/">13. Cluster analysis &rarr;</a>
+  
+</div>
+
+      </footer>
+    </article>
+    
+  </section>
+</main>
+
+<aside class="page-sidebar" role="complementary">
+                         
+ 
+
+
+
+
+
+
+
+
+
+
+
+  <img src="/collection/featured-sidebar.jpg" class="db ma0">
+
+                         
+ 
+
+
+
+<div class="flex items-start sticky ph4 pb4 flex-row">
+  <div class="w-two-thirds w-50-l ph0">
+    <h2 class="mv3 f5 fw7 ttu tracked">
+      <a class="no-underline dim" href="/collection/">Outline</a></h2>
+    <nav id="SectionTableOfContents" aria-label="SectionTableOfContents">
+        <ul>
+        
+          
+          
+          
+          <details  class="">
+            <summary class="" hugo-nav="/collection/intro_r/"><a href="/collection/intro_r/">BCB744 (Intro R)</a></summary>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/02-rstudio/"><a href="/collection/intro_r/chapters/02-rstudio/">1. RStudio and R</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/03-github/"><a href="/collection/intro_r/chapters/03-github/">2. GitHub</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/04-workflow/"><a href="/collection/intro_r/chapters/04-workflow/">3. An R workflow</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/05-graphics/"><a href="/collection/intro_r/chapters/05-graphics/">4. Graphics with ggplot2</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/06-faceting/"><a href="/collection/intro_r/chapters/06-faceting/">5. Faceting figures</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/07-brewing/"><a href="/collection/intro_r/chapters/07-brewing/">6. Brewing colours</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/08-mapping/"><a href="/collection/intro_r/chapters/08-mapping/">7. Mapping with ggplot2</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/09-mapping_style/"><a href="/collection/intro_r/chapters/09-mapping_style/">8. Mapping with style</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/10-mapping_openstreetmap/"><a href="/collection/intro_r/chapters/10-mapping_openstreetmap/">9. Mapping with OpenStreetMap</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/11-tidy/"><a href="/collection/intro_r/chapters/11-tidy/">10. Tidy data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/12-tidier/"><a href="/collection/intro_r/chapters/12-tidier/">11. Tidier data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/13-tidiest/"><a href="/collection/intro_r/chapters/13-tidiest/">12. Tidiest data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/14-recap/"><a href="/collection/intro_r/chapters/14-recap/">13. Recap</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/15-functions/"><a href="/collection/intro_r/chapters/15-functions/">14. Functions by chapter</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/16-base_r/"><a href="/collection/intro_r/chapters/16-base_r/">15. Base R primer</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/17-dates/"><a href="/collection/intro_r/chapters/17-dates/">16. Dates</a></li>
+            
+          </details>
+          
+          </li>
+        
+          
+          
+          
+          <details  class="">
+            <summary class="" hugo-nav="/collection/biostats/"><a href="/collection/biostats/">BCB744 (Biostats)</a></summary>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/02-data/"><a href="/collection/biostats/chapters/02-data/">1. Types of data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/03-descriptive/"><a href="/collection/biostats/chapters/03-descriptive/">2. Central tendency and dispersion</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/04-graphics/"><a href="/collection/biostats/chapters/04-graphics/">3. Graphical data displays</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/06-t_tests/"><a href="/collection/biostats/chapters/06-t_tests/">5. Inferences about one or two populations</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/07-anova/"><a href="/collection/biostats/chapters/07-anova/">6. Analysis of Variance (ANOVA)</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/08-regressions/"><a href="/collection/biostats/chapters/08-regressions/">7. Simple linear regressions</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/09-correlations/"><a href="/collection/biostats/chapters/09-correlations/">8. Correlation</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/10-confidence/"><a href="/collection/biostats/chapters/10-confidence/">9. Confidence intervals</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/11-transformations/"><a href="/collection/biostats/chapters/11-transformations/">10. Data transformations</a></li>
+            
+          </details>
+          
+          </li>
+        
+          
+          
+          
+          <details open class="active">
+            <summary class="active" hugo-nav="/collection/quantecol/"><a href="/collection/quantecol/">BCB743</a></summary>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/01-data/"><a href="/collection/quantecol/chapters/01-data/">1. Multivariate data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/02-biodiversity/"><a href="/collection/quantecol/chapters/02-biodiversity/">2. Biodiversity</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/03-deep_dive/"><a href="/collection/quantecol/chapters/03-deep_dive/">3. Deep Dive into Gradients</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/04-env_dist/"><a href="/collection/quantecol/chapters/04-env_dist/">4. Environmental Distance</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/05-spp_dissimilarity/"><a href="/collection/quantecol/chapters/05-spp_dissimilarity/">5. Species Dissimilarities</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/06-correlations/"><a href="/collection/quantecol/chapters/06-correlations/">6. Correlations and Associations</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/08_pca/"><a href="/collection/quantecol/chapters/08_pca/">8a. Principal Component Analysis (PCA)</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/08-pca_sdg/"><a href="/collection/quantecol/chapters/08-pca_sdg/">8b. PCA of WHO SDGs</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/09-ca/"><a href="/collection/quantecol/chapters/09-ca/">9. Correspondence Analysis (CA)</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/10-pcoa/"><a href="/collection/quantecol/chapters/10-pcoa/">10. Principal Coordinate Analysis (PCoA)</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/11-nmds/"><a href="/collection/quantecol/chapters/11-nmds/">11a. non-Metric multidimensional scaling (nMDS)</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/11-nmds_diatoms/"><a href="/collection/quantecol/chapters/11-nmds_diatoms/">11b. nMDS of Mayombo&#39;s diatom data</a></li>
+            
+              
+              <li class="active" hugo-nav="/collection/quantecol/chapters/12-constrained_ordination/"><a href="/collection/quantecol/chapters/12-constrained_ordination/">12. Constrained Ordination</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/13-cluster_analysis/"><a href="/collection/quantecol/chapters/13-cluster_analysis/">13. Cluster analysis</a></li>
+            
+          </details>
+          
+          </li>
+        
+        </ul>
+    </nav>
+  </div>
+  <details id="PageTableOfContents">
+    <summary><h2 class="mv0 f5 fw7 ttu tracked dib">On this page<h2></summary>
+    <div class="pl2 pr0 mh0">
+    
+    </div>
+  </details>
+  
+</div>
+
+</aside>
+
+<footer class="site-footer pv4 bt b--transparent ph5" role="contentinfo">
+  <nav class="db dt-l w-100">
+    <p class="site-copyright f7 db dtc-l v-mid w-100 w-33-l tc tl-l pv2 pv0-l mv0 lh-copy">
+      &copy; 2022 University of the Western Cape, Cape Town
+      <span class="middot-divider"></span>
+      Made with <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/hugo-apero/" rel="dct:source">Hugo Apéro</a></span>.
+      <br />
+      
+Based on <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/formspree/blogophonic-hugo" rel="dct:source">Blogophonic</a></span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://formspree.io" property="cc:attributionName" rel="cc:attributionURL">Formspree</a>.
+    </p>
+    
+    <div class="site-social-links db dtc-l v-mid w-100 w-33-l tc pv2 pv0-l mv0">
+      <div class="social-icon-links" aria-hidden="true">
+  
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://github.com/ajsmit/" title="github" target="_blank" rel="noopener">
+      <i class="fab fa-github fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="http://orcid.org/0000-0002-3799-6126" title="orcid" target="_blank" rel="noopener">
+      <i class="ai ai-orcid fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.researchgate.net/profile/Albertus-Smit" title="researchgate" target="_blank" rel="noopener">
+      <i class="ai ai-researchgate fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://uwc.academia.edu/AlbertusSmit" title="academia" target="_blank" rel="noopener">
+      <i class="ai ai-academia fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://scholar.google.co.za/citations?user=ATsBBKoAAAAJ&amp;hl=en" title="google-scholar" target="_blank" rel="noopener">
+      <i class="ai ai-google-scholar fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.instagram.com/ajsmit/" title="instagram" target="_blank" rel="noopener">
+      <i class="fab fa-instagram fa-lg fa-fw"></i>
+    </a>
+  
+</div>
+
+    </div>
+    
+    <div class="site-links f6 db dtc-l v-mid w-100 w-67-l tc tr-l pv2 pv0-l mv0">
+      
+      <a class="dib pv1 ph2 link" href="/license/" title="License">License</a>
+      
+      <a class="dib pv1 ph2 link" href="/contact/" title="Contact form">Contact</a>
+      
+      <a class="dib pv1 ph2 link" href="/contributors/" title="Contributors">Contributors</a>
+      
+    </div>
+  </nav>
+  
+    <script>
+
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (let i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) ||
+            /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+</script>
+
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+
+    
+  
+  
+</footer>
+
+      </div>
+    </body>
+</html>

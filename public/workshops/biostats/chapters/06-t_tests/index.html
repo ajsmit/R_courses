@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  
+                           
+     
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.96.0" />
+<title>5. Inferences about one or two populations | BCB R Stats Pages</title>
+
+
+<meta property="twitter:site" content="@ajsmit">
+<meta property="twitter:creator" content="@ajsmit">
+
+
+
+
+
+
+
+  
+    
+  
+<meta name="description" content="What you need to know upfront.">
+
+
+<meta property="og:site_name" content="BCB R Stats Pages">
+<meta property="og:title" content="5. Inferences about one or two populations | BCB R Stats Pages">
+<meta property="og:description" content="What you need to know upfront." />
+<meta property="og:type" content="page" />
+<meta property="og:url" content="/workshops/biostats/chapters/06-t_tests/" />
+<meta property="og:locale" content="en">
+
+
+
+
+    
+        <meta property="og:image" content="/img/papillons.jpg" >
+        <meta property="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="/img/papillons.jpg" >
+    
+  <meta itemprop="name" content="5. Inferences about one or two populations">
+<meta itemprop="description" content="library(tidyverse) At the heart of many basic scientific inquiries is the simple question “Is A different from B?” The scientific notation for this question is:
+ H0: Group A is not different from group B. H1: Group A is different from group B.  More formally, one would say:
+\(H_{0}: \bar{A} = \bar{B}\) vs. the alternative hypothesis that \(H_{a}: \bar{A} \neq \bar{B}\). \(H_{0}: \bar{A} \leq \bar{B}\) vs. the alternative hypothesis that \(H_{a}: \bar{A} &gt; \bar{B}\)."><meta itemprop="datePublished" content="2021-01-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-01-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="5929">
+<meta itemprop="keywords" content="" />
+  
+  
+  <!--[if IE]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+  
+  
+  <link rel="stylesheet" href="/style.main.min.13dd27d3efb7ed4ad82be3040182ddbf5ab9d3b4d6d01f0ba3930845932fce66.css" integrity="sha256-E90n0&#43;&#43;37UrYK&#43;MEAYLdv1q507TW0B8Lo5MIRZMvzmY=" media="screen">
+  
+  
+  <script src="/panelset.min.8f4cba0107356728f266d94a12a4d18ef504eda8a9a284cda73675bae7884a68.js" type="text/javascript"></script>
+  
+  
+  <script src="/main.min.318ee9c0652bba0149e7503c97e37e638937f3a9cad9233e6d0ba00bf7a46a5e.js" type="text/javascript"></script>
+</head>
+<body>
+      <div class="grid-container single-series">
+<header class="site-header pt4 pb2 mb4 bb b--transparent ph5 headroom z-max" role="banner">
+  <nav class="site-nav db dt-l w-100" role="navigation">
+    <a class="site-brand db dtc-l v-mid link no-underline w-100 w-33-l tc tl-l" href="/" title="Home">
+      <img src="/img/xaringan-outline.png" class="dib db-l h2 w-auto" alt="BCB R Stats Pages">
+    </a>
+    <div class="site-links db dtc-l v-mid w-100 w-47-l tc tr-l mt3 mt0-l ttu tracked">
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/about/" title="About AJ Smit">About</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 active" href="/workshops/" title="BCB Hons">BCB Hons</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/project/" title="Project Portfolio">Projects</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/collection/" title="R Courses">R Courses</a>
+      
+      
+    </div>
+  </nav>
+</header>
+
+
+<main class="page-main ph4 pt4" role="main">
+  <section class="page-content mw7 center">
+    <article class="post-content pa0 pr3-l">
+      <header class="post-header">
+        <h4 class="breadcrumb pb5">
+
+  
+    
+      
+  
+    
+      
+  
+    
+      
+  
+
+    
+    
+      <a href="/workshops/">B.Sc. (Hons.) R modules</a>
+    
+  
+
+    
+    
+      <a href="/workshops/biostats/">BCB744 (Biostats)</a>
+    
+  
+
+    
+    
+      5. Inferences about one or two populations
+    
+  
+
+</h4>
+
+
+
+
+        
+        <h1 class="f1 lh-solid measure-narrow mb3 fw4">5. Inferences about one or two populations</h1>
+        
+        <p class="f6 measure lh-copy mv1"></p>
+        <p class="f7 db mv0 ttu">January 1, 2021</p>
+        
+        
+      
+      <div class="ph0 pt5">
+        
+    
+    
+    
+    
+    
+    
+    
+      
+      
+  <a class="btn-links mr2 ba dib" href="https://ajsmit.github.io/BCB744/t-test_exercises.html" target="_blank" rel="noopener"><i class="fa fa-star fa-lg fa-fw mr2"></i>t_tests Exercises</a>
+
+
+      </div>
+      
+        
+      </header>
+      <section class="post-body pt5 pb4">
+        
+
+
+<!--- # Inferences about one or two populations --->
+<pre class="r"><code>library(tidyverse)</code></pre>
+<p>At the heart of many basic scientific inquiries is the simple question “Is A different from B?” The scientific notation for this question is:</p>
+<ul>
+<li>H0: Group A is not different from group B.</li>
+<li>H1: Group A is different from group B.</li>
+</ul>
+<p>More formally, one would say:</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(H_{0}: \bar{A} = \bar{B}\)</span> vs. the alternative hypothesis that <span class="math inline">\(H_{a}: \bar{A} \neq \bar{B}\)</span>.</li>
+<li><span class="math inline">\(H_{0}: \bar{A} \leq \bar{B}\)</span> vs. the alternative hypothesis that <span class="math inline">\(H_{a}: \bar{A} &gt; \bar{B}\)</span>.</li>
+<li><span class="math inline">\(H_{0}: \bar{A} \geq \bar{B}\)</span> vs. the alternative hypothesis that <span class="math inline">\(H_{a}: \bar{A} &lt; \bar{B}\)</span>.</li>
+</ol>
+<blockquote>
+<p><em>NOTE:</em> Hypothesis 1 is a two-sided <em>t</em>-test and hypotheses 2 and 3 are one-sided tests.</p>
+</blockquote>
+<!-- AJS to insert more about frequentist probability, p-values and significance testing in here. -->
+<p>Biologists typically define the probability of one in twenty (0.05) as the cut-off level to reject the null hypothesis.</p>
+<div id="what-are-probabilities" class="section level2">
+<h2>What are probabilities?</h2>
+<div class="figure">
+<img src="/collection/biostats/chapters/06-t_tests_files/significance.jpeg" style="width:50.0%" alt="" />
+<p class="caption">Approaching significance</p>
+</div>
+<p>The <em>P</em>-value (the significance level, <span class="math inline">\(\alpha\)</span>) is the probability of finding the observed (or measured) outcome to be more extreme (<em>i.e.</em> very different) than that suggested by the null hypothesis (<span class="math inline">\(H_{0}\)</span>). Typically, biologists set the <em>P</em>-value at <span class="math inline">\(\alpha \leq 0.05\)</span>—in other words, the measured outcome of our experiment only has a 1 in 20 chance of being the same as that of the reference (or control) group. So, when the <em>P</em>-value is <span class="math inline">\(\leq\)</span> 0.05, for example, we say that there is a very good probability that our experimental treatment resulted in an outcome that is very different (we say statistically significantly different) from the measurement obtained from the group to which the treatment had not been applied—in this case we do not accept <span class="math inline">\(H_{0}\)</span> and by necessity <span class="math inline">\(H_{1}\)</span> becomes true.</p>
+<p>The choice of <em>P</em>-value at which we reject <span class="math inline">\(H_{0}\)</span> is arbitrary and exists by convention only. Traditionally, the 5% cut-off (<em>i.e.</em> less than 1 in 20 chance of being wrong or <span class="math inline">\(P \leq 0.05\)</span>) is used in biology, but sometimes the threshold is set at 1% or 0.1% (0.01 or 0.001, respectively), particularly in the biomedical sciences where avoiding fasle positives or negatives could be a public health concern. However, more and more biologists shy away from the <em>P</em>-value as they argue that it can give a false sense of security.</p>
+<p>We generally refer to <span class="math inline">\(P \leq 0.05\)</span> as being statistically significant. Statistically highly significant is seen at as <span class="math inline">\(P \leq 0.001\)</span>. In the first instance there is a less than 1 in 20 chance that our experimental sample is not different from the reference group, and in the second instance there is a less than 1 in a 1000 chance tat they are the same. This says something about error rates: the <span class="math inline">\(H_{0}\)</span> may in fact be falsely accepted or rejected. A Type I error is the false rejection of the null hypothesis (<em>i.e.</em> in reality we should not be rejecting it, but the <em>P</em>-value suggests that we must). A Type II error, on the other hand, is the false acceptance of the null hypothesis (<em>i.e.</em> the P-value suggests we should not reject the <span class="math inline">\(H_{0}\)</span>, but in fact we must). When a statistical test results in a <em>P</em>-value of, say, <span class="math inline">\(P \leq 0.05\)</span> we would conclude that our experimental sample is statistically different from the reference group, but probabilistically there is a 1 in 20 change that this outcome is incorrect (<em>i.e.</em> the difference was arrived at by random chance only).</p>
+<p><strong>To conclude, when</strong> <span class="math inline">\(P \gt 0.05\)</span> there is a lack of evidence to suggest that our experiment has had an influential effect of the hypothesised outcome. When <span class="math inline">\(P \leq 0.05\)</span>, however, there is a good probability that the experiment (etc.) has had an effect.</p>
+</div>
+<div id="is-there-a-difference-between-two-groups" class="section level2">
+<h2>Is there a difference between two groups?</h2>
+<p>To answer this fundamental question one often uses a <em>t</em>-test. There are several variations of <em>t</em>-tests, depending on the nature of our samples and the type of question being asked:</p>
+<ul>
+<li><p><strong>One-sample <em>t</em>-tests:</strong> only one sample set of data that we wish to compare against a known population mean:</p>
+<ul>
+<li>one-sided one-sample <em>t</em>-tests</li>
+<li>two-sided one-sample <em>t</em>-tests</li>
+</ul></li>
+<li><p><strong>Two-sample <em>t</em>-tests:</strong> the means of two groups are compared against each other:</p>
+<ul>
+<li><p>independent sample <em>t</em>-tests</p>
+<ul>
+<li>one-sided two-sample <em>t</em>-tests</li>
+<li>two-sided two-sample <em>t</em>-tests</li>
+</ul></li>
+<li><p>paired sample <em>t</em>-tests</p>
+<ul>
+<li>one-sided</li>
+<li>two-sided</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Before we cover each of these, we need to understand some of the assumptions behind <em>t</em>-tests. We shall cover that next.</p>
+</div>
+<div id="assumptions" class="section level2">
+<h2>Assumptions</h2>
+<div class="figure">
+<img src="/collection/biostats/chapters/06-t_tests_files/wahlberg_assumptions.jpeg" style="width:50.0%" alt="" />
+<p class="caption">Wahlberg assumptions</p>
+</div>
+<p>Irrespective of the kind of <em>t</em>-test, we have to make a couple of important assumptions that are <em>not</em> guaranteed to be true. In fact, these assumptions are often violated because real data, especially biological data, are messy. In order to use a <em>t</em>-test to determine if a significant difference between two sample sets of data exists we must first establish that:</p>
+<ul>
+<li>the dependent variable must be continuous (i.e. it is measured at the interval or ratio level),</li>
+<li>the observations in the groups being compared are independent of each other,</li>
+<li>the data are <strong>normally distributed</strong>, and</li>
+<li>that the data are <strong>homoscedastic</strong>, and in particular, that there are no outliers.</li>
+</ul>
+<!-- Insert table showing what the consequences of not meeting the assumptions are. -->
+<!-- Then a and a table showing which tests may be used for those circumstances -->
+<div id="normality" class="section level3">
+<h3>Normality</h3>
+<p>Remember from Chapter 5 what a normal distribution is/looks like? Let’s have a peek below to remind ourselves:</p>
+<pre class="r"><code># Random normal data
+set.seed(666)
+r_dat &lt;- data.frame(dat = c(rnorm(n = 1000, mean = 10, sd = 3),
+                            rnorm(n = 1000, mean = 8, sd = 2)),
+                    sample = c(rep(&quot;A&quot;, 1000), rep(&quot;B&quot;, 1000)))
+
+# Create histogram
+h &lt;- ggplot(data = r_dat, aes(x = dat, fill = sample)) +
+  geom_histogram(position = &quot;dodge&quot;, binwidth = 1, alpha = 0.8) +
+  geom_density(aes(y = 1*..count.., fill = sample), colour = NA, alpha = 0.4) +
+  labs(x = &quot;value&quot;)
+h</code></pre>
+<div class="figure"><span style="display:block;" id="fig:t-test-plot1"></span>
+<img src="/collection/biostats/chapters/06-t_tests_files/figure-html/t-test-plot1-1.png" alt="Interactive histogram showing two randomly generated normal distributions." width="70%" />
+<p class="caption">
+Figure 1: Interactive histogram showing two randomly generated normal distributions.
+</p>
+</div>
+<p>Whereas histograms may be a pretty way to check the normality of our data, there is actually a statistical test for this, which is preferable to a visual inspection alone. But remember that you should <em>always</em> visualise your data before performing any statistics on them. To check the normality of the data we use the Shapiro-Wilk test. This test produces a <span class="math inline">\(W\)</span> value and a <em>p</em>-value. We are only interested in the <em>p</em>-value as this is how we are to determine the normality of the data. The Shapiro–Wilk test tests the null hypothesis that a sample <span class="math inline">\(x_{1},..., x_{n}\)</span> comes from a normally distributed population. i.e. that the normality <em>does not</em> differ significantly from normal. If the <em>p</em>-value is <strong>above</strong> 0.05 we may assume the data to be normally distributed. In order to demonstrate what the output of <code>shapiro.test()</code> looks like we will run it on all of the random data we generated.</p>
+<pre class="r"><code>shapiro.test(r_dat$dat)</code></pre>
+<pre><code>R&gt; 
+R&gt;  Shapiro-Wilk normality test
+R&gt; 
+R&gt; data:  r_dat$dat
+R&gt; W = 0.9942, p-value = 4.649e-07</code></pre>
+<p>Note that this shows that the data are <em>not</em> normally distributed. This is because we have incorrectly run this function simultaneously on two different samples of data. To perform this test correctly, and in the tidy way, we need to select only the second piece of information from the <code>shapiro.test()</code> output and ensure that it is presented as a numeric value:</p>
+<pre class="r"><code># we use the square bracket notation to select only the p-value;
+# had we used `[1]` we&#39;d have gotten W
+r_dat %&gt;% 
+  group_by(sample) %&gt;% 
+  summarise(norm_dat = as.numeric(shapiro.test(dat)[2]))</code></pre>
+<pre><code>R&gt; # A tibble: 2 × 2
+R&gt;   sample norm_dat
+R&gt;   &lt;chr&gt;     &lt;dbl&gt;
+R&gt; 1 A         0.375
+R&gt; 2 B         0.461</code></pre>
+<p>Now we see that our two sample sets are indeed normally distributed.</p>
+<p>What if we find that the data are not normally distributed? Although there are many options, the easiest is to perform a Wilcoxon Rank Sum test, which is the non-parametric equivalent to a <em>t</em>-test (see Section X). Another option is to transform the data (Chapter 11).</p>
+</div>
+<div id="homoscedasticity" class="section level3">
+<h3>Homoscedasticity</h3>
+<p>Besides requiring that our data are normally distributed, we must also ensured that they are homoscedastic. This word means that the scedasticity (variance) of things are homogeneous (similar). In practical terms this means that the variance of the samples we are comparing should not be more than two to four times greater than one another. In R, we use the function <code>var()</code> to check the variance in a sample:</p>
+<pre class="r"><code>r_dat %&gt;% 
+  group_by(sample) %&gt;% 
+  summarise(sample_var = var(dat))</code></pre>
+<pre><code>R&gt; # A tibble: 2 × 2
+R&gt;   sample sample_var
+R&gt;   &lt;chr&gt;       &lt;dbl&gt;
+R&gt; 1 A            8.72
+R&gt; 2 B            3.97</code></pre>
+<p>Above we see that the variance of our two samples are homoscedastic because the variance of one is not more than two to four times greater than the other.</p>
+<p>What if our data are not equal in their variances? This is easier to fix as the solution is built right into the <em>t</em>-test function; all we need to do is to perform Welch Two Sample <em>t</em>-test (the default) in the <code>t.test()</code> function that we shall use below. If the variances are equal, we simply perform a normal Student’s <em>t</em>-test by setting the argument <code>var.equal = TRUE</code> in the function call (see below).</p>
+</div>
+<div id="two-for-one" class="section level3">
+<h3>Two for one</h3>
+<p>Because these two assumptions of normality and homoscedasticty are performed in tandem with one another, it is helpful to have a function that checks for both simultaneously. Below we see how just such a function would be written:</p>
+<pre class="r"><code>two_assum &lt;- function(x) {
+  x_var &lt;- var(x)
+  x_norm &lt;- as.numeric(shapiro.test(x)[2])
+  result &lt;- c(x_var, x_norm)
+  return(result)
+}</code></pre>
+<p>To use our new function in a tidy way we use the following code:</p>
+<pre class="r"><code>r_dat %&gt;% 
+  group_by(sample) %&gt;% 
+  summarise(sample_var = two_assum(dat)[1],
+            sample_norm = two_assum(dat)[2])</code></pre>
+<pre><code>R&gt; # A tibble: 2 × 3
+R&gt;   sample sample_var sample_norm
+R&gt;   &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;
+R&gt; 1 A            8.72       0.375
+R&gt; 2 B            3.97       0.461</code></pre>
+<p>Do these data meet our assumptions? How do we know this?</p>
+<p>If the tests for some or all of the assumptions fail, refer to the Chapter on <a href="https://ajsmit.github.io/R_Stats_Official/11-transformations.html">Assumptions</a> to see how to proceed.</p>
+<p>Once we have tested our assumptions we may perform a <em>t</em>-test to ascertain whether or not our samples are significantly different from one another. The base R function for this is <code>t.test()</code>; however, by utilising the <strong><code>ggpubr</code></strong> package we gain access to <code>compare_means()</code>, which allows us to perform any sort of test that compares sample sets of data and outputs the results as a dataframe. We will see throughout this and the following chapters why this is so useful.</p>
+<pre class="r"><code>library(ggpubr)</code></pre>
+</div>
+</div>
+<div id="one-sample-t-tests" class="section level2">
+<h2>One-sample <em>t</em>-tests</h2>
+<p>Generally when we use a <em>t</em>-test it will be a two-sample <em>t</em>-test (see below). Occasionally, however, we may have only one sample set of data that we wish to compare against a known population mean, which is generally denoted as <span class="math inline">\(\mu\)</span>, or <code>mu</code> in the function call to the <em>t</em>-test in R:</p>
+<pre class="r"><code># create a single sample of random normal data
+set.seed(666)
+r_one &lt;- data.frame(dat = rnorm(n = 20, mean = 20, sd = 5),
+                    sample = &quot;A&quot;)
+
+# check normality
+shapiro.test(r_one$dat)</code></pre>
+<pre><code>R&gt; 
+R&gt;  Shapiro-Wilk normality test
+R&gt; 
+R&gt; data:  r_one$dat
+R&gt; W = 0.94911, p-value = 0.3538</code></pre>
+<pre class="r"><code># No variance to compare
+# ...
+
+# compare random data against a population mean of 20
+t.test(r_one$dat, mu = 20)</code></pre>
+<pre><code>R&gt; 
+R&gt;  One Sample t-test
+R&gt; 
+R&gt; data:  r_one$dat
+R&gt; t = 0.0048653, df = 19, p-value = 0.9962
+R&gt; alternative hypothesis: true mean is not equal to 20
+R&gt; 95 percent confidence interval:
+R&gt;  16.91306 23.10133
+R&gt; sample estimates:
+R&gt; mean of x 
+R&gt;  20.00719</code></pre>
+<pre class="r"><code># compare random data against a population mean of 30
+t.test(r_one$dat, mu = 30)</code></pre>
+<pre><code>R&gt; 
+R&gt;  One Sample t-test
+R&gt; 
+R&gt; data:  r_one$dat
+R&gt; t = -6.7596, df = 19, p-value = 1.858e-06
+R&gt; alternative hypothesis: true mean is not equal to 30
+R&gt; 95 percent confidence interval:
+R&gt;  16.91306 23.10133
+R&gt; sample estimates:
+R&gt; mean of x 
+R&gt;  20.00719</code></pre>
+<p>What do the results of these two different tests show? Let’s visualise these data to get a better understanding.</p>
+<pre class="r"><code>ggplot(data = r_one, aes(y = dat, x = sample)) +
+  geom_boxplot(fill = &quot;lightsalmon&quot;) +
+  # population  mean (mu) = 20
+  geom_hline(yintercept = 20, colour = &quot;blue&quot;, 
+             size = 1, linetype = &quot;dashed&quot;) +
+  # population  mean (mu) = 30
+  geom_hline(yintercept = 30, colour = &quot;red&quot;, 
+             size = 1, linetype = &quot;dashed&quot;) +
+  labs(y = &quot;Value&quot;, x = NULL) +
+  coord_flip()</code></pre>
+<div class="figure"><span style="display:block;" id="fig:t-test-plot2"></span>
+<img src="/collection/biostats/chapters/06-t_tests_files/figure-html/t-test-plot2-1.png" alt="Boxplot of random normal data with. A hypothetical population mean of 20 is shown as a blue line, with the red line showing a mean of 30." width="70%" />
+<p class="caption">
+Figure 2: Boxplot of random normal data with. A hypothetical population mean of 20 is shown as a blue line, with the red line showing a mean of 30.
+</p>
+</div>
+<p>The boxplot above shows the distribution of our random data against two potential population means. Does this help now to illustrate the results of our one-sample <em>t</em>-tests?</p>
+<div id="one-sided-one-sample-t-tests" class="section level3">
+<h3>One-sided one-sample <em>t</em>-tests</h3>
+<p>Remember that a normal distribution has two tails. When we are testing for significance we are generally looking for a result that lays in the far end of either of these tails. Occasionally, however, we may want to know if the result lays specifically in one of the tails. Explicitly the leading or trailing tail. For example, is the mean value of our sample population significantly <em>greater than</em> the value <span class="math inline">\(\mu\)</span>? Or, is the mean value of our sample population significantly <em>less than</em> the value <span class="math inline">\(\mu\)</span>? To specify this in R we must add an argument as seen below:</p>
+<pre class="r"><code># check against the trailing tail
+t.test(r_one$dat, mu = 30, alternative = &quot;less&quot;)</code></pre>
+<pre><code>R&gt; 
+R&gt;  One Sample t-test
+R&gt; 
+R&gt; data:  r_one$dat
+R&gt; t = -6.7596, df = 19, p-value = 9.292e-07
+R&gt; alternative hypothesis: true mean is less than 30
+R&gt; 95 percent confidence interval:
+R&gt;      -Inf 22.56339
+R&gt; sample estimates:
+R&gt; mean of x 
+R&gt;  20.00719</code></pre>
+<pre class="r"><code># check against the leading tail
+t.test(r_one$dat, mu = 30, alternative = &quot;greater&quot;)</code></pre>
+<pre><code>R&gt; 
+R&gt;  One Sample t-test
+R&gt; 
+R&gt; data:  r_one$dat
+R&gt; t = -6.7596, df = 19, p-value = 1
+R&gt; alternative hypothesis: true mean is greater than 30
+R&gt; 95 percent confidence interval:
+R&gt;  17.451    Inf
+R&gt; sample estimates:
+R&gt; mean of x 
+R&gt;  20.00719</code></pre>
+<p>Are these the results we would have expected? Why does the second test not return a significant result?</p>
+<blockquote>
+<p><strong>TASK:</strong> Create a visualisation to graphically demonstrate the outcome of this <em>t</em>-test.</p>
+</blockquote>
+</div>
+<div id="two-sided-one-sample-t-tests" class="section level3">
+<h3>Two-sided one-sample <em>t</em>-tests</h3>
+<p>In R, the default setting for any comparison of means test is that it is two-sided so we do not need to state this explicitly. For the sake of thoroughness let’s see how to do this below. Note that the results for the two following tests are identical:</p>
+<pre class="r"><code># R assumes we want a to-sided test
+t.test(r_one$dat, mu = 30)</code></pre>
+<pre><code>R&gt; 
+R&gt;  One Sample t-test
+R&gt; 
+R&gt; data:  r_one$dat
+R&gt; t = -6.7596, df = 19, p-value = 1.858e-06
+R&gt; alternative hypothesis: true mean is not equal to 30
+R&gt; 95 percent confidence interval:
+R&gt;  16.91306 23.10133
+R&gt; sample estimates:
+R&gt; mean of x 
+R&gt;  20.00719</code></pre>
+<pre class="r"><code># but we can be explicit as we choose
+t.test(r_one$dat, mu = 30, alternative = &quot;two.sided&quot;)</code></pre>
+<pre><code>R&gt; 
+R&gt;  One Sample t-test
+R&gt; 
+R&gt; data:  r_one$dat
+R&gt; t = -6.7596, df = 19, p-value = 1.858e-06
+R&gt; alternative hypothesis: true mean is not equal to 30
+R&gt; 95 percent confidence interval:
+R&gt;  16.91306 23.10133
+R&gt; sample estimates:
+R&gt; mean of x 
+R&gt;  20.00719</code></pre>
+</div>
+</div>
+<div id="two-sample-t-tests" class="section level2">
+<h2>Two-sample <em>t</em>-tests</h2>
+<p>A two-sample <em>t</em>-test is used when we have samples from two different populations that we would like to compare against one another. This is the most common use of a <em>t</em>-test. Two sample <em>t</em>-tests can accommodate samples with equal variances or samples with unequal variances (as determined by the test for heteroscedasticity that we performed earlier).</p>
+<p>In the case of samples that share the same variance we perform a classical <em>t</em>-test (otherwise known as Student’s <em>t</em>-test); the equation to calculate the <em>t</em>-statistic is this one:</p>
+<p><span class="math display">\[t=\frac{\bar{A}-\bar{B}}{\sqrt{\frac{S^{2}}{n}+\frac{S^{2}}{m}}}\]</span> <span class="math inline">\(\bar{A}\)</span> and <span class="math inline">\(\bar{B}\)</span> are the means for groups <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, respectively; <span class="math inline">\(n\)</span> and <span class="math inline">\(m\)</span> are the sample sizes of the two sets of samples, respectively; and <span class="math inline">\(S^{2}\)</span> is the pooled variance, which is calculated as:</p>
+<p><span class="math display">\[S^{2}=\frac{(n-1)S_{A}^{2}+(m-1)S_{B}^{2} }{n+m-2}\]</span> The degrees of freedom, <span class="math inline">\(d.f.\)</span>, in the equation for the shared variance is <span class="math inline">\(n_{A}+m_{B}-2\)</span>.</p>
+<p>When variances are unequal we perform the Welch’s <em>t</em>-test; Welch’s <em>t</em>-statistics is calculated as per this equation:</p>
+<p><span class="math display">\[t=\frac{\bar{A}-\bar{B}}{\sqrt{\frac{S^{2}_{A}}{n}+\frac{S^{2}_{B}}{m}}}\]</span></p>
+<p>Above, <span class="math inline">\(S_{A}\)</span> and <span class="math inline">\(S_{B}\)</span> are the variances of groups <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, respectively (see Section X). The degrees of freedom to use with Welch’s <em>t</em>-test is obtained using the Welch–Satterthwaite equation as:</p>
+<p><span class="math display">\[d.f. = \frac{\left( \frac{S^{2}_{A}}{n}+\frac{S^{2}_{B}}{m} \right)^{2}}{\left( \frac{S^{4}_{A}}{n-1} + \frac{S^{4}_{B}}{m-1} \right)}\]</span></p>
+<p>What do we do with this <em>t</em>-statistic? In the olden days we had to calculate the <span class="math inline">\(t\)</span>-statistics and the <span class="math inline">\(d.f.\)</span> by hand. These two values, the <span class="math inline">\(d.f.\)</span> and <span class="math inline">\(t\)</span>-value had to be read off a table of pre-calculated <span class="math inline">\(t\)</span>-values, probabilities and degrees of freedom <a href="https://home.ubalt.edu/ntsbarsh/Business-stat/StatistialTables.pdf">as in here</a>. Luckily, the <em>t</em>-test function nowadays does this all automagically. But if you are feeling nostalgic over times that you have sadly never experienced, please calculate the <span class="math inline">\(t\)</span>-statistic and the <span class="math inline">\(d.f.\)</span> yourself and give the table a go.</p>
+<p>Back to the present day and the wonders of modern technology. Let’s generate some new random normal data and test to see if the data belonging to the two groups differ significantly from one-another. First, we apply the <em>t</em>-test function as usual:</p>
+<pre class="r"><code># random normal data
+set.seed(666)
+r_two &lt;- data.frame(dat = c(rnorm(n = 20, mean = 4, sd = 1),
+                            rnorm(n = 20, mean = 5, sd = 1)),
+                    sample = c(rep(&quot;A&quot;, 20), rep(&quot;B&quot;, 20)))
+
+# perform t-test
+# note how we set the `var.equal` argument to TRUE because we know 
+# our data has the same SD (they are simulated as such!)
+t.test(dat ~ sample, data = r_two, var.equal = TRUE)</code></pre>
+<pre><code>R&gt; 
+R&gt;  Two Sample t-test
+R&gt; 
+R&gt; data:  dat by sample
+R&gt; t = -1.9544, df = 38, p-value = 0.05805
+R&gt; alternative hypothesis: true difference in means between group A and group B is not equal to 0
+R&gt; 95 percent confidence interval:
+R&gt;  -1.51699175  0.02670136
+R&gt; sample estimates:
+R&gt; mean in group A mean in group B 
+R&gt;        4.001438        4.746584</code></pre>
+<pre class="r"><code># if the variances are not equal, simply set `var.equal` to false
+# and a Welch&#39;s t-test will be performed</code></pre>
+<p>The first argument we see in <code>t.test()</code> is <code>dat ~ sample</code>. Usually in R when we see a <code>~</code> (tilde) we are creating what is known as a formula. A formula tells R how it should look for interactions between data and factors. For example <code>Y ~ X</code> reads: <span class="math inline">\(Y\)</span> as a function of <span class="math inline">\(X\)</span>. In our code above we see <code>dat ~ sample</code>. This means we are telling R that the <em>t</em>-test we want it to perform is when the <code>dat</code> column is a function of the <code>sample</code> column. In plain English we are dividing up the <code>dat</code> column into the two different samples we have, and then running a <em>t</em>-test on these samples. Another way of stating this is that the value of <code>dat</code> depends on the grouping it belong to (<code>A</code> or <code>B</code>). We will see this same formula notation cropping up later under ANOVAs, linear models, etc.</p>
+<blockquote>
+<p><strong>TASK:</strong> Create a visualisation to graphically demonstrate the outcome of this <em>t</em>-test.</p>
+</blockquote>
+<p>Now we do the same test using a convenient function that comes with the <strong>ggpubr</strong> package, called <code>compare_means()</code>, to perform the same <em>t</em>-test:</p>
+<pre class="r"><code># perform t-test using `compare_means()`
+# note that compare_means() takes the same arguments as t.test()
+compare_means(dat ~ sample, data = r_two, method = &quot;t.test&quot;, var.equal = TRUE)</code></pre>
+<pre><code>R&gt; # A tibble: 1 × 8
+R&gt;   .y.   group1 group2      p p.adj p.format p.signif method
+R&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; 
+R&gt; 1 dat   A      B      0.0580 0.058 0.058    ns       T-test</code></pre>
+<p>Note above that in order to tell <code>compare_means()</code> to perform a <em>t</em>-test we feed it the argument <code>method = "t.test"</code>. The output is similar to that of the familiar <code>t.test()</code> function that we used earlier, but the output is more abbreviated and less useful. Typically, the output of the <em>t</em>-tests that we need to report in the results sections of our papers include the <span class="math inline">\(t\)</span>-statistic, the <span class="math inline">\(P\)</span>-value, and the degrees of freedom, <span class="math inline">\(d.f.\)</span>, and these are absent from the <code>compare_means()</code> function’s output.</p>
+<div id="one-sided-two-sample-t-tests" class="section level3">
+<h3>One-sided two-sample <em>t</em>-tests</h3>
+<p>Just as with the one-sample <em>t</em>-tests above, we may also specify which tail of the distribution we are interested in when we compare the means of our two samples. We do so by providing the same arguments as previously:</p>
+<pre class="r"><code># is the mean of sample B smaller than that of sample A?
+compare_means(dat ~ sample, data = r_two, method = &quot;t.test&quot;, var.equal = TRUE, alternative = &quot;less&quot;)</code></pre>
+<pre><code>R&gt; # A tibble: 1 × 8
+R&gt;   .y.   group1 group2     p p.adj p.format p.signif method
+R&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; 
+R&gt; 1 dat   A      B      0.971  0.97 0.97     ns       T-test</code></pre>
+<pre class="r"><code># is the mean of sample B greater than that of sample A?
+compare_means(dat ~ sample, data = r_two, method = &quot;t.test&quot;, var.equal = TRUE, alternative = &quot;greater&quot;)</code></pre>
+<pre><code>R&gt; # A tibble: 1 × 8
+R&gt;   .y.   group1 group2      p p.adj p.format p.signif method
+R&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; 
+R&gt; 1 dat   A      B      0.0290 0.029 0.029    *        T-test</code></pre>
+<p>What do these results show? Is this surprising?</p>
+</div>
+<div id="two-sided-two-sample-t-tests" class="section level3">
+<h3>Two-sided two-sample <em>t</em>-tests</h3>
+<p>Again, as stated above, the default setting in R for comparisons of means is that the test is two-sided. If one wants to state this explicitly it may be done as previously. Note that the results are identical.</p>
+<pre class="r"><code># default settings
+compare_means(dat ~ sample, data = r_two, method = &quot;t.test&quot;)</code></pre>
+<pre><code>R&gt; # A tibble: 1 × 8
+R&gt;   .y.   group1 group2      p p.adj p.format p.signif method
+R&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; 
+R&gt; 1 dat   A      B      0.0584 0.058 0.058    ns       T-test</code></pre>
+<pre class="r"><code># explicitly state a two-sided test
+compare_means(dat ~ sample, data = r_two, method = &quot;t.test&quot;, alternative = &quot;two.sided&quot;)</code></pre>
+<pre><code>R&gt; # A tibble: 1 × 8
+R&gt;   .y.   group1 group2      p p.adj p.format p.signif method
+R&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; 
+R&gt; 1 dat   A      B      0.0584 0.058 0.058    ns       T-test</code></pre>
+</div>
+</div>
+<div id="paired-t-tests" class="section level2">
+<h2>Paired <em>t</em>-tests</h2>
+<p>Paired <em>t</em>-tests are done when comparing matched samples, and in other words, when our second assumption of <em>t</em>-tests is violated: the observations are independent of one another—in paired samples, clearly they are not independent. This test is also sometimes called a dependent sample <em>t</em>-test.</p>
+<p>For example, we design a survey to determine if, in a group of 20 people, individuals’ right arms differ in length from that of their left arms. For person A, we measure her right arm and her left arm. For person B we measure his right arm and his left arm. So we go all the way to person 20. A right arm belonging with one individual is always matched against a left arm in the same individual. The samples are paired so we use a paired <em>t</em>-test. Another example: we follow the growth of a sample of 20 piglets over three weeks to see if they weigh more after three weeks than they did at the start of the assessment period. We measure the first piglet, named Halal, at the start of the three week period and again after. We do the same for the second piglet, Kosher. And so it goes. Each piglet has a paired set of measurements, one before matched with one after. In both these examples the data in the two groups (left arm and right arm; or before and after) are not independent, so we need to account for this in the analysis. In practice, how do we perform such a <em>t</em>-test? Who can think of a dataset we’ve used in the past that we would use a paired <em>t</em>-test for?</p>
+<pre class="r"><code>compare_means(dat ~ sample, data = r_two, method = &quot;t.test&quot;, paired = TRUE)</code></pre>
+<pre><code>R&gt; # A tibble: 1 × 8
+R&gt;   .y.   group1 group2      p p.adj p.format p.signif method
+R&gt;   &lt;chr&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; 
+R&gt; 1 dat   A      B      0.0391 0.039 0.039    *        T-test</code></pre>
+</div>
+<div id="comparison-of-two-population-proportions" class="section level2">
+<h2>Comparison of two population proportions</h2>
+<p>All of the tests we covered above are designed to deal with continuous data, such as fish lengths or chlorophyll content. If we want to compare proportions (probabilities of success) of different samples against each other, or some known population mean, we need <code>prop.test()</code>. Let’s create a dummy dataset to get a better idea of how this function works. Below we create some data showing the result of placing two different subjects, Jack and Jill, in separate sealed rooms for two hours (120 minutes). Once every minute a mosquito is let into the room before being extracted again. The columns <code>yes</code> and <code>no</code> show if the mosquito bit the subject during that one minute. Who says science can’t be fun!</p>
+<pre class="r"><code>mosquito &lt;- matrix(c(70, 85, 50, 35), ncol = 2)
+colnames(mosquito) &lt;- c(&quot;yes&quot;, &quot;no&quot;)
+rownames(mosquito) &lt;- c(&quot;Jack&quot;, &quot;Jill&quot;)
+mosquito</code></pre>
+<pre><code>R&gt;      yes no
+R&gt; Jack  70 50
+R&gt; Jill  85 35</code></pre>
+<div id="one-sample-and-two-sample-tests" class="section level3">
+<h3>One-sample and two-sample tests</h3>
+<p>As with <em>t</em>-tests, proportion tests may also be based on one sample, or two. If we have only one sample we must specify the total number of trials as well as what the expected population probability of success is. Because these are individual values, and not matrices, we will show what this would look like without using any objects but will rather give each argument within <code>prop.test()</code> a single exact value. In the arguments within <code>prop.test()</code>, <code>x</code> denotes the number of successes recorded, <code>n</code> shows the total number of individual trials performed, and <code>p</code> is the expected probability. It is easiest to consider this as though it were a series of 100 coin tosses.</p>
+<pre class="r"><code># When the probability matches the population
+prop.test(x = 45, n = 100, p = 0.5)</code></pre>
+<pre><code>R&gt; 
+R&gt;  1-sample proportions test with continuity correction
+R&gt; 
+R&gt; data:  45 out of 100, null probability 0.5
+R&gt; X-squared = 0.81, df = 1, p-value = 0.3681
+R&gt; alternative hypothesis: true p is not equal to 0.5
+R&gt; 95 percent confidence interval:
+R&gt;  0.3514281 0.5524574
+R&gt; sample estimates:
+R&gt;    p 
+R&gt; 0.45</code></pre>
+<pre class="r"><code># When it doesn&#39;t
+prop.test(x = 33, n = 100, p = 0.5)</code></pre>
+<pre><code>R&gt; 
+R&gt;  1-sample proportions test with continuity correction
+R&gt; 
+R&gt; data:  33 out of 100, null probability 0.5
+R&gt; X-squared = 10.89, df = 1, p-value = 0.0009668
+R&gt; alternative hypothesis: true p is not equal to 0.5
+R&gt; 95 percent confidence interval:
+R&gt;  0.2411558 0.4320901
+R&gt; sample estimates:
+R&gt;    p 
+R&gt; 0.33</code></pre>
+<p>If we have two samples that we would like to compare against one another we enter them into the function as follows:</p>
+<pre class="r"><code># NB: Note that the `mosquito` data are a matrix, NOT a data.frame
+prop.test(mosquito)</code></pre>
+<pre><code>R&gt; 
+R&gt;  2-sample test for equality of proportions with continuity correction
+R&gt; 
+R&gt; data:  mosquito
+R&gt; X-squared = 3.5704, df = 1, p-value = 0.05882
+R&gt; alternative hypothesis: two.sided
+R&gt; 95 percent confidence interval:
+R&gt;  -0.253309811  0.003309811
+R&gt; sample estimates:
+R&gt;    prop 1    prop 2 
+R&gt; 0.5833333 0.7083333</code></pre>
+<p>Do mosquito’s bite Jack and Jill at different proportions?</p>
+</div>
+<div id="one-sided-and-two-sided-tests" class="section level3">
+<h3>One-sided and two-sided tests</h3>
+<p>AS with all other tests that compare values, proportion tests may be specified as either one or two-sided. Just to be clear, the default setting for <code>prop.test()</code>, like everything else, is a two-sided test. See code below to confirm that the results are identical with or without the added argument:</p>
+<pre class="r"><code># Default
+prop.test(mosquito)</code></pre>
+<pre><code>R&gt; 
+R&gt;  2-sample test for equality of proportions with continuity correction
+R&gt; 
+R&gt; data:  mosquito
+R&gt; X-squared = 3.5704, df = 1, p-value = 0.05882
+R&gt; alternative hypothesis: two.sided
+R&gt; 95 percent confidence interval:
+R&gt;  -0.253309811  0.003309811
+R&gt; sample estimates:
+R&gt;    prop 1    prop 2 
+R&gt; 0.5833333 0.7083333</code></pre>
+<pre class="r"><code># Explicitly state two-sided test
+prop.test(mosquito, alternative = &quot;two.sided&quot;)</code></pre>
+<pre><code>R&gt; 
+R&gt;  2-sample test for equality of proportions with continuity correction
+R&gt; 
+R&gt; data:  mosquito
+R&gt; X-squared = 3.5704, df = 1, p-value = 0.05882
+R&gt; alternative hypothesis: two.sided
+R&gt; 95 percent confidence interval:
+R&gt;  -0.253309811  0.003309811
+R&gt; sample estimates:
+R&gt;    prop 1    prop 2 
+R&gt; 0.5833333 0.7083333</code></pre>
+<p>Should we want to specify only one of the tails to be considered, we do so precisely the same as with t-tests. Below are examples of what this code would look like:</p>
+<pre class="r"><code># Jack is bit less than Jill
+prop.test(mosquito, alternative = &quot;less&quot;)</code></pre>
+<pre><code>R&gt; 
+R&gt;  2-sample test for equality of proportions with continuity correction
+R&gt; 
+R&gt; data:  mosquito
+R&gt; X-squared = 3.5704, df = 1, p-value = 0.02941
+R&gt; alternative hypothesis: less
+R&gt; 95 percent confidence interval:
+R&gt;  -1.00000000 -0.01597923
+R&gt; sample estimates:
+R&gt;    prop 1    prop 2 
+R&gt; 0.5833333 0.7083333</code></pre>
+<pre class="r"><code># Jack is bit more than Jill
+prop.test(mosquito, alternative = &quot;greater&quot;)</code></pre>
+<pre><code>R&gt; 
+R&gt;  2-sample test for equality of proportions with continuity correction
+R&gt; 
+R&gt; data:  mosquito
+R&gt; X-squared = 3.5704, df = 1, p-value = 0.9706
+R&gt; alternative hypothesis: greater
+R&gt; 95 percent confidence interval:
+R&gt;  -0.2340208  1.0000000
+R&gt; sample estimates:
+R&gt;    prop 1    prop 2 
+R&gt; 0.5833333 0.7083333</code></pre>
+<p>Do these results differ from the two-sided test? What is different?</p>
+</div>
+</div>
+<div id="a-t-test-workflow" class="section level2">
+<h2>A <em>t</em>-test workflow</h2>
+<p>Now that we have seen how to compare the means of two sample sets of data, let’s see what that complete workflow would look like in R. For this example we will use the <code>ecklonia</code> data from <a href="https://robwschlegel.github.io/Intro_R_Workshop/">Intro R Workshop: Data Manipulation, Analysis and Graphing</a>.</p>
+<div id="loading-data" class="section level3">
+<h3>Loading data</h3>
+<p>Before we can run any analyses we will need to load our data. We are also going to convert these data from their wide format into a long format because this is more useful for the rest of our workflow.</p>
+<pre class="r"><code>ecklonia &lt;- read_csv(&quot;../../../../static/data/ecklonia.csv&quot;) %&gt;% 
+  gather(key = &quot;variable&quot;, value = &quot;value&quot;, -species, -site, -ID)</code></pre>
+</div>
+<div id="visualising-data" class="section level3">
+<h3>Visualising data</h3>
+<p>With our data loaded, let’s visualise them in order to ensure that these are indeed the data we are after. Visualising the data will also help us to formulate a hypothesis.</p>
+<pre class="r"><code>ggplot(data = ecklonia, aes(x = variable, y = value, fill = site)) +
+  geom_boxplot() +
+  coord_flip()</code></pre>
+<div class="figure"><span style="display:block;" id="fig:t-test-plot5"></span>
+<img src="/collection/biostats/chapters/06-t_tests_files/figure-html/t-test-plot5-1.png" alt="Boxplots showing differences in morphometric properties of the kelp _Ecklonia maxima_ at two sites in False Bay." width="70%" />
+<p class="caption">
+Figure 3: Boxplots showing differences in morphometric properties of the kelp <em>Ecklonia maxima</em> at two sites in False Bay.
+</p>
+</div>
+<p>The first thing we should notice from the figure above is that our different measurements are on very different scales. This makes comparing all of our data visually rather challenging. Even given this complication, one should readily be able to make out that the measurement values at Batsata Rock appear to be greater than at Boulders Beach. Within the framework of the scientific process, that is what we would call an “observation”, and is the first step towards formulating a hypothesis. The next step is to refine our observation into a hypothesis. By what measurement are the kelps greater at one site than the other?</p>
+</div>
+<div id="formulating-a-hypothesis" class="section level3">
+<h3>Formulating a hypothesis</h3>
+<p>Looking at the figure above it appears that for almost all measurements of length, Batsata Rock far exceeds that of Boulders Beach however, the stipe masses between the two sites appear to be more similar. Let’s pull out just this variable and create a new boxplot.</p>
+<pre class="r"><code># filter the data
+ecklonia_sub &lt;- ecklonia %&gt;% 
+  filter(variable == &quot;stipe_mass&quot;)
+
+# then create a new figure
+ggplot(data = ecklonia_sub, aes(x = variable, y = value, fill = site)) +
+  geom_boxplot() +
+  coord_flip() +
+  labs(y = &quot;stipe mass (kg)&quot;, x = &quot;&quot;) +
+  theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank())</code></pre>
+<div class="figure"><span style="display:block;" id="fig:t-test-plot6"></span>
+<img src="/collection/biostats/chapters/06-t_tests_files/figure-html/t-test-plot6-1.png" alt="Boxplots showing the difference in stipe mass (kg) of the kelp _Ecklonia maxima_ at two sites in False Bay." width="70%" />
+<p class="caption">
+Figure 4: Boxplots showing the difference in stipe mass (kg) of the kelp <em>Ecklonia maxima</em> at two sites in False Bay.
+</p>
+</div>
+<p>Now we have a more interesting comparison at hand. The question I think of when I look at these data is “Are the stipe masses at Batsata Rock greater than at Boulders Beach?”. The hypothesis necessary to answer this question would look like this:</p>
+<ul>
+<li>H0: Stipe mass at Batsata Rock <strong>is not</strong> greater than at Boulders Beach.</li>
+<li>H1: Stipe mass at Batsata Rock <strong>is</strong> greater than at Boulders Beach.</li>
+</ul>
+<p>Or more formally:</p>
+<ul>
+<li><span class="math inline">\(H_{0}: \bar{A} \leq \bar{B}\)</span></li>
+<li><span class="math inline">\(H_{a}: \bar{A} &gt; \bar{B}\)</span>.</li>
+</ul>
+<p>Which test must we use for this hypothesis?</p>
+</div>
+<div id="choosing-a-test" class="section level3">
+<h3>Choosing a test</h3>
+<p>Before we can pick the correct statistical test for our hypothesis, we need to be clear on what it is we are asking. Starting with the data being used is usually a good first step. As we may see in the above figure, we have two sample sets that we are comparing. Therefore, unsurprisingly, we will likely be using a <em>t</em>-test. But we’re not done yet. How is it that we are comparing these two sample sets? Remember from the examples above that there are multiple different ways to compare two sets of data. For our hypothesis we want to see if the stipe mass at Batsata Rock is <strong>greater than</strong> the stipe mass at Boulders Beach, not just that they are different. Because of this we will need a one-sided <em>t</em>-test. But wait, there’s more! We’ve zeroed in on which sort of test would be appropriate for our hypothesis, but before we run it we need to check our assumptions.</p>
+</div>
+<div id="checking-assumptions" class="section level3">
+<h3>Checking assumptions</h3>
+<p>In case we forgot, here are the assumptions for a <em>t</em>-test:</p>
+<ul>
+<li>the dependent variable must be continuous (i.e. it is measured at the interval or ratio level),</li>
+<li>the observations in the groups being compared are independent of each other,</li>
+<li>the data are <strong>normally distributed</strong>, and</li>
+<li>that the data are <strong>homoscedastic</strong>, and in particular, that there are no outliers.</li>
+</ul>
+<p>We know that the first two assumptions are met because our data are measurements of mass at two different sites. Before we can run our one-sided <em>t</em>-test we must meet the last two assumptions. Lucky us, we have a function tat will do that automagically.</p>
+<p>Please refer to the Chapter on <a href="https://ajsmit.github.io/R_Stats_Official/11-transformations.html">Assumptions</a> to see what to do if the assumptions fail.</p>
+<pre class="r"><code>ecklonia_sub %&gt;% 
+  group_by(site) %&gt;% 
+  summarise(stipe_mass_var = two_assum(value)[1],
+            stipe_mass_norm = two_assum(value)[2])</code></pre>
+<pre><code>R&gt; # A tibble: 2 × 3
+R&gt;   site           stipe_mass_var stipe_mass_norm
+R&gt;   &lt;chr&gt;                   &lt;dbl&gt;           &lt;dbl&gt;
+R&gt; 1 Batsata Rock             2.00           0.813
+R&gt; 2 Boulders Beach           2.64           0.527</code></pre>
+<p>Lovely. On to the next step.</p>
+</div>
+<div id="running-an-analysis" class="section level3">
+<h3>Running an analysis</h3>
+<p>With our assumptions checked, we may now analyse our data. We’ll see below how to do this with both of the functions we’ve learned in this chapter for comparing means of two sample sets.</p>
+<pre class="r"><code># traditional output
+t.test(value ~ site, data = ecklonia_sub, var.equal = TRUE, alternative = &quot;greater&quot;)</code></pre>
+<pre><code>R&gt; 
+R&gt;  Two Sample t-test
+R&gt; 
+R&gt; data:  value by site
+R&gt; t = 1.8741, df = 24, p-value = 0.03657
+R&gt; alternative hypothesis: true difference in means between group Batsata Rock and group Boulders Beach is greater than 0
+R&gt; 95 percent confidence interval:
+R&gt;  0.09752735        Inf
+R&gt; sample estimates:
+R&gt;   mean in group Batsata Rock mean in group Boulders Beach 
+R&gt;                     6.116154                     4.996154</code></pre>
+<pre class="r"><code># dataframe output
+compare_means(value ~ site, data = ecklonia_sub, method = &quot;t.test&quot;, var.equal = TRUE, alternative = &quot;greater&quot;)</code></pre>
+<pre><code>R&gt; # A tibble: 1 × 8
+R&gt;   .y.   group1         group2            p p.adj p.format p.signif method
+R&gt;   &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;    &lt;chr&gt; 
+R&gt; 1 value Boulders Beach Batsata Rock 0.0366 0.037 0.037    *        T-test</code></pre>
+</div>
+<div id="interpreting-the-results" class="section level3">
+<h3>Interpreting the results</h3>
+<p>We may reject the null hypothesis that the stipe mass of kelps at Batsata Rock are not greater than at Boulders Beach if our <em>t</em>-test returns a <em>p</em>-value <span class="math inline">\(\leq\)</span> 0.05. We must also pay attention to some of the other results from our <em>t</em>-test, specifically the <em>t</em>-value (t) and the degrees of freedom (df) as these are also needed when we are writing up our results. From all of the information above, we may accept the alternative hypothesis. But how do we write that up?</p>
+</div>
+<div id="drawing-conclusions" class="section level3">
+<h3>Drawing conclusions</h3>
+<p>There are many ways to present ones findings. Style, without <em>too much</em> flourish, is encouraged as long as certain necessary pieces of information are provided. The sentence below is a very minimalist example of how one may conclude this mini research project. A more thorough explanation would be desirable.</p>
+<blockquote>
+<p>The stipe mass (kg) of the kelp <em>Ecklonia maxima</em> was found to be significantly greater at Batsata Rock than at Boulders Beach (<em>p</em> = 0.03, <em>t</em> = 1.87, df = 24).</p>
+</blockquote>
+</div>
+<div id="going-further" class="section level3">
+<h3>Going further</h3>
+<p>But why though? As is often the case in life, and science is no exception, answers to our questions just create even more questions! Why would the mass of kelp stipes at one locations in the same body of water and only a kilometre or so apart be significantly different? It looks like we are going to need to design a new experiment… Masters thesis anyone?</p>
+</div>
+</div>
+
+      </section>
+      <footer class="post-footer">
+        <div class="post-pagination dt w-100 mt4 mb2">
+  
+  
+    <a class="prev dtc pr2 tl v-top fw6"
+    href="/workshops/biostats/chapters/04-graphics/">&larr; 3. Graphical data displays</a>
+  
+  
+  
+    <a class="next dtc pl2 tr v-top fw6"
+    href="/workshops/biostats/chapters/07-anova/">6. Analysis of Variance (ANOVA) &rarr;</a>
+  
+</div>
+
+      </footer>
+    </article>
+    
+      
+<div class="post-comments pa0 pa4-l mt4">
+  
+  <script src="https://utteranc.es/client.js"
+          repo="robwschlegel/heatwaveR"
+          issue-term="pathname"
+          theme="boxy-light"
+          label="comments :crystal_ball:"
+          crossorigin="anonymous"
+          async
+          type="text/javascript">
+  </script>
+  
+</div>
+
+    
+  </section>
+</main>
+
+<aside class="page-sidebar" role="complementary">
+                         
+ 
+
+
+
+
+
+
+
+
+
+
+
+  <img src="/workshops/featured-sidebar.jpg" class="db ma0">
+
+                         
+ 
+
+
+
+<div class="flex items-start sticky ph4 pb4 flex-row">
+  <div class="w-two-thirds w-50-l ph0">
+    <h2 class="mv3 f5 fw7 ttu tracked">
+      <a class="no-underline dim" href="/workshops/">Outline</a></h2>
+    <nav id="SectionTableOfContents" aria-label="SectionTableOfContents">
+        <ul>
+        
+          
+          
+          
+          <details  class="">
+            <summary class="" hugo-nav="/workshops/intro_r/"><a href="/workshops/intro_r/">BCB744 (Intro R)</a></summary>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/02-rstudio/"><a href="/workshops/intro_r/chapters/02-rstudio/">1. RStudio and R</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/03-github/"><a href="/workshops/intro_r/chapters/03-github/">2. GitHub</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/04-workflow/"><a href="/workshops/intro_r/chapters/04-workflow/">3. An R workflow</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/05-graphics/"><a href="/workshops/intro_r/chapters/05-graphics/">4. Graphics with ggplot2</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/06-faceting/"><a href="/workshops/intro_r/chapters/06-faceting/">5. Faceting figures</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/07-brewing/"><a href="/workshops/intro_r/chapters/07-brewing/">6. Brewing colours</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/08-mapping/"><a href="/workshops/intro_r/chapters/08-mapping/">7. Mapping with ggplot2</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/09-mapping_style/"><a href="/workshops/intro_r/chapters/09-mapping_style/">8. Mapping with style</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/10-mapping_openstreetmap/"><a href="/workshops/intro_r/chapters/10-mapping_openstreetmap/">9. Mapping with OpenStreetMap</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/11-tidy/"><a href="/workshops/intro_r/chapters/11-tidy/">10. Tidy data</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/12-tidier/"><a href="/workshops/intro_r/chapters/12-tidier/">11. Tidier data</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/13-tidiest/"><a href="/workshops/intro_r/chapters/13-tidiest/">12. Tidiest data</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/14-recap/"><a href="/workshops/intro_r/chapters/14-recap/">13. Recap</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/15-functions/"><a href="/workshops/intro_r/chapters/15-functions/">14. Functions by chapter</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/16-base_r/"><a href="/workshops/intro_r/chapters/16-base_r/">15. Base R primer</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/17-dates/"><a href="/workshops/intro_r/chapters/17-dates/">16. Dates</a></li>
+            
+          </details>
+          
+          </li>
+        
+          
+          
+          
+          <details open class="active">
+            <summary class="active" hugo-nav="/workshops/biostats/"><a href="/workshops/biostats/">BCB744 (Biostats)</a></summary>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/02-data/"><a href="/workshops/biostats/chapters/02-data/">1. Types of data</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/03-descriptive/"><a href="/workshops/biostats/chapters/03-descriptive/">2. Central tendency and dispersion</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/04-graphics/"><a href="/workshops/biostats/chapters/04-graphics/">3. Graphical data displays</a></li>
+            
+              
+              <li class="active" hugo-nav="/workshops/biostats/chapters/06-t_tests/"><a href="/workshops/biostats/chapters/06-t_tests/">5. Inferences about one or two populations</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/07-anova/"><a href="/workshops/biostats/chapters/07-anova/">6. Analysis of Variance (ANOVA)</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/08-regressions/"><a href="/workshops/biostats/chapters/08-regressions/">7. Simple linear regressions</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/09-correlations/"><a href="/workshops/biostats/chapters/09-correlations/">8. Correlation</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/10-confidence/"><a href="/workshops/biostats/chapters/10-confidence/">9. Confidence intervals</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/11-transformations/"><a href="/workshops/biostats/chapters/11-transformations/">10. Data transformations</a></li>
+            
+          </details>
+          
+          </li>
+        
+          
+          
+          
+          <details  class="">
+            <summary class="" hugo-nav="/workshops/quantecol/"><a href="/workshops/quantecol/">BCB743</a></summary>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/01-data/"><a href="/workshops/quantecol/chapters/01-data/">1. Multivariate data</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/02-biodiversity/"><a href="/workshops/quantecol/chapters/02-biodiversity/">2. Biodiversity</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/03-deep_dive/"><a href="/workshops/quantecol/chapters/03-deep_dive/">3. Deep Dive into Gradients</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/04-env_dist/"><a href="/workshops/quantecol/chapters/04-env_dist/">4. Environmental Distance</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/05-spp_dissimilarity/"><a href="/workshops/quantecol/chapters/05-spp_dissimilarity/">5. Species Dissimilarities</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/06-correlations/"><a href="/workshops/quantecol/chapters/06-correlations/">6. Correlations and Associations</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/08_pca/"><a href="/workshops/quantecol/chapters/08_pca/">8a. Principal Component Analysis (PCA)</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/08-pca_sdg/"><a href="/workshops/quantecol/chapters/08-pca_sdg/">8b. PCA of WHO SDGs</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/09-ca/"><a href="/workshops/quantecol/chapters/09-ca/">9. Correspondence Analysis (CA)</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/10-pcoa/"><a href="/workshops/quantecol/chapters/10-pcoa/">10. Principal Coordinate Analysis (PCoA)</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/11-nmds/"><a href="/workshops/quantecol/chapters/11-nmds/">11a. non-Metric multidimensional scaling (nMDS)</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/11-nmds_diatoms/"><a href="/workshops/quantecol/chapters/11-nmds_diatoms/">11b. nMDS of Mayombo&#39;s diatom data</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/12-constrained_ordination/"><a href="/workshops/quantecol/chapters/12-constrained_ordination/">12. Constrained Ordination</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/13-cluster_analysis/"><a href="/workshops/quantecol/chapters/13-cluster_analysis/">13. Cluster analysis</a></li>
+            
+          </details>
+          
+          </li>
+        
+        </ul>
+    </nav>
+  </div>
+  <details id="PageTableOfContents">
+    <summary><h2 class="mv0 f5 fw7 ttu tracked dib">On this page<h2></summary>
+    <div class="pl2 pr0 mh0">
+    
+    </div>
+  </details>
+  
+</div>
+
+</aside>
+
+<footer class="site-footer pv4 bt b--transparent ph5" role="contentinfo">
+  <nav class="db dt-l w-100">
+    <p class="site-copyright f7 db dtc-l v-mid w-100 w-33-l tc tl-l pv2 pv0-l mv0 lh-copy">
+      &copy; 2022 University of the Western Cape, Cape Town
+      <span class="middot-divider"></span>
+      Made with <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/hugo-apero/" rel="dct:source">Hugo Apéro</a></span>.
+      <br />
+      
+Based on <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/formspree/blogophonic-hugo" rel="dct:source">Blogophonic</a></span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://formspree.io" property="cc:attributionName" rel="cc:attributionURL">Formspree</a>.
+    </p>
+    
+    <div class="site-social-links db dtc-l v-mid w-100 w-33-l tc pv2 pv0-l mv0">
+      <div class="social-icon-links" aria-hidden="true">
+  
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://github.com/ajsmit/" title="github" target="_blank" rel="noopener">
+      <i class="fab fa-github fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="http://orcid.org/0000-0002-3799-6126" title="orcid" target="_blank" rel="noopener">
+      <i class="ai ai-orcid fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.researchgate.net/profile/Albertus-Smit" title="researchgate" target="_blank" rel="noopener">
+      <i class="ai ai-researchgate fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://uwc.academia.edu/AlbertusSmit" title="academia" target="_blank" rel="noopener">
+      <i class="ai ai-academia fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://scholar.google.co.za/citations?user=ATsBBKoAAAAJ&amp;hl=en" title="google-scholar" target="_blank" rel="noopener">
+      <i class="ai ai-google-scholar fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.instagram.com/ajsmit/" title="instagram" target="_blank" rel="noopener">
+      <i class="fab fa-instagram fa-lg fa-fw"></i>
+    </a>
+  
+</div>
+
+    </div>
+    
+    <div class="site-links f6 db dtc-l v-mid w-100 w-67-l tc tr-l pv2 pv0-l mv0">
+      
+      <a class="dib pv1 ph2 link" href="/license/" title="License">License</a>
+      
+      <a class="dib pv1 ph2 link" href="/contact/" title="Contact form">Contact</a>
+      
+      <a class="dib pv1 ph2 link" href="/contributors/" title="Contributors">Contributors</a>
+      
+    </div>
+  </nav>
+  
+    <script>
+
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (let i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) ||
+            /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+</script>
+
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+
+    
+  
+  
+</footer>
+
+      </div>
+    </body>
+</html>

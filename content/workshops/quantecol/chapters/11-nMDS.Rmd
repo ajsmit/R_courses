@@ -1,0 +1,108 @@
+---
+date: "2021-01-01"
+draft: false
+excerpt: What you need to know upfront.
+subtitle: ""
+title: "11a. non-Metric multidimensional scaling (nMDS)"
+weight: 14
+---
+
+<!--- # Topic 11: non-Metric multidimensional scaling (nMDS) --->
+
+nMDS is a rank-based *indirect gradient analysis* (i.e. not an eigen-analysis) that uses a distance or dissimilarity matrix as input. Whereas the ordination methods discussed thus far try to maximise the variance or correspondence between sites, nMDS strives to represent pairwise dissimilarities between sites in ordination space. It does not use the distances or dissimilarities directly (hence *indirect*), but these are substituted with their ranks (e.g. dissimilarities between pairs of sites are ordered by rank) (and hence *non-metric* in the name). This results in a loss of insight into the magnitude of difference between site pairs, but we benefit from the technique being more robust and less influenced by deviations from idealised data distributions.
+
+nMDS is the non-metric equivalent to PCoA, the latter sometimes being called metric multi-dimensional scaling.
+
+## Set-up the analysis environment
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(vegan)
+```
+
+## The Doubs River data
+
+We continue to use the species data:
+
+```{r}
+spe <- read.csv("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/Num_Ecol_R_book_ed1/DoubsSpe.csv")
+spe <- dplyr::select(spe, -1)
+spe <- dplyr::slice(spe, -8)
+```
+
+## Do the nMDS
+
+```{r}
+spe_nmds <- metaMDS(spe, distance = "bray")
+spe_nmds
+```
+
+```{r, eval=FALSE}
+summary(spe_nmds) # not useful
+```
+
+See *Numerical Ecology in R* (pp. 145 to 149) for information about the interpretation of a nMDSand the ordination diagrams shown below.
+
+## Ordination diagrams
+
+We create the ordination diagrammes as before, but new concepts introduced here are **stress**, **Shepard plots**, and **goodness of fit**. The stress indicates the scatter of observed dissimilarities against an expected monotone regression, while a Shepard diagram plots ordination distances against original dissimilarities, and adds a monotone or linear fit line to highlight this relationship. The `stressplot()` function also produces two fit statistics. The goodness-of-fit of the ordination is measured as the $R^{2}$ of either a linear or a non-linear regression of the nMDS distances on the original ones.
+
+```{r}
+par(mfrow = c(2, 2))
+stressplot(spe_nmds, main = "Shepard plot")
+ordiplot(spe_nmds, type = "t", cex = 1.5,
+         main = paste0("nMDS stress = ", round(spe_nmds$stress, 2)))
+gof = goodness(spe_nmds)
+plot(spe_nmds, type = "t", main = "Goodness of fit")
+points(spe_nmds, display = "sites", cex = gof * 200)
+# ...bigger bubbles indicate a worse fit
+```
+
+We can also build ordination plots from scratch to suit specific needs:
+
+```{r}
+pl <- ordiplot(spe_nmds, type = "none", main = "nMDS fish abundances ")
+points(pl, "sites", pch = 21, cex = 1.75, col = "grey80", bg = "grey80")
+points(pl, "species", pch = 21, col = "turquoise", arrows = TRUE)
+text(pl, "species", col = "blue4", cex = 0.9)
+text(pl, "sites", col = "red4", cex = 0.9)
+```
+
+Or we can fit response surfaces using `ordisurf()` and project environmental drivers:
+
+```{r}
+require('viridis')
+palette(viridis(8))
+par(mar = c(4, 4, 0.9, 0.5) + .1, mfrow = c(2, 2))
+with(spe, tmp <- ordisurf(spe_nmds ~ Satr, bubble = 3,
+                          family = quasipoisson, knots = 2, col = 6,
+                          display = "sites", main = "Satr"))
+abline(h = 0, v = 0, lty = 3)
+with(spe, tmp <- ordisurf(spe_nmds ~ Scer, bubble = 3,
+                          family = quasipoisson, knots = 2, col = 6,
+                          display = "sites", main = "Scer"))
+abline(h = 0, v = 0, lty = 3)
+with(spe, tmp <- ordisurf(spe_nmds ~ Teso, bubble = 3,
+                          family = quasipoisson, knots = 2, col = 6,
+                          display = "sites", main = "Teso"))
+abline(h = 0, v = 0, lty = 3)
+with(spe, tmp <- ordisurf(spe_nmds ~ Cogo, bubble = 3,
+                          family = quasipoisson, knots = 2, col = 6,
+                          display = "sites", main = "Cogo"))
+abline(h = 0, v = 0, lty = 3)
+
+env <- read.csv("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/Num_Ecol_R_book_ed1/DoubsEnv.csv")
+env <- dplyr::select(env, -1)
+env <- dplyr::slice(env, -8)
+
+(spe_nmds_env <- envfit(spe_nmds, env)) 
+plot(spe_nmds_env, col = "grey40")
+plot(spe_nmds_env, p.max = 0.05, col = "red")
+```
+
+### Questions
+
+1.  Using two unconstrained ordination techniques of your choice, analyse the mite data in the **vegan** package. Provide a brief description and discussion of what you have found, and produce the R code.
+2.  Using two unconstrained ordination techniques of your choice (not already used in 1, above) analyse the dune data in the **vegan** package. Provide a brief description and discussion of what you have found, and produce the R code.
+
+Submit an R script wherein you provide answers to these questions by no later than 17:00 on Friday 23 July 2021.

@@ -1,0 +1,962 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AJ Smit&#39;s pages on BCB R Stats Pages</title>
+    <link>/</link>
+    <description>Recent content in AJ Smit&#39;s pages on BCB R Stats Pages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 20 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Basic Detection and Visualisation of Events</title>
+      <link>/project/basic_mhw_mcs/</link>
+      <pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/project/basic_mhw_mcs/</guid>
+      <description>This material also appears as a heatwaveR vignette.
+Data The detect_event() function is the core of this package, and it expects to be fed the output of the second core function, ts2clm(). By default, ts2clm() wants to receive a two-column dataframe with one column labelled t containing all of the date values, and a second column temp containing all of the temperature values. Please note that the date format it expects is “YYYY-MM-DD”.</description>
+    </item>
+    
+    <item>
+      <title>1. RStudio and R</title>
+      <link>/collection/intro_r/chapters/02-rstudio/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/intro_r/chapters/02-rstudio/</guid>
+      <description>“Strange events permit themselves the luxury of occurring.”
+— Charlie Chan
+  “Without data you’re just another person with an opinion.”
+— W. Edwards Deming
+ Setting up the workspace General settings Before we start using RStudio (which is a code editor and environment that runs R) let’s first set it up properly. Find the ‘Tools’ (‘Preferences’) menu item, navigate to ‘Global Options’ (‘Code Editing’) and select the tick boxes as shown in the figure below.</description>
+    </item>
+    
+    <item>
+      <title>1. RStudio and R</title>
+      <link>/workshops/intro_r/chapters/02-rstudio/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/02-rstudio/</guid>
+      <description>“Strange events permit themselves the luxury of occurring.”
+— Charlie Chan
+  “Without data you’re just another person with an opinion.”
+— W. Edwards Deming
+ Setting up the workspace General settings Before we start using RStudio (which is a code editor and environment that runs R) let’s first set it up properly. Find the ‘Tools’ (‘Preferences’) menu item, navigate to ‘Global Options’ (‘Code Editing’) and select the tick boxes as shown in the figure below.</description>
+    </item>
+    
+    <item>
+      <title>Downloading and Preparing NOAA OISST Data</title>
+      <link>/project/oisst_prep/</link>
+      <pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/project/oisst_prep/</guid>
+      <description>This material also appears as a heatwaveR vignette.
+Overview In this vignette we will see how to retrieve and prepare Reynolds optimally interpolated sea surface temperature (OISST) data for calculating marine heatwaves (MHWs). The OISST product is a global 1/4 degree gridded dataset of Advanced Very High Resolution Radiometer (AVHRR) derived SSTs at a daily resolution, starting on 1 September 1981. The source of the data is currently the NOAA NCDC.</description>
+    </item>
+    
+    <item>
+      <title>1. Multivariate data</title>
+      <link>/collection/quantecol/chapters/01-data/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/01-data/</guid>
+      <description>NSFW
+ This chapter is in development.</description>
+    </item>
+    
+    <item>
+      <title>1. Multivariate data</title>
+      <link>/workshops/quantecol/chapters/01-data/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/quantecol/chapters/01-data/</guid>
+      <description>NSFW
+ This chapter is in development.</description>
+    </item>
+    
+    <item>
+      <title>1. Types of data</title>
+      <link>/collection/biostats/chapters/02-data/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/biostats/chapters/02-data/</guid>
+      <description>“The plural of anecdote is not data.”
+— Roger Brinner
+ In this chapter we will, firstly, recap how to work with data in R. Then we will look at the different kinds of biological and environmental data that are typically encountered by most biologists. The data seen here are not an exhaustive list of all the various types of data out there, but it should represent the bulk of our needs.</description>
+    </item>
+    
+    <item>
+      <title>1. Types of data</title>
+      <link>/workshops/biostats/chapters/02-data/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/biostats/chapters/02-data/</guid>
+      <description>“The plural of anecdote is not data.”
+— Roger Brinner
+ In this chapter we will, firstly, recap how to work with data in R. Then we will look at the different kinds of biological and environmental data that are typically encountered by most biologists. The data seen here are not an exhaustive list of all the various types of data out there, but it should represent the bulk of our needs.</description>
+    </item>
+    
+    <item>
+      <title>2. GitHub</title>
+      <link>/collection/intro_r/chapters/03-github/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/intro_r/chapters/03-github/</guid>
+      <description>GitHub is a code hosting platform for version control and collaboration. It uses the software Git to let you and others work together on projects from anywhere. The following teaches you the GitHub essentials like Repositories, Branches, Commits, and Pull Requests. You will first create your own account and repository, and learn GitHub’s Pull and Push Request workflow, a popular way to create and review code.
+Installing Git on Windows By default, Git is installed on Linux and macOS computers as a command line option.</description>
+    </item>
+    
+    <item>
+      <title>2. GitHub</title>
+      <link>/workshops/intro_r/chapters/03-github/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/03-github/</guid>
+      <description>GitHub is a code hosting platform for version control and collaboration. It uses the software Git to let you and others work together on projects from anywhere. The following teaches you the GitHub essentials like Repositories, Branches, Commits, and Pull Requests. You will first create your own account and repository, and learn GitHub’s Pull and Push Request workflow, a popular way to create and review code.
+Installing Git on Windows By default, Git is installed on Linux and macOS computers as a command line option.</description>
+    </item>
+    
+    <item>
+      <title>Detecting Events in Gridded Data</title>
+      <link>/project/gridded_data/</link>
+      <pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/project/gridded_data/</guid>
+      <description>Overview In the previous vignette we saw how to download and prepare OISST data. In this vignette we will use the subsetted data we downloaded (not global) for our example on how to detect MHWs in gridded data.
+library(dplyr) # For basic data manipulation library(ggplot2) # For visualising data library(heatwaveR) # For detecting MHWs library(tidync) # For easily dealing with NetCDF data library(doParallel) # For parallel processing  Loading data Because we saved our data as an .</description>
+    </item>
+    
+    <item>
+      <title>2. Biodiversity</title>
+      <link>/collection/quantecol/chapters/02-biodiversity/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/02-biodiversity/</guid>
+      <description>Three measures of biodiversity Three measures of biodiversity were coined by Whittaker in 1972. They represent the measurement of biodiversity across different spatial scales. α- and γ-diversity simply express the total number of species in an area. α-diversity is a representation of the number of species at the small (local) scale, such as within a quadrat, transect, plot, or trawl. Multiples of these are nested within a larger region (or ecosystem etc.</description>
+    </item>
+    
+    <item>
+      <title>2. Biodiversity</title>
+      <link>/workshops/quantecol/chapters/02-biodiversity/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/quantecol/chapters/02-biodiversity/</guid>
+      <description>Three measures of biodiversity Three measures of biodiversity were coined by Whittaker in 1972. They represent the measurement of biodiversity across different spatial scales. α- and γ-diversity simply express the total number of species in an area. α-diversity is a representation of the number of species at the small (local) scale, such as within a quadrat, transect, plot, or trawl. Multiples of these are nested within a larger region (or ecosystem etc.</description>
+    </item>
+    
+    <item>
+      <title>2. Central tendency and dispersion</title>
+      <link>/collection/biostats/chapters/03-descriptive/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/biostats/chapters/03-descriptive/</guid>
+      <description>“I think it is much more interesting to live with uncertainty than to live with answers that might be wrong.”
+—- Richard Feynman
+ In this Chapter we will focus on basic descriptions of the data, and these initial forrays are built around measures of the central tendency of the data (the mean, median, mode) and the dispersion and variability of the data (standard deviations and their ilk). The materials covered in this and the next two chapters concern a broad discussion that will aid us in understanding our data better prior to analysing it, and before we can draw inference from it.</description>
+    </item>
+    
+    <item>
+      <title>2. Central tendency and dispersion</title>
+      <link>/workshops/biostats/chapters/03-descriptive/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/biostats/chapters/03-descriptive/</guid>
+      <description>“I think it is much more interesting to live with uncertainty than to live with answers that might be wrong.”
+—- Richard Feynman
+ In this Chapter we will focus on basic descriptions of the data, and these initial forrays are built around measures of the central tendency of the data (the mean, median, mode) and the dispersion and variability of the data (standard deviations and their ilk). The materials covered in this and the next two chapters concern a broad discussion that will aid us in understanding our data better prior to analysing it, and before we can draw inference from it.</description>
+    </item>
+    
+    <item>
+      <title>3. An R workflow</title>
+      <link>/collection/intro_r/chapters/04-workflow/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/intro_r/chapters/04-workflow/</guid>
+      <description>“A dream doesn’t become reality through magic; it takes sweat, determination and hard work.”
+— Colin Powell
+  “Choose a job you love, and you will never have to work a day in your life.”
+— Confucius
+ R Scripts The first step for any project in R is to create a new script. We do this by clicking on the ‘New Document’ button (in the top left and selecting ‘R Script’).</description>
+    </item>
+    
+    <item>
+      <title>3. An R workflow</title>
+      <link>/workshops/intro_r/chapters/04-workflow/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/04-workflow/</guid>
+      <description>“A dream doesn’t become reality through magic; it takes sweat, determination and hard work.”
+— Colin Powell
+  “Choose a job you love, and you will never have to work a day in your life.”
+— Confucius
+ R Scripts The first step for any project in R is to create a new script. We do this by clicking on the ‘New Document’ button (in the top left and selecting ‘R Script’).</description>
+    </item>
+    
+    <item>
+      <title>3. Deep Dive into Gradients</title>
+      <link>/collection/quantecol/chapters/03-deep_dive/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/03-deep_dive/</guid>
+      <description>In the previous two sections we looked at calculations involving biodiversity (specifically the dissimilarity matricies made from a species table) and environmental variables (distances). What can we do with the two forms of contemporary β-diversity? What do they mean? Can we look to environmental distances for more insight?
+Let’s do a deeper analysis and create a figure to demonstrate these findings. I regress \(\beta_{\text{sør}}\) on the spatial distance between section pairs (see below) and on the environmental distance (\(\beta_{\text{E}}\)) in each bioregion and used the magnitude of the slope (per 100 km) of this relationship as a metric of β-diversity or ‘distance decay’ of dissimilarity.</description>
+    </item>
+    
+    <item>
+      <title>3. Deep Dive into Gradients</title>
+      <link>/workshops/quantecol/chapters/03-deep_dive/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/quantecol/chapters/03-deep_dive/</guid>
+      <description>In the previous two sections we looked at calculations involving biodiversity (specifically the dissimilarity matricies made from a species table) and environmental variables (distances). What can we do with the two forms of contemporary β-diversity? What do they mean? Can we look to environmental distances for more insight?
+Let’s do a deeper analysis and create a figure to demonstrate these findings. I regress \(\beta_{\text{sør}}\) on the spatial distance between section pairs (see below) and on the environmental distance (\(\beta_{\text{E}}\)) in each bioregion and used the magnitude of the slope (per 100 km) of this relationship as a metric of β-diversity or ‘distance decay’ of dissimilarity.</description>
+    </item>
+    
+    <item>
+      <title>3. Graphical data displays</title>
+      <link>/collection/biostats/chapters/04-graphics/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/biostats/chapters/04-graphics/</guid>
+      <description>library(tidyverse) library(ggpubr) library(RColorBrewer) library(ggthemes) Here we shall provide examples of many kinds of graphical data summaries. We use ggplot2 for these figures and will refrain from using the base R graphs. We shall provide examples of various themes so you can see what is available to use for your own plots. We also include various modifications of the default plots so you can get an idea of how to modify some of the plot characteristics, and we always make sure that our graphs are publication ready.</description>
+    </item>
+    
+    <item>
+      <title>3. Graphical data displays</title>
+      <link>/workshops/biostats/chapters/04-graphics/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/biostats/chapters/04-graphics/</guid>
+      <description>library(tidyverse) library(ggpubr) library(RColorBrewer) library(ggthemes) Here we shall provide examples of many kinds of graphical data summaries. We use ggplot2 for these figures and will refrain from using the base R graphs. We shall provide examples of various themes so you can see what is available to use for your own plots. We also include various modifications of the default plots so you can get an idea of how to modify some of the plot characteristics, and we always make sure that our graphs are publication ready.</description>
+    </item>
+    
+    <item>
+      <title>4. Graphics with ggplot2</title>
+      <link>/collection/intro_r/chapters/05-graphics/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/intro_r/chapters/05-graphics/</guid>
+      <description>“The greatest value of a picture is when it forces us to notice what we never expected to see.”
+— John Tukey
+  “If I can’t picture it, I can’t understand it.”
+— Albert Einstein
+ Though it may have started as statistical software, R has moved far beyond it’s mundane origins. The language is now capable of a wide range of applications, some of which you have already seen, and some others you will see over the rest of this course.</description>
+    </item>
+    
+    <item>
+      <title>4. Graphics with ggplot2</title>
+      <link>/workshops/intro_r/chapters/05-graphics/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/05-graphics/</guid>
+      <description>“The greatest value of a picture is when it forces us to notice what we never expected to see.”
+— John Tukey
+  “If I can’t picture it, I can’t understand it.”
+— Albert Einstein
+ Though it may have started as statistical software, R has moved far beyond it’s mundane origins. The language is now capable of a wide range of applications, some of which you have already seen, and some others you will see over the rest of this course.</description>
+    </item>
+    
+    <item>
+      <title>4. Environmental Distance</title>
+      <link>/collection/quantecol/chapters/04-env_dist/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/04-env_dist/</guid>
+      <description>Set up the analysis environment library(vegan) library(ggplot2) library(geodist) # for calculating geographical distances between lats/lons library(ggpubr) # to arrange the multipanel graphs  Toy data The toy data have arbitrary columns to demonstrate the Euclidian distance calculation in the lecture slides:
+\[ d(a,b) = \sqrt{(a_x - b_x)^2 + (a_y - b_y)^2 + (a_z - b_z)^2} \]
+The distance is found between every pair of points named a to g whose locations are marked by the ‘coordinates’ \(x\), \(y\), and \(z\)—i.</description>
+    </item>
+    
+    <item>
+      <title>4. Environmental Distance</title>
+      <link>/workshops/quantecol/chapters/04-env_dist/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/quantecol/chapters/04-env_dist/</guid>
+      <description>Set up the analysis environment library(vegan) library(ggplot2) library(geodist) # for calculating geographical distances between lats/lons library(ggpubr) # to arrange the multipanel graphs  Toy data The toy data have arbitrary columns to demonstrate the Euclidian distance calculation in the lecture slides:
+\[ d(a,b) = \sqrt{(a_x - b_x)^2 + (a_y - b_y)^2 + (a_z - b_z)^2} \]
+The distance is found between every pair of points named a to g whose locations are marked by the ‘coordinates’ \(x\), \(y\), and \(z\)—i.</description>
+    </item>
+    
+    <item>
+      <title>5. Faceting figures</title>
+      <link>/collection/intro_r/chapters/06-faceting/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/intro_r/chapters/06-faceting/</guid>
+      <description>“But let the mind beware, that though the flesh be bugged, the circumstances of existence are pretty glorious.”
+— Kurt Vonnegut, Player Piano
+  “You miss 100% of the shots you don’t take.”
+— Wayne Gretzky
+ So far we have only looked at single panel figures. But as you may have guessed by now, ggplot2 is capable of creating any sort of data visualisation that a human mind could conceive.</description>
+    </item>
+    
+    <item>
+      <title>5. Faceting figures</title>
+      <link>/workshops/intro_r/chapters/06-faceting/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/06-faceting/</guid>
+      <description>“But let the mind beware, that though the flesh be bugged, the circumstances of existence are pretty glorious.”
+— Kurt Vonnegut, Player Piano
+  “You miss 100% of the shots you don’t take.”
+— Wayne Gretzky
+ So far we have only looked at single panel figures. But as you may have guessed by now, ggplot2 is capable of creating any sort of data visualisation that a human mind could conceive.</description>
+    </item>
+    
+    <item>
+      <title>5. Inferences about one or two populations</title>
+      <link>/collection/biostats/chapters/06-t_tests/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/biostats/chapters/06-t_tests/</guid>
+      <description>library(tidyverse) At the heart of many basic scientific inquiries is the simple question “Is A different from B?” The scientific notation for this question is:
+ H0: Group A is not different from group B. H1: Group A is different from group B.  More formally, one would say:
+\(H_{0}: \bar{A} = \bar{B}\) vs. the alternative hypothesis that \(H_{a}: \bar{A} \neq \bar{B}\). \(H_{0}: \bar{A} \leq \bar{B}\) vs. the alternative hypothesis that \(H_{a}: \bar{A} &amp;gt; \bar{B}\).</description>
+    </item>
+    
+    <item>
+      <title>5. Inferences about one or two populations</title>
+      <link>/workshops/biostats/chapters/06-t_tests/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/biostats/chapters/06-t_tests/</guid>
+      <description>library(tidyverse) At the heart of many basic scientific inquiries is the simple question “Is A different from B?” The scientific notation for this question is:
+ H0: Group A is not different from group B. H1: Group A is different from group B.  More formally, one would say:
+\(H_{0}: \bar{A} = \bar{B}\) vs. the alternative hypothesis that \(H_{a}: \bar{A} \neq \bar{B}\). \(H_{0}: \bar{A} \leq \bar{B}\) vs. the alternative hypothesis that \(H_{a}: \bar{A} &amp;gt; \bar{B}\).</description>
+    </item>
+    
+    <item>
+      <title>5. Species Dissimilarities</title>
+      <link>/collection/quantecol/chapters/05-spp_dissimilarity/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/05-spp_dissimilarity/</guid>
+      <description>We have already covered all the necessary theory in Topic 3 - Biodiversity. The dissimilarity matrices that capture α-diversity and the contemporary measures of β-diversity are in fact the same species dissmimilarity matrices I refer to in Topic 5, and on which we will continue to rely on in the subsequent topics as input to many of the ordination techniques.
+So, refer back to Topic 3 - Biodiversity and remind yourselves what that’s all about.</description>
+    </item>
+    
+    <item>
+      <title>5. Species Dissimilarities</title>
+      <link>/workshops/quantecol/chapters/05-spp_dissimilarity/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/quantecol/chapters/05-spp_dissimilarity/</guid>
+      <description>We have already covered all the necessary theory in Topic 3 - Biodiversity. The dissimilarity matrices that capture α-diversity and the contemporary measures of β-diversity are in fact the same species dissmimilarity matrices I refer to in Topic 5, and on which we will continue to rely on in the subsequent topics as input to many of the ordination techniques.
+So, refer back to Topic 3 - Biodiversity and remind yourselves what that’s all about.</description>
+    </item>
+    
+    <item>
+      <title>6. Brewing colours</title>
+      <link>/collection/intro_r/chapters/07-brewing/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/intro_r/chapters/07-brewing/</guid>
+      <description>“Every portrait that is painted with feeling is a portrait of the artist, not of the sitter.”
+— Oscar Wilde
+  “If you could say it in words, there would be no reason to paint.”
+— Edward Hopper
+ Now that we have seen the basics of ggplot2, let’s take a moment to delve further into the beauty of our figures. It may sound vain at first, but the colour palette of a figure is actually very important.</description>
+    </item>
+    
+    <item>
+      <title>6. Brewing colours</title>
+      <link>/workshops/intro_r/chapters/07-brewing/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/07-brewing/</guid>
+      <description>“Every portrait that is painted with feeling is a portrait of the artist, not of the sitter.”
+— Oscar Wilde
+  “If you could say it in words, there would be no reason to paint.”
+— Edward Hopper
+ Now that we have seen the basics of ggplot2, let’s take a moment to delve further into the beauty of our figures. It may sound vain at first, but the colour palette of a figure is actually very important.</description>
+    </item>
+    
+    <item>
+      <title>6. Analysis of Variance (ANOVA)</title>
+      <link>/collection/biostats/chapters/07-anova/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/biostats/chapters/07-anova/</guid>
+      <description>“He uses statistics as a drunken man uses lamp posts—for support rather than for illumination.”
+— Marissa Mayer
+ Whole big books have been written about Analysis of Variance (ANOVA). Although there are many ANOVA experimental designs available, biologists are taught to pay special attention to the design of experiments, and generally make sure that the experiments are fully factorial (in the case of two-way or higher ANOVAs) and balanced.</description>
+    </item>
+    
+    <item>
+      <title>6. Analysis of Variance (ANOVA)</title>
+      <link>/workshops/biostats/chapters/07-anova/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/biostats/chapters/07-anova/</guid>
+      <description>“He uses statistics as a drunken man uses lamp posts—for support rather than for illumination.”
+— Marissa Mayer
+ Whole big books have been written about Analysis of Variance (ANOVA). Although there are many ANOVA experimental designs available, biologists are taught to pay special attention to the design of experiments, and generally make sure that the experiments are fully factorial (in the case of two-way or higher ANOVAs) and balanced.</description>
+    </item>
+    
+    <item>
+      <title>6. Correlations and Associations</title>
+      <link>/collection/quantecol/chapters/06-correlations/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/06-correlations/</guid>
+      <description>Set-up the analysis environment library(tidyverse) library(vegan) library(Hmisc) # for rcorr()  The Doubs River data The background to the data is described by David Zelený on his excellent website and in the book Numerical Ecology with R by Borcard et al. (2011). These data are a beautiful example of how gradients structure biodiversity. It will be in your own interest to fully understand how the various environmental factors used as explanatory variables vary along a riverine gradient from the source to the terminus of the river.</description>
+    </item>
+    
+    <item>
+      <title>6. Correlations and Associations</title>
+      <link>/workshops/quantecol/chapters/06-correlations/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/quantecol/chapters/06-correlations/</guid>
+      <description>Set-up the analysis environment library(tidyverse) library(vegan) library(Hmisc) # for rcorr()  The Doubs River data The background to the data is described by David Zelený on his excellent website and in the book Numerical Ecology with R by Borcard et al. (2011). These data are a beautiful example of how gradients structure biodiversity. It will be in your own interest to fully understand how the various environmental factors used as explanatory variables vary along a riverine gradient from the source to the terminus of the river.</description>
+    </item>
+    
+    <item>
+      <title>7. Mapping with ggplot2</title>
+      <link>/collection/intro_r/chapters/08-mapping/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/intro_r/chapters/08-mapping/</guid>
+      <description>“There’s no map to human behaviour.”
+— Bjork
+  “Here be dragons”
+— Unknown
+ Yesterday we learned how to create ggplot2 figures, change their aesthetics, labels, colour palettes, and facet/arrange them. Now we are going to look at how to create maps.
+Most of the work that we perform as environmental/biological scientists involves going out to a location and sampling information there. Sometimes only once, and sometimes over a period of time.</description>
+    </item>
+    
+    <item>
+      <title>7. Mapping with ggplot2</title>
+      <link>/workshops/intro_r/chapters/08-mapping/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/08-mapping/</guid>
+      <description>“There’s no map to human behaviour.”
+— Bjork
+  “Here be dragons”
+— Unknown
+ Yesterday we learned how to create ggplot2 figures, change their aesthetics, labels, colour palettes, and facet/arrange them. Now we are going to look at how to create maps.
+Most of the work that we perform as environmental/biological scientists involves going out to a location and sampling information there. Sometimes only once, and sometimes over a period of time.</description>
+    </item>
+    
+    <item>
+      <title>7. Simple linear regressions</title>
+      <link>/collection/biostats/chapters/08-regressions/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/biostats/chapters/08-regressions/</guid>
+      <description>Regressions test the statistical significance of the dependence of one continuous variable on one or many independent continuous variables.
+The simple linear regression equation The linear regression equation is already known to you. It is:
+\[y_{n}=\beta \cdot x_{n}+\alpha+\epsilon\]
+Coefficients are parameters (statistics) that describe two properties of the linear line that best fit a scatter plot between a dependent variable and the independent variable. The dependent variable, \(y_{1..n}\), may also be called the response variable, and the independent variable, \(x_{1.</description>
+    </item>
+    
+    <item>
+      <title>7. Simple linear regressions</title>
+      <link>/workshops/biostats/chapters/08-regressions/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/biostats/chapters/08-regressions/</guid>
+      <description>Regressions test the statistical significance of the dependence of one continuous variable on one or many independent continuous variables.
+The simple linear regression equation The linear regression equation is already known to you. It is:
+\[y_{n}=\beta \cdot x_{n}+\alpha+\epsilon\]
+Coefficients are parameters (statistics) that describe two properties of the linear line that best fit a scatter plot between a dependent variable and the independent variable. The dependent variable, \(y_{1..n}\), may also be called the response variable, and the independent variable, \(x_{1.</description>
+    </item>
+    
+    <item>
+      <title>8. Mapping with style</title>
+      <link>/collection/intro_r/chapters/09-mapping_style/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/intro_r/chapters/09-mapping_style/</guid>
+      <description>“How beautiful the world was when one looked at it without searching, just looked, simply and innocently.”
+— Hermann Hesse, Siddartha
+  “You can’t judge a book by it’s cover but you can sure sell a bunch of books if you have a good one.”
+— Jayce O’Neal
+ Now that we have learned the basics of creating a beautiful map in ggplot2 it is time to look at some of the more particular things we will need to make our maps extra stylish.</description>
+    </item>
+    
+    <item>
+      <title>8. Mapping with style</title>
+      <link>/workshops/intro_r/chapters/09-mapping_style/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/09-mapping_style/</guid>
+      <description>“How beautiful the world was when one looked at it without searching, just looked, simply and innocently.”
+— Hermann Hesse, Siddartha
+  “You can’t judge a book by it’s cover but you can sure sell a bunch of books if you have a good one.”
+— Jayce O’Neal
+ Now that we have learned the basics of creating a beautiful map in ggplot2 it is time to look at some of the more particular things we will need to make our maps extra stylish.</description>
+    </item>
+    
+    <item>
+      <title>8. Correlation</title>
+      <link>/collection/biostats/chapters/09-correlations/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/biostats/chapters/09-correlations/</guid>
+      <description>A correlation is performed when we want to investigate the potential association between two continuous quantitative variables, or between some ordinal variables. We assume that the association is linear, like in a linear regression, and that one variable increases or decreases by a constant amount for a corresponding unit increase or decrease in the other variable. This does not suggest that one variable explains the other – that is the purpose of regression, as seen in the previous Chapter.</description>
+    </item>
+    
+    <item>
+      <title>8. Correlation</title>
+      <link>/workshops/biostats/chapters/09-correlations/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/biostats/chapters/09-correlations/</guid>
+      <description>A correlation is performed when we want to investigate the potential association between two continuous quantitative variables, or between some ordinal variables. We assume that the association is linear, like in a linear regression, and that one variable increases or decreases by a constant amount for a corresponding unit increase or decrease in the other variable. This does not suggest that one variable explains the other – that is the purpose of regression, as seen in the previous Chapter.</description>
+    </item>
+    
+    <item>
+      <title>8a. Principal Component Analysis (PCA)</title>
+      <link>/collection/quantecol/chapters/08_pca/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/08_pca/</guid>
+      <description>PCA is one of many ordination techniques. Depening on the application of technical/scientific discipline it is applied in, you might see it mentioned under ‘dimensionality reduction’ techniques; other times it is named as a form of ‘unsupervised learning.’ Regardless of what it is called, ordination refers to multivariate techniques that reduces a multivariate (multi-dimensional) dataset in such a way that when it is projected onto a lower dimensional space, typically 2D or 3D space, any intrinsic structure in the data forms visually-discernable patterns (Pielou, 1984).</description>
+    </item>
+    
+    <item>
+      <title>8a. Principal Component Analysis (PCA)</title>
+      <link>/workshops/quantecol/chapters/08_pca/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/quantecol/chapters/08_pca/</guid>
+      <description>PCA is one of many ordination techniques. Depening on the application of technical/scientific discipline it is applied in, you might see it mentioned under ‘dimensionality reduction’ techniques; other times it is named as a form of ‘unsupervised learning.’ Regardless of what it is called, ordination refers to multivariate techniques that reduces a multivariate (multi-dimensional) dataset in such a way that when it is projected onto a lower dimensional space, typically 2D or 3D space, any intrinsic structure in the data forms visually-discernable patterns (Pielou, 1984).</description>
+    </item>
+    
+    <item>
+      <title>9. Mapping with OpenStreetMap</title>
+      <link>/collection/intro_r/chapters/10-mapping_openstreetmap/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/intro_r/chapters/10-mapping_openstreetmap/</guid>
+      <description>“The only thing Google has failed to do, so far, is fail.”
+— John Battelle
+  “I’m afraid that if you look at a thing long enough, it loses all of its meaning.”
+— Andy Warhol
+ Now that we’ve seen how to produce complex maps with ggplot2 we are going to learn how to bring some freely-available maps—OpenStreetMaps—into the mix. Some kind hearted person has made a package for R that allows us to do this relatively easily.</description>
+    </item>
+    
+    <item>
+      <title>9. Mapping with OpenStreetMap</title>
+      <link>/workshops/intro_r/chapters/10-mapping_openstreetmap/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/10-mapping_openstreetmap/</guid>
+      <description>“The only thing Google has failed to do, so far, is fail.”
+— John Battelle
+  “I’m afraid that if you look at a thing long enough, it loses all of its meaning.”
+— Andy Warhol
+ Now that we’ve seen how to produce complex maps with ggplot2 we are going to learn how to bring some freely-available maps—OpenStreetMaps—into the mix. Some kind hearted person has made a package for R that allows us to do this relatively easily.</description>
+    </item>
+    
+    <item>
+      <title>10. Tidy data</title>
+      <link>/collection/intro_r/chapters/11-tidy/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/intro_r/chapters/11-tidy/</guid>
+      <description>“Order and simplification are the first steps toward the mastery of a subject.”
+— Thomas Mann
+  “Get your facts first, and then you can distort them as much as you please.”
+— Mark Twain
+ The Tidyverse is a collection of R packages that adhere to the tidy data principles of data analysis and graphing. The purpose of these packages is to make working with data more efficient.</description>
+    </item>
+    
+    <item>
+      <title>10. Tidy data</title>
+      <link>/workshops/intro_r/chapters/11-tidy/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/11-tidy/</guid>
+      <description>“Order and simplification are the first steps toward the mastery of a subject.”
+— Thomas Mann
+  “Get your facts first, and then you can distort them as much as you please.”
+— Mark Twain
+ The Tidyverse is a collection of R packages that adhere to the tidy data principles of data analysis and graphing. The purpose of these packages is to make working with data more efficient.</description>
+    </item>
+    
+    <item>
+      <title>9. Confidence intervals</title>
+      <link>/collection/biostats/chapters/10-confidence/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/biostats/chapters/10-confidence/</guid>
+      <description>A confidence interval (CI) tells us within what range we may be certain to find the true mean from which any sample has been taken. If we were to repeatedly sample the same population over and over and calculated a mean every time, the 95% CI indicates the range that 95% of those means would fall into.
+Calculating confidence intervals Input &amp;lt;- (&amp;quot; Student Grade Teacher Score Rating a Gr_1 Vladimir 80 7 b Gr_1 Vladimir 90 10 c Gr_1 Vladimir 100 9 d Gr_1 Vladimir 70 5 e Gr_1 Vladimir 60 4 f Gr_1 Vladimir 80 8 g Gr_10 Vladimir 70 6 h Gr_10 Vladimir 50 5 i Gr_10 Vladimir 90 10 j Gr_10 Vladimir 70 8 k Gr_1 Sadam 80 7 l Gr_1 Sadam 90 8 m Gr_1 Sadam 90 8 n Gr_1 Sadam 80 9 o Gr_10 Sadam 60 5 p Gr_10 Sadam 80 9 q Gr_10 Sadam 70 6 r Gr_1 Donald 100 10 s Gr_1 Donald 90 10 t Gr_1 Donald 80 8 u Gr_1 Donald 80 7 v Gr_1 Donald 60 7 w Gr_10 Donald 60 8 x Gr_10 Donald 80 10 y Gr_10 Donald 70 7 z Gr_10 Donald 70 7 &amp;quot;) data &amp;lt;- read.</description>
+    </item>
+    
+    <item>
+      <title>9. Confidence intervals</title>
+      <link>/workshops/biostats/chapters/10-confidence/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/biostats/chapters/10-confidence/</guid>
+      <description>A confidence interval (CI) tells us within what range we may be certain to find the true mean from which any sample has been taken. If we were to repeatedly sample the same population over and over and calculated a mean every time, the 95% CI indicates the range that 95% of those means would fall into.
+Calculating confidence intervals Input &amp;lt;- (&amp;quot; Student Grade Teacher Score Rating a Gr_1 Vladimir 80 7 b Gr_1 Vladimir 90 10 c Gr_1 Vladimir 100 9 d Gr_1 Vladimir 70 5 e Gr_1 Vladimir 60 4 f Gr_1 Vladimir 80 8 g Gr_10 Vladimir 70 6 h Gr_10 Vladimir 50 5 i Gr_10 Vladimir 90 10 j Gr_10 Vladimir 70 8 k Gr_1 Sadam 80 7 l Gr_1 Sadam 90 8 m Gr_1 Sadam 90 8 n Gr_1 Sadam 80 9 o Gr_10 Sadam 60 5 p Gr_10 Sadam 80 9 q Gr_10 Sadam 70 6 r Gr_1 Donald 100 10 s Gr_1 Donald 90 10 t Gr_1 Donald 80 8 u Gr_1 Donald 80 7 v Gr_1 Donald 60 7 w Gr_10 Donald 60 8 x Gr_10 Donald 80 10 y Gr_10 Donald 70 7 z Gr_10 Donald 70 7 &amp;quot;) data &amp;lt;- read.</description>
+    </item>
+    
+    <item>
+      <title>10. Data transformations</title>
+      <link>/collection/biostats/chapters/11-transformations/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/biostats/chapters/11-transformations/</guid>
+      <description>Paranormal distribution
+ Assumptions Throughout the preceding sections I have stressed the importance of testing the assumptions underly- ing some statistical tests, in particular t-tests, ANOVAs, regressions, and correlations. These statistics are called parametric statistics and they require that the assumption of normality and homogeneity of vari- ances are met. This is the kind of statistic you would normally be required to calculate, and because they are commonly used, most people are familiar with parametric statistics.</description>
+    </item>
+    
+    <item>
+      <title>10. Data transformations</title>
+      <link>/workshops/biostats/chapters/11-transformations/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/biostats/chapters/11-transformations/</guid>
+      <description>Paranormal distribution
+ Assumptions Throughout the preceding sections I have stressed the importance of testing the assumptions underly- ing some statistical tests, in particular t-tests, ANOVAs, regressions, and correlations. These statistics are called parametric statistics and they require that the assumption of normality and homogeneity of vari- ances are met. This is the kind of statistic you would normally be required to calculate, and because they are commonly used, most people are familiar with parametric statistics.</description>
+    </item>
+    
+    <item>
+      <title>11. Tidier data</title>
+      <link>/collection/intro_r/chapters/12-tidier/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/intro_r/chapters/12-tidier/</guid>
+      <description>“Knowing where things are, and why, is essential to rational decision making.”
+— Jack Dangermond
+  “The mind commands the body and it obeys. The mind orders itself and meets resistance.”
+— Frank Herbert, Dune
+ On Day 1 already we walked ourselves through a tidy workflow. We saw how to import data, how to manipulate it, run a quick analysis or two, and create figures. In the previous session we filled in the missing piece of the workflow by also learning how to tidy up our data within R.</description>
+    </item>
+    
+    <item>
+      <title>11. Tidier data</title>
+      <link>/workshops/intro_r/chapters/12-tidier/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/12-tidier/</guid>
+      <description>“Knowing where things are, and why, is essential to rational decision making.”
+— Jack Dangermond
+  “The mind commands the body and it obeys. The mind orders itself and meets resistance.”
+— Frank Herbert, Dune
+ On Day 1 already we walked ourselves through a tidy workflow. We saw how to import data, how to manipulate it, run a quick analysis or two, and create figures. In the previous session we filled in the missing piece of the workflow by also learning how to tidy up our data within R.</description>
+    </item>
+    
+    <item>
+      <title>8b. PCA of WHO SDGs</title>
+      <link>/collection/quantecol/chapters/08-pca_sdg/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/08-pca_sdg/</guid>
+      <description>The United Nations adopted an agenda for sustainable development and lists 17 development goals to achieve by 2030. These are called the Sustainable Development Goals (SDGs). The World Health Organization assembles a collection of indicators to track how countries are progression towards these goals so as to achieve “a world free of poverty, hunger, disease and want” (WHO).
+This is an ordination analysis of the SDG 3, “Good Health and Well-Being.</description>
+    </item>
+    
+    <item>
+      <title>8b. PCA of WHO SDGs</title>
+      <link>/workshops/quantecol/chapters/08-pca_sdg/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/quantecol/chapters/08-pca_sdg/</guid>
+      <description>The United Nations adopted an agenda for sustainable development and lists 17 development goals to achieve by 2030. These are called the Sustainable Development Goals (SDGs). The World Health Organization assembles a collection of indicators to track how countries are progression towards these goals so as to achieve “a world free of poverty, hunger, disease and want” (WHO).
+This is an ordination analysis of the SDG 3, “Good Health and Well-Being.</description>
+    </item>
+    
+    <item>
+      <title>12. Tidiest data</title>
+      <link>/collection/intro_r/chapters/13-tidiest/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/intro_r/chapters/13-tidiest/</guid>
+      <description>“Conducting data analysis is like drinking a fine wine. It is important to swirl and sniff the wine, to unpack the complex bouquet and to appreciate the experience. Gulping the wine doesn’t work.”
+— Daniel B. Wright
+  “If you torture the data long enough, it will confess to anything.”
+— Ronald Coase
+ In the previous session we covered the five main transformation functions one would use in a typical tidy workflow.</description>
+    </item>
+    
+    <item>
+      <title>12. Tidiest data</title>
+      <link>/workshops/intro_r/chapters/13-tidiest/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/13-tidiest/</guid>
+      <description>“Conducting data analysis is like drinking a fine wine. It is important to swirl and sniff the wine, to unpack the complex bouquet and to appreciate the experience. Gulping the wine doesn’t work.”
+— Daniel B. Wright
+  “If you torture the data long enough, it will confess to anything.”
+— Ronald Coase
+ In the previous session we covered the five main transformation functions one would use in a typical tidy workflow.</description>
+    </item>
+    
+    <item>
+      <title>9. Correspondence Analysis (CA)</title>
+      <link>/collection/quantecol/chapters/09-ca/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/09-ca/</guid>
+      <description>CA is an eigenvalue method that can be applied to calculate the degree of ‘correspondence’ between the rows and columns of a presence-absence or abundance species table. We say that CA maximises the correspondence between species scores and sample scores, whereas a PCA maximises the variance explained. The technique is best applied to a species dataset where the species (in the columns) show unimodal distributions across sites (down the rows).</description>
+    </item>
+    
+    <item>
+      <title>9. Correspondence Analysis (CA)</title>
+      <link>/workshops/quantecol/chapters/09-ca/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/quantecol/chapters/09-ca/</guid>
+      <description>CA is an eigenvalue method that can be applied to calculate the degree of ‘correspondence’ between the rows and columns of a presence-absence or abundance species table. We say that CA maximises the correspondence between species scores and sample scores, whereas a PCA maximises the variance explained. The technique is best applied to a species dataset where the species (in the columns) show unimodal distributions across sites (down the rows).</description>
+    </item>
+    
+    <item>
+      <title>10. Principal Coordinate Analysis (PCoA)</title>
+      <link>/collection/quantecol/chapters/10-pcoa/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/10-pcoa/</guid>
+      <description>Rather than using raw data as in a CA, PCoA takes a (dis)similarity matrix as input; in other words, any of the dissimilarities calculated by vegan’s vegdist() function can be used, which is great as they are well-suited to species data. If dissimilarities are Euclidean distances, then PCoA is equal to PCA. Another thing that makes a PCoA more useful is that (dis)similarity matrices calculated from quantitative, semi-quantitative, qualitative, and mixed variables can be handled.</description>
+    </item>
+    
+    <item>
+      <title>10. Principal Coordinate Analysis (PCoA)</title>
+      <link>/workshops/quantecol/chapters/10-pcoa/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/quantecol/chapters/10-pcoa/</guid>
+      <description>Rather than using raw data as in a CA, PCoA takes a (dis)similarity matrix as input; in other words, any of the dissimilarities calculated by vegan’s vegdist() function can be used, which is great as they are well-suited to species data. If dissimilarities are Euclidean distances, then PCoA is equal to PCA. Another thing that makes a PCoA more useful is that (dis)similarity matrices calculated from quantitative, semi-quantitative, qualitative, and mixed variables can be handled.</description>
+    </item>
+    
+    <item>
+      <title>13. Recap</title>
+      <link>/collection/intro_r/chapters/14-recap/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/intro_r/chapters/14-recap/</guid>
+      <description>“Everyone should have their mind blown once a day.”
+— Neil deGrasse Tyson
+  “Somewhere, something incredible is waiting to be known.”
+— Carl Sagan
+ Over the past four days we have covered quite a bit of ground. By now it is our hope that after having participated in this workshop you will feel confident enough using R to branch out on your own and begin applying what you have learned to your own research.</description>
+    </item>
+    
+    <item>
+      <title>13. Recap</title>
+      <link>/workshops/intro_r/chapters/14-recap/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/14-recap/</guid>
+      <description>“Everyone should have their mind blown once a day.”
+— Neil deGrasse Tyson
+  “Somewhere, something incredible is waiting to be known.”
+— Carl Sagan
+ Over the past four days we have covered quite a bit of ground. By now it is our hope that after having participated in this workshop you will feel confident enough using R to branch out on your own and begin applying what you have learned to your own research.</description>
+    </item>
+    
+    <item>
+      <title>11a. non-Metric multidimensional scaling (nMDS)</title>
+      <link>/collection/quantecol/chapters/11-nmds/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/11-nmds/</guid>
+      <description>nMDS is a rank-based indirect gradient analysis (i.e. not an eigen-analysis) that uses a distance or dissimilarity matrix as input. Whereas the ordination methods discussed thus far try to maximise the variance or correspondence between sites, nMDS strives to represent pairwise dissimilarities between sites in ordination space. It does not use the distances or dissimilarities directly (hence indirect), but these are substituted with their ranks (e.g. dissimilarities between pairs of sites are ordered by rank) (and hence non-metric in the name).</description>
+    </item>
+    
+    <item>
+      <title>11a. non-Metric multidimensional scaling (nMDS)</title>
+      <link>/workshops/quantecol/chapters/11-nmds/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/quantecol/chapters/11-nmds/</guid>
+      <description>nMDS is a rank-based indirect gradient analysis (i.e. not an eigen-analysis) that uses a distance or dissimilarity matrix as input. Whereas the ordination methods discussed thus far try to maximise the variance or correspondence between sites, nMDS strives to represent pairwise dissimilarities between sites in ordination space. It does not use the distances or dissimilarities directly (hence indirect), but these are substituted with their ranks (e.g. dissimilarities between pairs of sites are ordered by rank) (and hence non-metric in the name).</description>
+    </item>
+    
+    <item>
+      <title>14. Functions by chapter</title>
+      <link>/collection/intro_r/chapters/15-functions/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/intro_r/chapters/15-functions/</guid>
+      <description> Useful information Operators There are several operators you can use to help build expressions as shown in Table \(\ref{tab:operators}\).
+ Functions Some example functions covered so far are presented in Table \(\ref{tab:functions}\).
+Some summary functions are presented in Table \(\ref{tab:summaries}\).
+  </description>
+    </item>
+    
+    <item>
+      <title>14. Functions by chapter</title>
+      <link>/workshops/intro_r/chapters/15-functions/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/15-functions/</guid>
+      <description> Useful information Operators There are several operators you can use to help build expressions as shown in Table \(\ref{tab:operators}\).
+ Functions Some example functions covered so far are presented in Table \(\ref{tab:functions}\).
+Some summary functions are presented in Table \(\ref{tab:summaries}\).
+  </description>
+    </item>
+    
+    <item>
+      <title>11b. nMDS of Mayombo&#39;s diatom data</title>
+      <link>/collection/quantecol/chapters/11-nmds_diatoms/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/11-nmds_diatoms/</guid>
+      <description>Kelp forests are known to host a large biomass of epiphytic fauna and flora, including diatoms, which constitute the base of aquatic food webs and play an important role in the transfer of energy to higher trophic levels. Epiphytic diatom assemblages associated with two common species of South African kelps, Ecklonia maxima and Laminaria pallida, were investigated in this study. Primary blades of adult and juvenile thalli of both kelp species were sampled at False Bay in July 2017 and analysed using scanning electron microscopy.</description>
+    </item>
+    
+    <item>
+      <title>11b. nMDS of Mayombo&#39;s diatom data</title>
+      <link>/workshops/quantecol/chapters/11-nmds_diatoms/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/quantecol/chapters/11-nmds_diatoms/</guid>
+      <description>Kelp forests are known to host a large biomass of epiphytic fauna and flora, including diatoms, which constitute the base of aquatic food webs and play an important role in the transfer of energy to higher trophic levels. Epiphytic diatom assemblages associated with two common species of South African kelps, Ecklonia maxima and Laminaria pallida, were investigated in this study. Primary blades of adult and juvenile thalli of both kelp species were sampled at False Bay in July 2017 and analysed using scanning electron microscopy.</description>
+    </item>
+    
+    <item>
+      <title>15. Base R primer</title>
+      <link>/collection/intro_r/chapters/16-base_r/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/intro_r/chapters/16-base_r/</guid>
+      <description>Please note that the following chapter departs from the syntax employed by the tidyverse, as utilised throughout this workshop, in favour of the base R syntax. This may be changed in the future, but has been left for now in order to better highlight the fundamental machinations of the R language, upon which the tidyverse is based.
+Dataframes The ‘workhorse’ data-containing structures you will use extensively in R are called dataframes.</description>
+    </item>
+    
+    <item>
+      <title>15. Base R primer</title>
+      <link>/workshops/intro_r/chapters/16-base_r/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/16-base_r/</guid>
+      <description>Please note that the following chapter departs from the syntax employed by the tidyverse, as utilised throughout this workshop, in favour of the base R syntax. This may be changed in the future, but has been left for now in order to better highlight the fundamental machinations of the R language, upon which the tidyverse is based.
+Dataframes The ‘workhorse’ data-containing structures you will use extensively in R are called dataframes.</description>
+    </item>
+    
+    <item>
+      <title>12. Constrained Ordination</title>
+      <link>/collection/quantecol/chapters/12-constrained_ordination/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/12-constrained_ordination/</guid>
+      <description>Up to now we have applied indirect gradient analyses. The lecture slides mention several constrained ordinations and provide some theory for three of them, viz. Redundancy Analysis (RDA), Canonical Correspondence Analysis (CCA), and distance-based Reducndancy Analysis (db-RDA). Constrained ordination is sometimes called ‘direct gradient analysis’.
+Constrained ordination is used to extract and summarise the variation in a set of response variables (species data in the case of ecology) that can be explained by some explanatory variables (‘constraints’), such as measurements of environmental properties at the places where the species data were collected from.</description>
+    </item>
+    
+    <item>
+      <title>12. Constrained Ordination</title>
+      <link>/workshops/quantecol/chapters/12-constrained_ordination/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/quantecol/chapters/12-constrained_ordination/</guid>
+      <description>Up to now we have applied indirect gradient analyses. The lecture slides mention several constrained ordinations and provide some theory for three of them, viz. Redundancy Analysis (RDA), Canonical Correspondence Analysis (CCA), and distance-based Reducndancy Analysis (db-RDA). Constrained ordination is sometimes called ‘direct gradient analysis’.
+Constrained ordination is used to extract and summarise the variation in a set of response variables (species data in the case of ecology) that can be explained by some explanatory variables (‘constraints’), such as measurements of environmental properties at the places where the species data were collected from.</description>
+    </item>
+    
+    <item>
+      <title>16. Dates</title>
+      <link>/collection/intro_r/chapters/17-dates/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/intro_r/chapters/17-dates/</guid>
+      <description>This script covers some of the more common issues we may face while dealing with dates.
+## Load libraries library(tidyverse) library(lubridate) library(zoo) ## Load data sad_dates &amp;lt;- read.csv(&amp;quot;../../../../static/data/sad_dates.csv&amp;quot;) Date details Look at strip time format for guidance
+?strptime Check the local time zone
+Sys.timezone(location = TRUE) R&amp;gt; [1] &amp;quot;Africa/Johannesburg&amp;quot;  Creating daily dates Create date columns out of the mangled date data we have loaded.
+## Create good date column new_dates &amp;lt;- sad_dates %&amp;gt;% mutate(new_good = as.</description>
+    </item>
+    
+    <item>
+      <title>16. Dates</title>
+      <link>/workshops/intro_r/chapters/17-dates/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/intro_r/chapters/17-dates/</guid>
+      <description>This script covers some of the more common issues we may face while dealing with dates.
+## Load libraries library(tidyverse) library(lubridate) library(zoo) ## Load data sad_dates &amp;lt;- read.csv(&amp;quot;../../../../static/data/sad_dates.csv&amp;quot;) Date details Look at strip time format for guidance
+?strptime Check the local time zone
+Sys.timezone(location = TRUE) R&amp;gt; [1] &amp;quot;Africa/Johannesburg&amp;quot;  Creating daily dates Create date columns out of the mangled date data we have loaded.
+## Create good date column new_dates &amp;lt;- sad_dates %&amp;gt;% mutate(new_good = as.</description>
+    </item>
+    
+    <item>
+      <title>13. Cluster analysis</title>
+      <link>/collection/quantecol/chapters/13-cluster_analysis/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/quantecol/chapters/13-cluster_analysis/</guid>
+      <description>“There are two types of people in the world: 1) those who extrapolate from incomplete data.” – Anon.
+ We have seen that the WHO/SDG data seem to form neat groupings of countries within their respective parent locations. In this exercise we will apply a cluster analysis called ‘Partitioning Around Medoids’ to these data. Whereas ordination attempts to display the presence and influence of gradients, clustering tries to place our samples into a certain number of discrete units or clusters.</description>
+    </item>
+    
+    <item>
+      <title>13. Cluster analysis</title>
+      <link>/workshops/quantecol/chapters/13-cluster_analysis/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/workshops/quantecol/chapters/13-cluster_analysis/</guid>
+      <description>“There are two types of people in the world: 1) those who extrapolate from incomplete data.” – Anon.
+ We have seen that the WHO/SDG data seem to form neat groupings of countries within their respective parent locations. In this exercise we will apply a cluster analysis called ‘Partitioning Around Medoids’ to these data. Whereas ordination attempts to display the presence and influence of gradients, clustering tries to place our samples into a certain number of discrete units or clusters.</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>/contact/</link>
+      <pubDate>Mon, 25 Feb 2019 13:38:41 -0600</pubDate>
+      
+      <guid>/contact/</guid>
+      <description>** Contact page don&amp;rsquo;t contain a body, just the front matter above. See form.html in the layouts folder.
+Formspree requires a (free) account and new form to be set up. The link is made on the final published url in the field: Restrict to Domain. It is possible to register up to 2 emails free and you can select which one you want the forms to go to within Formspree in the Settings tab.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/about/header/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/header/</guid>
+      <description>Welcome to my pages!
+This is my website about the applications of R in Biology, Ecology, and Oceanography.
+This page serves the Biodiversity and Conservation Biology Department at the University of the Western Cape. Specifically, content for three modules is provided here, viz. Introduction to R, Biostatistics, and Quantitative Ecology.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/about/sidebar/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/sidebar/</guid>
+      <description>** index doesn&amp;rsquo;t contain a body, just front matter above. See about/list.html in the layouts folder **</description>
+    </item>
+    
+    <item>
+      <title>Contributors</title>
+      <link>/contributors/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/contributors/</guid>
+      <description>Thank you to all the folks who have contributed both technical and creative skills to this project:
+   Robert W. Schlegel (Co-creator of the heatwaveR R package, and co-author to some R teaching materials)
+   Amieroh Abrahams (Co-developer of some R teaching material)
+  </description>
+    </item>
+    
+    <item>
+      <title>License</title>
+      <link>/license/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/license/</guid>
+      <description>My blog posts are released under a Creative Commons Attribution-ShareAlike 4.0 International License.
+  </description>
+    </item>
+    
+    <item>
+      <title>Why R?</title>
+      <link>/about/main/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/about/main/</guid>
+      <description>** index doesn&amp;rsquo;t contain a body, just front matter above. See about/list.html in the layouts folder **</description>
+    </item>
+    
+  </channel>
+</rss>

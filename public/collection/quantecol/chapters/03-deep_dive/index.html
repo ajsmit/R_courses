@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  
+                           
+     
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.96.0" />
+<title>3. Deep Dive into Gradients | BCB R Stats Pages</title>
+
+
+<meta property="twitter:site" content="@ajsmit">
+<meta property="twitter:creator" content="@ajsmit">
+
+
+
+
+
+
+
+  
+    
+  
+<meta name="description" content="What you need to know upfront.">
+
+
+<meta property="og:site_name" content="BCB R Stats Pages">
+<meta property="og:title" content="3. Deep Dive into Gradients | BCB R Stats Pages">
+<meta property="og:description" content="What you need to know upfront." />
+<meta property="og:type" content="page" />
+<meta property="og:url" content="/collection/quantecol/chapters/03-deep_dive/" />
+<meta property="og:locale" content="en">
+
+
+
+
+    
+        <meta property="og:image" content="/img/papillons.jpg" >
+        <meta property="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="/img/papillons.jpg" >
+    
+  <meta itemprop="name" content="3. Deep Dive into Gradients">
+<meta itemprop="description" content="In the previous two sections we looked at calculations involving biodiversity (specifically the dissimilarity matricies made from a species table) and environmental variables (distances). What can we do with the two forms of contemporary β-diversity? What do they mean? Can we look to environmental distances for more insight?
+Let’s do a deeper analysis and create a figure to demonstrate these findings. I regress \(\beta_{\text{sør}}\) on the spatial distance between section pairs (see below) and on the environmental distance (\(\beta_{\text{E}}\)) in each bioregion and used the magnitude of the slope (per 100 km) of this relationship as a metric of β-diversity or ‘distance decay’ of dissimilarity."><meta itemprop="datePublished" content="2021-01-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-01-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3582">
+<meta itemprop="keywords" content="" />
+  
+  
+  <!--[if IE]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+  
+  
+  <link rel="stylesheet" href="/style.main.min.13dd27d3efb7ed4ad82be3040182ddbf5ab9d3b4d6d01f0ba3930845932fce66.css" integrity="sha256-E90n0&#43;&#43;37UrYK&#43;MEAYLdv1q507TW0B8Lo5MIRZMvzmY=" media="screen">
+  
+  
+  <script src="/panelset.min.8f4cba0107356728f266d94a12a4d18ef504eda8a9a284cda73675bae7884a68.js" type="text/javascript"></script>
+  
+  
+  <script src="/main.min.318ee9c0652bba0149e7503c97e37e638937f3a9cad9233e6d0ba00bf7a46a5e.js" type="text/javascript"></script>
+</head>
+<body>
+      <div class="grid-container single-series">
+<header class="site-header pt4 pb2 mb4 bb b--transparent ph5 headroom z-max" role="banner">
+  <nav class="site-nav db dt-l w-100" role="navigation">
+    <a class="site-brand db dtc-l v-mid link no-underline w-100 w-33-l tc tl-l" href="/" title="Home">
+      <img src="/img/xaringan-outline.png" class="dib db-l h2 w-auto" alt="BCB R Stats Pages">
+    </a>
+    <div class="site-links db dtc-l v-mid w-100 w-47-l tc tr-l mt3 mt0-l ttu tracked">
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/about/" title="About AJ Smit">About</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/workshops/" title="BCB Hons">BCB Hons</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/project/" title="Project Portfolio">Projects</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 active" href="/collection/" title="R Courses">R Courses</a>
+      
+      
+    </div>
+  </nav>
+</header>
+
+
+<main class="page-main ph4 pt4" role="main">
+  <section class="page-content mw7 center">
+    <article class="post-content pa0 pr3-l">
+      <header class="post-header">
+        <h4 class="breadcrumb pb5">
+
+  
+    
+      
+  
+    
+      
+  
+    
+      
+  
+
+    
+    
+      <a href="/collection/">B.Sc. (Hons.) R modules</a>
+    
+  
+
+    
+    
+      <a href="/collection/quantecol/">BCB743</a>
+    
+  
+
+    
+    
+      3. Deep Dive into Gradients
+    
+  
+
+</h4>
+
+
+
+
+        
+        <h1 class="f1 lh-solid measure-narrow mb3 fw4">3. Deep Dive into Gradients</h1>
+        
+        <p class="f6 measure lh-copy mv1"></p>
+        <p class="f7 db mv0 ttu">January 1, 2021</p>
+        
+        
+      
+        
+      </header>
+      <section class="post-body pt5 pb4">
+        
+
+
+<!--- # Topic 3: A deeper dive into gradients --->
+<p>In the previous two sections we looked at calculations involving biodiversity (specifically the dissimilarity matricies made from a species table) and environmental variables (distances). What can we do with the two forms of contemporary β-diversity? What do they mean? Can we look to environmental distances for more insight?</p>
+<p>Let’s do a deeper analysis and create a figure to demonstrate these findings. I regress <span class="math inline">\(\beta_{\text{sør}}\)</span> on the spatial distance between section pairs (see below) and on the environmental distance (<span class="math inline">\(\beta_{\text{E}}\)</span>) in each bioregion and used the magnitude of the slope (per 100 km) of this relationship as a metric of β-diversity or ‘distance decay’ of dissimilarity.</p>
+<p>What these lines of code do is regreate Figure 5 in Smit et al. (2017). Please read the paper for an interpretation of this figure as this is critical for an understanding of the role that gradients play in structuring patterns of biodiversity.</p>
+<p>(To be updated…)</p>
+<pre class="r"><code>## Setting up the analysis environment</code></pre>
+<pre class="r"><code>suppressMessages(library(tidyverse))
+suppressMessages(library(plyr))
+suppressMessages(library(vegan))
+suppressMessages(library(betapart)) # for partitioning beta-diversity
+suppressMessages(library(BiodiversityR)) # for calcs of species richness etc.</code></pre>
+<div id="load-all-of-the-data" class="section level2">
+<h2>Load all of the data</h2>
+<pre class="r"><code># load the environmental data:
+load(&quot;/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/diversity/SeaweedEnv.RData&quot;)
+env &lt;- as.data.frame(env)
+env &lt;- env[, c(&quot;annMean&quot;, &quot;annRange&quot;, &quot;annSD&quot;, &quot;febMean&quot;, &quot;febRange&quot;, &quot;febSD&quot;, &quot;augMean&quot;, &quot;augRange&quot;, &quot;augSD&quot;)] # keep only some...</code></pre>
+<p>Since the connectivity between sections is constrained by their location along a shoreline, we calculated the distances between sections not as ‘as the crow flies’ distances (e.g. Section 1 is not connected in a straight line to Section 58 because of the intervening land in-between), but as the great circle geodesic distances between each pair of sections along a ‘route’. Traveling from <strong>1</strong> to <strong>58</strong> therefore requires visiting <strong>2</strong>, then <strong>3</strong>, and eventually all the way up to <strong>58</strong>. The total distance between a pair of arbitrary sections is thus the cumulative sum of the great circle distances between each consecutive pair of intervening sections along the route. These data are contained in <code>dists_mat.RData</code> (I prepared it earlier):</p>
+<pre class="r"><code>load(&quot;/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/diversity/dists_mat.RData&quot;) # loads as dists.mat
+dists.mat[1:10, 1:8]</code></pre>
+<pre><code>##          1       2       3       4       5       6       7       8
+## 1    0.000  51.138 104.443 153.042 207.386 253.246 305.606 359.799
+## 2   51.138   0.000  53.305 101.904 156.248 202.108 254.468 308.661
+## 3  104.443  53.305   0.000  48.599 102.943 148.803 201.163 255.356
+## 4  153.042 101.904  48.599   0.000  54.344 100.204 152.564 206.757
+## 5  207.386 156.248 102.943  54.344   0.000  45.860  98.220 152.413
+## 6  253.246 202.108 148.803 100.204  45.860   0.000  52.360 106.553
+## 7  305.606 254.468 201.163 152.564  98.220  52.360   0.000  54.193
+## 8  359.799 308.661 255.356 206.757 152.413 106.553  54.193   0.000
+## 9  409.263 358.125 304.820 256.221 201.877 156.017 103.657  49.464
+## 10 457.857 406.719 353.414 304.815 250.471 204.611 152.251  98.058</code></pre>
+<p>Various bioregions have been defined for South African marine biota. I prefer to use the one made by John Bolton and Herre Stegenga in 2002:</p>
+<pre class="r"><code>bioreg &lt;- read.csv(&#39;/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/diversity/bioregions.csv&#39;, header = TRUE)
+rbind(head(bioreg, 3), tail(bioreg, 3))</code></pre>
+<pre><code>##    spal.prov spal.ecoreg lombard bolton
+## 1        BMP          NE   NamBR    BMP
+## 2        BMP          NE   NamBR    BMP
+## 3        BMP          NE   NamBR    BMP
+## 56       AMP          NE     NBR   ECTZ
+## 57       AMP          NE     NBR   ECTZ
+## 58       AMP          NE     NBR   ECTZ</code></pre>
+<p>Make a copy of the original matrix of distances between pairs of sites to create a full matrix which constrains pairwise comparisons to pairs within bioregions:</p>
+<pre class="r"><code>bioreg.mat &lt;- dists.mat
+bioreg.mat[1:58, 1:58] &lt;- &quot;out&quot;
+bioreg.mat[1:16, 1:16] &lt;- &quot;BMP&quot;
+bioreg.mat[17:21, 17:21] &lt;- &quot;B-ATZ&quot;
+bioreg.mat[22:41, 22:41] &lt;- &quot;AMP&quot;
+bioreg.mat[42:58, 42:58] &lt;- &quot;ECTZ&quot;
+dim(bioreg.mat) # print output below</code></pre>
+<pre><code>## [1] 58 58</code></pre>
+<pre class="r"><code># see what is inside the matrix... not printed here due to space constraints
+bioreg.mat[1:3, 1:10] # print output below</code></pre>
+<pre><code>##   1     2     3     4     5     6     7     8     9     10   
+## 1 &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot;
+## 2 &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot;
+## 3 &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot; &quot;BMP&quot;</code></pre>
+<pre class="r"><code>bioreg.mat[56:58, 53:58] # print output below</code></pre>
+<pre><code>##    53     54     55     56     57     58    
+## 56 &quot;ECTZ&quot; &quot;ECTZ&quot; &quot;ECTZ&quot; &quot;ECTZ&quot; &quot;ECTZ&quot; &quot;ECTZ&quot;
+## 57 &quot;ECTZ&quot; &quot;ECTZ&quot; &quot;ECTZ&quot; &quot;ECTZ&quot; &quot;ECTZ&quot; &quot;ECTZ&quot;
+## 58 &quot;ECTZ&quot; &quot;ECTZ&quot; &quot;ECTZ&quot; &quot;ECTZ&quot; &quot;ECTZ&quot; &quot;ECTZ&quot;</code></pre>
+<pre class="r"><code># convert to show only the lower left triangle
+bioreg.tri &lt;- gdata::lowerTriangle(bioreg.mat, diag = FALSE) # requires the gdata package</code></pre>
+<p>In <code>bioreg.mat</code>, pairs of sites that do not fall within any of the bioregions is called ‘out’:</p>
+<pre class="r"><code>bioreg.mat[1:3, 53:58] # print output below</code></pre>
+<pre><code>##   53    54    55    56    57    58   
+## 1 &quot;out&quot; &quot;out&quot; &quot;out&quot; &quot;out&quot; &quot;out&quot; &quot;out&quot;
+## 2 &quot;out&quot; &quot;out&quot; &quot;out&quot; &quot;out&quot; &quot;out&quot; &quot;out&quot;
+## 3 &quot;out&quot; &quot;out&quot; &quot;out&quot; &quot;out&quot; &quot;out&quot; &quot;out&quot;</code></pre>
+<p>We extract the slices (groups of rows) of the original species table into separate dataframes, one for each of the four bioregions:</p>
+<pre class="r"><code>env.BMP &lt;- env[1:16, ]
+env.BATZ &lt;- env[17:21, ]
+env.AMP &lt;- env[22:41, ]
+env.ECTZ &lt;- env[42:58, ]</code></pre>
+<p>Now we make an environmental dataframe for use with plots of pairwise correlations etc.:</p>
+<pre class="r"><code>env.df &lt;- data.frame(bio = bioreg$bolton, round(env, 3))
+rbind(head(env.df, 3), tail(env.df, 3))</code></pre>
+<pre><code>##     bio annMean annRange annSD febMean febRange febSD augMean augRange augSD
+## 1   BMP  12.335    1.249 1.255  13.001    6.070 1.626  11.752    2.502 0.767
+## 2   BMP  12.388    1.802 1.402  13.379    5.889 1.754  11.577    2.973 0.897
+## 3   BMP  12.243    2.068 1.475  13.362    5.431 1.704  11.294    3.084 0.941
+## 56 ECTZ  23.729    4.609 1.942  26.227    3.474 1.191  21.618    2.163 0.663
+## 57 ECTZ  24.710    4.969 1.976  27.328    3.372 1.143  22.359    1.584 0.499
+## 58 ECTZ  25.571    5.574 2.023  28.457    3.267 1.000  22.883    1.098 0.349</code></pre>
+<pre class="r"><code># load the seaweed data:
+spp &lt;- read.csv(&#39;/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/diversity/SeaweedsSpp.csv&#39;)
+spp &lt;- dplyr::select(spp, -1) # because it clashes with select from MASS</code></pre>
+</div>
+<div id="start-calculating" class="section level2">
+<h2>Start calculating</h2>
+<p>Calculate beta-diversity using the Sørensen index of dissimilarity. This is used throughout; binary Bray-Curtis is equivalent to Sørensen in <strong>vegan</strong>.</p>
+<pre class="r"><code># ---- Sorensen-index ----
+Y &lt;- vegdist(spp, binary = TRUE) # this is used throughout
+Y.mat &lt;- as.matrix(Y)
+Y.diag &lt;- diag(Y.mat[-1, -nrow(Y.mat)]) # extract the subdiagonal
+Y.diag &lt;- append(0, Y.diag, after = 1) # add a zero in front</code></pre>
+<p>Decompose into turnover and nestedness-resultant beta-diversity:</p>
+<pre class="r"><code># ---- do-betapart ----
+## Calculations with betapart:
+Y.core &lt;- betapart.core(spp)
+
+# Using the Sørensen index, compute three distance matrices accounting for the (i) turnover (replacement),
+# (ii) nestedness-resultant component, and (iii) total dissimilarity (i.e. the sum of both components):
+Y.pair &lt;- beta.pair(Y.core, index.family = &quot;sor&quot;) # use for pairwise plotting</code></pre>
+<p>Extract the subdiagonal for plotting later on:</p>
+<pre class="r"><code>Y1.mat &lt;- as.matrix(Y.pair$beta.sim)
+Y1.diag &lt;- diag(Y1.mat  [-1, -nrow(Y1.mat)]) # extract the subdiagonal
+Y1.diag &lt;- append(0, Y1.diag, after = 1) # add a zero in front
+
+Y2.mat &lt;- as.matrix(Y.pair$beta.sne)
+Y2.diag &lt;- diag(Y2.mat[-1, -nrow(Y2.mat)]) # extract the subdiagonal
+Y2.diag &lt;- append(0, Y2.diag, after = 1) # add a zero in front</code></pre>
+<p>Create separate matrices for each bioregion:</p>
+<pre class="r"><code># ---- spp-bioregion ----
+spp.BMP &lt;- spp[1:16, ]
+Y.BMP &lt;- vegdist(spp.BMP, binary = TRUE)
+spp.core.BMP &lt;- betapart.core(spp.BMP)
+Y.pair.BMP &lt;- beta.pair(spp.core.BMP, index.family = &quot;sor&quot;) # use for pairwise plotting
+
+spp.BATZ &lt;- spp[17:21, ]
+Y.BATZ &lt;- vegdist(spp.BATZ, binary = TRUE)
+spp.core.BATZ &lt;- betapart.core(spp.BATZ)
+Y.pair.BATZ &lt;- beta.pair(spp.core.BATZ, index.family = &quot;sor&quot;) # use for pairwise plotting
+
+spp.AMP &lt;- spp[22:41, ]
+Y.AMP &lt;- vegdist(spp.AMP, binary = TRUE)
+spp.core.AMP &lt;- betapart.core(spp.AMP)
+Y.pair.AMP &lt;- beta.pair(spp.core.AMP, index.family = &quot;sor&quot;) # use for pairwise plotting
+
+spp.ECTZ &lt;- spp[42:58, ]
+Y.ECTZ &lt;- vegdist(spp.ECTZ, binary = TRUE)
+spp.core.ECTZ &lt;- betapart.core(spp.ECTZ)
+Y.pair.ECTZ &lt;- beta.pair(spp.core.ECTZ, index.family = &quot;sor&quot;) # use for pairwise plotting</code></pre>
+<p>Calculate species richness (alpha-diversity):</p>
+<pre class="r"><code># ---- do-species-richness ----
+spp.richness.site &lt;- diversityresult(spp, index = &#39;richness&#39;, method = &#39;each site&#39;)</code></pre>
+<p>Calculate the environmental distances:</p>
+<pre class="r"><code># ---- environmental-distance ----
+# Euclidian distances on temperatures:
+env.raw &lt;- env # first make a copy so we can use untransformed data later on
+env &lt;- decostand(env, method = &quot;standardize&quot;) # calculate z-scores</code></pre>
+<p>Using individual thermal variables, calculate Euclidian distances, make a matrix and extract the subdiagonal. The data have already been standardised in <code>env</code>:</p>
+<pre class="r"><code># augMean
+env4 &lt;- dplyr::select(env, augMean) # as used in env.rda2
+env4 &lt;- vegdist(env4, method = &#39;euclidian&#39;)
+env4.mat &lt;- as.matrix(env4)
+env4.diag &lt;- diag(env4.mat[-1, -nrow(env4.mat)])
+env4.diag &lt;- append(0, env4.diag, after = 1)</code></pre>
+<pre class="r"><code># febRange:
+env5 &lt;- dplyr::select(env, febRange) # as used in env.rda2
+env5 &lt;- vegdist(env5, method = &#39;euclidian&#39;)
+env5.mat &lt;- as.matrix(env5)
+env5.diag &lt;- diag(env5.mat[-1, -nrow(env5.mat)])
+env5.diag &lt;- append(0, env5.diag, after = 1)</code></pre>
+<pre class="r"><code># febSD:
+env6 &lt;- dplyr::select(env, febSD) # as used in env.rda2
+env6 &lt;- vegdist(env6, method = &#39;euclidian&#39;)
+env6.mat &lt;- as.matrix(env6)
+env6.diag &lt;- diag(env6.mat[-1, -nrow(env6.mat)])
+env6.diag &lt;- append(0, env6.diag, after = 1)</code></pre>
+<pre class="r"><code># augSD:
+env7 &lt;- dplyr::select(env, augSD) # as used in env.rda2
+env7 &lt;- vegdist(env7, method = &#39;euclidian&#39;)
+env7.mat &lt;- as.matrix(env7)
+env7.diag &lt;- diag(env7.mat[-1, -nrow(env7.mat)])
+env7.diag &lt;- append(0, env7.diag, after = 1)</code></pre>
+<pre class="r"><code># annMean:
+env8 &lt;- dplyr::select(env, annMean) # as used in env.rda2
+env8 &lt;- vegdist(env8, method = &#39;euclidian&#39;)
+env8.mat &lt;- as.matrix(env8)
+env8.diag &lt;- diag(env8.mat[-1, -nrow(env8.mat)])
+env8.diag &lt;- append(0, env8.diag, after = 1)</code></pre>
+<pre class="r"><code># combined variables selected with the db-RDA:
+# these have a far poorer fit...
+env.comb &lt;- dplyr::select(env, augMean, febRange, febSD, augSD)
+env.comb &lt;- vegdist(env.comb, method = &#39;euclidian&#39;)
+env.comb.mat &lt;- as.matrix(env.comb)
+env.comb.diag &lt;- diag(env.comb.mat[-1, -nrow(env.comb.mat)])
+env.comb.diag &lt;- append(0, env.comb.diag, after = 1)</code></pre>
+<pre class="r"><code># ---- do-figure-5 ----
+# Assemble data frame for plotting:
+spp.df &lt;- data.frame(dist = as.vector(dists.mat),
+                     bio = as.vector(bioreg.mat),
+                     augMean = as.vector(env4.mat),
+                     febRange = as.vector(env5.mat),
+                     febSD = as.vector(env6.mat),
+                     augSD = as.vector(env7.mat),
+                     annMean = as.vector(env8.mat),
+                     Y = as.vector(Y.mat),
+                     Y1 = as.vector(Y1.mat),
+                     Y2 = as.vector(Y2.mat))</code></pre>
+<p>Do the various linear regressions of Sørensen dissimilarities (<em>β<sub>sor</sub></em>), turnover (<em>β<sub>sim</sub></em>) and nestedness-related <em>β</em>-diversity (<em>β<sub>sne</sub></em>) as a function of the various thermal distances. I only display the results of the linear regression for <span class="math inline">\(Y1\)</span> regressed on geographical distance, <code>dist</code>, but do all the calculations:</p>
+<pre class="r"><code>spp.df2 &lt;- droplevels(subset(spp.df, bio !=  &quot;out&quot;))
+head(spp.df2)</code></pre>
+<pre><code>##      dist bio     augMean    febRange       febSD      augSD     annMean
+## 1   0.000 BMP 0.000000000 0.000000000 0.000000000 0.00000000 0.000000000
+## 2  51.138 BMP 0.057413686 0.098844037 0.162952710 0.31327996 0.015018458
+## 3 104.443 BMP 0.150439037 0.348877544 0.099341627 0.41882390 0.026022466
+## 4 153.042 BMP 0.203224406 0.557654418 0.040720995 0.41525879 0.051341700
+## 5 207.386 BMP 0.169908896 0.596480756 0.138250544 0.45110735 0.110354710
+## 6 253.246 BMP 0.082131062 0.506493762 0.158074740 0.50536019 0.141115516
+##              Y           Y1           Y2
+## 1 0.0000000000 0.0000000000 0.0000000000
+## 2 0.0036101083 0.0000000000 0.0036101083
+## 3 0.0036101083 0.0000000000 0.0036101083
+## 4 0.0071942446 0.0000000000 0.0071942446
+## 5 0.0249110320 0.0072463768 0.0176646552
+## 6 0.0391459075 0.0217391304 0.0174067770</code></pre>
+<pre class="r"><code># turnover...
+Y1.lm1 &lt;- dlply(spp.df2, .(bio), function(x) lm(Y1 ~ dist, data = x))
+lapply(Y1.lm1, summary)</code></pre>
+<pre><code>## $AMP
+## 
+## Call:
+## lm(formula = Y1 ~ dist, data = x)
+## 
+## Residuals:
+##        Min         1Q     Median         3Q        Max 
+## -0.0595754 -0.0195099 -0.0045457  0.0150607  0.0676548 
+## 
+## Coefficients:
+##                Estimate  Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -5.1753e-03  2.4057e-03 -2.1513  0.03205 *  
+## dist         2.9388e-04  6.5671e-06 44.7508  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.027858 on 398 degrees of freedom
+## Multiple R-squared:  0.83421,    Adjusted R-squared:  0.83379 
+## F-statistic: 2002.6 on 1 and 398 DF,  p-value: &lt; 2.22e-16
+## 
+## 
+## $`B-ATZ`
+## 
+## Call:
+## lm(formula = Y1 ~ dist, data = x)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.070629 -0.024865  0.008058  0.022698  0.059443 
+## 
+## Coefficients:
+##                Estimate  Std. Error t value  Pr(&gt;|t|)    
+## (Intercept) -0.00805800  0.01364463 -0.5906    0.5606    
+## dist         0.00109279  0.00015899  6.8732 5.229e-07 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.041102 on 23 degrees of freedom
+## Multiple R-squared:  0.67256,    Adjusted R-squared:  0.65832 
+## F-statistic: 47.241 on 1 and 23 DF,  p-value: 5.2292e-07
+## 
+## 
+## $BMP
+## 
+## Call:
+## lm(formula = Y1 ~ dist, data = x)
+## 
+## Residuals:
+##        Min         1Q     Median         3Q        Max 
+## -0.0377507 -0.0274619 -0.0238939  0.0015289  0.2693766 
+## 
+## Coefficients:
+##               Estimate Std. Error t value  Pr(&gt;|t|)    
+## (Intercept) 2.3923e-02 5.4997e-03  4.3498 1.975e-05 ***
+## dist        7.0949e-05 1.8256e-05  3.8864 0.0001299 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.051294 on 254 degrees of freedom
+## Multiple R-squared:  0.056126,   Adjusted R-squared:  0.05241 
+## F-statistic: 15.104 on 1 and 254 DF,  p-value: 0.00012991
+## 
+## 
+## $ECTZ
+## 
+## Call:
+## lm(formula = Y1 ~ dist, data = x)
+## 
+## Residuals:
+##        Min         1Q     Median         3Q        Max 
+## -0.1188184 -0.0268483  0.0053999  0.0244034  0.1196065 
+## 
+## Coefficients:
+##                Estimate  Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -5.3999e-03  4.2574e-03 -1.2683   0.2057    
+## dist         7.8600e-04  1.2086e-05 65.0326   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.041937 on 287 degrees of freedom
+## Multiple R-squared:  0.93645,    Adjusted R-squared:  0.93623 
+## F-statistic: 4229.2 on 1 and 287 DF,  p-value: &lt; 2.22e-16</code></pre>
+<pre class="r"><code>Y1.lm2 &lt;- dlply(spp.df2, .(bio), function(x) lm(Y1 ~ augMean , data = x))
+# lapply(Y1.lm2, summary)
+Y1.lm3 &lt;- dlply(spp.df2, .(bio), function(x) lm(Y1 ~ augSD , data = x))
+# lapply(Y1.lm3, summary)
+Y1.lm4 &lt;- dlply(spp.df2, .(bio), function(x) lm(Y1 ~ febRange , data = x))
+# lapply(Y1.lm4, summary)
+Y1.lm5 &lt;- dlply(spp.df2, .(bio), function(x) lm(Y1 ~ febSD , data = x))
+# lapply(Y1.lm5, summary)
+
+# nestedness-resultant...
+Y2.lm1 &lt;- dlply(spp.df2, .(bio), function(x) lm(Y2 ~ dist, data = x))
+# lapply(Y2.lm1, summary)
+Y2.lm2 &lt;- dlply(spp.df2, .(bio), function(x) lm(Y2 ~ annMean , data = x))
+# lapply(Y2.lm2, summary)</code></pre>
+</div>
+<div id="make-the-plots" class="section level2">
+<h2>Make the plots</h2>
+<p>Now assemble <strong>Figure 5.</strong> It is a plot of pairwise (a) Sørensen dissimilarities (<em>β<sub>sor</sub></em>), (b) turnover (<em>β<sub>sim</sub></em>) and (c) nestedness-related <em>β</em>-diversity (<em>β<sub>sne</sub></em>) (<em>sensu</em> Baselga, 2010) as a function of distance between sections. Section pairs falling within individual bioregions are colour-coded; where the pairs include sections across different bioregions the symbols are coloured grey and labeled ‘out’.</p>
+<p>Combine the data in a way that makes for easy plotting:</p>
+<pre class="r"><code># Plots:
+spp.long &lt;- spp.df %&gt;%
+  gather(beta, dissim, Y:Y2) %&gt;%
+  gather(metric, distance, c(dist, augMean:annMean))
+spp.long$metric = factor(spp.long$metric, levels = c(&#39;dist&#39;,&#39;augMean&#39;,&#39;febRange&#39;,&#39;febSD&#39;, &#39;augSD&#39;, &#39;annMean&#39;))</code></pre>
+<p>The repetive portions of code needed to create each of the panels. I was too lazy to write neater and more concise code:</p>
+<pre class="r"><code># sim as a function of geographic distance:
+plt5a &lt;- spp.long %&gt;%
+  dplyr::filter(beta %in% &quot;Y1&quot; &amp; metric %in% &quot;dist&quot;) %&gt;%
+  ggplot(aes(x = distance, y = dissim, group = bio)) +
+  geom_point(aes(colour = bio, shape = bio), size = 1.2, alpha = 0.8) +
+  geom_point(aes(colour = bio, size = bio, alpha = bio, shape = bio)) +
+  geom_line(stat = &quot;smooth&quot;, method = &quot;lm&quot;, formula = y~x, alpha = 1.0, size = 0.6,
+            colour = &quot;black&quot;,
+            aes(linetype = bio)) +
+  scale_linetype_manual(name = &quot;Bioregion&quot;, values = c(&quot;dashed&quot;, &quot;solid&quot;, &quot;dotted&quot;, &quot;longdash&quot;, &quot;blank&quot;)) +
+  scale_colour_brewer(name = &quot;Bioregion&quot;, palette = &quot;Set1&quot;) +
+  scale_shape_manual(name = &quot;Bioregion&quot;, values = c(0, 19, 2, 5, 46)) +
+  scale_size_manual(name = &quot;Bioregion&quot;, values = c(1.0, 1.2, 1.0, 1.0, 0.6)) +
+  scale_alpha_manual(name = &quot;Bioregion&quot;, values = c(0.85, 1.0, 0.85, 0.85, 0.1)) +
+  xlab(expression(paste(&quot;Distance (km)&quot;))) +
+  ylab(expression(paste(beta[sim]))) +
+  scale_y_continuous(limits = c(0, 0.75)) +
+  scale_x_continuous(limits = c(0, 1000)) +
+  theme_grey() +
+  theme(panel.grid.minor = element_line(colour = NA),
+        plot.title = element_text(hjust = 0, size = 10),
+        # legend.position = c(0.2, 0.7),
+        # legend.direction = &quot;vertical&quot;,
+        aspect.ratio = 0.6) +
+  ggtitle(expression(paste(beta[sim], &quot; as a function of distance&quot;)))</code></pre>
+<pre class="r"><code># sim as a function of augMean:
+plt5b &lt;- spp.long %&gt;%
+  dplyr::filter(beta %in% &quot;Y1&quot; &amp; metric %in% &quot;augMean&quot;) %&gt;%
+  ggplot(aes(x = distance, y = dissim, group = bio)) +
+  geom_point(aes(colour = bio, shape = bio), size = 1.2, alpha = 0.8) +
+  # geom_point(aes(colour = bio, size = bio, alpha = bio, shape = bio)) +
+  geom_line(stat = &quot;smooth&quot;, method = &quot;lm&quot;, formula = y~x, alpha = 1.0, size = 0.6,
+            colour = &quot;black&quot;,
+            aes(linetype = bio)) +
+  scale_linetype_manual(values = c(&quot;dashed&quot;, &quot;solid&quot;, &quot;dotted&quot;, &quot;longdash&quot;, &quot;blank&quot;)) +
+  scale_colour_brewer(palette = &quot;Set1&quot;) +
+  scale_shape_manual(values = c(0, 19, 2, 5, 46)) +
+  scale_size_manual(values = c(1.0, 1.2, 1.0, 1.0, 0.6)) +
+  scale_alpha_manual(values = c(0.85, 1.0, 0.85, 0.85, 0.1)) +
+  xlab(expression(paste(d[E]))) +
+  ylab(expression(paste(beta[sim]))) +
+  scale_y_continuous(limits = c(0, 0.75)) +
+  scale_x_continuous(limits = c(0, 2)) +
+  theme_grey() +
+  theme(panel.grid.minor = element_line(colour = NA),
+        plot.title = element_text(hjust = 0, size = 10),
+        legend.position = &quot;none&quot;,
+        # legend.title = element_blank(),
+        legend.title = element_text(size = 8),
+        legend.text = element_text(size = 8),
+        legend.key = element_blank(),
+        legend.key.height = unit(.22, &quot;cm&quot;),
+        legend.background = element_blank(),
+        aspect.ratio = 0.6) +
+  ggtitle(expression(paste(beta[sim], &quot; as a function of augMean&quot;)))</code></pre>
+<pre class="r"><code># sim as a function of febRange:
+plt5c &lt;- spp.long %&gt;%
+  dplyr::filter(beta %in% &quot;Y1&quot; &amp; metric %in% &quot;febRange&quot;) %&gt;%
+  ggplot(aes(x = distance, y = dissim, group = bio)) +
+  geom_point(aes(colour = bio, shape = bio), size = 1.2, alpha = 0.8) +
+  # geom_point(aes(colour = bio, size = bio, alpha = bio, shape = bio)) +
+  geom_line(stat = &quot;smooth&quot;, method = &quot;lm&quot;, formula = y~x, alpha = 1.0, size = 0.6,
+            colour = &quot;black&quot;,
+            aes(linetype = bio)) +
+  scale_linetype_manual(values = c(&quot;dashed&quot;, &quot;solid&quot;, &quot;dotted&quot;, &quot;longdash&quot;, &quot;blank&quot;)) +
+  scale_colour_brewer(palette = &quot;Set1&quot;) +
+  scale_shape_manual(values = c(0, 19, 2, 5, 46)) +
+  scale_size_manual(values = c(1.0, 1.2, 1.0, 1.0, 0.6)) +
+  scale_alpha_manual(values = c(0.85, 1.0, 0.85, 0.85, 0.1)) +
+  xlab(expression(paste(d[E]))) +
+  ylab(expression(paste(beta[sim]))) +
+  scale_y_continuous(limits = c(0, 0.75)) +
+  scale_x_continuous(limits = c(0, 4)) +
+  theme_grey() +
+  theme(panel.grid.minor = element_line(colour = NA),
+        plot.title = element_text(hjust = 0, size = 10),
+        legend.position = &quot;none&quot;,
+        aspect.ratio = 0.6) +
+  ggtitle(expression(paste(beta[sim], &quot; as a function of febRange&quot;)))</code></pre>
+<pre class="r"><code># sim as a function of febSD:
+plt5d &lt;- spp.long %&gt;%
+  dplyr::filter(beta %in% &quot;Y1&quot; &amp; metric %in% &quot;febSD&quot;) %&gt;%
+  ggplot(aes(x = distance, y = dissim, group = bio)) +
+  geom_point(aes(colour = bio, shape = bio), size = 1.2, alpha = 0.8) +
+  # geom_point(aes(colour = bio, size = bio, alpha = bio, shape = bio)) +
+  geom_line(stat = &quot;smooth&quot;, method = &quot;lm&quot;, formula = y~x, alpha = 1.0, size = 0.6,
+            colour = &quot;black&quot;,
+            aes(linetype = bio)) +
+  scale_linetype_manual(values = c(&quot;dashed&quot;, &quot;solid&quot;, &quot;dotted&quot;, &quot;longdash&quot;, &quot;blank&quot;)) +
+  scale_colour_brewer(palette = &quot;Set1&quot;) +
+  scale_shape_manual(values = c(0, 19, 2, 5, 46)) +
+  scale_size_manual(values = c(1.0, 1.2, 1.0, 1.0, 0.6)) +
+  scale_alpha_manual(values = c(0.85, 1.0, 0.85, 0.85, 0.1)) +
+  xlab(expression(paste(d[E]))) +
+  ylab(expression(paste(beta[sim]))) +
+  scale_y_continuous(limits = c(0, 0.75)) +
+  scale_x_continuous(limits = c(0, 3)) +
+  theme_grey() +
+  theme(panel.grid.minor = element_line(colour = NA),
+        plot.title = element_text(hjust = 0, size = 10),
+        legend.position = &quot;none&quot;,
+        aspect.ratio = 0.6) +
+  ggtitle(expression(paste(beta[sim], &quot; as a function of febSD&quot;)))</code></pre>
+<pre class="r"><code># sim as a function of augSD:
+plt5e &lt;- spp.long %&gt;%
+  dplyr::filter(beta %in% &quot;Y1&quot; &amp; metric %in% &quot;augSD&quot;) %&gt;%
+  ggplot(aes(x = distance, y = dissim, group = bio)) +
+  geom_point(aes(colour = bio, shape = bio), size = 1.2, alpha = 0.8) +
+  # geom_point(aes(colour = bio, size = bio, alpha = bio, shape = bio)) +
+  geom_line(stat = &quot;smooth&quot;, method = &quot;lm&quot;, formula = y~x, alpha = 1.0, size = 0.6,
+            colour = &quot;black&quot;,
+            aes(linetype = bio)) +
+  scale_linetype_manual(values = c(&quot;dashed&quot;, &quot;solid&quot;, &quot;dotted&quot;, &quot;longdash&quot;, &quot;blank&quot;)) +
+  scale_colour_brewer(palette = &quot;Set1&quot;) +
+  scale_shape_manual(values = c(0, 19, 2, 5, 46)) +
+  scale_size_manual(values = c(1.0, 1.2, 1.0, 1.0, 0.6)) +
+  scale_alpha_manual(values = c(0.85, 1.0, 0.85, 0.85, 0.1)) +
+  xlab(expression(paste(d[E]))) +
+  ylab(expression(paste(beta[sim]))) +
+  scale_y_continuous(limits = c(0, 0.75)) +
+  scale_x_continuous(limits = c(0, 3)) +
+  theme_grey() +
+  theme(panel.grid.minor = element_line(colour = NA),
+        plot.title = element_text(hjust = 0, size = 10),
+        legend.position = &quot;none&quot;,
+        aspect.ratio = 0.6) +
+  ggtitle(expression(paste(beta[sim], &quot; as a function of augSD&quot;)))</code></pre>
+<pre class="r"><code># sne as a function of distance:
+plt5f &lt;- spp.long %&gt;%
+  dplyr::filter(beta %in% &quot;Y2&quot; &amp; metric %in% &quot;dist&quot;) %&gt;%
+  ggplot(aes(x = distance, y = dissim, group = bio)) +
+  geom_point(aes(colour = bio, shape = bio), size = 1.2, alpha = 0.8) +
+  # geom_point(aes(colour = bio, size = bio, alpha = bio, shape = bio)) +
+  geom_line(stat = &quot;smooth&quot;, method = &quot;lm&quot;, formula = y~x, alpha = 1.0, size = 0.6,
+            colour = &quot;black&quot;,
+            aes(linetype = bio)) +
+  scale_linetype_manual(values = c(&quot;dashed&quot;, &quot;solid&quot;, &quot;dotted&quot;, &quot;longdash&quot;, &quot;blank&quot;)) +
+  scale_colour_brewer(palette = &quot;Set1&quot;) +
+  scale_shape_manual(values = c(0, 19, 2, 5, 46)) +
+  scale_size_manual(values = c(1.0, 1.2, 1.0, 1.0, 0.6)) +
+  scale_alpha_manual(values = c(0.85, 1.0, 0.85, 0.85, 0.1)) +
+  xlab(expression(paste(&quot;Distance (km)&quot;))) +
+  ylab(expression(paste(beta[sne]))) +
+  scale_y_continuous(limits = c(0, 0.22)) +
+  scale_x_continuous(limits = c(0, 1000)) +
+  theme_grey() +
+  theme(panel.grid.minor = element_line(colour = NA),
+        plot.title = element_text(hjust = 0, size = 10),
+        legend.position = &quot;none&quot;,
+        aspect.ratio = 0.6) +
+  ggtitle(expression(paste(beta[sne], &quot; as a function of distance&quot;)))</code></pre>
+<pre class="r"><code># sne as a function of annMean:
+plt5g &lt;- spp.long %&gt;%
+  dplyr::filter(beta %in% &quot;Y2&quot; &amp; metric %in% &quot;annMean&quot;) %&gt;%
+  ggplot(aes(x = distance, y = dissim, group = bio)) +
+  geom_point(aes(colour = bio, shape = bio), size = 1.2, alpha = 0.8) +
+  # geom_point(aes(colour = bio, size = bio, alpha = bio, shape = bio)) +
+  geom_line(stat = &quot;smooth&quot;, method = &quot;lm&quot;, formula = y~x, alpha = 1.0, size = 0.6,
+            colour = &quot;black&quot;,
+            aes(linetype = bio)) +
+  scale_linetype_manual(values = c(&quot;dashed&quot;, &quot;solid&quot;, &quot;dotted&quot;, &quot;longdash&quot;, &quot;blank&quot;)) +
+  scale_colour_brewer(palette = &quot;Set1&quot;) +
+  scale_shape_manual(values = c(0, 19, 2, 5, 46)) +
+  scale_size_manual(values = c(1.0, 1.2, 1.0, 1.0, 0.6)) +
+  scale_alpha_manual(values = c(0.85, 1.0, 0.85, 0.85, 0.1)) +
+  xlab(expression(paste(d[E]))) +
+  ylab(expression(paste(beta[sne]))) +
+  scale_y_continuous(limits = c(0, 0.22)) +
+  scale_x_continuous(limits = c(0, 2)) +
+  theme_grey() +
+  theme(panel.grid.minor = element_line(colour = NA),
+        plot.title = element_text(hjust = 0, size = 10),
+        legend.position = &quot;none&quot;,
+        aspect.ratio = 0.6) +
+  ggtitle(expression(paste(beta[sne], &quot; as a function of annMean&quot;)))</code></pre>
+<pre class="r"><code>plt5h &lt;- ggplot(spp.long, aes(x = distance, y = dissim)) + geom_blank() +
+  theme(plot.background = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank(),
+        panel.background = element_blank(),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        axis.text.x = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks = element_blank(),
+        axis.line = element_blank())</code></pre>
+<p>Assemble using the <strong>cowplot</strong> package:</p>
+<pre class="r"><code>library(cowplot)
+
+oldw &lt;- getOption(&quot;warn&quot;) # turn off warnings
+options(warn = -1)
+
+l &lt;- get_legend(plt5a)
+# pdf(&quot;Fig5.pdf&quot;, width = 9, height = 6.5)
+ggdraw() +
+  draw_plot(plot_grid(plt5a + theme(legend.position = &#39;none&#39;), plt5b, plt5c,
+                      plt5d, plt5e, l,
+                      plt5f, plt5g, plt5h,
+                      ncol = 3, align = &#39;hv&#39;),
+            width = 1.0)</code></pre>
+<p><img src="/collection/quantecol/chapters/03-deep_dive_files/figure-html/unnamed-chunk-34-1.png" width="672" /></p>
+</div>
+<div id="references" class="section level2">
+<h2>References</h2>
+<p>Baselga, A. (2010). Partitioning the turnover and nestedness components of beta diversity. Global Ecology and Biogeography 19, 134–143.</p>
+<p>Bolton, J. J., and Stegenga, H. (2002). Seaweed species diversity in South Africa. South African Journal of Marine Science 24, 9–18.</p>
+<p>Smit, A. J., Bolton, J. J., &amp; Anderson, R. J. (2017). Seaweeds in two oceans: beta-diversity. Frontiers in Marine Science, 4, 404.</p>
+</div>
+
+      </section>
+      <footer class="post-footer">
+        <div class="post-pagination dt w-100 mt4 mb2">
+  
+  
+    <a class="prev dtc pr2 tl v-top fw6"
+    href="/collection/quantecol/chapters/02-biodiversity/">&larr; 2. Biodiversity</a>
+  
+  
+  
+    <a class="next dtc pl2 tr v-top fw6"
+    href="/collection/quantecol/chapters/04-env_dist/">4. Environmental Distance &rarr;</a>
+  
+</div>
+
+      </footer>
+    </article>
+    
+  </section>
+</main>
+
+<aside class="page-sidebar" role="complementary">
+                         
+ 
+
+
+
+
+
+
+
+
+
+
+
+  <img src="/collection/featured-sidebar.jpg" class="db ma0">
+
+                         
+ 
+
+
+
+<div class="flex items-start sticky ph4 pb4 flex-row">
+  <div class="w-two-thirds w-50-l ph0">
+    <h2 class="mv3 f5 fw7 ttu tracked">
+      <a class="no-underline dim" href="/collection/">Outline</a></h2>
+    <nav id="SectionTableOfContents" aria-label="SectionTableOfContents">
+        <ul>
+        
+          
+          
+          
+          <details  class="">
+            <summary class="" hugo-nav="/collection/intro_r/"><a href="/collection/intro_r/">BCB744 (Intro R)</a></summary>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/02-rstudio/"><a href="/collection/intro_r/chapters/02-rstudio/">1. RStudio and R</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/03-github/"><a href="/collection/intro_r/chapters/03-github/">2. GitHub</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/04-workflow/"><a href="/collection/intro_r/chapters/04-workflow/">3. An R workflow</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/05-graphics/"><a href="/collection/intro_r/chapters/05-graphics/">4. Graphics with ggplot2</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/06-faceting/"><a href="/collection/intro_r/chapters/06-faceting/">5. Faceting figures</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/07-brewing/"><a href="/collection/intro_r/chapters/07-brewing/">6. Brewing colours</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/08-mapping/"><a href="/collection/intro_r/chapters/08-mapping/">7. Mapping with ggplot2</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/09-mapping_style/"><a href="/collection/intro_r/chapters/09-mapping_style/">8. Mapping with style</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/10-mapping_openstreetmap/"><a href="/collection/intro_r/chapters/10-mapping_openstreetmap/">9. Mapping with OpenStreetMap</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/11-tidy/"><a href="/collection/intro_r/chapters/11-tidy/">10. Tidy data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/12-tidier/"><a href="/collection/intro_r/chapters/12-tidier/">11. Tidier data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/13-tidiest/"><a href="/collection/intro_r/chapters/13-tidiest/">12. Tidiest data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/14-recap/"><a href="/collection/intro_r/chapters/14-recap/">13. Recap</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/15-functions/"><a href="/collection/intro_r/chapters/15-functions/">14. Functions by chapter</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/16-base_r/"><a href="/collection/intro_r/chapters/16-base_r/">15. Base R primer</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/intro_r/chapters/17-dates/"><a href="/collection/intro_r/chapters/17-dates/">16. Dates</a></li>
+            
+          </details>
+          
+          </li>
+        
+          
+          
+          
+          <details  class="">
+            <summary class="" hugo-nav="/collection/biostats/"><a href="/collection/biostats/">BCB744 (Biostats)</a></summary>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/02-data/"><a href="/collection/biostats/chapters/02-data/">1. Types of data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/03-descriptive/"><a href="/collection/biostats/chapters/03-descriptive/">2. Central tendency and dispersion</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/04-graphics/"><a href="/collection/biostats/chapters/04-graphics/">3. Graphical data displays</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/06-t_tests/"><a href="/collection/biostats/chapters/06-t_tests/">5. Inferences about one or two populations</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/07-anova/"><a href="/collection/biostats/chapters/07-anova/">6. Analysis of Variance (ANOVA)</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/08-regressions/"><a href="/collection/biostats/chapters/08-regressions/">7. Simple linear regressions</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/09-correlations/"><a href="/collection/biostats/chapters/09-correlations/">8. Correlation</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/10-confidence/"><a href="/collection/biostats/chapters/10-confidence/">9. Confidence intervals</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/biostats/chapters/11-transformations/"><a href="/collection/biostats/chapters/11-transformations/">10. Data transformations</a></li>
+            
+          </details>
+          
+          </li>
+        
+          
+          
+          
+          <details open class="active">
+            <summary class="active" hugo-nav="/collection/quantecol/"><a href="/collection/quantecol/">BCB743</a></summary>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/01-data/"><a href="/collection/quantecol/chapters/01-data/">1. Multivariate data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/02-biodiversity/"><a href="/collection/quantecol/chapters/02-biodiversity/">2. Biodiversity</a></li>
+            
+              
+              <li class="active" hugo-nav="/collection/quantecol/chapters/03-deep_dive/"><a href="/collection/quantecol/chapters/03-deep_dive/">3. Deep Dive into Gradients</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/04-env_dist/"><a href="/collection/quantecol/chapters/04-env_dist/">4. Environmental Distance</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/05-spp_dissimilarity/"><a href="/collection/quantecol/chapters/05-spp_dissimilarity/">5. Species Dissimilarities</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/06-correlations/"><a href="/collection/quantecol/chapters/06-correlations/">6. Correlations and Associations</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/08_pca/"><a href="/collection/quantecol/chapters/08_pca/">8a. Principal Component Analysis (PCA)</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/08-pca_sdg/"><a href="/collection/quantecol/chapters/08-pca_sdg/">8b. PCA of WHO SDGs</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/09-ca/"><a href="/collection/quantecol/chapters/09-ca/">9. Correspondence Analysis (CA)</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/10-pcoa/"><a href="/collection/quantecol/chapters/10-pcoa/">10. Principal Coordinate Analysis (PCoA)</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/11-nmds/"><a href="/collection/quantecol/chapters/11-nmds/">11a. non-Metric multidimensional scaling (nMDS)</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/11-nmds_diatoms/"><a href="/collection/quantecol/chapters/11-nmds_diatoms/">11b. nMDS of Mayombo&#39;s diatom data</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/12-constrained_ordination/"><a href="/collection/quantecol/chapters/12-constrained_ordination/">12. Constrained Ordination</a></li>
+            
+              
+              <li class="" hugo-nav="/collection/quantecol/chapters/13-cluster_analysis/"><a href="/collection/quantecol/chapters/13-cluster_analysis/">13. Cluster analysis</a></li>
+            
+          </details>
+          
+          </li>
+        
+        </ul>
+    </nav>
+  </div>
+  <details id="PageTableOfContents">
+    <summary><h2 class="mv0 f5 fw7 ttu tracked dib">On this page<h2></summary>
+    <div class="pl2 pr0 mh0">
+    
+    </div>
+  </details>
+  
+</div>
+
+</aside>
+
+<footer class="site-footer pv4 bt b--transparent ph5" role="contentinfo">
+  <nav class="db dt-l w-100">
+    <p class="site-copyright f7 db dtc-l v-mid w-100 w-33-l tc tl-l pv2 pv0-l mv0 lh-copy">
+      &copy; 2022 University of the Western Cape, Cape Town
+      <span class="middot-divider"></span>
+      Made with <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/hugo-apero/" rel="dct:source">Hugo Apéro</a></span>.
+      <br />
+      
+Based on <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/formspree/blogophonic-hugo" rel="dct:source">Blogophonic</a></span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://formspree.io" property="cc:attributionName" rel="cc:attributionURL">Formspree</a>.
+    </p>
+    
+    <div class="site-social-links db dtc-l v-mid w-100 w-33-l tc pv2 pv0-l mv0">
+      <div class="social-icon-links" aria-hidden="true">
+  
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://github.com/ajsmit/" title="github" target="_blank" rel="noopener">
+      <i class="fab fa-github fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="http://orcid.org/0000-0002-3799-6126" title="orcid" target="_blank" rel="noopener">
+      <i class="ai ai-orcid fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.researchgate.net/profile/Albertus-Smit" title="researchgate" target="_blank" rel="noopener">
+      <i class="ai ai-researchgate fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://uwc.academia.edu/AlbertusSmit" title="academia" target="_blank" rel="noopener">
+      <i class="ai ai-academia fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://scholar.google.co.za/citations?user=ATsBBKoAAAAJ&amp;hl=en" title="google-scholar" target="_blank" rel="noopener">
+      <i class="ai ai-google-scholar fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.instagram.com/ajsmit/" title="instagram" target="_blank" rel="noopener">
+      <i class="fab fa-instagram fa-lg fa-fw"></i>
+    </a>
+  
+</div>
+
+    </div>
+    
+    <div class="site-links f6 db dtc-l v-mid w-100 w-67-l tc tr-l pv2 pv0-l mv0">
+      
+      <a class="dib pv1 ph2 link" href="/license/" title="License">License</a>
+      
+      <a class="dib pv1 ph2 link" href="/contact/" title="Contact form">Contact</a>
+      
+      <a class="dib pv1 ph2 link" href="/contributors/" title="Contributors">Contributors</a>
+      
+    </div>
+  </nav>
+  
+    <script>
+
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (let i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) ||
+            /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+</script>
+
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+
+    
+  
+  
+</footer>
+
+      </div>
+    </body>
+</html>

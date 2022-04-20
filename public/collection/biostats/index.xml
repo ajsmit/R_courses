@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>BCB744 (Biostats) on BCB R Stats Pages</title>
+    <link>/collection/biostats/</link>
+    <description>Recent content in BCB744 (Biostats) on BCB R Stats Pages</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 25 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="/collection/biostats/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>1. Types of data</title>
+      <link>/collection/biostats/chapters/02-data/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/biostats/chapters/02-data/</guid>
+      <description>“The plural of anecdote is not data.”
+— Roger Brinner
+ In this chapter we will, firstly, recap how to work with data in R. Then we will look at the different kinds of biological and environmental data that are typically encountered by most biologists. The data seen here are not an exhaustive list of all the various types of data out there, but it should represent the bulk of our needs.</description>
+    </item>
+    
+    <item>
+      <title>2. Central tendency and dispersion</title>
+      <link>/collection/biostats/chapters/03-descriptive/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/biostats/chapters/03-descriptive/</guid>
+      <description>“I think it is much more interesting to live with uncertainty than to live with answers that might be wrong.”
+—- Richard Feynman
+ In this Chapter we will focus on basic descriptions of the data, and these initial forrays are built around measures of the central tendency of the data (the mean, median, mode) and the dispersion and variability of the data (standard deviations and their ilk). The materials covered in this and the next two chapters concern a broad discussion that will aid us in understanding our data better prior to analysing it, and before we can draw inference from it.</description>
+    </item>
+    
+    <item>
+      <title>3. Graphical data displays</title>
+      <link>/collection/biostats/chapters/04-graphics/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/biostats/chapters/04-graphics/</guid>
+      <description>library(tidyverse) library(ggpubr) library(RColorBrewer) library(ggthemes) Here we shall provide examples of many kinds of graphical data summaries. We use ggplot2 for these figures and will refrain from using the base R graphs. We shall provide examples of various themes so you can see what is available to use for your own plots. We also include various modifications of the default plots so you can get an idea of how to modify some of the plot characteristics, and we always make sure that our graphs are publication ready.</description>
+    </item>
+    
+    <item>
+      <title>5. Inferences about one or two populations</title>
+      <link>/collection/biostats/chapters/06-t_tests/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/biostats/chapters/06-t_tests/</guid>
+      <description>library(tidyverse) At the heart of many basic scientific inquiries is the simple question “Is A different from B?” The scientific notation for this question is:
+ H0: Group A is not different from group B. H1: Group A is different from group B.  More formally, one would say:
+\(H_{0}: \bar{A} = \bar{B}\) vs. the alternative hypothesis that \(H_{a}: \bar{A} \neq \bar{B}\). \(H_{0}: \bar{A} \leq \bar{B}\) vs. the alternative hypothesis that \(H_{a}: \bar{A} &amp;gt; \bar{B}\).</description>
+    </item>
+    
+    <item>
+      <title>6. Analysis of Variance (ANOVA)</title>
+      <link>/collection/biostats/chapters/07-anova/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/biostats/chapters/07-anova/</guid>
+      <description>“He uses statistics as a drunken man uses lamp posts—for support rather than for illumination.”
+— Marissa Mayer
+ Whole big books have been written about Analysis of Variance (ANOVA). Although there are many ANOVA experimental designs available, biologists are taught to pay special attention to the design of experiments, and generally make sure that the experiments are fully factorial (in the case of two-way or higher ANOVAs) and balanced.</description>
+    </item>
+    
+    <item>
+      <title>7. Simple linear regressions</title>
+      <link>/collection/biostats/chapters/08-regressions/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/biostats/chapters/08-regressions/</guid>
+      <description>Regressions test the statistical significance of the dependence of one continuous variable on one or many independent continuous variables.
+The simple linear regression equation The linear regression equation is already known to you. It is:
+\[y_{n}=\beta \cdot x_{n}+\alpha+\epsilon\]
+Coefficients are parameters (statistics) that describe two properties of the linear line that best fit a scatter plot between a dependent variable and the independent variable. The dependent variable, \(y_{1..n}\), may also be called the response variable, and the independent variable, \(x_{1.</description>
+    </item>
+    
+    <item>
+      <title>8. Correlation</title>
+      <link>/collection/biostats/chapters/09-correlations/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/biostats/chapters/09-correlations/</guid>
+      <description>A correlation is performed when we want to investigate the potential association between two continuous quantitative variables, or between some ordinal variables. We assume that the association is linear, like in a linear regression, and that one variable increases or decreases by a constant amount for a corresponding unit increase or decrease in the other variable. This does not suggest that one variable explains the other – that is the purpose of regression, as seen in the previous Chapter.</description>
+    </item>
+    
+    <item>
+      <title>9. Confidence intervals</title>
+      <link>/collection/biostats/chapters/10-confidence/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/biostats/chapters/10-confidence/</guid>
+      <description>A confidence interval (CI) tells us within what range we may be certain to find the true mean from which any sample has been taken. If we were to repeatedly sample the same population over and over and calculated a mean every time, the 95% CI indicates the range that 95% of those means would fall into.
+Calculating confidence intervals Input &amp;lt;- (&amp;quot; Student Grade Teacher Score Rating a Gr_1 Vladimir 80 7 b Gr_1 Vladimir 90 10 c Gr_1 Vladimir 100 9 d Gr_1 Vladimir 70 5 e Gr_1 Vladimir 60 4 f Gr_1 Vladimir 80 8 g Gr_10 Vladimir 70 6 h Gr_10 Vladimir 50 5 i Gr_10 Vladimir 90 10 j Gr_10 Vladimir 70 8 k Gr_1 Sadam 80 7 l Gr_1 Sadam 90 8 m Gr_1 Sadam 90 8 n Gr_1 Sadam 80 9 o Gr_10 Sadam 60 5 p Gr_10 Sadam 80 9 q Gr_10 Sadam 70 6 r Gr_1 Donald 100 10 s Gr_1 Donald 90 10 t Gr_1 Donald 80 8 u Gr_1 Donald 80 7 v Gr_1 Donald 60 7 w Gr_10 Donald 60 8 x Gr_10 Donald 80 10 y Gr_10 Donald 70 7 z Gr_10 Donald 70 7 &amp;quot;) data &amp;lt;- read.</description>
+    </item>
+    
+    <item>
+      <title>10. Data transformations</title>
+      <link>/collection/biostats/chapters/11-transformations/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/collection/biostats/chapters/11-transformations/</guid>
+      <description>Paranormal distribution
+ Assumptions Throughout the preceding sections I have stressed the importance of testing the assumptions underly- ing some statistical tests, in particular t-tests, ANOVAs, regressions, and correlations. These statistics are called parametric statistics and they require that the assumption of normality and homogeneity of vari- ances are met. This is the kind of statistic you would normally be required to calculate, and because they are commonly used, most people are familiar with parametric statistics.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr"><head>
+  
+                           
+     
+
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="generator" content="Hugo 0.96.0" />
+<title>8. Correlation | BCB R Stats Pages</title>
+
+
+<meta property="twitter:site" content="@ajsmit">
+<meta property="twitter:creator" content="@ajsmit">
+
+
+
+
+
+
+
+  
+    
+  
+<meta name="description" content="What you need to know upfront.">
+
+
+<meta property="og:site_name" content="BCB R Stats Pages">
+<meta property="og:title" content="8. Correlation | BCB R Stats Pages">
+<meta property="og:description" content="What you need to know upfront." />
+<meta property="og:type" content="page" />
+<meta property="og:url" content="/workshops/biostats/chapters/09-correlations/" />
+<meta property="og:locale" content="en">
+
+
+
+
+    
+        <meta property="og:image" content="/img/papillons.jpg" >
+        <meta property="twitter:card" content="summary_large_image">
+        <meta name="twitter:image" content="/img/papillons.jpg" >
+    
+  <meta itemprop="name" content="8. Correlation">
+<meta itemprop="description" content="A correlation is performed when we want to investigate the potential association between two continuous quantitative variables, or between some ordinal variables. We assume that the association is linear, like in a linear regression, and that one variable increases or decreases by a constant amount for a corresponding unit increase or decrease in the other variable. This does not suggest that one variable explains the other – that is the purpose of regression, as seen in the previous Chapter."><meta itemprop="datePublished" content="2021-01-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-01-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1707">
+<meta itemprop="keywords" content="" />
+  
+  
+  <!--[if IE]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+  
+  
+  <link rel="stylesheet" href="/style.main.min.13dd27d3efb7ed4ad82be3040182ddbf5ab9d3b4d6d01f0ba3930845932fce66.css" integrity="sha256-E90n0&#43;&#43;37UrYK&#43;MEAYLdv1q507TW0B8Lo5MIRZMvzmY=" media="screen">
+  
+  
+  <script src="/panelset.min.8f4cba0107356728f266d94a12a4d18ef504eda8a9a284cda73675bae7884a68.js" type="text/javascript"></script>
+  
+  
+  <script src="/main.min.318ee9c0652bba0149e7503c97e37e638937f3a9cad9233e6d0ba00bf7a46a5e.js" type="text/javascript"></script>
+</head>
+<body>
+      <div class="grid-container single-series">
+<header class="site-header pt4 pb2 mb4 bb b--transparent ph5 headroom z-max" role="banner">
+  <nav class="site-nav db dt-l w-100" role="navigation">
+    <a class="site-brand db dtc-l v-mid link no-underline w-100 w-33-l tc tl-l" href="/" title="Home">
+      <img src="/img/xaringan-outline.png" class="dib db-l h2 w-auto" alt="BCB R Stats Pages">
+    </a>
+    <div class="site-links db dtc-l v-mid w-100 w-47-l tc tr-l mt3 mt0-l ttu tracked">
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/about/" title="About AJ Smit">About</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 active" href="/workshops/" title="BCB Hons">BCB Hons</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/project/" title="Project Portfolio">Projects</a>
+      
+        
+        
+        
+      <a class="link f6 f5-l dib pv1 ph2 " href="/collection/" title="R Courses">R Courses</a>
+      
+      
+    </div>
+  </nav>
+</header>
+
+
+<main class="page-main ph4 pt4" role="main">
+  <section class="page-content mw7 center">
+    <article class="post-content pa0 pr3-l">
+      <header class="post-header">
+        <h4 class="breadcrumb pb5">
+
+  
+    
+      
+  
+    
+      
+  
+    
+      
+  
+
+    
+    
+      <a href="/workshops/">B.Sc. (Hons.) R modules</a>
+    
+  
+
+    
+    
+      <a href="/workshops/biostats/">BCB744 (Biostats)</a>
+    
+  
+
+    
+    
+      8. Correlation
+    
+  
+
+</h4>
+
+
+
+
+        
+        <h1 class="f1 lh-solid measure-narrow mb3 fw4">8. Correlation</h1>
+        
+        <p class="f6 measure lh-copy mv1"></p>
+        <p class="f7 db mv0 ttu">January 1, 2021</p>
+        
+        
+      
+      <div class="ph0 pt5">
+        
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+      
+  <a class="btn-links mr2 ba dib" href="https://ajsmit.github.io/BCB744/Correlations_slides--1-.html" target="_blank" rel="noopener"><i class="fas fa-images fa-lg fa-fw mr2"></i>Correlations Slides (1)</a>
+
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+      
+  <a class="btn-links mr2 ba dib" href="https://ajsmit.github.io/BCB744/Correlations_slides--2-.html" target="_blank" rel="noopener"><i class="fas fa-images fa-lg fa-fw mr2"></i>Correlations Slides (2)</a>
+
+    
+    
+    
+    
+    
+    
+    
+      
+      
+  <a class="btn-links mr2 ba dib" href="https://ajsmit.github.io/BCB744/Correlations_exercises.html" target="_blank" rel="noopener"><i class="fa fa-star fa-lg fa-fw mr2"></i>Correlations Exercises</a>
+
+
+      </div>
+      
+        
+      </header>
+      <section class="post-body pt5 pb4">
+        
+
+
+<!--- readthedown --->
+<!--- material --->
+<!--- # Correlation --->
+<p>A correlation is performed when we want to investigate the potential <em>association</em> between two continuous quantitative variables, or between some ordinal variables. We assume that the association is linear, like in a linear regression, and that one variable increases or decreases by a constant amount for a corresponding unit increase or decrease in the other variable. This does not suggest that one variable explains the other – that is the purpose of regression, as seen in the <a href="https://ajsmit.github.io/R_Stats_Official/08-regressions.html">previous</a> Chapter. Like all statistical tests, correlation requires a series of assumptions as well:</p>
+<ul>
+<li>pair-wise data</li>
+<li>absence of outliers</li>
+<li>linearity</li>
+<li>normality of distribution</li>
+<li>homoscedasticity</li>
+<li>level (type) of measurement</li>
+<li>continuous data (Pearson correlation)</li>
+<li>ordinal data (Spearman correlation)</li>
+</ul>
+<p>The degree of association is measured by a correlation coefficient, denoted by <span class="math inline">\(r\)</span> (note, in a regression we use the <span class="math inline">\(r^{2}\)</span>, which must not be confused for <span class="math inline">\(r\)</span>). The <span class="math inline">\(r\)</span> statistic is sometimes called the correlation coefficient; it is a measure of linear association. The value for <span class="math inline">\(r\)</span> varies from -1 to 1, with 0 indicating that there is absolutely no association, 1 showing a perfect positive association, and -1 a perfect inverse correlation.</p>
+<div id="pearson-correlation" class="section level2">
+<h2>Pearson correlation</h2>
+<p>In order to investigate correlations in biological data lets load the <code>ecklonia</code> dataset.</p>
+<pre class="r"><code># Load libraries
+library(tidyverse)
+library(ggpubr)
+library(corrplot)
+
+# Load data
+ecklonia &lt;- read.csv(&quot;../../../../static/data/ecklonia.csv&quot;)</code></pre>
+<p>We will also create a subsetted version of our data by removing all of the categorical variables. If we have a dataframe where each column represents pair-wise continuous/ordinal measurements with all of the other columns we may very quickly and easily perform a much wider range of correlation analyses.</p>
+<pre class="r"><code>ecklonia_sub &lt;- ecklonia %&gt;%
+  select(-species, - site, - ID)</code></pre>
+<p>When the values we are comparing are continuous, we may use a Pearson test. This is the default and so requires little work on our end. The resulting statistic from this test is known as the Pearson correlation coefficient:</p>
+<pre class="r"><code># Perform correlation analysis on two specific variables
+# Note that we do not need the final two arguments in this function to be stated
+# as they are the defaut settings.
+# They are only shown here to illustrate that they exist.
+cor.test(x = ecklonia$stipe_length, ecklonia$frond_length,
+         use = &quot;everything&quot;, method = &quot;pearson&quot;)</code></pre>
+<pre><code>R&gt; 
+R&gt;  Pearson&#39;s product-moment correlation
+R&gt; 
+R&gt; data:  ecklonia$stipe_length and ecklonia$frond_length
+R&gt; t = 4.2182, df = 24, p-value = 0.0003032
+R&gt; alternative hypothesis: true correlation is not equal to 0
+R&gt; 95 percent confidence interval:
+R&gt;  0.3548169 0.8300525
+R&gt; sample estimates:
+R&gt;       cor 
+R&gt; 0.6524911</code></pre>
+<p>Above we have tested the correlation between the length of <em>Ecklonia maxima</em> stipes and the length of their fronds. A perfect positive (negative) relationship would produce a value of 1 (-1), whereas no relationship would produce a value of 0. The result above, <code>cor = 0.65</code> is relatively strong.</p>
+<p>As is the case with everything else we have learned thus far, a good visualisation can go a long way to help us understand what the statistics are doing. Below we visualise the stipe length to frond length relationship.</p>
+<pre class="r"><code># Calculate Pearson r beforehand for plotting
+r_print &lt;- paste0(&quot;r = &quot;,
+                  round(cor(x = ecklonia$stipe_length, ecklonia$frond_length),2))
+
+# Then create a single panel showing one correlation
+ggplot(data = ecklonia, aes(x = stipe_length, y = frond_length)) +
+  geom_smooth(method = &quot;lm&quot;, colour = &quot;grey90&quot;, se = F) +
+  geom_point(colour = &quot;mediumorchid4&quot;) +
+  geom_label(x = 300, y = 240, label = r_print) +
+  labs(x = &quot;Stipe length (cm)&quot;, y = &quot;Frond length (cm)&quot;)</code></pre>
+<div class="figure"><span style="display:block;" id="fig:corr-plot1"></span>
+<img src="/collection/biostats/chapters/09-correlations_files/figure-html/corr-plot1-1.png" alt="Scatterplot showing relationship between _Ecklonia maxima_ stipe length (cm) and frond length (cm). The correlation coefficient (Pearson r) is shown in the top left corner. Note that the grey line running through the middle is a fitted linear model and is not generating the correlation value. Rather it is included to help visually demonstrate the strength of the relationship." width="70%" />
+<p class="caption">
+Figure 1: Scatterplot showing relationship between <em>Ecklonia maxima</em> stipe length (cm) and frond length (cm). The correlation coefficient (Pearson r) is shown in the top left corner. Note that the grey line running through the middle is a fitted linear model and is not generating the correlation value. Rather it is included to help visually demonstrate the strength of the relationship.
+</p>
+</div>
+<p>Just by eye-balling this scatterplot it should be clear that these data tend to increase at a roughly similar rate. Our Pearson r value is an indication of what that is.</p>
+<p>Should our dataset contain multiple variables, as <code>ecklonia</code> does, we may investigate all of the correlations simultaneously. Remember that in order to do so we want to ensure that we may perform the same test on each of our paired variables. In this case we will use <code>ecklonia_sub</code> as we know that it contains only continuous data and so are appropriate for use with a Pearson test. By default R will use all of the data we give it and perform a Pearson test so we do not need to specify any further arguments. Note however that this will only output the correlation coefficients, and does not produce a full test of each correlation. This will however be useful for us to have just now.</p>
+<pre class="r"><code>ecklonia_pearson &lt;- round(cor(ecklonia_sub), 2)
+ecklonia_pearson</code></pre>
+<pre><code>R&gt;                      stipe_length stipe_diameter frond_length digits
+R&gt; stipe_length                 1.00           0.59         0.65   0.24
+R&gt; stipe_diameter               0.59           1.00         0.39   0.24
+R&gt; frond_length                 0.65           0.39         1.00   0.36
+R&gt; digits                       0.24           0.24         0.36   1.00
+R&gt; primary_blade_width          0.34           0.83         0.28   0.14
+R&gt; primary_blade_length         0.13           0.32        -0.02   0.10
+R&gt; stipe_mass                   0.58           0.82         0.39   0.07
+R&gt; frond_mass                   0.51           0.51         0.57   0.28
+R&gt; epiphyte_length              0.61           0.54         0.61   0.05
+R&gt;                      primary_blade_width primary_blade_length stipe_mass
+R&gt; stipe_length                        0.34                 0.13       0.58
+R&gt; stipe_diameter                      0.83                 0.32       0.82
+R&gt; frond_length                        0.28                -0.02       0.39
+R&gt; digits                              0.14                 0.10       0.07
+R&gt; primary_blade_width                 1.00                 0.34       0.83
+R&gt; primary_blade_length                0.34                 1.00       0.16
+R&gt; stipe_mass                          0.83                 0.16       1.00
+R&gt; frond_mass                          0.36                 0.15       0.47
+R&gt; epiphyte_length                     0.41                 0.26       0.51
+R&gt;                      frond_mass epiphyte_length
+R&gt; stipe_length               0.51            0.61
+R&gt; stipe_diameter             0.51            0.54
+R&gt; frond_length               0.57            0.61
+R&gt; digits                     0.28            0.05
+R&gt; primary_blade_width        0.36            0.41
+R&gt; primary_blade_length       0.15            0.26
+R&gt; stipe_mass                 0.47            0.51
+R&gt; frond_mass                 1.00            0.44
+R&gt; epiphyte_length            0.44            1.00</code></pre>
+<pre class="r"><code>write.csv(ecklonia_pearson, &quot;../../../../static/data/ecklonia_pearson.csv&quot;)</code></pre>
+<p>The output, called a pairwise correlation matrix, can be seen in Excel where it looks like this:</p>
+<div class="figure">
+<img src="Resources/correlation_matrix.png" style="width:95.0%" alt="" />
+<p class="caption">A correlation matrix showing Pearson’s <span class="math inline">\(r\)</span>.</p>
+</div>
+<blockquote>
+<p><strong>Task 1:</strong> What does the outcome of this test show? Please describe in detail how to interpret the output, and discuss the interesting characteristics of the correlation matrix.</p>
+</blockquote>
+<p>How would be visualise this matrix of correlations? It is relatively straightforward to quickly plot correlation results for all of our variables in one go. In order to show which variables associate most with which other variables all at once, without creating chaos, we will create what is known as a heat map. This visualisation uses a range of colours, usually blue to red, to demonstrate where more of something is. In this case, we use it to show where more correlation is occurring between morphometric properties of the kelp <em>Ecklonia maxima</em>.</p>
+<pre class="r"><code>corrplot(ecklonia_pearson, method = &quot;circle&quot;)</code></pre>
+<div class="figure"><span style="display:block;" id="fig:corr-plot2"></span>
+<img src="/collection/biostats/chapters/09-correlations_files/figure-html/corr-plot2-1.png" alt="Correlation plot showing the strength of all correlations between all variables as a scale from red (negative) to blue (positive)." width="70%" />
+<p class="caption">
+Figure 2: Correlation plot showing the strength of all correlations between all variables as a scale from red (negative) to blue (positive).
+</p>
+</div>
+<blockquote>
+<p><strong>Task 2:</strong> What does the series of dark blue circles through the middle of this plot mean?</p>
+</blockquote>
+<blockquote>
+<p><strong>Task 3:</strong> Why does the scale bar on the right show the colour red?</p>
+</blockquote>
+<blockquote>
+<p><strong>Task 4:</strong> Which morphometric properties correlate best/worst?</p>
+</blockquote>
+<blockquote>
+<p><strong>Task 5:</strong> Browse the internet and find two or three other ways (hint: find other packages, for example) to visualise pairwise correlations, and create corresponding figures for the <em>Ecklonia</em> data.</p>
+</blockquote>
+</div>
+<div id="spearman-rank-correlation" class="section level2">
+<h2>Spearman rank correlation</h2>
+<p>When the data we want to compare are not continuous, but rather ordinal, we will need to use Spearman’s rank correlation. This is not often a test one uses in biology because we tend to want to compare continuous data within categories. In the code below we will add a column of ordinal data to our <code>ecklonia</code> data to so that we may look at this test.</p>
+<pre class="r"><code># Create ordinal data
+ecklonia$length &lt;- as.numeric(cut((ecklonia$stipe_length + ecklonia$frond_length), breaks = 3))
+
+# What does this new column look like?
+head(select(ecklonia, c(species, site, stipe_length, frond_length, length)), 10)</code></pre>
+<pre><code>R&gt;    species           site stipe_length frond_length length
+R&gt; 1   maxima Boulders Beach          456          116      1
+R&gt; 2   maxima Boulders Beach          477          141      2
+R&gt; 3   maxima Boulders Beach          427          144      1
+R&gt; 4   maxima Boulders Beach          347          127      1
+R&gt; 5   maxima Boulders Beach          470          160      2
+R&gt; 6   maxima Boulders Beach          478          181      2
+R&gt; 7   maxima Boulders Beach          472          174      2
+R&gt; 8   maxima Boulders Beach          459           95      1
+R&gt; 9   maxima Boulders Beach          397           87      1
+R&gt; 10  maxima Boulders Beach          541          127      2</code></pre>
+<blockquote>
+<p><strong>Task 6:</strong> Explain in writing what the code above does. Focus specifically on the line of code with the <code>cut()</code> function in it.</p>
+</blockquote>
+<p>Now let us correlate the new <code>length</code> variable with any one of the other variables:</p>
+<pre class="r"><code>cor.test(ecklonia$length, ecklonia$digits, method = &quot;spearman&quot;)</code></pre>
+<pre><code>R&gt; 
+R&gt;  Spearman&#39;s rank correlation rho
+R&gt; 
+R&gt; data:  ecklonia$length and ecklonia$digits
+R&gt; S = 1930, p-value = 0.08906
+R&gt; alternative hypothesis: true rho is not equal to 0
+R&gt; sample estimates:
+R&gt;       rho 
+R&gt; 0.3401765</code></pre>
+<p>Note that unlike Pearson’s correlation where the correlation coefficient is denoted by <span class="math inline">\(r\)</span>, a Spearman correlation return the <span class="math inline">\(\rho\)</span> coefficient. The interpretation is the same is for Pearson’s correlation coefficient, however.</p>
+</div>
+<div id="kendall-rank-correlation" class="section level2">
+<h2>Kendall rank correlation</h2>
+<p>This test will work for both continuous and ordinal data. A sort of dealers choice of correlation tests. It’s main purpose is to allow us to perform a correlation on non-normally distributed data. Let’s look at the normality of our <code>ecklonia</code> variables and pull out those that are not normal in order to see how the results of this test may differ from our Pearson tests.</p>
+<pre class="r"><code>ecklonia_norm &lt;- ecklonia_sub %&gt;%
+  gather(key = &quot;variable&quot;) %&gt;%
+  group_by(variable) %&gt;%
+  summarise(variable_norm = as.numeric(shapiro.test(value)[2]))
+ecklonia_norm</code></pre>
+<pre><code>R&gt; # A tibble: 9 × 2
+R&gt;   variable             variable_norm
+R&gt;   &lt;chr&gt;                        &lt;dbl&gt;
+R&gt; 1 digits                     0.0671 
+R&gt; 2 epiphyte_length            0.626  
+R&gt; 3 frond_length               0.202  
+R&gt; 4 frond_mass                 0.277  
+R&gt; 5 primary_blade_length       0.00393
+R&gt; 6 primary_blade_width        0.314  
+R&gt; 7 stipe_diameter             0.170  
+R&gt; 8 stipe_length               0.213  
+R&gt; 9 stipe_mass                 0.817</code></pre>
+<blockquote>
+<p><strong>Task 7:</strong> Explain in written langauge what each line of the code, above, does.</p>
+</blockquote>
+<p>From this analysis we may see that the values for primary blade length are not normally distributed. In order to make up for this violation of our assumption of normality we may use the Kendall test.</p>
+<pre class="r"><code>cor.test(ecklonia$primary_blade_length, ecklonia$primary_blade_width, method = &quot;kendall&quot;)</code></pre>
+<pre><code>R&gt; 
+R&gt;  Kendall&#39;s rank correlation tau
+R&gt; 
+R&gt; data:  ecklonia$primary_blade_length and ecklonia$primary_blade_width
+R&gt; z = 2.3601, p-value = 0.01827
+R&gt; alternative hypothesis: true tau is not equal to 0
+R&gt; sample estimates:
+R&gt;       tau 
+R&gt; 0.3426171</code></pre>
+<p>Here the correlation coefficient is called Kendall’s <span class="math inline">\(\tau\)</span> but it is interpreted as we would Pearson’s.</p>
+</div>
+
+      </section>
+      <footer class="post-footer">
+        <div class="post-pagination dt w-100 mt4 mb2">
+  
+  
+    <a class="prev dtc pr2 tl v-top fw6"
+    href="/workshops/biostats/chapters/08-regressions/">&larr; 7. Simple linear regressions</a>
+  
+  
+  
+    <a class="next dtc pl2 tr v-top fw6"
+    href="/workshops/biostats/chapters/10-confidence/">9. Confidence intervals &rarr;</a>
+  
+</div>
+
+      </footer>
+    </article>
+    
+      
+<div class="post-comments pa0 pa4-l mt4">
+  
+  <script src="https://utteranc.es/client.js"
+          repo="robwschlegel/heatwaveR"
+          issue-term="pathname"
+          theme="boxy-light"
+          label="comments :crystal_ball:"
+          crossorigin="anonymous"
+          async
+          type="text/javascript">
+  </script>
+  
+</div>
+
+    
+  </section>
+</main>
+
+<aside class="page-sidebar" role="complementary">
+                         
+ 
+
+
+
+
+
+
+
+
+
+
+
+  <img src="/workshops/featured-sidebar.jpg" class="db ma0">
+
+                         
+ 
+
+
+
+<div class="flex items-start sticky ph4 pb4 flex-row">
+  <div class="w-two-thirds w-50-l ph0">
+    <h2 class="mv3 f5 fw7 ttu tracked">
+      <a class="no-underline dim" href="/workshops/">Outline</a></h2>
+    <nav id="SectionTableOfContents" aria-label="SectionTableOfContents">
+        <ul>
+        
+          
+          
+          
+          <details  class="">
+            <summary class="" hugo-nav="/workshops/intro_r/"><a href="/workshops/intro_r/">BCB744 (Intro R)</a></summary>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/02-rstudio/"><a href="/workshops/intro_r/chapters/02-rstudio/">1. RStudio and R</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/03-github/"><a href="/workshops/intro_r/chapters/03-github/">2. GitHub</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/04-workflow/"><a href="/workshops/intro_r/chapters/04-workflow/">3. An R workflow</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/05-graphics/"><a href="/workshops/intro_r/chapters/05-graphics/">4. Graphics with ggplot2</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/06-faceting/"><a href="/workshops/intro_r/chapters/06-faceting/">5. Faceting figures</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/07-brewing/"><a href="/workshops/intro_r/chapters/07-brewing/">6. Brewing colours</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/08-mapping/"><a href="/workshops/intro_r/chapters/08-mapping/">7. Mapping with ggplot2</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/09-mapping_style/"><a href="/workshops/intro_r/chapters/09-mapping_style/">8. Mapping with style</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/10-mapping_openstreetmap/"><a href="/workshops/intro_r/chapters/10-mapping_openstreetmap/">9. Mapping with OpenStreetMap</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/11-tidy/"><a href="/workshops/intro_r/chapters/11-tidy/">10. Tidy data</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/12-tidier/"><a href="/workshops/intro_r/chapters/12-tidier/">11. Tidier data</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/13-tidiest/"><a href="/workshops/intro_r/chapters/13-tidiest/">12. Tidiest data</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/14-recap/"><a href="/workshops/intro_r/chapters/14-recap/">13. Recap</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/15-functions/"><a href="/workshops/intro_r/chapters/15-functions/">14. Functions by chapter</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/16-base_r/"><a href="/workshops/intro_r/chapters/16-base_r/">15. Base R primer</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/intro_r/chapters/17-dates/"><a href="/workshops/intro_r/chapters/17-dates/">16. Dates</a></li>
+            
+          </details>
+          
+          </li>
+        
+          
+          
+          
+          <details open class="active">
+            <summary class="active" hugo-nav="/workshops/biostats/"><a href="/workshops/biostats/">BCB744 (Biostats)</a></summary>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/02-data/"><a href="/workshops/biostats/chapters/02-data/">1. Types of data</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/03-descriptive/"><a href="/workshops/biostats/chapters/03-descriptive/">2. Central tendency and dispersion</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/04-graphics/"><a href="/workshops/biostats/chapters/04-graphics/">3. Graphical data displays</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/06-t_tests/"><a href="/workshops/biostats/chapters/06-t_tests/">5. Inferences about one or two populations</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/07-anova/"><a href="/workshops/biostats/chapters/07-anova/">6. Analysis of Variance (ANOVA)</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/08-regressions/"><a href="/workshops/biostats/chapters/08-regressions/">7. Simple linear regressions</a></li>
+            
+              
+              <li class="active" hugo-nav="/workshops/biostats/chapters/09-correlations/"><a href="/workshops/biostats/chapters/09-correlations/">8. Correlation</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/10-confidence/"><a href="/workshops/biostats/chapters/10-confidence/">9. Confidence intervals</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/biostats/chapters/11-transformations/"><a href="/workshops/biostats/chapters/11-transformations/">10. Data transformations</a></li>
+            
+          </details>
+          
+          </li>
+        
+          
+          
+          
+          <details  class="">
+            <summary class="" hugo-nav="/workshops/quantecol/"><a href="/workshops/quantecol/">BCB743</a></summary>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/01-data/"><a href="/workshops/quantecol/chapters/01-data/">1. Multivariate data</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/02-biodiversity/"><a href="/workshops/quantecol/chapters/02-biodiversity/">2. Biodiversity</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/03-deep_dive/"><a href="/workshops/quantecol/chapters/03-deep_dive/">3. Deep Dive into Gradients</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/04-env_dist/"><a href="/workshops/quantecol/chapters/04-env_dist/">4. Environmental Distance</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/05-spp_dissimilarity/"><a href="/workshops/quantecol/chapters/05-spp_dissimilarity/">5. Species Dissimilarities</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/06-correlations/"><a href="/workshops/quantecol/chapters/06-correlations/">6. Correlations and Associations</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/08_pca/"><a href="/workshops/quantecol/chapters/08_pca/">8a. Principal Component Analysis (PCA)</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/08-pca_sdg/"><a href="/workshops/quantecol/chapters/08-pca_sdg/">8b. PCA of WHO SDGs</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/09-ca/"><a href="/workshops/quantecol/chapters/09-ca/">9. Correspondence Analysis (CA)</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/10-pcoa/"><a href="/workshops/quantecol/chapters/10-pcoa/">10. Principal Coordinate Analysis (PCoA)</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/11-nmds/"><a href="/workshops/quantecol/chapters/11-nmds/">11a. non-Metric multidimensional scaling (nMDS)</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/11-nmds_diatoms/"><a href="/workshops/quantecol/chapters/11-nmds_diatoms/">11b. nMDS of Mayombo&#39;s diatom data</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/12-constrained_ordination/"><a href="/workshops/quantecol/chapters/12-constrained_ordination/">12. Constrained Ordination</a></li>
+            
+              
+              <li class="" hugo-nav="/workshops/quantecol/chapters/13-cluster_analysis/"><a href="/workshops/quantecol/chapters/13-cluster_analysis/">13. Cluster analysis</a></li>
+            
+          </details>
+          
+          </li>
+        
+        </ul>
+    </nav>
+  </div>
+  <details id="PageTableOfContents">
+    <summary><h2 class="mv0 f5 fw7 ttu tracked dib">On this page<h2></summary>
+    <div class="pl2 pr0 mh0">
+    
+    </div>
+  </details>
+  
+</div>
+
+</aside>
+
+<footer class="site-footer pv4 bt b--transparent ph5" role="contentinfo">
+  <nav class="db dt-l w-100">
+    <p class="site-copyright f7 db dtc-l v-mid w-100 w-33-l tc tl-l pv2 pv0-l mv0 lh-copy">
+      &copy; 2022 University of the Western Cape, Cape Town
+      <span class="middot-divider"></span>
+      Made with <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/hugo-apero/" rel="dct:source">Hugo Apéro</a></span>.
+      <br />
+      
+Based on <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title"><a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/formspree/blogophonic-hugo" rel="dct:source">Blogophonic</a></span> by <a xmlns:cc="http://creativecommons.org/ns#" href="https://formspree.io" property="cc:attributionName" rel="cc:attributionURL">Formspree</a>.
+    </p>
+    
+    <div class="site-social-links db dtc-l v-mid w-100 w-33-l tc pv2 pv0-l mv0">
+      <div class="social-icon-links" aria-hidden="true">
+  
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://github.com/ajsmit/" title="github" target="_blank" rel="noopener">
+      <i class="fab fa-github fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="http://orcid.org/0000-0002-3799-6126" title="orcid" target="_blank" rel="noopener">
+      <i class="ai ai-orcid fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.researchgate.net/profile/Albertus-Smit" title="researchgate" target="_blank" rel="noopener">
+      <i class="ai ai-researchgate fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://uwc.academia.edu/AlbertusSmit" title="academia" target="_blank" rel="noopener">
+      <i class="ai ai-academia fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://scholar.google.co.za/citations?user=ATsBBKoAAAAJ&amp;hl=en" title="google-scholar" target="_blank" rel="noopener">
+      <i class="ai ai-google-scholar fa-lg fa-fw"></i>
+    </a>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <a class="link dib h1 w1 ml0 mr2 f6 o-90 glow" href="https://www.instagram.com/ajsmit/" title="instagram" target="_blank" rel="noopener">
+      <i class="fab fa-instagram fa-lg fa-fw"></i>
+    </a>
+  
+</div>
+
+    </div>
+    
+    <div class="site-links f6 db dtc-l v-mid w-100 w-67-l tc tr-l pv2 pv0-l mv0">
+      
+      <a class="dib pv1 ph2 link" href="/license/" title="License">License</a>
+      
+      <a class="dib pv1 ph2 link" href="/contact/" title="Contact form">Contact</a>
+      
+      <a class="dib pv1 ph2 link" href="/contributors/" title="Contributors">Contributors</a>
+      
+    </div>
+  </nav>
+  
+    <script>
+
+    var i, text, code, codes = document.getElementsByTagName('code');
+    for (let i = 0; i < codes.length;) {
+      code = codes[i];
+      if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+        text = code.textContent;
+        if (/^\$[^$]/.test(text) && /[^$]\$$/.test(text)) {
+          text = text.replace(/^\$/, '\\(').replace(/\$$/, '\\)');
+          code.textContent = text;
+        }
+        if (/^\\\((.|\s)+\\\)$/.test(text) ||
+            /^\\\[(.|\s)+\\\]$/.test(text) ||
+            /^\$(.|\s)+\$$/.test(text) ||
+            /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+          code.outerHTML = code.innerHTML;  
+          continue;
+        }
+      }
+      i++;
+    }
+</script>
+
+  
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.css" integrity="sha384-RZU/ijkSsFbcmivfdRBQDtwuwVqK7GMOw6IMvKyeWL2K5UAlyp6WonmB8m7Jd0Hn" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/katex.min.js" integrity="sha384-pK1WpvzWVBQiP0/GjnvRxV4mOb0oxFuyRxJlk6vVw146n3egcN5C925NCP7a7BY8" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.13.13/dist/contrib/auto-render.min.js" integrity="sha384-vZTG03m+2yp6N6BNi5iM4rW4oIwk5DfcNdFfxkk9ZWpDriOkXX8voJBFrAO7MpVl" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+
+
+    
+  
+  
+</footer>
+
+      </div>
+    </body>
+</html>

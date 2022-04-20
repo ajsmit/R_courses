@@ -1,0 +1,100 @@
+---
+date: "2021-01-01"
+draft: false
+excerpt: What you need to know upfront.
+subtitle: ""
+title: "6. Correlations and Associations"
+weight: 7
+---
+
+<!--- # Topic 6: Correlations and associations --->
+
+## Set-up the analysis environment
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(vegan)
+library(Hmisc) # for rcorr()
+```
+
+## The Doubs River data
+
+The background to the data is described by David Zelený on his excellent [website](https://www.davidzeleny.net/anadat-r/doku.php/en:data:doubs) and in the book **Numerical Ecology with R** by Borcard et al. (2011). These data are a beautiful example of how gradients structure biodiversity. It will be in your own interest to fully understand how the various environmental factors used as explanatory variables vary along a riverine gradient from the source to the terminus of the river.
+
+### Correlations between environmental variables
+
+```{r}
+env <- read.csv("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/Num_Ecol_R_book_ed1/DoubsEnv.csv")
+head(env, 1)
+# drop the first column
+env <- dplyr::select(env, -1)
+head(env)
+```
+
+We use [correlations](https://ajsmit.github.io/Basic_stats/correlations.html) to establish how the environmental variables relate to one another across the sample sites. We do not need to standardise as one would do for the calculation of Euclidian distances, but in some instances data transformations might be necessary:
+
+```{r}
+round(cor(env), 2)
+```
+
+Or if we want to see the associated *p*-values to establish a statistical significance:
+
+```{r}
+rcorr(as.matrix(env))
+```
+
+### Questions (A)
+
+> **Question 1:** Create a plot of pairwise correlations.
+
+> **Question 2:** Name to two top positive and two top negative *statistically-significant* correlations.
+
+> **Question 3:** For each, discuss the mechanism behind the relationships. Why do these relationships exist?
+
+### Association between species
+
+The Doubs River fish species dataset is an example of abundance data and it will serve well to examine the properties of an association matrix:
+
+```{r}
+spp <- read.csv("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/Num_Ecol_R_book_ed1/DoubsSpe.csv")
+spp <- dplyr::select(spp, -1)
+head(spp)
+```
+
+In order to calculate an association matrix for the fish species we first need to transpose the data:
+
+```{r}
+spp_t <- t(spp)
+```
+
+### Questions (B)
+
+> **Question 4:** Why do we need to transpose the data?
+
+> **Question 5:** What are the properties of a transposed species table?
+
+Now we can calculate the association matrix:
+
+```{r}
+spp_assoc1 <- vegdist(spp_t, method = "jaccard")
+as.matrix((spp_assoc1))[1:10, 1:10] # display only a portion of the data
+```
+
+```{r}
+spp_assoc2 <- vegdist(spp_t, method = "jaccard", binary = TRUE)
+as.matrix((spp_assoc2))[1:10, 1:10] # display only a portion of the data
+```
+
+### Questions (C)
+
+> **Question 6:** What are the properties of an association matrix? How do these properties differ from that of a i) species dissmilarity matrix and from a ii) correlation matrix?
+
+> **Question 7:** What is the difference between `spp_assoc1` and `spp_assoc2`? Is the information contained in each markedly different from the other?
+
+> **Question 8:** Explain the kind of insight we are able to glean from a species association matrix.
+
+[Submit an R script wherein you provide answers to these questions by no later than 17:00 on Tuesday 6 July 2021.]{style="color:red"}
+
+## References
+
+Borcard, D., Gillet, F. & Legendre, P. (2011) Numerical Ecology with R. Springer.
