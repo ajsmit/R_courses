@@ -4,6 +4,9 @@
 
 # System files
 **/.DS_Store
+.DS_Store
+Thumbs.db
+.hugo_build.lock
 
 # User-specific files
 .Ruserdata
@@ -34,5 +37,7 @@
 # R Environment Variables
 .Renviron
 
-# Hidden from students' view
+# Hidden from view
 /_private/*
+/public/
+/resources/
