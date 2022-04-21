@@ -6,7 +6,7 @@ links:
   - icon: images
     icon_pack: fas
     name: Intro Slides
-    url: /pdf/BCB743_01_intro.pdf
+    url: /pdf/BCB743/BCB743_01_intro.pdf
 subtitle: ""
 title: "1. Introduction"
 weight: 2

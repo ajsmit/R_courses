@@ -6,7 +6,15 @@ links:
   - icon: images
     icon_pack: fas
     name: non-Metric Multidimensional Scaling Slides
-    url: /pdf/BCB743_11_nMDS.pdf
+    url: /pdf/BCB743/BCB743_11_nMDS.pdf
+  - icon: file-csv
+    icon_pack: fa
+    name: DoubsEnv.csv
+    url: /data/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv
+  - icon: file-csv
+    icon_pack: fa
+    name: DoubsSpe.csv
+    url: /data/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
 subtitle: ""
 title: "11a. non-Metric multidimensional scaling (nMDS)"
 weight: 14
@@ -24,6 +32,9 @@ nMDS is the non-metric equivalent to PCoA, the latter sometimes being called met
 ```r
 library(tidyverse)
 library(vegan)
+
+# setting up a 'root' file path so I don't have to keep doing it later...
+root <- "../../../../static/data/BCB743/"
 ```
 
 ## The Doubs River data
@@ -32,7 +43,7 @@ We continue to use the species data:
 
 
 ```r
-spe <- read.csv("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/Num_Ecol_R_book_ed1/DoubsSpe.csv")
+spe <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsSpe.csv"))
 spe <- dplyr::select(spe, -1)
 spe <- dplyr::slice(spe, -8)
 ```
@@ -46,36 +57,34 @@ spe_nmds <- metaMDS(spe, distance = "bray")
 
 ```
 ## Run 0 stress 0.07477805 
-## Run 1 stress 0.1248897 
-## Run 2 stress 0.1223247 
-## Run 3 stress 0.08696384 
-## Run 4 stress 0.07477818 
-## ... Procrustes: rmse 9.898015e-05  max resid 0.0004732488 
-## ... Similar to previous best
-## Run 5 stress 0.1221737 
-## Run 6 stress 0.08901468 
-## Run 7 stress 0.0750668 
-## ... Procrustes: rmse 0.01473175  max resid 0.06365692 
-## Run 8 stress 0.08843915 
-## Run 9 stress 0.1250564 
-## Run 10 stress 0.07477812 
-## ... Procrustes: rmse 6.12521e-05  max resid 0.0002936674 
-## ... Similar to previous best
-## Run 11 stress 0.07478423 
-## ... Procrustes: rmse 0.003639739  max resid 0.01446982 
-## Run 12 stress 0.1110569 
-## Run 13 stress 0.1170163 
-## Run 14 stress 0.07376217 
+## Run 1 stress 0.1111397 
+## Run 2 stress 0.0737624 
 ## ... New best solution
-## ... Procrustes: rmse 0.0193905  max resid 0.09465655 
-## Run 15 stress 0.1141838 
-## Run 16 stress 0.1169775 
-## Run 17 stress 0.0922274 
-## Run 18 stress 0.1203424 
-## Run 19 stress 0.1121122 
-## Run 20 stress 0.07477817 
-## *** No convergence -- monoMDS stopping criteria:
-##     20: stress ratio > sratmax
+## ... Procrustes: rmse 0.0194089  max resid 0.09465521 
+## Run 3 stress 0.1218861 
+## Run 4 stress 0.07429329 
+## Run 5 stress 0.1204797 
+## Run 6 stress 0.1232691 
+## Run 7 stress 0.1209554 
+## Run 8 stress 0.07376221 
+## ... New best solution
+## ... Procrustes: rmse 0.0001312719  max resid 0.000624816 
+## ... Similar to previous best
+## Run 9 stress 0.07477815 
+## Run 10 stress 0.1249363 
+## Run 11 stress 0.1242791 
+## Run 12 stress 0.1142556 
+## Run 13 stress 0.1226161 
+## Run 14 stress 0.08845295 
+## Run 15 stress 0.07376226 
+## ... Procrustes: rmse 0.0002285243  max resid 0.001097057 
+## ... Similar to previous best
+## Run 16 stress 0.1242854 
+## Run 17 stress 0.1111664 
+## Run 18 stress 0.08845297 
+## Run 19 stress 0.07429356 
+## Run 20 stress 0.07429333 
+## *** Solution reached
 ```
 
 ```r
@@ -93,9 +102,9 @@ spe_nmds
 ## Distance: bray 
 ## 
 ## Dimensions: 2 
-## Stress:     0.07376217 
+## Stress:     0.07376221 
 ## Stress type 1, weak ties
-## No convergent solutions - best solution after 20 tries
+## Two convergent solutions found after 20 tries
 ## Scaling: centring, PC rotation, halfchange scaling 
 ## Species: expanded scores based on 'spe'
 ```
@@ -173,7 +182,7 @@ with(spe, tmp <- ordisurf(spe_nmds ~ Cogo, bubble = 3,
                           display = "sites", main = "Cogo"))
 abline(h = 0, v = 0, lty = 3)
 
-env <- read.csv("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/Num_Ecol_R_book_ed1/DoubsEnv.csv")
+env <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsEnv.csv"))
 env <- dplyr::select(env, -1)
 env <- dplyr::slice(env, -8)
 
@@ -185,17 +194,17 @@ env <- dplyr::slice(env, -8)
 ## ***VECTORS
 ## 
 ##        NMDS1    NMDS2     r2 Pr(>r)    
-## dfs  0.97103  0.23898 0.7488  0.001 ***
-## alt -0.98916 -0.14682 0.6114  0.001 ***
-## slo -0.74780  0.66392 0.3268  0.018 *  
-## flo  0.88591  0.46386 0.5684  0.001 ***
-## pH  -0.26380  0.96458 0.0179  0.771    
-## har  0.96329 -0.26847 0.3773  0.003 ** 
-## pho  0.45983 -0.88801 0.5439  0.001 ***
-## nit  0.87815 -0.47838 0.5819  0.001 ***
-## amm  0.42983 -0.90291 0.5547  0.001 ***
-## oxy -0.74290  0.66940 0.7395  0.001 ***
-## bod  0.44248 -0.89678 0.6572  0.001 ***
+## dfs  0.97104  0.23890 0.7488  0.001 ***
+## alt -0.98920 -0.14654 0.6114  0.001 ***
+## slo -0.74669  0.66518 0.3269  0.020 *  
+## flo  0.88605  0.46360 0.5683  0.001 ***
+## pH  -0.26495  0.96426 0.0178  0.788    
+## har  0.96309 -0.26917 0.3772  0.005 ** 
+## pho  0.46031 -0.88776 0.5438  0.002 ** 
+## nit  0.87844 -0.47786 0.5820  0.001 ***
+## amm  0.43030 -0.90268 0.5545  0.001 ***
+## oxy -0.74333  0.66892 0.7394  0.001 ***
+## bod  0.44296 -0.89654 0.6570  0.001 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## Permutation: free
@@ -209,9 +218,10 @@ plot(spe_nmds_env, p.max = 0.05, col = "red")
 
 <img src="/workshops/quantecol/chapters/11-nMDS_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
-### Questions
+### Assignment 7 Questions
 
-1.  Using two unconstrained ordination techniques of your choice, analyse the mite data in the **vegan** package. Provide a brief description and discussion of what you have found, and produce the R code.
-2.  Using two unconstrained ordination techniques of your choice (not already used in 1, above) analyse the dune data in the **vegan** package. Provide a brief description and discussion of what you have found, and produce the R code.
+> 1.  Using two unconstrained ordination techniques of your choice, analyse the mite data in the **vegan** package. Provide a brief description and discussion of what you have found, and produce the R code.
+>
+> 2.  Using two unconstrained ordination techniques of your choice (not already used in 1, above) analyse the dune data in the **vegan** package. Provide a brief description and discussion of what you have found, and produce the R code.
 
-Submit an R script wherein you provide answers to these questions by no later than 17:00 on Friday 23 July 2021.
+Submit a R script wherein you provide answers to Questions 1--2 by no later than 8:00 tomorrow. Label the script as follows: **`BCB743_<Name>_<Surname>_Assignment_7.R`**, e.g. **`BCB743_AJ_Smit_Assignment_7.R`**.

@@ -1,7 +1,7 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
 subtitle: ""
 title: "13. Cluster analysis"
 weight: 17
@@ -9,7 +9,8 @@ weight: 17
 
 <!-- # Topic 13: Cluster analysis -->
 
-> "There are two types of people in the world: 1) those who extrapolate from incomplete data." -- Anon.
+> "*There are two types of people in the world: 1) those who extrapolate from incomplete data.*"
+> -- Anon.
 
 We have seen that the WHO/SDG data seem to form neat groupings of countries within their respective parent locations. In this exercise we will apply a cluster analysis called 'Partitioning Around Medoids' to these data. Whereas ordination attempts to display the presence and influence of gradients, clustering tries to place our samples into a certain number of discrete units or clusters. The goal of the clustering algorithms is to produce groups (clusters) such that dissimilarites between objects within these groups are smaller than those between them.
 
@@ -37,6 +38,9 @@ library(ggcorrplot)
 library(factoextra)
 library(vegan)
 library(ggpubr)
+
+# setting up a 'root' file path so I don't have to keep doing it later...
+root <- "../../../../static/data/BCB743/"
 ```
 
 ## Load the SDG data
@@ -45,7 +49,7 @@ I load the combined dataset that already had their missing values imputed (as pe
 
 
 ```r
-SDGs <- read_csv("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/WHO/SDG_complete.csv")
+SDGs <- read_csv(paste0(root, "WHO/SDG_complete.csv"))
 ```
 
 ```
@@ -126,13 +130,16 @@ The frustrating thing with cluster analysis, which often confuses novice users, 
 
 ```r
 # using silhouette analysis
-plt1 <- fviz_nbclust(SDGs_std, cluster::pam, method = "silhouette") + theme_grey()
+plt1 <- fviz_nbclust(SDGs_std, cluster::pam, method = "silhouette") + 
+  theme_grey()
 
 # total within cluster sum of square / elbow analysis
-plt2 <- fviz_nbclust(SDGs_std, cluster::pam, method = "wss") + theme_grey()
+plt2 <- fviz_nbclust(SDGs_std, cluster::pam, method = "wss") + 
+  theme_grey()
 
 # gap statistics
-plt3 <- fviz_nbclust(SDGs_std, cluster::pam, method = "gap_stat") + theme_grey()
+plt3 <- fviz_nbclust(SDGs_std, cluster::pam, method = "gap_stat") + 
+  theme_grey()
 
 ggarrange(plt1, plt2, plt3, nrow = 3)
 ```
@@ -145,7 +152,9 @@ Even with the supposedly objective assessment of what the optimal number of clus
 ```r
 SDGs_pam <- pam(SDGs_std, metric = "euclidean", k = 3)
 
-fviz_cluster(SDGs_pam, geom = "point", ellipse.type = "convex", palette = c("#FC4E07", "violetred3", "deepskyblue3"), ellipse.alpha = 0.05) +
+fviz_cluster(SDGs_pam, geom = "point", ellipse.type = "convex",
+             palette = c("#FC4E07", "violetred3", "deepskyblue3"),
+             ellipse.alpha = 0.05) +
   geom_text(aes(label = SDGs$Location), size = 2.5)
 ```
 
@@ -174,8 +183,9 @@ Same as above, but showing a star plot and numbers indicating the countries (the
 
 
 ```r
-fviz_cluster(SDGs_pam, palette = c("#FC4E07", "violetred3", "deepskyblue3"), ellipse.type = "euclid", 
-             star.plot = TRUE, repel = TRUE, pointsize = SDGs$scale_vec * 0.8) + # SA, no 147, plotted slightly bigger
+fviz_cluster(SDGs_pam, palette = c("#FC4E07", "violetred3", "deepskyblue3"),
+             ellipse.type = "euclid", star.plot = TRUE, repel = TRUE,
+             pointsize = SDGs$scale_vec * 0.8) + # SA plotted slightly bigger
   theme_grey()
 ```
 
@@ -190,7 +200,8 @@ Do a silhouette analysis to check cluster fidelity:
 
 
 ```r
-fviz_silhouette(SDGs_pam, palette = c("#FC4E07", "violetred3", "deepskyblue3"), ggtheme = theme_grey())
+fviz_silhouette(SDGs_pam, palette = c("#FC4E07", "violetred3", "deepskyblue3"),
+                ggtheme = theme_grey())
 ```
 
 ```
@@ -271,19 +282,24 @@ We can do a coloured pairwise scatterplot to check data details. I limit it here
 
 
 ```r
-pairs(SDGs[, 3:10], col = c("#FC4E07", "violetred3", "deepskyblue3")[SDGs_pam$clustering])
+pairs(SDGs[, 3:10],
+      col = c("#FC4E07", "violetred3", "deepskyblue3")[SDGs_pam$clustering])
 ```
 
 <img src="/workshops/quantecol/chapters/13-cluster_analysis_files/figure-html/unnamed-chunk-14-1.png" width="672" />
 
-### Questions
+### Assignment 5 Questions
 
-This is the fnal set of questions for Quantitative Ecology.
+> This is the final set of questions for Quantitative Ecology.
+> 
+> **Question 2:** What happens if we use `pam()` to create four, five, or even six clusters?
+>
+> **Question 3:** In your reasoned opinion, what would be the optimal number of clusters to use?
+>
+> **Question 4:** Repeat the analysis using either `kmeans()` or `hclust()`, and feel free to use the **factoextra** helper functions and visualisations. Are the results markedly different? Which clustering approach do you wish to proceed with---i.e., `pam()`, `hclust()` or `kmeans()`?
+>
+> **Question 5:** Describe the patterns that you observe at the end of your ordination and final cluster selection (i.e. based on the optimal number of clusters and whichever cluster technique you deem most appropriate). How does South Africa fare in terms of attaining SDGs? Contrast with some key countries of your choice to make your points. Label the key countries that you refer to in your text by updating the code accordingly. Continue to explain these patterns in terms of the global socio-political/socio-economic landscape. Provide a discourse about possible explanations for the patterns observed globally and regionally.
 
-1.  What happens if we use `pam()` to create four, five, or even six clusters?
-2.  In your reasoned opinion, what would be the optimal number of clusters to use?
-3.  Repeat the analysis using either `kmeans()` or `hclust()`, and feel free to use the **factoextra** helper functions and visualisations. Are the results markedly different? Which clustering approach do you wish to proceed with---i.e., `pam()`, `hclust()` or `kmeans()`?
-4.  Build upon the narrative that you have already developed in the [previous assignment](https://github.com/ajsmit/Quantitative_Ecology/blob/main/jupyter_lab/Topic_8-PCA-SDG-example.ipynb) and describe the patterns that you observe at the end of your final cluster selection (i.e. based on the optimal number of clusters and whichever cluster technique you deem most appropriate), and explain these patterns in terms of the global socio-political/socio-economic landscape.
-5.  Regardless of how many clusters you choose, South Africa often seems to teeter at the edge between the group of African countries and some other parent location. Why?
+Submit a Rmarkdown script wherein you provide answers to Questions 1--5. (i.e. including the [PCA WHO SDG assignment](https://ajsmit.netlify.app/workshops/quantecol/chapters/08-pca_sdg/) and this one), and provide the associated compiled html output. Label the script as follows: **`BCB743_<Name>_<Surname>_Assignment_5.R`**, e.g. **`BCB743_AJ_Smit_Assignment_5.R`**.
 
-[You are welcome to submit the entire asignment (the [previous assignment](https://github.com/ajsmit/Quantitative_Ecology/blob/main/jupyter_lab/Topic_8-PCA-SDG-example.ipynb) and this one) in an R script wherein you provide answers to these questions by no later than 17:00 on Monday 2 August 2021.]{style="color:red"}
+The deadline for this submission is Monday 1 August 2022.

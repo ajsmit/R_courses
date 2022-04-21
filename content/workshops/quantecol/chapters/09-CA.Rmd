@@ -6,7 +6,15 @@ links:
   - icon: images
     icon_pack: fas
     name: Correspendence Analysis Slides
-    url: /pdf/BCB743_09_CCA.pdf
+    url: /pdf/BCB743/BCB743_09_CCA.pdf
+  - icon: file-csv
+    icon_pack: fa
+    name: DoubsEnv.csv
+    url: /data/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv
+  - icon: file-csv
+    icon_pack: fa
+    name: DoubsSpe.csv
+    url: /data/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
 subtitle: ""
 title: "9. Correspondence Analysis (CA)"
 weight: 12
@@ -23,6 +31,9 @@ CA therefore finds the ordination space that answers questions such as, "Which s
 ```{r message=FALSE, warning=FALSE}
 library(tidyverse)
 library(vegan)
+
+# setting up a 'root' file path so I don't have to keep doing it later...
+root <- "../../../../static/data/BCB743/"
 ```
 
 ## The Doubs River data
@@ -30,7 +41,7 @@ library(vegan)
 This time we work with the species data:
 
 ```{r}
-spe <- read.csv("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/Num_Ecol_R_book_ed1/DoubsSpe.csv")
+spe <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsSpe.csv"))
 spe <- dplyr::select(spe, -1)
 head(spe, 8)
 ```
@@ -138,7 +149,7 @@ with(spe, tmp <- ordisurf(spe_ca ~ Cogo, bubble = 3,
 abline(h = 0, v = 0, lty = 3)
 
 # a posteriori projection of environmental variables in a CA
-env <- read.csv("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/Num_Ecol_R_book_ed1/DoubsEnv.csv")
+env <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsEnv.csv"))
 env <- dplyr::select(env, -1)
 
 # we removed the 8th row in spe, so do it here too
@@ -151,12 +162,12 @@ plot(spe_ca_env, col = "grey40")
 plot(spe_ca_env, p.max = 0.05, col = "red") # plot significant variables with a different colour
 ```
 
-### Questions
+### Assignment 6 Questions
 
 > **Question 1.** How would you explain the patterns seen in the four panels of the above figure?
-
+>
 > **Question 2.** Apply approaches taken from the analysis shown immediately above to these datasets: 1. [bird communities along elevation gradient in Yushan Mountain, Taiwan](https://www.davidzeleny.net/anadat-r/doku.php/en:data:ybirds); 2. [alpine plant communities in Aravo, France](https://www.davidzeleny.net/anadat-r/doku.php/en:data:aravo).
-
+>
 > **Question 3.** Discuss the patterns observed, and explain the ordination diagrams with particular reference to how the species are influenced by the major environmental drivers.
 
-Submit an R script wherein you provide answers to these questions by no later than 17:00 on Friday 16 July 2021.
+Submit a R script wherein you provide answers to Questions 1--3 by no later than 8:00 tomorrow. Label the script as follows: **`BCB743_<Name>_<Surname>_Assignment_6.R`**, e.g. **`BCB743_AJ_Smit_Assignment_6.R`**.

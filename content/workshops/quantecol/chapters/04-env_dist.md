@@ -6,7 +6,19 @@ links:
   - icon: images
     icon_pack: fas
     name: Environmental Distance Slides
-    url: /pdf/BCB743_04_environmental_distance.pdf
+    url: /pdf/BCB743/BCB743_04_environmental_distance.pdf
+  - icon: file-csv
+    icon_pack: fa
+    name: Euclidian Distance Demo Data
+    url: /data/BCB743/seaweed/Euclidian_distance_demo_data_xyz.csv
+  - icon: file-csv
+    icon_pack: fa
+    name: Euclidian Distance Demo Env Data
+    url: /data/BCB743/seaweed/Euclidian_distance_demo_data_env.csv
+  - icon: file-csv
+    icon_pack: fa
+    name: Sites Data
+    url: /data/BCB743/seaweed/sites.csv
 subtitle: ""
 title: 4. Environmental Distance
 weight: 5
@@ -22,6 +34,9 @@ library(vegan)
 library(ggplot2)
 library(geodist) # for calculating geographical distances between lats/lons
 library(ggpubr) # to arrange the multipanel graphs
+
+# setting up a 'root' file path so I don't have to keep doing it later...
+root <- "../../../../static/data/BCB743/"
 ```
 
 ## Toy data
@@ -36,7 +51,7 @@ Let's load the dataset and find the size of the dataframe:
 
 
 ```r
-xyz <- read.csv("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/diversity/Euclidian_distance_demo_data_xyz.csv")
+xyz <- read.csv(paste0(root, "seaweed/Euclidian_distance_demo_data_xyz.csv"))
 dim(xyz)
 ```
 
@@ -70,7 +85,9 @@ Calculate the Euclidian distance using **vegan**'s `vegdist()` function and view
 
 
 ```r
-xyz_euc <- round(vegdist(xyz[, 2:4], method = "euclidian", upper = FALSE, diag = TRUE), 4) # select only cols 2, 3 and 4
+xyz_euc <- round(vegdist(xyz[, 2:4], method = "euclidian",
+                         upper = FALSE, diag = TRUE), 4)
+# selected only cols 2, 3 and 4
 xyz_euc
 ```
 
@@ -118,7 +135,7 @@ Since each column, `\(x\)`, `\(y\)`, and `\(z\)`, is a variable, we can substitu
 
 
 ```r
-env_fict <- read.csv("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/diversity/Euclidian_distance_demo_data_env.csv")
+env_fict <- read.csv(paste0(root, "seaweed/Euclidian_distance_demo_data_env.csv"))
 head(env_fict, 2) # print first two rows only
 ```
 
@@ -140,7 +157,7 @@ These data accompany the analysis of the South African seaweed flora (see Smit e
 
 
 ```r
-load("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/diversity/SeaweedEnv.RData")
+load(paste0(root, "seaweed/SeaweedEnv.RData"))
 
 # lets look at the data
 dim(env)
@@ -231,7 +248,7 @@ E1[1:5, 1:5]
 ```r
 E1_euc <- round(vegdist(E1, method = "euclidian", upper = TRUE), 4)
 E1_df <- as.data.frame(as.matrix(E1_euc))
-E1_df[1:10, 1:10] # the first 10 rows and columns
+E1_df[1:10, 1:10]
 ```
 
 ```
@@ -253,7 +270,9 @@ We already know how to read this matrix. Let's plot it as a function of the coas
 
 ```r
 ggplot(data = E1_df, (aes(x = 1:58, y = `1`))) +
-  geom_line() + xlab("Coastal section, west to east") + ylab("Environmental distance")
+  geom_line() +
+  xlab("Coastal section, west to east") +
+  ylab("Environmental distance")
 ```
 
 <img src="/workshops/quantecol/chapters/04-env_dist_files/figure-html/unnamed-chunk-14-1.png" width="672" />
@@ -266,7 +285,7 @@ When we calculate Euclidian distances between geographic lat/lon coordinate, the
 
 
 ```r
-geo <- read.csv("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/diversity/sites.csv")
+geo <- read.csv(paste0(root, "seaweed/sites.csv"))
 dim(geo)
 ```
 
@@ -313,7 +332,10 @@ dists_df[1:5, 1:5]
 
 ```r
 plt1 <- ggplot(data = dists_df, (aes(x = 1:58, y = `1`/1000))) +
-  geom_line() + xlab("Coastal section, west to east") + ylab("Distance (km)") + ggtitle("Actual geographic distance")
+  geom_line() +
+  xlab("Coastal section, west to east") +
+  ylab("Distance (km)") +
+  ggtitle("Actual geographic distance")
 ```
 
 
@@ -335,7 +357,10 @@ dists_euc_df[1:5, 1:5]
 
 ```r
 plt2 <- ggplot(data = dists_euc_df, (aes(x = 1:58, y = `1`))) +
-  geom_line() + xlab("Coastal section, west to east") + ylab("Euclidian distance") + ggtitle("Euclidian distance")
+  geom_line() +
+  xlab("Coastal section, west to east") +
+  ylab("Euclidian distance") +
+  ggtitle("Euclidian distance")
 ```
 
 

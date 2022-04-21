@@ -6,7 +6,23 @@ links:
   - icon: images
     icon_pack: fas
     name: Principal Coordinate Analysis Slides
-    url: /pdf/BCB743_10_PCoA.pdf
+    url: /pdf/BCB743/BCB743_10_PCoA.pdf
+  - icon: file-csv
+    icon_pack: fa
+    name: DoubsEnv.csv
+    url: /data/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv
+  - icon: file-csv
+    icon_pack: fa
+    name: DoubsSpe.csv
+    url: /data/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
+  - icon: file
+    icon_pack: far
+    name: SeaweedsEnv.RData
+    url: /data/BCB743/seaweed/SeaweedEnv.RData
+  - icon: file-csv
+    icon_pack: fa
+    name: bioregions.csv
+    url: /data/BCB743/seaweed/bioregions.csv
 subtitle: ""
 title: "10. Principal Coordinate Analysis (PCoA)"
 weight: 13
@@ -24,6 +40,9 @@ PCoA scaling takes a set of dissimilarities and returns a set of points such tha
 ```r
 library(tidyverse)
 library(vegan)
+
+# setting up a 'root' file path so I don't have to keep doing it later...
+root <- "../../../../static/data/BCB743/"
 ```
 
 ## The Doubs River data
@@ -32,7 +51,7 @@ We continue to use the species data:
 
 
 ```r
-spe <- read.csv("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/Num_Ecol_R_book_ed1/DoubsSpe.csv")
+spe <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsSpe.csv"))
 spe <- dplyr::select(spe, -1)
 spe <- dplyr::slice(spe, -8)
 ```
@@ -341,7 +360,8 @@ The plots above work okay, but we can improve them. Note that you can also apply
 
 
 ```r
-pl1 <- ordiplot(spe_pcoa, type = "none", scaling = 1, main = "PCoA fish abundances - biplot scaling 1")
+pl1 <- ordiplot(spe_pcoa, type = "none", scaling = 1,
+                main = "PCoA fish abundances - biplot scaling 1")
 points(pl1, "sites", pch = 21, cex = 1.75, col = "grey80", bg = "grey80")
 points(pl1, "species", pch = 21, col = "turquoise", arrows = TRUE)
 text(pl1, "species", col = "blue4", cex = 0.9)
@@ -351,7 +371,8 @@ text(pl1, "sites", col = "red4", cex = 0.9)
 <img src="/workshops/quantecol/chapters/10-PCoA_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
 ```r
-pl2 <- ordiplot(spe_pcoa, type = "none", scaling = 2, main = "PCoA fish abundances - biplot scaling 2")
+pl2 <- ordiplot(spe_pcoa, type = "none", scaling = 2,
+                main = "PCoA fish abundances - biplot scaling 2")
 points(pl2, "sites", pch = 21, cex = 1.75, col = "grey80", bg = "grey80")
 points(pl2, "species", pch = 21, col = "turquoise", arrows = TRUE)
 text(pl2, "species", col = "blue4", cex = 0.9)
@@ -395,7 +416,7 @@ with(spe, tmp <- ordisurf(spe_pcoa ~ Cogo, bubble = 3,
                           display = "sites", main = "Cogo"))
 abline(h = 0, v = 0, lty = 3)
 
-env <- read.csv("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/Num_Ecol_R_book_ed1/DoubsEnv.csv")
+env <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsEnv.csv"))
 env <- dplyr::select(env, -1)
 env <- dplyr::slice(env, -8)
 
@@ -409,10 +430,10 @@ env <- dplyr::slice(env, -8)
 ##         MDS1     MDS2     r2 Pr(>r)    
 ## dfs  0.99710  0.07609 0.7210  0.001 ***
 ## alt -0.99807 -0.06208 0.5659  0.001 ***
-## slo -0.92225  0.38660 0.1078  0.149    
-## flo  0.99746 -0.07129 0.5324  0.002 ** 
-## pH  -0.42673 -0.90438 0.0480  0.529    
-## har  0.98804  0.15417 0.2769  0.016 *  
+## slo -0.92225  0.38660 0.1078  0.132    
+## flo  0.99746 -0.07129 0.5324  0.001 ***
+## pH  -0.42673 -0.90438 0.0480  0.513    
+## har  0.98804  0.15417 0.2769  0.014 *  
 ## pho  0.45343  0.89129 0.6912  0.001 ***
 ## nit  0.86338  0.50456 0.6117  0.001 ***
 ## amm  0.42719  0.90416 0.7076  0.001 ***
@@ -439,8 +460,8 @@ I construct a environmental dataset that contains some mixed variables by column
 
 
 ```r
-bioreg <- read.csv('/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/diversity/bioregions.csv', header = TRUE)
-load("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/diversity/SeaweedEnv.RData")
+bioreg <- read.csv(paste0(root, "seaweed/bioregions.csv"), header = TRUE)
+load(paste0(root, "seaweed/SeaweedEnv.RData"))
 E <- cbind(bioreg, env) %>% 
   mutate(spal.prov = factor(spal.prov),
          spal.ecoreg = factor(spal.ecoreg),
@@ -681,23 +702,23 @@ summary(E_pcoa)
 
 We can extract the various kinds of scores for manual plotting.
 
-### Integrative assignment
+### Integrative Assignment
 
-In the light of all the possible analyses of the Doubs River study (i.e. the earlier PCA and CA analyses as well as the nMDS, RDA, CCA, and clustering techniques in the coming week), provide a full analysis of the Doubs River fish community structure study, focusing on:
+> In the light of all the possible analyses of the Doubs River study (i.e. the earlier PCA and CA analyses as well as the nMDS, RDA, CCA, and clustering techniques in the coming week), provide a full analysis of the Doubs River fish community structure study, focusing on:
+>
+> 1.  the environmental drivers,
+>
+> 2.  the fish community composition, and
+>
+> 3.  an integrative view of the environmental structuring of the fish community.
+>
+> You are welcome to suggest your own analyses, as necessary, to support the approaches already taken in the module. Your analysis must include one or several ordination techniques (with a justification for why they were selected), as well as a clustering approach. The more novelty you bring to the analysis the better for your marks. Critically discuss your findings in the context of the work initially done by Verneaux et al. (2003). Note that a critical discussion necessitates looking at all major findings of Verneaux et al. (2003) in the light of what your own analyses tell you. In doing so, you must support your own reasoning for agreeing or disagreeing by providing substantiating rational reasoning.
+>
+> A completely novel (and correct) data and theoretical analysis can earn you marks in excess of 100%.
+>
+> Your analysis must be structured as follows: Introduction (with Aims and Objectives), Methods, Results, Discussion, References (minimum 10 references, all of which were published *after* 2003). Unlike previous work in the module, this assignment will be submitted as a professionally formatted MS Word document that follows the author guidelines of South African Journal of Botany. The page limit for the full body of work must not exceed 20 pages (minimum 13 pages), with the Figures/Tables not occupying more than 25% of the total page count. In order to professionally arrange the figures (multiple figures per page, and liberal use of subplots), please make use of the **ggarrange** package.
 
-1.  the environmental drivers,
-
-2.  the fish community composition, and
-
-3.  an integrative view of the environmental structuring of the fish community.
-
-You are welcome to suggest your own analyses, as necessary, to support the approaches already taken in the module. Your analysis must include one or several ordination techniques (with a justification for why they were selected), as well as a clustering approach. The more novelty you bring to the analysis the better for your marks. Critically discuss your findings in the context of the work initially done by Verneaux et al. (2003). Note that a critical discussion necessitates looking at all major findings of Verneaux et al. (2003) in the light of what your own analyses tell you. In doing so, you must support your own reasoning for agreeing or disagreeing by providing substantiating rational reasoning.
-
-A completely novel (and correct) data and theoretical analysis can earn you marks in excess of 100%.
-
-Your analysis must be structured as follows: Introduction (with Aims and Objectives), Methods, Results, Discussion, References (minimum 10 references, all of which were published *after* 2003). Unlike previous work in the module, this assignment will be submitted as a professionally formatted MS Word document that follows the author guidelines of South African Journal of Botany. The page limit for the full body of work must not exceed 20 pages (minimum 13 pages), with the Figures/Tables not occupying more than 25% of the total page count. In order to professionally arrange the figures (multiple figures per page, and liberal use of subplots), please make use of the **ggarrange** package.
-
-[Submit your assignment by no later than 17:00 on Friday 30 July 2021.]{style="color:red"}
+Submit a R script for the Integrative Assignment by no later than 8:00 on Wednesday 27 July 2022. Label the script as follows: **`BCB743_<Name>_<Surname>_Integrative_Assignment.R`**, e.g. **`BCB743_AJ_Smit_Integrative_Assignment.R`**.
 
 ## References
 

@@ -6,7 +6,31 @@ links:
   - icon: images
     icon_pack: fas
     name: Constrained Ordination Slides
-    url: /pdf/BCB743_12_constrained_ordination.pdf
+    url: /pdf/BCB743/BCB743_12_constrained_ordination.pdf
+  - icon: file-pdf
+    icon_pack: far
+    name: Smit et al. (2017)
+    url: /pdf/BCB743/Smit_et_al_2017.pdf
+  - icon: file-pdf
+    icon_pack: far
+    name: The Seaweed Data
+    url: /pdf/BCB743/The_seaweed_data.pdf
+  - icon: file-csv
+    icon_pack: fa
+    name: SeaweedsSpp.csv
+    url: /data/BCB743/seaweed/SeaweedsSpp.csv
+  - icon: file
+    icon_pack: far
+    name: SeaweedsEnv.RData
+    url: /data/BCB743/seaweed/SeaweedEnv.RData
+  - icon: file-csv
+    icon_pack: fa
+    name: bioregions.csv
+    url: /data/BCB743/seaweed/bioregions.csv
+  - icon: file-csv
+    icon_pack: fa
+    name: sites.csv
+    url: /data/BCB743/seaweed/sites.csv    
 subtitle: ""
 title: "12. Constrained Ordination"
 weight: 16
@@ -26,7 +50,7 @@ Constrained ordination is used to extract and summarise the variation in a set o
 
 ## The seaweed dataset
 
-For this example we will use the seaweed data of Smit et al. (2017). For information about the study, see [here](https://github.com/ajsmit/Quantitative_Ecology/blob/main/_GitBook/LaTeX/The_seaweed_data.pdf).
+For this example we will use the seaweed data of Smit et al. (2017); please make sure that you read it! An additional file describing the background to the data is available at the link above (see **The_seaweed_data.pdf**).
 
 I use two data sets. The first, `\(Y\)` (in the file `seaweeds.csv`), comprises distribution records of 847 macroalgal species within each of 58 × 50 km-long sections of the South African coast (updated from Bolton and Stegenga 2002). This represents *ca*. 90% of the known seaweed flora of South Africa, but excludes some very small and/or very rare species for which data are insufficient. The data are from verifiable literature sources and John Bolton and Rob Anderson's own collections, assembled from information collected by teams of phycologists over three decades (Bolton 1986; Stegenga et al. 1997; Bolton and Stegenga 2002; De Clerck et al. 2005).
 
@@ -42,13 +66,16 @@ library(vegan)
 library(gridExtra)
 library(grid)
 library(gridBase)
+
+# setting up a 'root' file path so I don't have to keep doing it later...
+root <- "../../../../static/data/BCB743/"
 ```
 
 Load the seaweed data:
 
 
 ```r
-spp <- read.csv('/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/diversity/SeaweedsSpp.csv')
+spp <- read.csv(paste0(root, 'seaweed/SeaweedsSpp.csv'))
 spp <- dplyr::select(spp, -1)
 dim(spp)
 ```
@@ -76,7 +103,7 @@ The thermal (environmental) data contain various variables, but in the analysis 
 
 
 ```r
-load("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/diversity/SeaweedEnv.RData")
+load(paste0(root, "seaweed/SeaweedEnv.RData"))
 dim(env)
 ```
 
@@ -105,7 +132,7 @@ Four bioregions are recognised for South Africa by Bolton and Anderson (2004) (t
 
 
 ```r
-bioreg <- read.csv('/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/diversity/bioregions.csv', header = TRUE)
+bioreg <- read.csv(paste0(root, 'seaweed/bioregions.csv'), header = TRUE)
 head(bioreg)
 ```
 
@@ -123,7 +150,7 @@ Load the geographic coordinates for the coastal sections:
 
 
 ```r
-sites <- read.csv("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/diversity/sites.csv")
+sites <- read.csv(paste0(root, "seaweed/sites.csv"))
 sites <- sites[, c(2, 1)]
 head(sites)
 ```
@@ -360,7 +387,7 @@ anova(rda_final, by = "axis", parallel = 4) # ... yes!
 ##          Df SumOfSqs        F Pr(>F)    
 ## CAP1      1   5.6179 263.1786  0.001 ***
 ## CAP2      1   1.1242  52.6665  0.001 ***
-## CAP3      1   0.0725   3.3978  0.395    
+## CAP3      1   0.0725   3.3978  0.389    
 ## CAP4      1   0.0050   0.2320  1.000    
 ## CAP5      1   0.0027   0.1274  1.000    
 ## CAP6      1   0.0013   0.0632  1.000    
@@ -388,10 +415,10 @@ Extract the significant variables in `\(E3\)` that are influential in the final 
 ## febRange  1   1.0962  51.3541  0.001 ***
 ## febSD     1   0.1850   8.6653  0.001 ***
 ## augMean   1   5.3815 252.1023  0.001 ***
-## augRange  1   0.0903   4.2286  0.031 *  
-## augSD     1   0.0212   0.9918  0.369    
-## annRange  1   0.0196   0.9191  0.381    
-## annSD     1   0.0313   1.4666  0.209    
+## augRange  1   0.0903   4.2286  0.018 *  
+## augSD     1   0.0212   0.9918  0.372    
+## annRange  1   0.0196   0.9191  0.358    
+## annSD     1   0.0313   1.4666  0.226    
 ## Residual 50   1.0673                    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1

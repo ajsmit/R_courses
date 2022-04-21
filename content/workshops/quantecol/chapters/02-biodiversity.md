@@ -6,15 +6,36 @@ links:
   - icon: images
     icon_pack: fas
     name: Biodiversity Slides (1)
-    url: /pdf/BCB743_02_biodiversity_1.pdf
+    url: /pdf/BCB743/BCB743_02_biodiversity_1.pdf
   - icon: images
     icon_pack: fas
     name: Biodiversity Slides (2)
-    url: /pdf/BCB743_02_biodiversity_2.pdf
+    url: /pdf/BCB743/BCB743_02_biodiversity_2.pdf
+  - icon: file-pdf
+    icon_pack: far
+    name: Smit et al. (2017)
+    url: /pdf/BCB743/Smit_et_al_2017.pdf
+  - icon: file-pdf
+    icon_pack: far
+    name: Smit et al. (2013)
+    url: /pdf/BCB743/Smit_et_al_2013.pdf
+  - icon: file-pdf
+    icon_pack: far
+    name: The Seaweed Data
+    url: /pdf/BCB743/The_seaweed_data.pdf
+  - icon: file-csv
+    icon_pack: fa
+    name: SeaweedsSpp.csv
+    url: /data/BCB743/seaweed/SeaweedsSpp.csv
+  - icon: file-csv
+    icon_pack: fa
+    name: light_levels.csv
+    url: /data/BCB743/seaweed/light_levels.csv
 subtitle: ""
 title: "2. Biodiversity"
 weight: 3
 ---
+
 
 <!--- # Topic 2: Biodiversity --->
 
@@ -28,11 +49,9 @@ We will use data on seaweed of South Africa to demonstrate these ideas.
 
 # The South African seaweed data
 
-For this example we will use the seaweed data of Smit et al. (2017); please make sure that you read it! For information about the study, see:
+For this example we will use the seaweed data of Smit et al. (2017); please make sure that you read it! An additional file describing the background to the data is available at the link above (see **The_seaweed_data.pdf**).
 
-<https://github.com/ajsmit/Quantitative_Ecology/blob/main/_GitBook/LaTeX/The_seaweed_data.pdf>
-
-I use two data sets. The first, `\(Y\)` (in the file `seaweeds.csv`), comprises distribution records of 847 macroalgal species within each of 58 × 50 km-long sections of the South African coast (updated from Bolton and Stegenga 2002). This represents *ca*. 90% of the known seaweed flora of South Africa, but excludes some very small and/or very rare species for which data are insufficient. The data are from verifiable literature sources and John Bolton and Rob Anderson's own collections, assembled from information collected by teams of phycologists over three decades (Bolton 1986; Stegenga et al. 1997; Bolton and Stegenga 2002; De Clerck et al. 2005). The second, `\(E\)` (in `env.csv`), is a dataset of *in situ* coastal seawater temperatures (Smit et al. 2013) derived from daily measurements over up to 40 years.
+I use two data sets. The first, `\(Y\)` (in the file `SeaweedsSpp.csv`), comprises distribution records of 847 macroalgal species within each of 58 × 50 km-long sections of the South African coast (updated from Bolton and Stegenga 2002). This represents *ca*. 90% of the known seaweed flora of South Africa, but excludes some very small and/or very rare species for which data are insufficient. The data are from verifiable literature sources and John Bolton and Rob Anderson's own collections, assembled from information collected by teams of phycologists over three decades (Bolton 1986; Stegenga et al. 1997; Bolton and Stegenga 2002; De Clerck et al. 2005). The second, `\(E\)` (in `env.csv`), is a dataset of *in situ* coastal seawater temperatures (Smit et al. 2013) derived from daily measurements over up to 40 years.
 
 ## Setting up the analysis environment
 
@@ -40,11 +59,11 @@ This is **R**, so first I need to find, install and load various packages. Some 
 
 
 ```r
-suppressMessages(library(tidyverse))
+library(tidyverse)
 library(betapart)
-suppressMessages(library(vegan))
-suppressMessages(library(gridExtra))
-suppressMessages(library(BiodiversityR))
+library(vegan)
+library(gridExtra)
+library(BiodiversityR)
 library(grid)
 library(gridBase)
 ```
@@ -55,7 +74,7 @@ Let's load the data and see how it is structured:
 
 
 ```r
-spp <- read.csv('/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/diversity/SeaweedsSpp.csv')
+spp <- read.csv('../../../../static/data/BCB743/seaweed/SeaweedsSpp.csv')
 spp <- dplyr::select(spp, -1)
 
 # Lets look at the data:
@@ -147,13 +166,13 @@ We cannot calculate either of these for the seaweed data because in order to do 
 
 
 ```r
-light <- read.csv("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/diversity/light_levels.csv")
+light <- read.csv("../../../../static/data/BCB743/seaweed/light_levels.csv")
 ```
 
 ```
 ## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
-## incomplete final line found by readTableHeader on '/Users/ajsmit/Dropbox/R/
-## workshops/Quantitative_Ecology/exercises/diversity/light_levels.csv'
+## incomplete final line found by readTableHeader on '../../../../static/data/
+## BCB743/seaweed/light_levels.csv'
 ```
 
 ```r
@@ -230,19 +249,17 @@ ii. The diagonal is filled with 0.
 
 iii. The matrix is symetrical---it is comprised of symetrical upper and lower triangles.
 
-### Questions (A)
+### Assignment 1 Questions
 
 > **Question 1:** Why is the matrix square, and what determines the number of rows/columns?
-
+>
 > **Question 2:** What is the meaning of the diagonal?
-
+>
 > **Question 3:** What is the meaning of the non-diagonal elements?
-
+>
 > **Question 4:** Take the data in row 1 and create a line graph that shows these values as a function of section number.
-
+>
 > **Question 5:** Provide a mechanistic (ecological) explanation for why this figure takes the shape that it does.
-
-[Submit an R script wherein you provide answers to these questions by no later than 17:00 on Wednesday 30 June 2021.]{style="color:red"}
 
 ## Gamma diversity
 
@@ -270,13 +287,11 @@ diversityresult(spp, index = 'richness', method = 'pooled')
 ## pooled      846
 ```
 
-### Questions (B)
+### Assignment 1 Questions
 
 > **Question 6:** Why is there a difference between the two?
-
+>
 > **Question 7:** Which is correct?
-
-[Submit an R script wherein you provide answers to these questions by no later than 17:00 on Wednesday 30 June 2021.]{style="color:red"}
 
 Think before you calculate γ-diversity for your own data as it might not be as simple as here!
 
@@ -292,7 +307,8 @@ true_beta <- data.frame(
 )
 # true_beta
 ggplot(data = true_beta, (aes(x = section_no, y = beta))) +
-  geom_line() + xlab("Coastal section, west to east") + ylab("True beta-diversity")
+  geom_line() + xlab("Coastal section, west to east") +
+  ylab("True beta-diversity")
 ```
 
 <img src="/workshops/quantecol/chapters/02-biodiversity_files/figure-html/unnamed-chunk-12-1.png" width="672" />
@@ -307,7 +323,8 @@ abs_beta <- data.frame(
 )
 # abs_beta
 ggplot(data = abs_beta, (aes(x = section_no, y = beta))) +
-  geom_line() + xlab("Coastal section, west to east") + ylab("Absolute beta-diversity")
+  geom_line() + xlab("Coastal section, west to east") +
+  ylab("Absolute beta-diversity")
 ```
 
 <img src="/workshops/quantecol/chapters/02-biodiversity_files/figure-html/unnamed-chunk-13-1.png" width="672" />
@@ -328,7 +345,8 @@ How do we calculate the turnover and nestedness-resultant components of β-diver
 
 
 ```r
-# Decompose total Sørensen dissimilarity into turnover and nestedness-resultant components:
+# Decompose total Sørensen dissimilarity into turnover and nestedness-resultant
+# components:
 Y.core <- betapart.core(spp)
 Y.pair <- beta.pair(Y.core, index.family = "sor")
 
@@ -377,13 +395,13 @@ round(Y2[1:10, 1:10], 4)
 ## 10 0.0340 0.0305 0.0305 0.0270 0.0168 0.0171 0.0171 0.0102 0.0034 0.0000
 ```
 
-### Questions (C)
+### Assignment 1 Questions
 
 > **Question 8:** Plot species turnover as a function of Section number, and provide a mechanistic exaplanation for the pattern observed.
-
+>
 > **Question 9:** Based on an assessment of literature on the topic, provide a discussion of nestedness-resultant β-diversity. Use either a marine or terrestrial example to explain this mode of structuring biodiversity.
 
-[Submit an R script wherein you provide answers to these questions by no later than 17:00 on Friday 2 July 2021.]{style="color:red"}
+Submit a R script wherein you provide answers to Questions 1--9 by no later than 8:00 tomorrow. Label the script as follows: **`BCB743_<Name>_<Surname>_Assignment_1.R`**, e.g. **`BCB743_AJ_Smit_Assignment_1.R`**.
 
 ## References
 

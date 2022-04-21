@@ -1,7 +1,12 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
+links:
+  - icon: file
+    icon_pack: fa
+    name: The WHO Data
+    url: /data/BCB743/WHO/WHO.zip
 subtitle: ""
 title: "8b. PCA of WHO SDGs"
 weight: 11
@@ -9,7 +14,7 @@ weight: 11
 
 <!-- # Topic 8: PCA of World Health Organization data on progress towards attaining SDGs -->
 
-The United Nations adopted an agenda for sustainable development and lists 17 development goals to achieve by 2030. These are called the [Sustainable Development Goals (SDGs)](https://sdgs.un.org/goals). The World Health Organization assembles a collection of indicators to track how countries are progression towards these goals so as to achieve "a world free of poverty, hunger, disease and want" ([WHO](https://www.who.int/data/gho/data/themes/sustainable-development-goals)).
+The United Nations adopted an agenda for sustainable development and lists 17 development goals to achieve by 2030. These are called the [Sustainable Development Goals (SDGs)](https://sdgs.un.org/goals). The World Health Organization assembles a collection of indicators to track how countries are progressing towards these goals so as to achieve "a world free of poverty, hunger, disease and want" ([WHO](https://www.who.int/data/gho/data/themes/sustainable-development-goals)).
 
 This is an ordination analysis of the SDG 3, "Good Health and Well-Being."
 
@@ -21,18 +26,22 @@ library(tidyverse)
 library(vegan)
 library(missMDA) # to impute missing values
 library(ggcorrplot) # for the correlations
+
+# setting up a 'root' file path so I don't have to keep doing it later...
+root <- "../../../../static/data/BCB743/WHO/"
 ```
 
 ## Define and load the data
+
+**Note** The combined data and SDG descriptors are in the zip file. They are called `SDG_complete.csv` and `SDG_description.csv`, respectively. There is no need to work through the entire process below; you can simply start with loading the combined data. See the section *Scale and center the data and do the PCA*, below.
 
 SDG 1.a [Domestic general government health expenditure (GGHE-D) as percentage of general government expenditure (GGE) (%)](https://www.who.int/data/gho/data/indicators/indicator-details/GHO/domestic-general-government-health-expenditure-(gghe-d)-as-percentage-of-general-government-expenditure-(gge))
 
 
 ```r
 # define base location of data files
-fp <- "/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/WHO/"
 
-SDG1.a <- read.csv(paste0(fp, "WHO_SDG1.a_domestic_health_expenditure.csv")) %>%
+SDG1.a <- read.csv(paste0(root, "WHO_SDG1.a_domestic_health_expenditure.csv")) %>%
   filter(Period == 2016) %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
   mutate(SDG = "SDG1.a")
@@ -42,7 +51,7 @@ SDG 3.1 [Maternal mortality ratio (per 100 000 live births)](https://www.who.int
 
 
 ```r
-SDG3.1_1 <- read.csv(paste0(fp, "WHO_SDG3.1_maternal_mort.csv")) %>%
+SDG3.1_1 <- read.csv(paste0(root, "WHO_SDG3.1_maternal_mort.csv")) %>%
   filter(Period == 2016,
          Indicator == "Maternal mortality ratio (per 100 000 live births)") %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
@@ -53,7 +62,7 @@ SDG 3.1 [Births attended by skilled health personnel (%)](https://www.who.int/da
 
 
 ```r
-SDG3.1_2 <- read.csv(paste0(fp, "WHO_SDG3.1_skilled_births.csv")) %>%
+SDG3.1_2 <- read.csv(paste0(root, "WHO_SDG3.1_skilled_births.csv")) %>%
   filter(Period == 2016) %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
   mutate(SDG = "SDG3.1_2")
@@ -63,7 +72,7 @@ SDG 3.2 [Number of neonatal deaths (Child mortality)](https://www.who.int/data/g
 
 
 ```r
-SDG3.2_1 <- read.csv(paste0(fp, "WHO_SDG3.2_neonatal_deaths.csv")) %>%
+SDG3.2_1 <- read.csv(paste0(root, "WHO_SDG3.2_neonatal_deaths.csv")) %>%
   filter(Period == 2016,
          Dim1 == "Both sexes") %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
@@ -74,7 +83,7 @@ SDG 3.2 [Number of under-five deaths (Child mortality)](https://www.who.int/data
 
 
 ```r
-SDG3.2_2 <- read.csv(paste0(fp, "WHO_SDG3.2_under_5_deaths.csv")) %>%
+SDG3.2_2 <- read.csv(paste0(root, "WHO_SDG3.2_under_5_deaths.csv")) %>%
   filter(Period == 2016,
          Dim1 == "Both sexes") %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
@@ -85,7 +94,7 @@ SDG 3.2 [Number of infant deaths (Child mortality)](https://www.who.int/data/gho
 
 
 ```r
-SDG3.2_3 <- read.csv(paste0(fp, "WHO_SDG3.2_infant_deaths.csv")) %>%
+SDG3.2_3 <- read.csv(paste0(root, "WHO_SDG3.2_infant_deaths.csv")) %>%
   filter(Period == 2016,
          Dim1 == "Both sexes") %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
@@ -96,7 +105,7 @@ SDG 3.3 [New HIV infections (per 1000 uninfected population)](https://www.who.in
 
 
 ```r
-SDG3.3_1 <- read.csv(paste0(fp, "WHO_SDG3.3_new_HIV_infections.csv")) %>%
+SDG3.3_1 <- read.csv(paste0(root, "WHO_SDG3.3_new_HIV_infections.csv")) %>%
   filter(Period == 2015,
          Dim1 == "Both sexes") %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
@@ -107,7 +116,7 @@ SDG 3.3 [Incidence of tuberculosis (per 100 000 population per year)](https://ww
 
 
 ```r
-SDG3.3_2 <- read.csv(paste0(fp, "WHO_SDG3.3_TB.csv")) %>%
+SDG3.3_2 <- read.csv(paste0(root, "WHO_SDG3.3_TB.csv")) %>%
   filter(Period == 2016) %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
   mutate(SDG = "SDG3.3_2")
@@ -117,7 +126,7 @@ SDG 3.3 [Malaria incidence (per 1 000 population at risk)](https://www.who.int/d
 
 
 ```r
-SDG3.3_3 <- read.csv(paste0(fp, "WHO_SDG3.3_malaria.csv")) %>%
+SDG3.3_3 <- read.csv(paste0(root, "WHO_SDG3.3_malaria.csv")) %>%
   filter(Period == 2016) %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
   mutate(SDG = "SDG3.3_3")
@@ -127,7 +136,7 @@ SDG 3.3 [Hepatitis B surface antigen (HBsAg) prevalence among children under 5 y
 
 
 ```r
-SDG3.3_4 <- read.csv(paste0(fp, "WHO_SDG3.3_hepatitis_B.csv")) %>%
+SDG3.3_4 <- read.csv(paste0(root, "WHO_SDG3.3_hepatitis_B.csv")) %>%
   filter(Period == 2015) %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
   mutate(SDG = "SDG3.3_4")
@@ -137,7 +146,7 @@ SDG 3.3 [Reported number of people requiring interventions against NTDs](https:/
 
 
 ```r
-SDG3.3_5 <- read.csv(paste0(fp, "WHO_SDG3.3_NCD_interventions.csv")) %>%
+SDG3.3_5 <- read.csv(paste0(root, "WHO_SDG3.3_NCD_interventions.csv")) %>%
   filter(Period == 2016) %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
   mutate(SDG = "SDG3.3_5")
@@ -147,7 +156,7 @@ SDG 3.4 [Adult mortality rate (probability of dying between 15 and 60 years per 
 
 
 ```r
-  SDG3.4_1 <- read.csv(paste0(fp, "WHO_SDG3.4_adult_death_prob.csv")) %>%
+  SDG3.4_1 <- read.csv(paste0(root, "WHO_SDG3.4_adult_death_prob.csv")) %>%
   filter(Period == 2016,
          Dim1 == "Both sexes") %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
@@ -158,7 +167,7 @@ SDG 3.4 [Number of deaths attributed to non-communicable diseases, by type of di
 
 
 ```r
-SDG3.4_2 <- read.csv(paste0(fp, "WHO_SDG3.4_NCD_by_cause.csv")) %>%
+SDG3.4_2 <- read.csv(paste0(root, "WHO_SDG3.4_NCD_by_cause.csv")) %>%
   filter(Period == 2016,
          Dim1 == "Both sexes",
          Dim2 == "Diabetes mellitus") %>%
@@ -166,7 +175,7 @@ SDG3.4_2 <- read.csv(paste0(fp, "WHO_SDG3.4_NCD_by_cause.csv")) %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
   mutate(SDG = "SDG3.4_2")
 
-SDG3.4_3 <- read.csv(paste0(fp, "WHO_SDG3.4_NCD_by_cause.csv")) %>%
+SDG3.4_3 <- read.csv(paste0(root, "WHO_SDG3.4_NCD_by_cause.csv")) %>%
   filter(Period == 2016,
          Dim1 == "Both sexes",
          Dim2 == "Cardiovascular diseases") %>%
@@ -174,7 +183,7 @@ SDG3.4_3 <- read.csv(paste0(fp, "WHO_SDG3.4_NCD_by_cause.csv")) %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
   mutate(SDG = "SDG3.4_3")
 
-SDG3.4_4 <- read.csv(paste0(fp, "WHO_SDG3.4_NCD_by_cause.csv")) %>%
+SDG3.4_4 <- read.csv(paste0(root, "WHO_SDG3.4_NCD_by_cause.csv")) %>%
   filter(Period == 2016,
          Dim1 == "Both sexes",
          Dim2 == "Respiratory diseases") %>%
@@ -187,7 +196,7 @@ SDG 3.4 [Crude suicide rates (per 100 000 population) (SDG 3.4.2)](https://www.w
 
 
 ```r
-SDG3.4_5 <- read.csv(paste0(fp, "WHO_SDG3.4_suicides.csv")) %>%
+SDG3.4_5 <- read.csv(paste0(root, "WHO_SDG3.4_suicides.csv")) %>%
   filter(Period == 2016,
          Dim1 == "Both sexes") %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
@@ -198,7 +207,7 @@ SDG3.4 [Total NCD Deaths (in thousands)](https://www.who.int/data/gho/data/indic
 
 
 ```r
-SDG3.4_6 <- read.csv(paste0(fp, "WHO_SDG3.4_NCD_data_total.csv")) %>%
+SDG3.4_6 <- read.csv(paste0(root, "WHO_SDG3.4_NCD_data_total.csv")) %>%
   filter(Period == 2016,
          Dim1 == "Both sexes") %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
@@ -209,7 +218,7 @@ SDG 3.5 [Alcohol, total per capita (15+) consumption (in litres of pure alcohol)
 
 
 ```r
-SDG3.5 <- read.csv(paste0(fp, "WHO_SDG3.5_alcohol_consumption.csv")) %>%
+SDG3.5 <- read.csv(paste0(root, "WHO_SDG3.5_alcohol_consumption.csv")) %>%
   filter(Period == 2015,
          Dim1 == "Both sexes") %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
@@ -220,7 +229,7 @@ SDG 3.6 [Estimated road traffic death rate (per 100 000 population)](https://www
 
 
 ```r
-SDG3.6 <- read.csv(paste0(fp, "WHO_SDG3.6_traffic_deaths_prop.csv")) %>%
+SDG3.6 <- read.csv(paste0(root, "WHO_SDG3.6_traffic_deaths_prop.csv")) %>%
   filter(Period == 2016,
          Dim1 == "Both sexes") %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
@@ -231,7 +240,7 @@ SDG 3.7 [Adolescent birth rate (per 1000 women aged 15-19 years)](https://www.wh
 
 
 ```r
-SDG3.7 <- read.csv(paste0(fp, "WHO_SDG3.7_adolescent_births.csv")) %>%
+SDG3.7 <- read.csv(paste0(root, "WHO_SDG3.7_adolescent_births.csv")) %>%
   filter(Period == 2016) %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
   mutate(SDG = "SDG3.7")
@@ -241,7 +250,7 @@ SDG 3.8 [UHC Index of service coverage (SCI)](https://www.who.int/data/gho/data/
 
 
 ```r
-SDG3.8_1 <- read.csv(paste0(fp, "WHO_SDG3.8_UHC_data_availability.csv")) %>%
+SDG3.8_1 <- read.csv(paste0(root, "WHO_SDG3.8_UHC_data_availability.csv")) %>%
   filter(Period == "2013-2017") %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
   mutate(SDG = "SDG3.8_1")
@@ -251,7 +260,7 @@ SDG 3.8 [Data availability for UHC index of essential service coverage (%)](http
 
 
 ```r
-SDG3.8_2 <- read.csv(paste0(fp, "WHO_SDG3.8_UHC_index_of_service_coverage.csv")) %>%
+SDG3.8_2 <- read.csv(paste0(root, "WHO_SDG3.8_UHC_index_of_service_coverage.csv")) %>%
   filter(Period == 2017) %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
   mutate(SDG = "SDG3.8_2")
@@ -263,7 +272,7 @@ Not used for some reason.
 
 
 ```r
-# SDG3.8_3 <- read.csv(paste0(fp, "WHO_SDG3.8_UHC_percent_of_expenditure_1.csv")) %>%
+# SDG3.8_3 <- read.csv(paste0(root, "WHO_SDG3.8_UHC_percent_of_expenditure_1.csv")) %>%
 #   filter(Period == 2016) %>%
 #   select(Indicator, ParentLocation, Location, FactValueNumeric)
 ```
@@ -274,7 +283,7 @@ Not used for some reason.
 
 
 ```r
-# SDG3.8_4 <- read.csv(paste0(fp, "WHO_SDG3.8_UHC_percent_of_expenditure_2.csv")) %>%
+# SDG3.8_4 <- read.csv(paste0(root, "WHO_SDG3.8_UHC_percent_of_expenditure_2.csv")) %>%
 #   filter(Period == 2016) %>%
 #   select(Indicator, ParentLocation, Location, FactValueNumeric)
 ```
@@ -283,7 +292,7 @@ SDG 3.9 [Poison control and unintentional poisoning](https://www.who.int/data/gh
 
 
 ```r
-SDG3.9_1 <- read.csv(paste0(fp, "WHO_SDG3.9_unintentional_poisoning_prop.csv")) %>%
+SDG3.9_1 <- read.csv(paste0(root, "WHO_SDG3.9_unintentional_poisoning_prop.csv")) %>%
   filter(Period == 2016,
          Dim1 == "Both sexes") %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
@@ -296,7 +305,7 @@ Data in a format that's not easy to use.
 
 
 ```r
-# SDG3.9_2 <- read.csv(paste0(fp, "WHO_SDG3.9_ambient_air_pollution.csv")) %>%
+# SDG3.9_2 <- read.csv(paste0(root, "WHO_SDG3.9_ambient_air_pollution.csv")) %>%
 #   filter(Period == 2016,
 #          Dim1 == "Both sexes") %>%
 #   select(Indicator, ParentLocation, Location, FactValueNumeric)
@@ -306,7 +315,7 @@ SDG 3.9 [Mortality rate attributed to exposure to unsafe WASH services (per 100 
 
 
 ```r
-SDG3.9_3 <- read.csv(paste0(fp, "WHO_SDG3.9_WASH_mortalities.csv")) %>%
+SDG3.9_3 <- read.csv(paste0(root, "WHO_SDG3.9_WASH_mortalities.csv")) %>%
   filter(Period == 2016,
          Dim1 == "Both sexes") %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
@@ -317,7 +326,7 @@ SDG 16.1 [Estimates of rate of homicides (per 100 000 population)](https://www.w
 
 
 ```r
-SDG16.1 <- read.csv(paste0(fp, "WHO_SDG16.1_homicides.csv")) %>%
+SDG16.1 <- read.csv(paste0(root, "WHO_SDG16.1_homicides.csv")) %>%
   filter(Period == 2016,
          Dim1 == "Both sexes") %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
@@ -328,7 +337,7 @@ SDG 3.a [Prevalence of current tobacco use among persons aged 15 years and older
 
 
 ```r
-SDG3.a <- read.csv(paste0(fp, "WHO_SDG3.a_tobacco_control.csv")) %>%
+SDG3.a <- read.csv(paste0(root, "WHO_SDG3.a_tobacco_control.csv")) %>%
   filter(Period == 2016,
          Dim1 == "Both sexes") %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
@@ -339,7 +348,7 @@ SDG 3.b [Total net official development assistance to medical research and basic
 
 
 ```r
-SDG3.b_1 <- read.csv(paste0(fp, "WHO_SDG3.b_dev_assistence_for_med_research.csv")) %>%
+SDG3.b_1 <- read.csv(paste0(root, "WHO_SDG3.b_dev_assistence_for_med_research.csv")) %>%
   filter(Period == 2016) %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
   mutate(SDG = "SDG3.b_1")
@@ -349,7 +358,7 @@ SDG 3.b [Measles-containing-vaccine second-dose (MCV2) immunization coverage by 
 
 
 ```r
-SDG3.b_2 <- read.csv(paste0(fp, "WHO_SDG3.b_measles_vaccine.csv")) %>%
+SDG3.b_2 <- read.csv(paste0(root, "WHO_SDG3.b_measles_vaccine.csv")) %>%
   filter(Period == 2016) %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
   mutate(SDG = "SDG3.b_2")
@@ -359,7 +368,7 @@ SDG 3.b [Diphtheria tetanus toxoid and pertussis (DTP3) immunization coverage am
 
 
 ```r
-SDG3.b_3 <- read.csv(paste0(fp, "WHO_SDG3.b_diphtheria_vaccine.csv")) %>%
+SDG3.b_3 <- read.csv(paste0(root, "WHO_SDG3.b_diphtheria_vaccine.csv")) %>%
   filter(Period == 2016) %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
   mutate(SDG = "SDG3.b_3")
@@ -369,7 +378,7 @@ SDG 3.b [Pneumococcal conjugate vaccines (PCV3) immunization coverage among 1-ye
 
 
 ```r
-SDG3.b_4 <- read.csv(paste0(fp, "WHO_SDG3.b_pneumococcal_vaccine.csv")) %>%
+SDG3.b_4 <- read.csv(paste0(root, "WHO_SDG3.b_pneumococcal_vaccine.csv")) %>%
   filter(Period == 2016) %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
   mutate(SDG = "SDG3.b_4")
@@ -379,7 +388,7 @@ SDG 3.b [Girls aged 15 years old that received the recommended doses of HPV vacc
 
 
 ```r
-SDG3.b_5 <- read.csv(paste0(fp, "WHO_SDG3.b_HPV_vaccine.csv")) %>%
+SDG3.b_5 <- read.csv(paste0(root, "WHO_SDG3.b_HPV_vaccine.csv")) %>%
   filter(Period == 2016) %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
   mutate(SDG = "SDG3.b_5")
@@ -393,25 +402,25 @@ SDG 3.c [SDG Target 3.c \| Health workforce: Substantially increase health finan
 
 
 ```r
-SDG3.c_1 <- read.csv(paste0(fp, "WHO_SDG3.c_health_workforce.csv"))  %>%
+SDG3.c_1 <- read.csv(paste0(root, "WHO_SDG3.c_health_workforce.csv"))  %>%
   filter(Period == 2016,
          Indicator == "Medical doctors (per 10,000)") %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
   mutate(SDG = "SDG3.c_1")
 
-SDG3.c_2 <- read.csv(paste0(fp, "WHO_SDG3.c_health_workforce.csv"))  %>%
+SDG3.c_2 <- read.csv(paste0(root, "WHO_SDG3.c_health_workforce.csv"))  %>%
   filter(Period == 2016,
          Indicator == "Nursing and midwifery personnel (per 10,000)") %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
   mutate(SDG = "SDG3.c_2")
 
-SDG3.c_3 <- read.csv(paste0(fp, "WHO_SDG3.c_health_workforce.csv"))  %>%
+SDG3.c_3 <- read.csv(paste0(root, "WHO_SDG3.c_health_workforce.csv"))  %>%
   filter(Period == 2016,
          Indicator == "Dentists (per 10,000)") %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
   mutate(SDG = "SDG3.c_3")
 
-SDG3.c_4 <- read.csv(paste0(fp, "WHO_SDG3.c_health_workforce.csv"))  %>%
+SDG3.c_4 <- read.csv(paste0(root, "WHO_SDG3.c_health_workforce.csv"))  %>%
   filter(Period == 2016,
          Indicator == "Pharmacists  (per 10,000)") %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
@@ -426,7 +435,7 @@ SDG 3.d [Average of 13 International Health Regulations core capacity scores, SP
 
 
 ```r
-SDG3.d_1 <- read.csv(paste0(fp, "WHO_SDG3.d_health_risks.csv"))  %>%
+SDG3.d_1 <- read.csv(paste0(root, "WHO_SDG3.d_health_risks.csv"))  %>%
   filter(Period == 2016) %>%
   select(Indicator, ParentLocation, Location, FactValueNumeric) %>%
   mutate(SDG = "SDG3.d_1")
@@ -436,7 +445,7 @@ Other [Life expectancy at birth (years)](https://www.who.int/data/gho/data/indic
 
 
 ```r
-other_1 <- read.csv(paste0(fp, "WHO_Other_life_expectancy.csv")) %>%
+other_1 <- read.csv(paste0(root, "WHO_Other_life_expectancy.csv")) %>%
   filter(Period == 2015,
          Dim1 == "Both sexes",
          Indicator == "Life expectancy at birth (years)") %>%
@@ -448,7 +457,7 @@ Other [Life expectancy at age 60 (years)](https://www.who.int/data/gho/data/indi
 
 
 ```r
-other_2 <- read.csv(paste0(fp, "WHO_Other_life_expectancy.csv")) %>%
+other_2 <- read.csv(paste0(root, "WHO_Other_life_expectancy.csv")) %>%
   filter(Period == 2015,
          Dim1 == "Both sexes",
          Indicator == "Life expectancy at age 60 (years)") %>%
@@ -465,41 +474,20 @@ head(health)
 ```
 
 ```
-##                                                               Indicator
-## 1 /Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/WHO/
-## 2                                      Life expectancy at birth (years)
-## 3                                      Life expectancy at birth (years)
-## 4                                      Life expectancy at birth (years)
-## 5                                      Life expectancy at birth (years)
-## 6                                      Life expectancy at birth (years)
-##                                                          ParentLocation
-## 1 /Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/WHO/
-## 2                                                                Africa
-## 3                                                                Africa
-## 4                                                                Africa
-## 5                                                 Eastern Mediterranean
-## 6                                                                Africa
-##                                                                Location
-## 1 /Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/WHO/
-## 2                                                               Lesotho
-## 3                                              Central African Republic
-## 4                                                              Eswatini
-## 5                                                               Somalia
-## 6                                                            Mozambique
-##                                                        FactValueNumeric
-## 1 /Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/WHO/
-## 2                                                                 47.67
-## 3                                                                 50.53
-## 4                                                                 54.05
-## 5                                                                 54.57
-## 6                                                                 55.95
-##                                                                     SDG
-## 1 /Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/exercises/WHO/
-## 2                                                               other_1
-## 3                                                               other_1
-## 4                                                               other_1
-## 5                                                               other_1
-## 6                                                               other_1
+##                          Indicator        ParentLocation
+## 1 Life expectancy at birth (years)                Africa
+## 2 Life expectancy at birth (years)                Africa
+## 3 Life expectancy at birth (years)                Africa
+## 4 Life expectancy at birth (years) Eastern Mediterranean
+## 5 Life expectancy at birth (years)                Africa
+## 6 Life expectancy at birth (years)                Africa
+##                   Location FactValueNumeric     SDG
+## 1                  Lesotho            47.67 other_1
+## 2 Central African Republic            50.53 other_1
+## 3                 Eswatini            54.05 other_1
+## 4                  Somalia            54.57 other_1
+## 5               Mozambique            55.95 other_1
+## 6             Sierra Leone            56.94 other_1
 ```
 
 ```r
@@ -509,96 +497,17 @@ health <- health %>%
   mutate(FactValueNumeric = as.numeric(FactValueNumeric))
 ```
 
+```
+## Warning in mask$eval_all_mutate(quo): NAs introduced by coercion
+```
+
 ## Create list of SDGs used
 
 
 ```r
 unique(health[, c(5, 1)])
-```
-
-```
-##           SDG
-## 1     other_1
-## 184   other_2
-## 367    SDG1.a
-## 554   SDG16.1
-## 737  SDG3.1_1
-## 920  SDG3.1_2
-## 1005 SDG3.2_1
-## 1199 SDG3.2_2
-## 1393 SDG3.2_3
-## 1587 SDG3.3_1
-## 1757 SDG3.3_2
-## 1951 SDG3.3_3
-## 2058 SDG3.3_4
-## 2252 SDG3.3_5
-## 2446 SDG3.4_1
-## 2629 SDG3.4_2
-## 2812 SDG3.4_3
-## 2995 SDG3.4_4
-## 3178 SDG3.4_5
-## 3361 SDG3.4_6
-## 3544   SDG3.5
-## 3732   SDG3.6
-## 3915   SDG3.7
-## 4031 SDG3.8_1
-## 4214 SDG3.8_2
-## 4397 SDG3.9_1
-## 4580 SDG3.9_3
-## 4763   SDG3.a
-## 4912 SDG3.b_1
-## 5049 SDG3.b_2
-## 5212 SDG3.b_3
-## 5407 SDG3.b_4
-## 5538 SDG3.b_5
-## 5595 SDG3.c_1
-## 5697 SDG3.c_2
-## 5822 SDG3.c_3
-## 5908 SDG3.c_4
-## 5990 SDG3.d_1
-##                                                                                                                          Indicator
-## 1                                                                                                 Life expectancy at birth (years)
-## 184                                                                                              Life expectancy at age 60 (years)
-## 367              Domestic general government health expenditure (GGHE-D) as percentage of general government expenditure (GGE) (%)
-## 554                                                                         Estimates of rates of homicides per 100 000 population
-## 737                                                                             Maternal mortality ratio (per 100 000 live births)
-## 920                                                                                Births attended by skilled health personnel (%)
-## 1005                                                                                                     Number of neonatal deaths
-## 1199                                                                                                   Number of under-five deaths
-## 1393                                                                                                       Number of infant deaths
-## 1587                                                                           New HIV infections (per 1000 uninfected population)
-## 1757                                                                   Incidence of tuberculosis (per 100 000 population per year)
-## 1951                                                                              Malaria incidence (per 1 000 population at risk)
-## 2058                                               Hepatitis B surface antigen (HBsAg) prevalence among children under 5 years (%)
-## 2252                                                                Reported number of people requiring interventions against NTDs
-## 2446                                       Adult mortality rate (probability of dying between 15 and 60 years per 1000 population)
-## 2629                                                                                                             Diabetes mellitus
-## 2812                                                                                                       Cardiovascular diseases
-## 2995                                                                                                          Respiratory diseases
-## 3178                                                                                  Crude suicide rates (per 100 000 population)
-## 3361                                                                                               Total NCD Deaths (in thousands)
-## 3544                                 Alcohol, total per capita (15+) consumption (in litres of pure alcohol) (SDG Indicator 3.5.2)
-## 3732                                                                    Estimated road traffic death rate (per 100 000 population)
-## 3915                                                                       Adolescent birth rate (per 1000 women aged 15-19 years)
-## 4031                                                             Data availability for UHC index of essential service coverage (%)
-## 4214                                                                                       UHC index of essential service coverage
-## 4397                                                 Mortality rate attributed to unintentional poisoning (per 100 000 population)
-## 4580                            Mortality rate attributed to exposure to unsafe WASH services (per 100 000 population) (SDG 3.9.2)
-## 4763                                  Age-standardized prevalence of current tobacco smoking among persons aged 15 years and older
-## 4912 Total net official development assistance to medical research and basic health sectors per capita (US$), by recipient country
-## 5049                     Measles-containing-vaccine second-dose (MCV2) immunization coverage by the nationally recommended age (%)
-## 5212                                    Diphtheria tetanus toxoid and pertussis (DTP3) immunization coverage among 1-year-olds (%)
-## 5407                                            Pneumoccocal conjugate vaccines (PCV3) immunization coverage among 1-year-olds (%)
-## 5538                                                Girls aged 15 years old that received the recommended doses of HPV vaccine (%)
-## 5595                                                                                                  Medical doctors (per 10,000)
-## 5697                                                                                  Nursing and midwifery personnel (per 10,000)
-## 5822                                                                                                         Dentists (per 10,000)
-## 5908                                                                                                     Pharmacists  (per 10,000)
-## 5990                                                           Average of 13 International Health Regulations core capacity scores
-```
-
-```r
-# write_csv(unique(health[, c(5, 1)]), file = paste0(fp, "SDG_description.csv"))
+# ...not shown
+# write_csv(unique(health[, c(5, 1)]), file = paste0(root, "SDG_description.csv"))
 ```
 
 ## Pivot wider
@@ -610,13 +519,14 @@ health_wide <- health %>%
   select(-Indicator) %>%
   pivot_wider(names_from = SDG, values_from = FactValueNumeric) %>%
   as_tibble()
+health_wide <- health_wide[2:nrow(health_wide), -3]
 ```
 
 ## Add world population data
 
 
 ```r
-popl <- read_csv(paste0(fp, "WHO_population.csv")) %>%
+popl <- read_csv(paste0(root, "WHO_population.csv")) %>%
   filter(Year == 2016) %>%
   rename(popl_size = `Population (in thousands) total`,
          Location = Country) %>%
@@ -663,7 +573,8 @@ health_wide <- health_wide %>%
 
 ```r
 # calculate histograms
-health_wide$na_count <- apply(health_wide[, 3:(ncol(health_wide) - 1)], 1, function(x) sum(is.na(x)))
+health_wide$na_count <- apply(health_wide[, 3:(ncol(health_wide) - 1)], 1,
+                              function(x) sum(is.na(x)))
 hist(health_wide$na_count, breaks = 14, plot = TRUE)
 ```
 
@@ -673,8 +584,8 @@ hist(health_wide$na_count, breaks = 14, plot = TRUE)
 ```r
 # remove rows where there are more than 10 NAs
 health_wide <- health_wide %>%
-  filter(na_count <= 10) %>%
-  select(-na_count)
+  dplyr::filter(na_count <= 10) %>%
+  dplyr::select(-na_count)
 ```
 
 
@@ -702,10 +613,12 @@ health_wide_complete <- imputePCA(health_wide[, 3:(ncol(health_wide) - 1)])$comp
 
 # save for later use
 # SGD_data <- cbind(health_wide[, 1:2], health_wide_complete)
-# write_csv(SGD_data, file = paste0(fp, "SDG_complete.csv"))
+# write_csv(SGD_data, file = paste0(root, "SDG_complete.csv"))
 ```
 
 ## Scale and center the data and do the PCA
+
+**Note** The analysis can proceed from here from the `SDG_complete.csv` and `SDG_description.csv` files.
 
 
 ```r
@@ -724,7 +637,7 @@ health_pca
 ## 
 ## Eigenvalues for unconstrained axes:
 ##    PC1    PC2    PC3    PC4    PC5    PC6    PC7    PC8 
-## 17.499  3.220  2.049  1.732  1.654  1.364  1.047  0.894 
+## 17.500  3.217  2.049  1.732  1.654  1.364  1.047  0.894 
 ## (Showing 8 of 38 unconstrained eigenvalues)
 ```
 
@@ -801,15 +714,15 @@ ggplot(data = site_scores, aes(x = PC1, y = PC2)) +
 
 There seems to be separate groups of colours (ParentLocation). Certain countries come out together in this ordination. This analysis will benefit from a cluster analyses of some kind.
 
-### Questions
+### Assignment 5 Questions
 
 > **Question 1:** Explain the code section-by-section in long-form text. Include also the reasoning/rationale behind each section.
+>
+> Please see the [Cluster Analysis](http://localhost:4321/workshops/quantecol/chapters/13-cluster_analysis/) section for additional questions.
 
-> **Question 3:** Discuss and explain the patterns observed. How does South Africa fare in terms of attaining SDGs? Contrast with some key countries of your choice to make your points. Label the key countries that you refer to in your text by updating the code accordingly.
+Submit a Rmarkdown script wherein you provide answers to Questions 1--5 (i.e. including the [Cluster Analysis](http://localhost:4321/workshops/quantecol/chapters/13-cluster_analysis/) and this one), and provide the associated compiled html output. Label the script as follows: **`BCB743_<Name>_<Surname>_Assignment_5.R`**, e.g. **`BCB743_AJ_Smit_Assignment_5.R`**.
 
-> **Question 3:** Provide a discourage about possible explanations for the patterns observed globally and regionally.
-
-[Submit an R script wherein you provide answers to these questions by no later than 17:00 on Monday 26 July 2021.]{style="color:red"}
+The deadline for this submission is Monday 1 August 2022.
 
 ## References
 

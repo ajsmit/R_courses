@@ -5,8 +5,20 @@ excerpt: null
 links:
   - icon: images
     icon_pack: fas
-    name: Ordination Slides
-    url: /pdf/BCB743_08_PCA.pdf
+    name: PCA Slides
+    url: /pdf/BCB743/BCB743_08_PCA.pdf
+  - icon: file-csv
+    icon_pack: fa
+    name: DoubsEnv.csv
+    url: /data/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv
+  - icon: file-csv
+    icon_pack: fa
+    name: DoubsSpe.csv
+    url: /data/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
+  - icon: 
+    icon_pack: 
+    name: cleanplot.pca.R
+    url: /R/BCB743/Num_Ecol_R_book_ed1/cleanplot.pca.R
 subtitle: ""
 title: "8a. Principal Component Analysis (PCA)"
 weight: 9
@@ -25,12 +37,16 @@ library(tidyverse)
 library(vegan)
 library(ggcorrplot) # for the correlations
 library(ggpubr)
+
+# setting up a 'root' file path so I don't have to keep doing it later...
+root <- "../../../../static/data/BCB743/"
+rroot <- "../../../../static/R/BCB743/"
 ```
 
 ## The Doubs River data
 
 ```{r}
-env <- read.csv("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/Num_Ecol_R_book_ed1/DoubsEnv.csv")
+env <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsEnv.csv"))
 env <- dplyr::select(env, -1)
 head(env)
 ```
@@ -54,7 +70,7 @@ Some variables are very correlatated, and they might be ommitted from the subseq
 The patterns in the data and the correlatons between them will make more sense if we can visualise a spatial context. Thankfully spatial data are available:
 
 ```{r}
-spa <- read.csv("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/Num_Ecol_R_book_ed1/DoubsSpa.csv")
+spa <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsSpa.csv"))
 spa <- dplyr::select(spa, -1)
 head(spa)
 ggplot(spa, aes(x = X, y = Y, label = rownames(spa))) +
@@ -95,10 +111,10 @@ ggarrange(plt1, plt2, plt3, plt4, nrow = 2, ncol = 2,
           common.legend = TRUE, labels = "AUTO")
 ```
 
-### Questions (A)
+### Assignment 4 Questions
 
 > **Question 1:** With reference to the sampling design (i.e. position of sample sites along the length of the river), provide mechanistics/ecological reasons for the strongly correlated environmental variables shown above in the pairwise correlation diagram. You might have to create additional spatial maps of scaled variables (as immediately above) to support your answer.
-
+>
 > **Question 2:** Provide a summary of the main findings of the Doubs River fish community structure study, focusing in this instance mainly on the environmental drivers.
 
 ## Do the PCA
@@ -132,9 +148,9 @@ So the proportion of variation explained by the first PC is:
 round(env_pca$CA$eig[1] / sum(env_pca$CA$eig) * 100, 1) # result in %
 ```
 
-### Questions (B)
+### Assignment 4 Questions
 
-> **Question 4:** Why can a PCA, or *any* ordination for that matter, not explain all of the variation in a dataset? In other words, why is it best to only use the first few Principal Components for insight into the drivers of variability? What is 'explained' by the remaining PC axes?
+> **Question 3:** Why can a PCA, or *any* ordination for that matter, not explain all of the variation in a dataset? In other words, why is it best to only use the first few Principal Components for insight into the drivers of variability? What is 'explained' by the remaining PC axes?
 
 We can show the same information as part of a more verbose summary. Here we see the pre-calculated **Proportion Explained** and **Cumulative Proportion** (it should be obvious what this is). There is also an assortment of other information, viz. **Scaling 2 for species and site scores**, **Species scores**, and **Site scores**. See *Numerical Ecology in R* for their meanings.
 
@@ -167,7 +183,7 @@ Now we create biplots using the `cleanplot.pca()` function that comes with *Nume
 
 ```{r}
 # we need to load the function first from its R file:
-source("/Users/ajsmit/Dropbox/R/workshops/Quantitative_Ecology/Num_Ecol_R_book_ed1/cleanplot.pca.R")
+source(paste0(rroot, "Num_Ecol_R_book_ed1/cleanplot.pca.R"))
 cleanplot.pca(env_pca, scaling = 1)
 cleanplot.pca(env_pca, scaling = 2)
 ```
@@ -184,13 +200,13 @@ ordisurf(env_pca ~ alt, env, add = TRUE, col = "salmon", knots = 1)
 
 We see that the contours form a linear trend surface, i.e. they are perpendicular to their vectors. This is the main weakness of PCA, as community data are nonlinear (in fact, environmental gradients are also seldom very linear, but they can be more linear than species data). In general, therefore, PCA should not be used for community data.
 
-### Questions (C)
+### Assignment 4 Questions
 
-> **Question 5:** Replicate the analysis shown above on the **environmental data** included with these datasets: 1. [bird communities along elevation gradient in Yushan Mountain, Taiwan](https://www.davidzeleny.net/anadat-r/doku.php/en:data:ybirds); 2. [alpine plant communities in Aravo, France](https://www.davidzeleny.net/anadat-r/doku.php/en:data:aravo).
+> **Question 4:** Replicate the analysis shown above on the **environmental data** included with these datasets: 1. [bird communities along elevation gradient in Yushan Mountain, Taiwan](https://www.davidzeleny.net/anadat-r/doku.php/en:data:ybirds); 2. [alpine plant communities in Aravo, France](https://www.davidzeleny.net/anadat-r/doku.php/en:data:aravo).
+>
+> **Question 5:** Discuss the patterns observed: 1. explain the ordination diagram with particular reference to the major patterns shown; 2. provide a mechanistic explanation for the existence of the patterns seen with respect to elevation/altitude; and 3. if there are significant positive or negative correlations between the environmental variables, provide mechanistic reasons for how they came about.
 
-> **Question 6:** Discuss the patterns observed: 1. explain the ordination diagram with particular reference to the major patterns shown; 2. provide a mechanistic explanation for the existence of the patterns seen with respect to elevation/altitude; and 3. if there are significant positive or negative correlations between the environmental variables, provide mechanistic reasons for how they came about.
-
-[Submit an R script wherein you provide answers to these questions by no later than 17:00 on Tuesday 13 July 2021.]{style="color:red"}
+Submit a R script wherein you provide answers to Questions 1--5 by no later than 8:00 tomorrow. Label the script as follows: **`BCB743_<Name>_<Surname>_Assignment_4.R`**, e.g. **`BCB743_AJ_Smit_Assignment_4.R`**.
 
 ## References
 
