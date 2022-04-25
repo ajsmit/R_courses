@@ -56,10 +56,7 @@ Note that this gives us the number of all of the chicks in the experiment, irres
 
 In biology we hope to have data that follow a normal (Gaussian) distribution. As we shall see later, most statistical inferences depend on the data conforming to normality. Normal data have these properties:
 
-<figure>
-<img src="/collection/biostats/chapters/03-descriptive_files/Boxplot_vs_PDF.png" style="width:50.0%" alt="Normal distribution" />
-<figcaption aria-hidden="true">Normal distribution</figcaption>
-</figure>
+![Normal distribution](/workshops/biostats/chapters/03-descriptive_files/Boxplot_vs_PDF.png)
 
 ## Measures of central tendency
 

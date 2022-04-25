@@ -194,7 +194,8 @@ Now we can calculate the association matrix:
 
 ```r
 spp_assoc1 <- vegdist(spp_t, method = "jaccard")
-as.matrix((spp_assoc1))[1:10, 1:10] # display only a portion of the data
+ # display only a portion of the data...
+as.matrix((spp_assoc1))[1:10, 1:10]
 ```
 
 ```
@@ -225,7 +226,7 @@ as.matrix((spp_assoc1))[1:10, 1:10] # display only a portion of the data
 
 ```r
 spp_assoc2 <- vegdist(spp_t, method = "jaccard", binary = TRUE)
-as.matrix((spp_assoc2))[1:10, 1:10] # display only a portion of the data
+as.matrix((spp_assoc2))[1:10, 1:10]
 ```
 
 ```

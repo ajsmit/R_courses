@@ -28,7 +28,7 @@ Community ecologists tend to analyse how multiple environmental factors act as d
 
 These multivariate datasets have far more information in them than can de detected by the human eye and univariate statistics.
 
-![More than meets the eye](../Resources/more_than_meets_the_eye.jpeg)
+![More than meets the eye](/workshops/quantecol/_index_files/more_than_meets_the_eye.jpeg)
 
 # Function content
 

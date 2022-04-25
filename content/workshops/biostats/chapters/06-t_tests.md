@@ -44,7 +44,7 @@ Biologists typically define the probability of one in twenty (0.05) as the cut-o
 
 ## What are probabilities?
 
-![Approaching significance](/collection/biostats/chapters/06-t_tests_files/significance.jpeg){width=50%}
+![Approaching significance](/workshops/biostats/chapters/06-t_tests_files/significance.jpeg)
 
 The *P*-value (the significance level, `\(\alpha\)`) is the probability of finding the observed (or measured) outcome to be more extreme (*i.e.* very different) than that suggested by the null hypothesis ($H_{0}$). Typically, biologists set the *P*-value at `\(\alpha \leq 0.05\)`---in other words, the measured outcome of our experiment only has a 1 in 20 chance of being the same as that of the reference (or control) group. So, when the *P*-value is `\(\leq\)` 0.05, for example, we say that there is a very good probability that our experimental treatment resulted in an outcome that is very different (we say statistically significantly different) from the measurement obtained from the group to which the treatment had not been applied---in this case we do not accept `\(H_{0}\)` and by necessity `\(H_{1}\)` becomes true.
 
@@ -78,7 +78,7 @@ To answer this fundamental question one often uses a *t*-test. There are several
 Before we cover each of these, we need to understand some of the assumptions behind *t*-tests. We shall cover that next.
 
 ## Assumptions
-![Wahlberg assumptions](/collection/biostats/chapters/06-t_tests_files/wahlberg_assumptions.jpeg){width=50%}
+![Assumptions](/workshops/biostats/chapters/06-t_tests_files/wahlberg_distribution.jpeg)
 
 Irrespective of the kind of *t*-test, we have to make a couple of important assumptions that are *not* guaranteed to be true. In fact, these assumptions are often violated because real data, especially biological data, are messy. In order to use a *t*-test to determine if a significant difference between two sample sets of data exists we must first establish that:
 

@@ -37,9 +37,7 @@ These notes are provided to students at the BioStatistics in R (BCB744) Workshop
 >
 > --- John Tukey
 
-<!--- ![Wahlberg_assumptions](Resources/wahlberg_assumptions.jpeg){width="50%"} --->
-
-<img src="/collection/biostats/_index_files/wahlberg_assumptions.jpeg" alt="Wahlberg assumptions" width="50%"/>
+![Assumptions](/workshops/biostats/_index_files/wahlberg_assumptions.jpeg)
 
 <!--- # About --->
 

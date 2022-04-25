@@ -47,13 +47,13 @@ Three measures of biodiversity were coined by Whittaker in 1972. They represent 
 
 We will use data on seaweed of South Africa to demonstrate these ideas.
 
-# The South African seaweed data
+## The South African seaweed data
 
 For this example we will use the seaweed data of Smit et al. (2017); please make sure that you read it! An additional file describing the background to the data is available at the link above (see **The_seaweed_data.pdf**).
 
 I use two data sets. The first, $Y$ (in the file `SeaweedsSpp.csv`), comprises distribution records of 847 macroalgal species within each of 58 × 50 km-long sections of the South African coast (updated from Bolton and Stegenga 2002). This represents *ca*. 90% of the known seaweed flora of South Africa, but excludes some very small and/or very rare species for which data are insufficient. The data are from verifiable literature sources and John Bolton and Rob Anderson's own collections, assembled from information collected by teams of phycologists over three decades (Bolton 1986; Stegenga et al. 1997; Bolton and Stegenga 2002; De Clerck et al. 2005). The second, $E$ (in `env.csv`), is a dataset of *in situ* coastal seawater temperatures (Smit et al. 2013) derived from daily measurements over up to 40 years.
 
-## Setting up the analysis environment
+### Setting up the analysis environment
 
 This is **R**, so first I need to find, install and load various packages. Some of the packages will be available on CRAN and can be accessed and installed in the usual way, but others will have to be downloaded from [R Forge](https://r-forge.r-project.org/R/?group_id=195).
 
@@ -67,7 +67,7 @@ library(grid)
 library(gridBase)
 ```
 
-## A look at the data
+### A look at the data
 
 Let's load the data and see how it is structured:
 
@@ -93,7 +93,7 @@ spp[(nrow(spp) - 5):nrow(spp), (ncol(spp) - 5):ncol(spp)]
 
 So, each of the rows corresponds to a site (i.e. each of the coastal sections), and the columns each contain a species. The species are arranged alphabetically, and they are indicated by a six-letter code.
 
-## Alpha diversity
+### Alpha diversity
 
 We can represent α-diversity in three ways:
 
@@ -105,7 +105,7 @@ We can represent α-diversity in three ways:
 
 We will work through each in turn.
 
-### Species richness
+#### Species richness
 
 First, species richness. In the seaweed biodiversity data---because we view each coastal section as the local scale (the smallest unit of sampling)---I simply count the number of species within each of the sections. The `diversityresult()` function in the **BiodiversityR** package does this easily:
 
@@ -125,7 +125,7 @@ If the **BiodiversityR** package does not work for you, there is also the `specn
 
 In other instances, it makes more sense to calculate the mean species richness of all the sampling units (e.g. quadrats) taken inside the ecosystem of interest. You will have to decide based on your own data.
 
-### Univariate diversity indices
+#### Univariate diversity indices
 
 The second way in which we can express α-diversity is to use one of the univariate diversity indices such as Shannon's *H'* or Simpson's λ. Shannon's *H'* is sometimes called Shannon's diversity index, the Shannon--Wiener index, the Shannon--Weaver index, or the Shannon entropy. It is calculated as $H' = -\sum_{i=1}^{R} p_{i} \ln p_{i}$ where $p_{i}$ is the proportion of individuals belonging to the $i$th species, and $R$ is the species richness.
 
@@ -150,7 +150,7 @@ light_div <- data.frame(
 light_div
 ```
 
-### Dissimilarity indices
+#### Dissimilarity indices
 
 In this section we will cover the dissimilarity indices, which are special cases of diversity indices that use pairwise comparisons between sampling units, habitats, or ecosystems. Both α- and β-diversity can be expressed as dissimilarity indices, but let deal with α-diversity first.
 
@@ -190,7 +190,7 @@ iii. The matrix is symetrical---it is comprised of symetrical upper and lower tr
 >
 > **Question 5:** Provide a mechanistic (ecological) explanation for why this figure takes the shape that it does.
 
-## Gamma diversity
+### Gamma diversity
 
 Returning again to the seaweed data, $Y$, lets now look at λ-diversity---this would simply be the total number of species along the South African coastline in all 58 coastal sections. Since each column represents one species, and the dataset contains data collected at each of the 58 sites (the number of rows), we can simply do:
 
@@ -213,7 +213,9 @@ diversityresult(spp, index = 'richness', method = 'pooled')
 
 Think before you calculate γ-diversity for your own data as it might not be as simple as here!
 
-## Whittaker's concept of β-diversity
+### β-diversity
+
+#### Whittaker's concept of β-diversity
 
 The first measure of β-diversity comes from Whittaker (1960) and is called *true β-diversity*. This is simply dividing the γ-diversity for the region by the α-diversity for a specific coastal section. We can calculate it all at once for the whole dataset and make a graph:
 
@@ -241,7 +243,7 @@ ggplot(data = abs_beta, (aes(x = section_no, y = beta))) +
   ylab("Absolute beta-diversity")
 ```
 
-## Contemporary definitions β-diversity
+#### Contemporary definitions β-diversity
 
 β-diversity is a concept that describes how species assemblages (communities) measured within the ecosystem of interest vary from place to place, e.g. between the various transects or quadrats used to sample the ecosystem. β-diversity results from habitat heterogeneity (along gradients, or randomly). We have already seen two concepts of β-diversity, viz. true β-diversity and absolute species turnover---both of these rely on knowledge of species richness at local (a measure of α-diversity) and regional (γ-diversity) scales. Much more insight into species assembly processes can be extracted, however, when we view β-diversity as a dissmilarity index. In this view, we will see that there are two processes by which β-diversity might be affected (i.e. in which the patterning of communities over landscapes might arise):
 

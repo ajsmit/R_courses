@@ -34,27 +34,27 @@ Though it may have started as statistical software, R has moved far beyond it's 
 
 Just to whet the appetite, below is provided a small selection of the figures that R and **ggplot2** are capable of producing. These are things that AJ and/or myself have produced for publication or in some cases just for personal interest. Remember, just because we are learning this for work, doesn't mean we can't use it for fun, too. The idea of using R for fun may seem bizarre, but perhaps by the end of Day 5 we will have been able to convince you otherwise!
 
-![The effect of variance (SD) within a temperature time series on the accurate modelling of decadal trends.](/collection/intro_r/chapters/05-graphics_files/all_plt0_no_interp_natural.png){width=80%}
+![The effect of variance (SD) within a temperature time series on the accurate modelling of decadal trends.](/workshops/intro_r/chapters/05-graphics_files/all_plt0_no_interp_natural.png)
 
-![The (currently) three most infamous marine heatwaves (MHWs) around the world.](/collection/intro_r/chapters/05-graphics_files/deeper-infamous-event-plots-1.png){width=80%}
+![The (currently) three most infamous marine heatwaves (MHWs) around the world.](/workshops/intro_r/chapters/05-graphics_files/deeper-infamous-event-plots-1.png)
 
-![Changes in seaweed biodiversity along the South African coastline.](/collection/intro_r/chapters/05-graphics_files/Ecography_figure5a-d.jpg){width=80%}
+![Changes in seaweed biodiversity along the South African coastline.](/workshops/intro_r/chapters/05-graphics_files/Ecography_figure5a-d.jpg)
 
-![Polar plots of monthly temperatures.](/collection/intro_r/chapters/05-graphics_files/insitu_polarPlots_month_v3.2.jpg){width=80%}
+![Polar plots of monthly temperatures.](/workshops/intro_r/chapters/05-graphics_files/insitu_polarPlots_month_v3.2.jpg)
 
-![Most appropriate autoregressive correlation coefficients for areas around western boundary current.](/collection/intro_r/chapters/05-graphics_files/mo_coef.jpg){width=80%}
+![Most appropriate autoregressive correlation coefficients for areas around western boundary current.](/workshops/intro_r/chapters/05-graphics_files/mo_coef.jpg)
 
-![The bathymetry of South Africa with SSTs from the MUR product.](/collection/intro_r/chapters/05-graphics_files/MUR_bathy_plot_discrete_20090228.jpg){width=80%}
+![The bathymetry of South Africa with SSTs from the MUR product.](/workshops/intro_r/chapters/05-graphics_files/MUR_bathy_plot_discrete_20090228.jpg)
 
-![The power of the detected decadal trend at each coastal temperature collection site given a hypothetical number of months.](/collection/intro_r/chapters/05-graphics_files/sw-fig-7-1.jpg){width=80%}
+![The power of the detected decadal trend at each coastal temperature collection site given a hypothetical number of months.](/workshops/intro_r/chapters/05-graphics_files/sw-fig-7-1.jpg)
 
-![An inset map of False Bay.](/collection/intro_r/chapters/05-graphics_files/false_bay_inset_map_labels2.jpg){width=80%}
+![An inset map of False Bay.](/workshops/intro_r/chapters/05-graphics_files/false_bay_inset_map_labels2.jpg)
 
-![The strength of the relationship between each site based on their biodiversity.](/collection/intro_r/chapters/05-graphics_files/PLOS_ONE_Fig4.jpg){width=80%}
+![The strength of the relationship between each site based on their biodiversity.](/workshops/intro_r/chapters/05-graphics_files/PLOS_ONE_Fig4.jpg)
 
-![A hierarchical cluster analysis.](/collection/intro_r/chapters/05-graphics_files/hierarchical_clustsig.jpg){width=80%}
+![A hierarchical cluster analysis.](/workshops/intro_r/chapters/05-graphics_files/hierarchical_clustsig.jpg)
 
-![Current velcoties of Western Boundary Currents.](/collection/intro_r/chapters/05-graphics_files/Fig01_AvisoMeanVelocityMean.png){width=80%}
+![Current velcoties of Western Boundary Currents.](/workshops/intro_r/chapters/05-graphics_files/Fig01_AvisoMeanVelocityMean.png)
 
 ## Basics of ggplot2
 

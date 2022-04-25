@@ -1,0 +1,46 @@
+---
+title: "Transformations Exercises"
+subtitle: ""  
+author: 
+  - "AJ Smit"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css:
+      - default
+      - "default-fonts.css"
+      - ki
+      - "uwc_logo.css"
+    yolo: false
+    self_contained: TRUE  
+    lib_dir: libs
+    nature:
+      highlightStyle: idea
+      highlightLines: true
+      highlightLanguage: r
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+
+```{r setup, include=FALSE, echo=FALSE} 
+library(tidyverse)
+library(ggpubr)
+knitr::opts_chunk$set(echo = TRUE,
+                      comment = "R>",
+                      message = FALSE,
+                      warning = FALSE,
+                      include = TRUE,
+                      fig.retina = 3,
+                      fig.width = 6,
+                      fig.height = 3.6,
+                      fig.align = "center")
+```
+
+.left-column[
+# Question 1
+]
+
+.right-column[
+* Find one of the days of measurement where the chicken weights do not pass the assumptions of normality, and another day (not day 21!) in which they do. Show how you went about finding this subset of data.
+* Transform the data so that they may pass the assumptions. Show all the necessary visual and statistical tests that verify that assumptions are now passed.
+]

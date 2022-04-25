@@ -1,0 +1,75 @@
+---
+title: "Confidence Intervals Exercises"
+subtitle: ""  
+author: 
+  - "AJ Smit"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css:
+      - default
+      - "default-fonts.css"
+      - ki
+      - "uwc_logo.css"
+    yolo: false
+    self_contained: TRUE  
+    lib_dir: libs
+    nature:
+      highlightStyle: idea
+      highlightLines: true
+      highlightLanguage: r
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+
+```{r setup, include=FALSE, echo=FALSE} 
+library(tidyverse)
+library(ggpubr)
+knitr::opts_chunk$set(echo = TRUE,
+                      comment = "R>",
+                      message = FALSE,
+                      warning = FALSE,
+                      include = TRUE,
+                      fig.retina = 3,
+                      fig.width = 6,
+                      fig.height = 3.6,
+                      fig.align = "center")
+```
+
+.left-column[
+# Question 1
+]
+
+.right-column[
+a. Using the Lung Capacity data, please calculate the 95% CIs for the `LungCap` variable as a function of:
+
+    i. `Gender`
+    
+    ii. `Smoke`
+    
+    iii. `Caesarean`
+    
+b. Create a graph of the mean ± 95% CIs (as I have done in the above example), and determine if there are statistical differences in `LungCap` between the levels of `Gender`, `Smoke`, and `Caesarean`. Do the same using a *t*-test. Are your findings the same using these two approaches?
+
+c. Produce all the associated tests for assumptions -- i.e. the assumptions to be met when deciding on which *t*-test to use, or whether you should apply the 'traditional' or bootstrapping approach in the calculation of CIs.
+]
+
+---
+
+.left-column[
+# Question 2
+]
+
+.right-column[
+* Create a combined tidy dataframe (observe tidy principles) with the estimates for the 95% CI for the teacher data, above, estimated using both the traditional and bootstrapping methods. Create a plot comprising two panels (one for the traditional estimates, one for the bootstrapped estimates) of the mean, median, scatter of raw data points, and the upper and lower 95% CI.
+]
+
+---
+
+.left-column[
+# Question 3
+]
+
+.right-column[
+* Load a new dataset and create a Harrell plot from it based on values of your choosing. What does the Harrell plot show?
+]

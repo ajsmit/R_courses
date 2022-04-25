@@ -10,6 +10,7 @@ weight: 17
 <!-- # Topic 13: Cluster analysis -->
 
 > "*There are two types of people in the world: 1) those who extrapolate from incomplete data.*"
+> 
 > -- Anon.
 
 We have seen that the WHO/SDG data seem to form neat groupings of countries within their respective parent locations. In this exercise we will apply a cluster analysis called 'Partitioning Around Medoids' to these data. Whereas ordination attempts to display the presence and influence of gradients, clustering tries to place our samples into a certain number of discrete units or clusters. The goal of the clustering algorithms is to produce groups (clusters) such that dissimilarites between objects within these groups are smaller than those between them.

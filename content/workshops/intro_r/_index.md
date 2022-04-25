@@ -29,7 +29,7 @@ title: BCB744 (Part A)
 weight: 1
 ---
 
-<img src="/collection/intro_r/_index_files/769_life_finds_a_way.png" alt="Life finds a way" width="50%"/>
+![Life finds a way](/workshops/intro_r/_index_files/769_life_finds_a_way.png)
 
 # Preliminaries {#prelim}
 

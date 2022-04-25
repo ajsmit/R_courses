@@ -41,7 +41,7 @@ The regression parameters `\(\alpha\)` and `\(\beta\)` are determined by *minimi
 
 Here is an animation demonstrating the principle of minimising the error sum of squares:
 
-![Minimising sum of squares](/collection/biostats/chapters/08-regressions_files/lm_rotate.avi){width=70%}
+![Minimising sum of squares](/workshops/biostats/chapters/08-regressions_files/lm_rotate.mp4)
 
 
 

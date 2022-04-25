@@ -1,0 +1,45 @@
+---
+title: "Correlations Exercises"
+subtitle: ""  
+author: 
+  - "AJ Smit"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css:
+      - default
+      - "default-fonts.css"
+      - ki
+      - "uwc_logo.css"
+    yolo: false
+    self_contained: TRUE  
+    lib_dir: libs
+    nature:
+      highlightStyle: idea
+      highlightLines: true
+      highlightLanguage: r
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+
+```{r setup, include=FALSE, echo=FALSE} 
+library(tidyverse)
+library(ggpubr)
+knitr::opts_chunk$set(echo = TRUE,
+                      comment = "R>",
+                      message = FALSE,
+                      warning = FALSE,
+                      include = TRUE,
+                      fig.retina = 3,
+                      fig.width = 6,
+                      fig.height = 3.6,
+                      fig.align = "center")
+```
+
+.left-column[
+# Question 1
+]
+
+.right-column[
+* Find your own datasets suitable for i) Pearson's, ii) Spearman's, and iii) Kendall's correlations. For each, set the null and alternative hypotheses, apply the correlations, and create suitable visualisations. Ensure that one of the datasets lends itself to some pairwise comparisons.
+]

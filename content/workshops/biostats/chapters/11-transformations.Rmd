@@ -18,7 +18,7 @@ weight: 11
 
 <!--- # Testing assumptions or: How I learned to stop worrying and transform the data --->
 
-![Paranormal distribution](/collection/biostats/chapters/11-transformations_files/paranormal_distributions.jpeg){width=50%}
+![Paranormal distribution](/workshops/biostats/chapters/11-transformations_files/paranormal_distributions.jpeg)
 
 ```{r prelim-opts, echo=FALSE}
 knitr::opts_chunk$set(

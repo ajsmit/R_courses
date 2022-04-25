@@ -38,7 +38,7 @@ weight: 16
 
 <!--- # Topic 12: Constrained ordination --->
 
-Up to now we have applied indirect gradient analyses. The lecture slides mention several constrained ordinations and provide some theory for three of them, viz. **Redundancy Analysis (RDA)**, **Canonical Correspondence Analysis (CCA)**, and **distance-based Reducndancy Analysis (db-RDA)**. Constrained ordination is sometimes called 'direct gradient analysis'.
+Up to now we have applied indirect gradient analyses. The lecture slides mention several constrained ordinations and provide some theory for three of them, viz. **Redundancy Analysis (RDA)**, **Canonical Correspondence Analysis (CCA)**, and **distance-based Reducndancy Analysis (db-RDA)**. Constrained ordination is sometimes called 'direct gradient analysis' or 'canonical' ordination.
 
 Constrained ordination is used to extract and summarise the variation in a set of response variables (species data in the case of ecology) that can be explained by some explanatory variables ('constraints'), such as measurements of environmental properties at the places where the species data were collected from.
 

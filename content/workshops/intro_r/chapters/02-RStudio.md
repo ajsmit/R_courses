@@ -23,19 +23,19 @@ weight: 1
 
 Before we start using RStudio (which is a code editor and environment that runs R) let's first set it up properly. Find the 'Tools' ('Preferences') menu item, navigate to 'Global Options' ('Code Editing') and select the tick boxes as shown in the figure below.
 
-![RStudio preferences](/collection/intro_r/chapters/02-RStudio_files/SCR-20220414-tws.png){width=80%}
+![RStudio preferences](/workshops/intro_r/chapters/02-RStudio_files/SCR-20220414-tws.png)
 
 ### Customising appearance
 
 RStudio is highly customisable. Under the **Appearance** tab under 'Tools'/'Global Options' you can see all of the different themes that come with RStudio. We recommend choosing a theme with a black background (*e.g.* Chaos) as this will be easier on your eyes and your computer. It is also good to choose a theme with a sufficient amount of contrast between the different colours used to denote different types of objects/values in your code. 
 
-![The appearance settings](/collection/intro_r/chapters/02-RStudio_files/SCR-20220414-tx1.png){width=80%}
+![Appearance settings](/workshops/intro_r/chapters/02-RStudio_files/SCR-20220414-tx1.png)
 
 ### Configuring panes
 
 You cannot rearrange panes (see below) in RStudio by dragging them, but you can alter their position via the **Pane Layout** tab in the 'Tools'/'Global Options' ('RStudio'/'Preferences' – for Mac). You may arrange the panes as you would prefer; however, we recommend that during the duration of this workshop you leave them in the default layout.
 
-![Rearranging the RStudio panes](/collection/intro_r/chapters/02-RStudio_files/SCR-20220414-tzd.png){width=80%}
+![Rearranging the panes](/workshops/intro_r/chapters/02-RStudio_files/SCR-20220414-tzd.png)
 
 ## The Rproject
 A very nifty way of managing workflow in RStudio is through the built-in functionality of the Rproject. We do not need to install any packages or change any settings to use these. Creating a new project is a very simple task, as well. For this course we will be using the `Intro_R_Workshop.Rproj` file you downloaded with the course material so that we are all running identical projects. This will prevent a lot of issues by ensuring we are doing things by the same standard. Better yet, an Rproject integrates seamlessly into version control software (*e.g.* GitHub) and allows for instant world class collaboration on any research project. To initialise the 'Intro_R_Workshop' project on your machine please find where you saved `Intro_R_Workshop.Rproj` file and click on it. We will cover the concepts and benefits of an Rproject more as we move through the course.
@@ -44,7 +44,7 @@ A very nifty way of managing workflow in RStudio is through the built-in functio
 
 
 
-The most common functions used in R are contained within the **base** package; this makes R useful 'out of the box.' However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the [CRAN website](https://cran.r-project.org/web/packages/). There are currently (``2022-04-20``) ``18999`` packages available for R!
+The most common functions used in R are contained within the **base** package; this makes R useful 'out of the box.' However, there is extensive additional functionality that is being expanded all the time through the use of packages. Packages are simply collections of code called functions that automate complex mathematical or statistical tasks. One of the most useful features of R is that users are continuously developing new packages and making them available for free. You can find a comprehensive list of available packages on the [CRAN website](https://cran.r-project.org/web/packages/). There are currently (``2022-04-25``) ``18965`` packages available for R!
 
 If the thought of searching for and finding R packages is daunting, a good place to start is the [R Task View](http://cran.r-project.org/web/views/) page. This page curates collections of packages for general tasks you might encounter, such as Experimental Design, Meta-Analysis, or Multivariate Analysis. Go and have a look for yourself, you might be surprised to find a good explanation of what you need.
 

@@ -1,0 +1,55 @@
+---
+title: "Regression Exercises"
+subtitle: ""  
+author: 
+  - "AJ Smit"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css:
+      - default
+      - "default-fonts.css"
+      - ki
+      - "uwc_logo.css"
+    yolo: false
+    self_contained: TRUE  
+    lib_dir: libs
+    nature:
+      highlightStyle: idea
+      highlightLines: true
+      highlightLanguage: r
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+
+```{r setup, include=FALSE, echo=FALSE} 
+library(tidyverse)
+library(ggpubr)
+knitr::opts_chunk$set(echo = TRUE,
+                      comment = "R>",
+                      message = FALSE,
+                      warning = FALSE,
+                      include = TRUE,
+                      fig.retina = 3,
+                      fig.width = 6,
+                      fig.height = 3.6,
+                      fig.align = "center")
+```
+
+.left-column[
+# Question 1
+]
+
+.right-column[
+* Create the diagnostic i) residuals vs. fitted value plot, ii) plot of standardised residuals, and iii) normal Q-Q plot for the Old faithful data using the **gg_diagnose** package.
+]
+
+---
+
+.left-column[
+# Question 2
+]
+
+.right-column[
+* Create the diagnostics plots in Task 2 *by hand*, that is, building it up from scratch as I have done immediately below for yet a another kind of diagnostic plot, the plot of fitted vs. observed.
+]
