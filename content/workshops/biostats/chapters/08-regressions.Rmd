@@ -23,6 +23,17 @@ weight: 8
 
 <!--- # Simple linear regressions --->
 
+<div class="panelset">
+  <div class="panel">
+    <div class="panel-name">Regression Slides 1</div>
+    <iframe width="750" height="422"  src="https://ajsmit.github.io/BCB744/Linear_regression_slides--1-.html" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <div class="panel">
+    <div class="panel-name">Regression Slides 2</div>
+    <iframe width="750" height="422" src="https://ajsmit.github.io/BCB744/Linear_regression_slides--2-.html" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
+
 ```{r prelim-opts, echo=FALSE}
 knitr::opts_chunk$set(
   comment = "R>", 

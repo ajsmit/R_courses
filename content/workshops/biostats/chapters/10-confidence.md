@@ -18,6 +18,8 @@ weight: 10
 
 <!-- # Confidence intervals --->
 
+<iframe width="750" height="422"  src="https://ajsmit.github.io/BCB744/Confidence_intervals_slides.html" frameborder="0" allowfullscreen></iframe>
+
 
 
 A confidence interval (CI) tells us within what range we may be certain to find the true mean from which any sample has been taken. If we were to repeatedly sample the same population over and over and calculated a mean every time, the 95% CI indicates the range that 95% of those means would fall into.
@@ -159,8 +161,8 @@ groupwiseMean(Score ~ Teacher + Grade,
 
 ```
 R>    Teacher Grade n Mean Boot.mean Conf.level Bca.lower Bca.upper
-R> 1   Donald  Gr_1 5   82      81.9       0.95      68.0      90.0
-R> 2   Donald Gr_10 4   70      70.0       0.95      60.0      75.0
+R> 1   Donald  Gr_1 5   82      82.1       0.95      68.0      90.0
+R> 2   Donald Gr_10 4   70      70.0       0.95      60.5      75.0
 R> 3    Sadam  Gr_1 4   85      85.0       0.95      80.0      87.5
 R> 4    Sadam Gr_10 3   70      70.0       0.95      60.0      76.7
 R> 5 Vladimir  Gr_1 6   80      80.0       0.95      68.3      88.3

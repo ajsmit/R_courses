@@ -8,11 +8,11 @@ links:
   - icon: images
     icon_pack: fas
     name: Correlations Slides (1)
-    url: /slides/BCB744/Correlations_slides--1-.html
+    url: https://ajsmit.github.io/BCB744/Correlations_slides--1-.html
   - icon: images
     icon_pack: fas
     name: Correlations Slides (2)
-    url: /slides/BCB744/Correlations_slides--2-.html
+    url: https://ajsmit.github.io/BCB744/Correlations_slides--2-.html
   - icon: star
     icon_pack: fa
     name: Correlations Exercises
@@ -26,7 +26,6 @@ weight: 9
   <div class="panel">
     <div class="panel-name">Correlation Slides 1</div>
     <iframe width="750" height="422"  src="https://ajsmit.github.io/BCB744/Correlations_slides--1-.html" frameborder="0" allowfullscreen></iframe>
-      </iframe>
   </div>
   <div class="panel">
     <div class="panel-name">Correlation Slides 2</div>

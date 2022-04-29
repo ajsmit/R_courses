@@ -192,6 +192,8 @@ The kinds of summaries that lend themselves to continuous data are:
 
 #### Dates
 
+![Dates](/workshops/biostats/chapters/02-data_files/deglet-noor-dates.jpeg)
+
 Dates are a special class of continuous data, and there are many different representations of the date classes. This is a complex group of data, and we will not cover much of it in this course.
 
 ### Qualitative data

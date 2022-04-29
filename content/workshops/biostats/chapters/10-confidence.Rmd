@@ -18,6 +18,8 @@ weight: 10
 
 <!-- # Confidence intervals --->
 
+<iframe width="750" height="422"  src="https://ajsmit.github.io/BCB744/Confidence_intervals_slides.html" frameborder="0" allowfullscreen></iframe>
+
 ```{r prelim-opts, echo=FALSE}
 knitr::opts_chunk$set(
   comment = "R>", 
