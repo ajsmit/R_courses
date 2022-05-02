@@ -1,22 +1,22 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
 links:
   - icon: images
     icon_pack: fas
     name: Extra Data Slides
     url: https://ajsmit.github.io/BCB744/R_datasets.html
 subtitle: ""
-title: "3. An R workflow"
+title: "3. R workflows"
 weight: 3
 ---
 
-> "A dream doesn't become reality through magic; it takes sweat, determination and hard work."
+> "*A dream doesn't become reality through magic; it takes sweat, determination and hard work.*"
 >
 > --- Colin Powell
 
-> "Choose a job you love, and you will never have to work a day in your life."
+> "*Choose a job you love, and you will never have to work a day in your life.*"
 >
 > --- Confucius
 
@@ -477,6 +477,30 @@ The first thing we see at the top of the help file in small font is the name of 
 ## Other data
 
 Many of the R packages that can be installed come with additional datasets that are available for you to use. They can easily be loaded into the workspace, but the trick is finding them first. This [presentation](https://ajsmit.github.io/BCB744/R_datasets.html) shows how to go about doing this, and it focuses in on a few of interesting ones you can use to practice your R skills on. Please explore them -- in fact, many exercises in the workshop will require that you find some of you 'own' datasets and use them to demonstrate your understanding of important concepts.
+
+## R Markdown
+
+You are now familiar with some basic R commands and can load data and perhaps even make a simple graphic. For this module, I want you to write your homework assignments in R Markdown instead of MS Word. RStudio (the company) has a helpful [tutorial](http://rmarkdown.rstudio.com/lesson-1.html) and a short video about R Markdown. After you have watched the video and read the material, go through these short lessons:
+
+* [How it Works](https://rmarkdown.rstudio.com/lesson-2.html)
+
+* [Code Chunks](https://rmarkdown.rstudio.com/lesson-3.html)
+
+* [Inline Code](https://rmarkdown.rstudio.com/lesson-4.html)
+
+* [Markdown Basics](https://rmarkdown.rstudio.com/lesson-8.html)
+
+* [Output Formats](https://rmarkdown.rstudio.com/lesson-9.html)
+
+For basic understanding of R Markdown, familiarise yourself with the above material. For more depth, please also consult the additional heading items in the menu of the left of these pages.
+
+You’ll need to install a couple more R packages before embarking on the R Markdown tutorials. Use RStudio’s **Packages** panel to install **rmarkdown** and **viridis**. Alternatively, paste these commands in the RStudio Console: `install.packages("rmarkdown")` and `install.packages("viridis")`. You can also type `install.packages(c("rmarkdown", "viridis"))` to install both at the same time.
+
+Don’t worry if you don’t completely understand R Markdown! We’ll go over it at the beginning of class tomorrow if you have any questions.
+
+In this module I encourage you to set the R Markdown output to either html (preferred) or MS Word. Getting it to compile to PDF takes a bit more effort, and the installation of LaTeX -- this opens a can of worms, and except for the most geeky persons amongst you (an admirable attribute!), I won't actively encourage going down this path (for now).
+
+Speaking of html output: when you create a new R Markdown document (in the menu, go to 'File' > 'New File' > 'R Markdown') and select the 'From Template' option in the resultant dialog box, you'll be offered some interesting and useful templates for your 'knitted' final output. Play around with all or some of these, and to spice things up, submit your various assignments using different templates from day to day.
 
 ## Session info
 

@@ -1,17 +1,17 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
 subtitle: ""
 title: "9. Mapping with OpenStreetMap"
 weight: 9
 ---
 
-> "The only thing Google has failed to do, so far, is fail."
+> "*The only thing Google has failed to do, so far, is fail.*"
 >
 > --- John Battelle
 
-> "I'm afraid that if you look at a thing long enough, it loses all of its meaning."
+> "*I'm afraid that if you look at a thing long enough, it loses all of its meaning.*"
 >
 > --- Andy Warhol
 

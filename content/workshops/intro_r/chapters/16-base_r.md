@@ -1,7 +1,7 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
 subtitle: ""
 title: "15. Base R primer"
 weight: 15
@@ -600,19 +600,19 @@ rep(a, 5) # one may omit the times argument
 ```
 
 ```
-##   [1] 13.19918 12.92509 12.91531 12.96225 13.14060 12.84882 12.85402 12.92451
-##   [9] 13.01107 12.92944 12.95815 12.84819 12.96407 12.94281 12.72314 12.95502
-##  [17] 13.03877 12.93741 12.74083 12.82563 13.19918 12.92509 12.91531 12.96225
-##  [25] 13.14060 12.84882 12.85402 12.92451 13.01107 12.92944 12.95815 12.84819
-##  [33] 12.96407 12.94281 12.72314 12.95502 13.03877 12.93741 12.74083 12.82563
-##  [41] 13.19918 12.92509 12.91531 12.96225 13.14060 12.84882 12.85402 12.92451
-##  [49] 13.01107 12.92944 12.95815 12.84819 12.96407 12.94281 12.72314 12.95502
-##  [57] 13.03877 12.93741 12.74083 12.82563 13.19918 12.92509 12.91531 12.96225
-##  [65] 13.14060 12.84882 12.85402 12.92451 13.01107 12.92944 12.95815 12.84819
-##  [73] 12.96407 12.94281 12.72314 12.95502 13.03877 12.93741 12.74083 12.82563
-##  [81] 13.19918 12.92509 12.91531 12.96225 13.14060 12.84882 12.85402 12.92451
-##  [89] 13.01107 12.92944 12.95815 12.84819 12.96407 12.94281 12.72314 12.95502
-##  [97] 13.03877 12.93741 12.74083 12.82563
+##   [1] 12.99592 13.03072 13.00699 12.77644 13.09503 13.22587 12.96334 13.05256
+##   [9] 13.00573 12.93340 13.04873 13.03852 13.06281 13.09638 12.98825 13.14610
+##  [17] 13.02972 12.86721 12.99829 13.06169 12.99592 13.03072 13.00699 12.77644
+##  [25] 13.09503 13.22587 12.96334 13.05256 13.00573 12.93340 13.04873 13.03852
+##  [33] 13.06281 13.09638 12.98825 13.14610 13.02972 12.86721 12.99829 13.06169
+##  [41] 12.99592 13.03072 13.00699 12.77644 13.09503 13.22587 12.96334 13.05256
+##  [49] 13.00573 12.93340 13.04873 13.03852 13.06281 13.09638 12.98825 13.14610
+##  [57] 13.02972 12.86721 12.99829 13.06169 12.99592 13.03072 13.00699 12.77644
+##  [65] 13.09503 13.22587 12.96334 13.05256 13.00573 12.93340 13.04873 13.03852
+##  [73] 13.06281 13.09638 12.98825 13.14610 13.02972 12.86721 12.99829 13.06169
+##  [81] 12.99592 13.03072 13.00699 12.77644 13.09503 13.22587 12.96334 13.05256
+##  [89] 13.00573 12.93340 13.04873 13.03852 13.06281 13.09638 12.98825 13.14610
+##  [97] 13.02972 12.86721 12.99829 13.06169
 ```
 
 ```r
@@ -754,13 +754,13 @@ head(df1)
 ```
 
 ```
-##      vec1 vec2   vec3                 
-## [1,] "A"  "4018" "-0.426278541373592" 
-## [2,] "A"  "4019" "-0.1116059434597"   
-## [3,] "A"  "4020" "-0.231211038247099" 
-## [4,] "A"  "4021" "0.201969158265552"  
-## [5,] "A"  "4022" "-0.124727109943498" 
-## [6,] "B"  "4023" "-0.0985283274436207"
+##      vec1 vec2   vec3                  
+## [1,] "A"  "4018" "-0.141653494038624"  
+## [2,] "A"  "4019" "0.113104875559202"   
+## [3,] "A"  "4020" "-0.892020464834879"  
+## [4,] "A"  "4021" "-0.00244250809495045"
+## [5,] "A"  "4022" "-0.153684993440955"  
+## [6,] "B"  "4023" "0.640295779743719"
 ```
 
 Another way to achieve the same thing is to use the `data.frame()` function that will allow you to achieve all of the above steps at once. Here is the example:
@@ -776,8 +776,8 @@ head(df2, 2)
 
 ```
 ##   vec1       vec2     vec3
-## 1    A 1981-01-01 1.077573
-## 2    A 1981-01-02 1.276516
+## 1    A 1981-01-01 2.654841
+## 2    A 1981-01-02 2.182218
 ```
 
 What about the names of the dataframe that you just created? Are you happy that they are descriptive enough? If you aren't, don't fear. There are several different ways in which we can change it. We can assign the existing separate vectors `vec1`, `vec2` and `vec3` to more user-friendly names using the `data.frame()` function, like this:
@@ -792,8 +792,8 @@ head(df1, 2)
 
 ```
 ##   level sample.date measurement
-## 1     A  1981-01-01  -0.4262785
-## 2     A  1981-01-02  -0.1116059
+## 1     A  1981-01-01  -0.1416535
+## 2     A  1981-01-02   0.1131049
 ```
 
 Another way is to change the name after you have created the dataframe using the `colnames()` assignment function, as in:
@@ -806,8 +806,8 @@ head(df2, 2)
 
 ```
 ##   level sample.date measurement
-## 1     A  1981-01-01    1.077573
-## 2     A  1981-01-02    1.276516
+## 1     A  1981-01-01    2.654841
+## 2     A  1981-01-02    2.182218
 ```
 
 ```r
@@ -829,9 +829,9 @@ head(df2.1, 2)
 ```
 
 ```
-##   level sample.date measurement   meas.anom  meas.diff
-## 1     A  1981-01-01  -0.4262785 -0.36401024 -0.0622683
-## 2     A  1981-01-02  -0.1116059 -0.04933764 -0.0622683
+##   level sample.date measurement  meas.anom   meas.diff
+## 1     A  1981-01-01  -0.1416535 -0.1015833 -0.04007022
+## 2     A  1981-01-02   0.1131049  0.1531751 -0.04007022
 ```
 
 We can also combine dataframes in different ways. Perhaps you have two (or more) dataframe that conform to the same layout, *i.e.* they have the same number of columns (although the length of the dataframes may differ), they have the same data type in those columns and the names of those columns are the same. Also, the order of the columns must be identical in all the dataframes. Two separate dataframe with the same structure may, for example, result from two identical experiments that were repeated at different times. We can then stack one on top (*e.g.* combine our experiments) of the other using the *r*ow bind function `rbind()`, as in:
@@ -868,8 +868,8 @@ head(df3, 2)
 
 ```
 ##   level sample.date measurement
-## 1     A  1981-01-01  -0.4262785
-## 2     A  1981-01-02  -0.1116059
+## 1     A  1981-01-01  -0.1416535
+## 2     A  1981-01-02   0.1131049
 ```
 
 But now how do we know how the portions of the stacked dataframe relate to the experiments that resulted in the data in the first place? There is no label to distinguish one experiment from the other. We can fix this by adding a new column to the stacked dataframe that contains the coding for the two experiments. We can achieve it like this:
@@ -882,8 +882,8 @@ head(df3, 2)
 
 ```
 ##   level sample.date measurement exp.no
-## 1     A  1981-01-01  -0.4262785   exp1
-## 2     A  1981-01-02  -0.1116059   exp1
+## 1     A  1981-01-01  -0.1416535   exp1
+## 2     A  1981-01-02   0.1131049   exp1
 ```
 
 ```r
@@ -892,8 +892,8 @@ tail(df3, 2)
 
 ```
 ##    level sample.date measurement exp.no
-## 29     C  1981-01-14   1.5593873   exp2
-## 30     C  1981-01-15  -0.3473637   exp2
+## 29     C  1981-01-14    1.298716   exp2
+## 30     C  1981-01-15    0.703305   exp2
 ```
 
 \begin{mybox}{}{DIY: Make your own dataframes}

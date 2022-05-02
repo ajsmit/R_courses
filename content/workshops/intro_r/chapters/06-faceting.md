@@ -1,17 +1,17 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
 subtitle: ""
 title: "5. Faceting figures"
 weight: 5
 ---
 
-> "But let the mind beware, that though the flesh be bugged, the circumstances of existence are pretty glorious."
+> "*But let the mind beware, that though the flesh be bugged, the circumstances of existence are pretty glorious.*"
 >
 > --- Kurt Vonnegut, Player Piano
   
-> "You miss 100% of the shots you don't take."
+> "*You miss 100% of the shots you don't take.*"
 >
 > --- Wayne Gretzky
 

@@ -1,7 +1,7 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
 subtitle: ""
 title: "16. Dates"
 weight: 16

@@ -1,17 +1,17 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
 subtitle: ""
 title: "13. Recap"
 weight: 13
 ---
 
-> "Everyone should have their mind blown once a day."
+> "*Everyone should have their mind blown once a day.*"
 >
 > --- Neil deGrasse Tyson
   
-> "Somewhere, something incredible is waiting to be known."
+> "*Somewhere, something incredible is waiting to be known.*"
 >
 > --- Carl Sagan
 

@@ -1,17 +1,17 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
 subtitle: ""
 title: "11. Tidier data"
 weight: 11
 ---
   
-> "Knowing where things are, and why, is essential to rational decision making."
+> "*Knowing where things are, and why, is essential to rational decision making.*"
 >
 > --- Jack Dangermond
   
-> "The mind commands the body and it obeys. The mind orders itself and meets resistance."
+> "*The mind commands the body and it obeys. The mind orders itself and meets resistance.*"
 >
 > --- Frank Herbert, Dune
 

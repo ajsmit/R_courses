@@ -1,17 +1,17 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
 subtitle: ""
 title: "7. Mapping with ggplot2"
 weight: 7
 ---
 
-> "There's no map to human behaviour."
+> "*There's no map to human behaviour.*"
 >
 > --- Bjork
 
-> "Here be dragons"
+> "*Here be dragons.*"
 >
 > --- Unknown
 

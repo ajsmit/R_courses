@@ -1,7 +1,7 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
 subtitle: ""
 title: "4. Graphics with ggplot2"
 links:
@@ -12,11 +12,11 @@ links:
 weight: 4
 ---
 
-> "The greatest value of a picture is when it forces us to notice what we never expected to see."
+> "*The greatest value of a picture is when it forces us to notice what we never expected to see.*"
 >
 > --- John Tukey
   
-> "If I can't picture it, I can't understand it."
+> "*If I can't picture it, I can't understand it.*"
 >
 > --- Albert Einstein
 

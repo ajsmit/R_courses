@@ -1,17 +1,17 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
 subtitle: ""
 title: "12. Tidiest data"
 weight: 12
 ---
 
-> "Conducting data analysis is like drinking a fine wine. It is important to swirl and sniff the wine, to unpack the complex bouquet and to appreciate the experience. Gulping the wine doesn't work."
+> "*Conducting data analysis is like drinking a fine wine. It is important to swirl and sniff the wine, to unpack the complex bouquet and to appreciate the experience. Gulping the wine doesn't work.*"
 > 
 > --- Daniel B. Wright
   
-> "If you torture the data long enough, it will confess to anything."
+> "*If you torture the data long enough, it will confess to anything.*"
 >
 > --- Ronald Coase
 

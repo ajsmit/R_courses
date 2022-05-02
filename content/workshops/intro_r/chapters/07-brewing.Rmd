@@ -1,17 +1,17 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
 subtitle: ""
 title: "6. Brewing colours"
 weight: 6
 ---
 
-> "Every portrait that is painted with feeling is a portrait of the artist, not of the sitter."
+> "*Every portrait that is painted with feeling is a portrait of the artist, not of the sitter.*"
 >
 > --- Oscar Wilde
   
-> "If you could say it in words, there would be no reason to paint."
+> "*If you could say it in words, there would be no reason to paint.*"
 >
 > --- Edward Hopper
 

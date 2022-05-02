@@ -25,7 +25,7 @@ tags:
   - basic
   - statistics
   - graphics
-title: BCB744 (Part B)
+title: BCB744 (Biostatistics)
 weight: 2
 ---
 

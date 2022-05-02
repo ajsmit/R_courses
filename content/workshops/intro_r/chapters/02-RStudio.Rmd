@@ -1,17 +1,17 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
 subtitle: ""
 title: "1. RStudio and R"
 weight: 1
 ---
 
-> "Strange events permit themselves the luxury of occurring."
+> "*Strange events permit themselves the luxury of occurring.*"
 >
 > --- Charlie Chan
   
-> "Without data you're just another person with an opinion."
+> "*Without data you're just another person with an opinion.*"
 >
 > --- W. Edwards Deming
 

@@ -1,17 +1,17 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
 subtitle: ""
 title: "8. Mapping with style"
 weight: 8
 ---
 
-> "How beautiful the world was when one looked at it without searching, just looked, simply and innocently."
+> "*How beautiful the world was when one looked at it without searching, just looked, simply and innocently.*"
 >
 > --- Hermann Hesse, Siddartha
 
-> "You can't judge a book by it's cover but you can sure sell a bunch of books if you have a good one."
+> "*You can't judge a book by it's cover but you can sure sell a bunch of books if you have a good one.*"
 >
 > --- Jayce O'Neal
 

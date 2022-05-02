@@ -1,17 +1,17 @@
 ---
 date: "2021-01-01"
 draft: false
-excerpt: What you need to know upfront.
+excerpt: null
 subtitle: ""
 title: "10. Tidy data"
 weight: 10
 ---
 
-> "Order and simplification are the first steps toward the mastery of a subject."
+> "*Order and simplification are the first steps toward the mastery of a subject.*"
 >
 > --- Thomas Mann
   
-> "Get your facts first, and then you can distort them as much as you please."
+> "*Get your facts first, and then you can distort them as much as you please.*"
 >
 > --- Mark Twain
 
