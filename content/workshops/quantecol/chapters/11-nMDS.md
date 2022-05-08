@@ -10,11 +10,11 @@ links:
   - icon: file-csv
     icon_pack: fa
     name: DoubsEnv.csv
-    url: /data/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv
+    url: /BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv
   - icon: file-csv
     icon_pack: fa
     name: DoubsSpe.csv
-    url: /data/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
+    url: /BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
 subtitle: ""
 title: "11a. non-Metric multidimensional scaling (nMDS)"
 weight: 14
@@ -34,7 +34,7 @@ library(tidyverse)
 library(vegan)
 
 # setting up a 'root' file path so I don't have to keep doing it later...
-root <- "../../../../static/data/BCB743/"
+root <- "../../../../static/BCB743/"
 ```
 
 ## The Doubs River data
@@ -57,34 +57,33 @@ spe_nmds <- metaMDS(spe, distance = "bray")
 
 ```
 ## Run 0 stress 0.07477805 
-## Run 1 stress 0.1111397 
-## Run 2 stress 0.0737624 
+## Run 1 stress 0.1127683 
+## Run 2 stress 0.07383663 
 ## ... New best solution
-## ... Procrustes: rmse 0.0194089  max resid 0.09465521 
-## Run 3 stress 0.1218861 
-## Run 4 stress 0.07429329 
-## Run 5 stress 0.1204797 
-## Run 6 stress 0.1232691 
-## Run 7 stress 0.1209554 
-## Run 8 stress 0.07376221 
+## ... Procrustes: rmse 0.01961142  max resid 0.09438901 
+## Run 3 stress 0.08843935 
+## Run 4 stress 0.07376221 
 ## ... New best solution
-## ... Procrustes: rmse 0.0001312719  max resid 0.000624816 
-## ... Similar to previous best
+## ... Procrustes: rmse 0.00379996  max resid 0.01466509 
+## Run 5 stress 0.08797355 
+## Run 6 stress 0.1218863 
+## Run 7 stress 0.1203424 
+## Run 8 stress 0.11219 
 ## Run 9 stress 0.07477815 
-## Run 10 stress 0.1249363 
-## Run 11 stress 0.1242791 
-## Run 12 stress 0.1142556 
-## Run 13 stress 0.1226161 
-## Run 14 stress 0.08845295 
-## Run 15 stress 0.07376226 
-## ... Procrustes: rmse 0.0002285243  max resid 0.001097057 
-## ... Similar to previous best
-## Run 16 stress 0.1242854 
-## Run 17 stress 0.1111664 
-## Run 18 stress 0.08845297 
-## Run 19 stress 0.07429356 
-## Run 20 stress 0.07429333 
-## *** Solution reached
+## Run 10 stress 0.08931124 
+## Run 11 stress 0.1124311 
+## Run 12 stress 0.07477803 
+## Run 13 stress 0.08841674 
+## Run 14 stress 0.0750667 
+## Run 15 stress 0.1133731 
+## Run 16 stress 0.07506691 
+## Run 17 stress 0.08801554 
+## Run 18 stress 0.07477826 
+## Run 19 stress 0.07506689 
+## Run 20 stress 0.07478543 
+## *** No convergence -- monoMDS stopping criteria:
+##      1: no. of iterations >= maxit
+##     19: stress ratio > sratmax
 ```
 
 ```r
@@ -104,7 +103,7 @@ spe_nmds
 ## Dimensions: 2 
 ## Stress:     0.07376221 
 ## Stress type 1, weak ties
-## Two convergent solutions found after 20 tries
+## No convergent solutions - best solution after 20 tries
 ## Scaling: centring, PC rotation, halfchange scaling 
 ## Species: expanded scores based on 'spe'
 ```
@@ -194,17 +193,17 @@ env <- dplyr::slice(env, -8)
 ## ***VECTORS
 ## 
 ##        NMDS1    NMDS2     r2 Pr(>r)    
-## dfs  0.97104  0.23890 0.7488  0.001 ***
-## alt -0.98920 -0.14654 0.6114  0.001 ***
-## slo -0.74669  0.66518 0.3269  0.020 *  
-## flo  0.88605  0.46360 0.5683  0.001 ***
-## pH  -0.26495  0.96426 0.0178  0.788    
-## har  0.96309 -0.26917 0.3772  0.005 ** 
-## pho  0.46031 -0.88776 0.5438  0.002 ** 
-## nit  0.87844 -0.47786 0.5820  0.001 ***
-## amm  0.43030 -0.90268 0.5545  0.001 ***
-## oxy -0.74333  0.66892 0.7394  0.001 ***
-## bod  0.44296 -0.89654 0.6570  0.001 ***
+## dfs  0.97102  0.23900 0.7488  0.001 ***
+## alt -0.98915 -0.14693 0.6115  0.001 ***
+## slo -0.74827  0.66340 0.3268  0.024 *  
+## flo  0.88586  0.46396 0.5684  0.001 ***
+## pH  -0.26327  0.96472 0.0179  0.798    
+## har  0.96337 -0.26819 0.3773  0.005 ** 
+## pho  0.45963 -0.88811 0.5440  0.001 ***
+## nit  0.87803 -0.47861 0.5819  0.001 ***
+## amm  0.42963 -0.90300 0.5548  0.001 ***
+## oxy -0.74272  0.66960 0.7395  0.001 ***
+## bod  0.44228 -0.89688 0.6573  0.001 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## Permutation: free

@@ -10,15 +10,15 @@ links:
   - icon: file-csv
     icon_pack: fa
     name: PB_data_matrix_abrev.csv
-    url: /data/BCB743/diatoms/PB_data_matrix_abrev.csv
+    url: /BCB743/diatoms/PB_data_matrix_abrev.csv
   - icon: file-csv
     icon_pack: fa
     name: PB_data_matrix.csv
-    url: /data/BCB743/diatoms/PB_data_matrix.csv
+    url: /BCB743/diatoms/PB_data_matrix.csv
   - icon: file-csv
     icon_pack: fa
     name: PB_diat_env.csv
-    url: /data/BCB743/diatoms/PB_diat_env.csv
+    url: /BCB743/diatoms/PB_diat_env.csv
 subtitle: ""
 title: "11b. nMDS of Mayombo's diatom data"
 weight: 15
@@ -58,7 +58,7 @@ library(plyr)
 # library(BiodiversityR)
 
 # setting up a 'root' file path so I don't have to keep doing it later...
-root <- "../../../../static/data/BCB743/"
+root <- "../../../../static/BCB743/"
 ```
 
 ## Load and prepare the data

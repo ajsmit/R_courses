@@ -40,7 +40,7 @@ library(vegan)
 library(ggpubr)
 
 # setting up a 'root' file path so I don't have to keep doing it later...
-root <- "../../../../static/data/BCB743/"
+root <- "../../../../static/BCB743/"
 ```
 
 ## Load the SDG data

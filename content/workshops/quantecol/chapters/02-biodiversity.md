@@ -26,11 +26,11 @@ links:
   - icon: file-csv
     icon_pack: fa
     name: SeaweedsSpp.csv
-    url: /data/BCB743/seaweed/SeaweedsSpp.csv
+    url: /BCB743/seaweed/SeaweedsSpp.csv
   - icon: file-csv
     icon_pack: fa
     name: light_levels.csv
-    url: /data/BCB743/seaweed/light_levels.csv
+    url: /BCB743/seaweed/light_levels.csv
 subtitle: ""
 title: "2. Biodiversity"
 weight: 3
@@ -74,7 +74,7 @@ Let's load the data and see how it is structured:
 
 
 ```r
-spp <- read.csv('../../../../static/data/BCB743/seaweed/SeaweedsSpp.csv')
+spp <- read.csv('../../../../static/BCB743/seaweed/SeaweedsSpp.csv')
 spp <- dplyr::select(spp, -1)
 
 # Lets look at the data:
@@ -166,13 +166,13 @@ We cannot calculate either of these for the seaweed data because in order to do 
 
 
 ```r
-light <- read.csv("../../../../static/data/BCB743/seaweed/light_levels.csv")
+light <- read.csv("../../../../static/BCB743/seaweed/light_levels.csv")
 ```
 
 ```
 ## Warning in read.table(file = file, header = header, sep = sep, quote = quote, :
-## incomplete final line found by readTableHeader on '../../../../static/data/
-## BCB743/seaweed/light_levels.csv'
+## incomplete final line found by readTableHeader on '../../../../static/BCB743/
+## seaweed/light_levels.csv'
 ```
 
 ```r

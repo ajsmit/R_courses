@@ -18,19 +18,19 @@ links:
   - icon: file-csv
     icon_pack: fa
     name: SeaweedsSpp.csv
-    url: /data/BCB743/seaweed/SeaweedsSpp.csv
+    url: /BCB743/seaweed/SeaweedsSpp.csv
   - icon: file
     icon_pack: far
     name: SeaweedsEnv.RData
-    url: /data/BCB743/seaweed/SeaweedEnv.RData
+    url: /BCB743/seaweed/SeaweedEnv.RData
   - icon: file-csv
     icon_pack: fa
     name: bioregions.csv
-    url: /data/BCB743/seaweed/bioregions.csv
+    url: /BCB743/seaweed/bioregions.csv
   - icon: file-csv
     icon_pack: fa
     name: sites.csv
-    url: /data/BCB743/seaweed/sites.csv    
+    url: /BCB743/seaweed/sites.csv    
 subtitle: ""
 title: "12. Constrained Ordination"
 weight: 16
@@ -68,7 +68,7 @@ library(grid)
 library(gridBase)
 
 # setting up a 'root' file path so I don't have to keep doing it later...
-root <- "../../../../static/data/BCB743/"
+root <- "../../../../static/BCB743/"
 ```
 
 Load the seaweed data:
@@ -387,7 +387,7 @@ anova(rda_final, by = "axis", parallel = 4) # ... yes!
 ##          Df SumOfSqs        F Pr(>F)    
 ## CAP1      1   5.6179 263.1786  0.001 ***
 ## CAP2      1   1.1242  52.6665  0.001 ***
-## CAP3      1   0.0725   3.3978  0.383    
+## CAP3      1   0.0725   3.3978  0.356    
 ## CAP4      1   0.0050   0.2320  1.000    
 ## CAP5      1   0.0027   0.1274  1.000    
 ## CAP6      1   0.0013   0.0632  1.000    
@@ -415,10 +415,10 @@ Extract the significant variables in `\(E3\)` that are influential in the final 
 ## febRange  1   1.0962  51.3541  0.001 ***
 ## febSD     1   0.1850   8.6653  0.001 ***
 ## augMean   1   5.3815 252.1023  0.001 ***
-## augRange  1   0.0903   4.2286  0.023 *  
-## augSD     1   0.0212   0.9918  0.377    
-## annRange  1   0.0196   0.9191  0.361    
-## annSD     1   0.0313   1.4666  0.243    
+## augRange  1   0.0903   4.2286  0.025 *  
+## augSD     1   0.0212   0.9918  0.354    
+## annRange  1   0.0196   0.9191  0.374    
+## annSD     1   0.0313   1.4666  0.197    
 ## Residual 50   1.0673                    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1

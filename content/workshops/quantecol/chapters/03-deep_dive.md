@@ -6,15 +6,15 @@ links:
   - icon: file
     icon_pack: far
     name: SeaweedsEnv.RData
-    url: /data/BCB743/seaweed/SeaweedEnv.RData
+    url: /BCB743/seaweed/SeaweedEnv.RData
   - icon: file
     icon_pack: far
     name: dists_mat.RData
-    url: /data/BCB743/seaweed/dists_mat.RData
+    url: /BCB743/seaweed/dists_mat.RData
   - icon: file-csv
     icon_pack: fa
     name: bioregions.csv
-    url: /data/BCB743/seaweed/bioregions.csv
+    url: /BCB743/seaweed/bioregions.csv
 subtitle: ""
 title: "3. Deep Dive into Gradients"
 weight: 4
@@ -49,7 +49,7 @@ library(BiodiversityR) # for calcs of species richness etc.
 
 ```r
 # load the environmental data...
-load("../../../../static/data/BCB743/seaweed/SeaweedEnv.RData")
+load("../../../../static/BCB743/seaweed/SeaweedEnv.RData")
 env <- as.data.frame(env)
 # keep only some...
 env <- env[, c("annMean", "annRange", "annSD", "febMean", "febRange", "febSD",
@@ -61,7 +61,7 @@ Since the connectivity between sections is constrained by their location along a
 
 ```r
 # load the distances matrix...
-load("../../../../static/data/BCB743/seaweed/dists_mat.RData")
+load("../../../../static/BCB743/seaweed/dists_mat.RData")
 # loaded as dists.mat
 dists.mat[1:10, 1:8]
 ```
@@ -85,7 +85,7 @@ Various bioregions have been defined for South African marine biota. I prefer to
 
 ```r
 # load the bioregions data...
-bioreg <- read.csv("../../../../static/data/BCB743/seaweed/bioregions.csv",
+bioreg <- read.csv("../../../../static/BCB743/seaweed/bioregions.csv",
                    header = TRUE)
 rbind(head(bioreg, 3), tail(bioreg, 3))
 ```
@@ -192,7 +192,7 @@ rbind(head(env.df, 3), tail(env.df, 3))
 
 ```r
 # load the seaweed data...
-spp <- read.csv('../../../../static/data/BCB743/seaweed/SeaweedsSpp.csv')
+spp <- read.csv('../../../../static/BCB743/seaweed/SeaweedsSpp.csv')
 spp <- dplyr::select(spp, -1)
 ```
 

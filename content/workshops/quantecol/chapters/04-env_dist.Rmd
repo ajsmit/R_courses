@@ -10,15 +10,15 @@ links:
   - icon: file-csv
     icon_pack: fa
     name: Euclidian Distance Demo Data
-    url: /data/BCB743/seaweed/Euclidian_distance_demo_data_xyz.csv
+    url: /BCB743/seaweed/Euclidian_distance_demo_data_xyz.csv
   - icon: file-csv
     icon_pack: fa
     name: Euclidian Distance Demo Env Data
-    url: /data/BCB743/seaweed/Euclidian_distance_demo_data_env.csv
+    url: /BCB743/seaweed/Euclidian_distance_demo_data_env.csv
   - icon: file-csv
     icon_pack: fa
     name: Sites Data
-    url: /data/BCB743/seaweed/sites.csv
+    url: /BCB743/seaweed/sites.csv
 subtitle: ""
 title: 4. Environmental Distance
 weight: 5
@@ -35,7 +35,7 @@ library(geodist) # for calculating geographical distances between lats/lons
 library(ggpubr) # to arrange the multipanel graphs
 
 # setting up a 'root' file path so I don't have to keep doing it later...
-root <- "../../../../static/data/BCB743/"
+root <- "../../../../static/BCB743/"
 ```
 
 ## Toy data

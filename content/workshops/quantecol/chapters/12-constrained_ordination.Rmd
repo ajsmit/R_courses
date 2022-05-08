@@ -18,19 +18,19 @@ links:
   - icon: file-csv
     icon_pack: fa
     name: SeaweedsSpp.csv
-    url: /data/BCB743/seaweed/SeaweedsSpp.csv
+    url: /BCB743/seaweed/SeaweedsSpp.csv
   - icon: file
     icon_pack: far
     name: SeaweedsEnv.RData
-    url: /data/BCB743/seaweed/SeaweedEnv.RData
+    url: /BCB743/seaweed/SeaweedEnv.RData
   - icon: file-csv
     icon_pack: fa
     name: bioregions.csv
-    url: /data/BCB743/seaweed/bioregions.csv
+    url: /BCB743/seaweed/bioregions.csv
   - icon: file-csv
     icon_pack: fa
     name: sites.csv
-    url: /data/BCB743/seaweed/sites.csv    
+    url: /BCB743/seaweed/sites.csv    
 subtitle: ""
 title: "12. Constrained Ordination"
 weight: 16
@@ -67,7 +67,7 @@ library(grid)
 library(gridBase)
 
 # setting up a 'root' file path so I don't have to keep doing it later...
-root <- "../../../../static/data/BCB743/"
+root <- "../../../../static/BCB743/"
 ```
 
 Load the seaweed data:

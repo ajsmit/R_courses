@@ -10,19 +10,19 @@ links:
   - icon: file-csv
     icon_pack: fa
     name: DoubsEnv.csv
-    url: /data/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv
+    url: /BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv
   - icon: file-csv
     icon_pack: fa
     name: DoubsSpe.csv
-    url: /data/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
+    url: /BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
   - icon: file
     icon_pack: far
     name: SeaweedsEnv.RData
-    url: /data/BCB743/seaweed/SeaweedEnv.RData
+    url: /BCB743/seaweed/SeaweedEnv.RData
   - icon: file-csv
     icon_pack: fa
     name: bioregions.csv
-    url: /data/BCB743/seaweed/bioregions.csv
+    url: /BCB743/seaweed/bioregions.csv
 subtitle: ""
 title: "10. Principal Coordinate Analysis (PCoA)"
 weight: 13
@@ -42,7 +42,7 @@ library(tidyverse)
 library(vegan)
 
 # setting up a 'root' file path so I don't have to keep doing it later...
-root <- "../../../../static/data/BCB743/"
+root <- "../../../../static/BCB743/"
 ```
 
 ## The Doubs River data
@@ -430,10 +430,10 @@ env <- dplyr::slice(env, -8)
 ##         MDS1     MDS2     r2 Pr(>r)    
 ## dfs  0.99710  0.07609 0.7210  0.001 ***
 ## alt -0.99807 -0.06208 0.5659  0.001 ***
-## slo -0.92225  0.38660 0.1078  0.132    
+## slo -0.92225  0.38660 0.1078  0.130    
 ## flo  0.99746 -0.07129 0.5324  0.001 ***
-## pH  -0.42673 -0.90438 0.0480  0.513    
-## har  0.98804  0.15417 0.2769  0.014 *  
+## pH  -0.42673 -0.90438 0.0480  0.515    
+## har  0.98804  0.15417 0.2769  0.019 *  
 ## pho  0.45343  0.89129 0.6912  0.001 ***
 ## nit  0.86338  0.50456 0.6117  0.001 ***
 ## amm  0.42719  0.90416 0.7076  0.001 ***

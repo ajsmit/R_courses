@@ -6,7 +6,7 @@ links:
   - icon: file
     icon_pack: fa
     name: The WHO Data
-    url: /data/BCB743/WHO/WHO.zip
+    url: /BCB743/WHO/WHO.zip
 subtitle: ""
 title: "8b. PCA of WHO SDGs"
 weight: 11
@@ -28,7 +28,7 @@ library(missMDA) # to impute missing values
 library(ggcorrplot) # for the correlations
 
 # setting up a 'root' file path so I don't have to keep doing it later...
-root <- "../../../../static/data/BCB743/WHO/"
+root <- "../../../../static/BCB743/WHO/"
 ```
 
 ## Define and load the data

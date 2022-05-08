@@ -10,15 +10,15 @@ links:
   - icon: file-csv
     icon_pack: fa
     name: PB_data_matrix_abrev.csv
-    url: /data/BCB743/diatoms/PB_data_matrix_abrev.csv
+    url: /BCB743/diatoms/PB_data_matrix_abrev.csv
   - icon: file-csv
     icon_pack: fa
     name: PB_data_matrix.csv
-    url: /data/BCB743/diatoms/PB_data_matrix.csv
+    url: /BCB743/diatoms/PB_data_matrix.csv
   - icon: file-csv
     icon_pack: fa
     name: PB_diat_env.csv
-    url: /data/BCB743/diatoms/PB_diat_env.csv
+    url: /BCB743/diatoms/PB_diat_env.csv
 subtitle: ""
 title: "11b. nMDS of Mayombo's diatom data"
 weight: 15
@@ -59,7 +59,7 @@ library(plyr)
 # library(BiodiversityR)
 
 # setting up a 'root' file path so I don't have to keep doing it later...
-root <- "../../../../static/data/BCB743/"
+root <- "../../../../static/BCB743/"
 ```
 
 ## Load and prepare the data
@@ -284,7 +284,7 @@ permutest(mod.spp) # there is in fact no difference
 ## 
 ## Response: Distances
 ##           Df  Sum Sq  Mean Sq      F N.Perm Pr(>F)
-## Groups     1 0.05876 0.058761 2.6087    999  0.114
+## Groups     1 0.05876 0.058761 2.6087    999  0.123
 ## Residuals 40 0.90101 0.022525
 ```
 
@@ -300,7 +300,7 @@ permutest(mod.size) # nope...
 ## 
 ## Response: Distances
 ##           Df  Sum Sq   Mean Sq      F N.Perm Pr(>F)
-## Groups     1 0.00141 0.0014134 0.0604    999   0.82
+## Groups     1 0.00141 0.0014134 0.0604    999    0.8
 ## Residuals 40 0.93615 0.0234038
 ```
 
@@ -353,116 +353,40 @@ spp.nmds <- metaMDS(spp.log, k = 2,trymax = 100,
 
 ```
 ## Run 0 stress 0.1916291 
-## Run 1 stress 0.1893161 
+## Run 1 stress 0.2000869 
+## Run 2 stress 0.1898317 
 ## ... New best solution
-## ... Procrustes: rmse 0.07408865  max resid 0.2150665 
-## Run 2 stress 0.1948208 
-## Run 3 stress 0.2292327 
-## Run 4 stress 0.1906803 
-## Run 5 stress 0.1916282 
-## Run 6 stress 0.1909533 
-## Run 7 stress 0.2016481 
-## Run 8 stress 0.2207601 
-## Run 9 stress 0.1909533 
-## Run 10 stress 0.1910975 
-## Run 11 stress 0.1991325 
-## Run 12 stress 0.2004433 
-## Run 13 stress 0.1974682 
-## Run 14 stress 0.2004434 
-## Run 15 stress 0.1891594 
+## ... Procrustes: rmse 0.03957492  max resid 0.1664034 
+## Run 3 stress 0.1909532 
+## Run 4 stress 0.1893163 
 ## ... New best solution
-## ... Procrustes: rmse 0.1033219  max resid 0.4049959 
-## Run 16 stress 0.1910974 
-## Run 17 stress 0.1979582 
-## Run 18 stress 0.189144 
+## ... Procrustes: rmse 0.05875314  max resid 0.2063894 
+## Run 5 stress 0.1898317 
+## Run 6 stress 0.1909683 
+## Run 7 stress 0.2125864 
+## Run 8 stress 0.1893039 
 ## ... New best solution
-## ... Procrustes: rmse 0.00634945  max resid 0.03475354 
-## Run 19 stress 0.1909532 
-## Run 20 stress 0.1893161 
-## ... Procrustes: rmse 0.1024768  max resid 0.4098279 
-## Run 21 stress 0.1957971 
-## Run 22 stress 0.1906805 
-## Run 23 stress 0.2427911 
-## Run 24 stress 0.2107382 
-## Run 25 stress 0.19837 
-## Run 26 stress 0.1933977 
-## Run 27 stress 0.1893159 
-## ... Procrustes: rmse 0.1024758  max resid 0.409759 
-## Run 28 stress 0.189316 
-## ... Procrustes: rmse 0.1024753  max resid 0.409565 
-## Run 29 stress 0.1891595 
-## ... Procrustes: rmse 0.006377727  max resid 0.03467472 
-## Run 30 stress 0.2124628 
-## Run 31 stress 0.1925563 
-## Run 32 stress 0.1893039 
-## ... Procrustes: rmse 0.1033566  max resid 0.4098163 
-## Run 33 stress 0.1893036 
-## ... Procrustes: rmse 0.103352  max resid 0.4096011 
-## Run 34 stress 0.2011492 
-## Run 35 stress 0.1923505 
-## Run 36 stress 0.1893036 
-## ... Procrustes: rmse 0.1033517  max resid 0.4096032 
-## Run 37 stress 0.1992641 
-## Run 38 stress 0.1893162 
-## ... Procrustes: rmse 0.1024798  max resid 0.4098813 
-## Run 39 stress 0.1933988 
-## Run 40 stress 0.2167525 
-## Run 41 stress 0.1991326 
-## Run 42 stress 0.1893036 
-## ... Procrustes: rmse 0.1033529  max resid 0.4096648 
-## Run 43 stress 0.1948214 
-## Run 44 stress 0.2033779 
-## Run 45 stress 0.2033779 
-## Run 46 stress 0.1904909 
-## Run 47 stress 0.1909685 
-## Run 48 stress 0.1893043 
-## ... Procrustes: rmse 0.1033573  max resid 0.4098976 
-## Run 49 stress 0.1948216 
-## Run 50 stress 0.1909533 
-## Run 51 stress 0.2006866 
-## Run 52 stress 0.1974672 
-## Run 53 stress 0.1923501 
-## Run 54 stress 0.2029463 
-## Run 55 stress 0.1893162 
-## ... Procrustes: rmse 0.1024734  max resid 0.4094952 
-## Run 56 stress 0.1891594 
-## ... Procrustes: rmse 0.006357326  max resid 0.03474087 
-## Run 57 stress 0.1909532 
-## Run 58 stress 0.1904909 
-## Run 59 stress 0.1906803 
-## Run 60 stress 0.1893036 
-## ... Procrustes: rmse 0.1033517  max resid 0.4095786 
-## Run 61 stress 0.1909532 
-## Run 62 stress 0.2125875 
-## Run 63 stress 0.1957973 
-## Run 64 stress 0.189304 
-## ... Procrustes: rmse 0.1033545  max resid 0.4098226 
-## Run 65 stress 0.1909532 
-## Run 66 stress 0.2090838 
-## Run 67 stress 0.2077191 
-## Run 68 stress 0.1957972 
-## Run 69 stress 0.1906802 
-## Run 70 stress 0.1893041 
-## ... Procrustes: rmse 0.1033569  max resid 0.4098656 
-## Run 71 stress 0.2193143 
-## Run 72 stress 0.2129192 
-## Run 73 stress 0.2088814 
-## Run 74 stress 0.1926542 
-## Run 75 stress 0.1991329 
-## Run 76 stress 0.2108268 
-## Run 77 stress 0.192556 
-## Run 78 stress 0.1974703 
-## Run 79 stress 0.1925562 
-## Run 80 stress 0.1957972 
-## Run 81 stress 0.1925564 
-## Run 82 stress 0.189316 
-## ... Procrustes: rmse 0.1024756  max resid 0.4095795 
-## Run 83 stress 0.1909532 
-## Run 84 stress 0.1898317 
-## Run 85 stress 0.1933979 
-## Run 86 stress 0.1891445 
-## ... Procrustes: rmse 0.0005667914  max resid 0.003067114 
+## ... Procrustes: rmse 0.007920569  max resid 0.04367406 
+## Run 9 stress 0.1893162 
+## ... Procrustes: rmse 0.00791033  max resid 0.04409203 
+## Run 10 stress 0.1891441 
+## ... New best solution
+## ... Procrustes: rmse 0.1033089  max resid 0.4076984 
+## Run 11 stress 0.1898319 
+## Run 12 stress 0.2203252 
+## Run 13 stress 0.1909532 
+## Run 14 stress 0.1914239 
+## Run 15 stress 0.1948208 
+## Run 16 stress 0.1891445 
+## ... Procrustes: rmse 0.0004142235  max resid 0.002240537 
 ## ... Similar to previous best
+## Run 17 stress 0.189144 
+## ... New best solution
+## ... Procrustes: rmse 0.0001463033  max resid 0.0008028118 
+## ... Similar to previous best
+## Run 18 stress 0.1992635 
+## Run 19 stress 0.1898321 
+## Run 20 stress 0.1906803 
 ## *** Solution reached
 ```
 
@@ -670,9 +594,9 @@ out$table
 ```
 ##                                      Res.Df Df.diff     wald Pr(>wald)
 ## (Intercept)                              41      NA       NA        NA
-## env$host_spp                             40       1 5.227772     0.299
-## env$host_size                            39       1 7.799205     0.006
-## env$host_spp:env$host_size               38       1 5.434128     0.013
+## env$host_spp                             40       1 5.227772     0.283
+## env$host_size                            39       1 7.799205     0.003
+## env$host_spp:env$host_size               38       1 5.434128     0.005
 ## env$host_spp:env$host_size:env$plant     26      16      NaN     0.001
 ```
 

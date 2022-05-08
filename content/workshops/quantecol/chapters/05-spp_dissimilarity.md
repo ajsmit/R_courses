@@ -10,11 +10,11 @@ links:
   - icon: file-csv
     icon_pack: fa
     name: DoubsEnv.csv
-    url: /data/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv
+    url: /BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv
   - icon: file-csv
     icon_pack: fa
     name: DoubsSpe.csv
-    url: /data/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
+    url: /BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
 subtitle: ""
 title: "5. Species Dissimilarities"
 weight: 6

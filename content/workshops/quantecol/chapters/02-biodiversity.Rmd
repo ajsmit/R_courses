@@ -26,11 +26,11 @@ links:
   - icon: file-csv
     icon_pack: fa
     name: SeaweedsSpp.csv
-    url: /data/BCB743/seaweed/SeaweedsSpp.csv
+    url: /BCB743/seaweed/SeaweedsSpp.csv
   - icon: file-csv
     icon_pack: fa
     name: light_levels.csv
-    url: /data/BCB743/seaweed/light_levels.csv
+    url: /BCB743/seaweed/light_levels.csv
 subtitle: ""
 title: "2. Biodiversity"
 weight: 3
@@ -72,7 +72,7 @@ library(gridBase)
 Let's load the data and see how it is structured:
 
 ```{r}
-spp <- read.csv('../../../../static/data/BCB743/seaweed/SeaweedsSpp.csv')
+spp <- read.csv('../../../../static/BCB743/seaweed/SeaweedsSpp.csv')
 spp <- dplyr::select(spp, -1)
 
 # Lets look at the data:
@@ -134,7 +134,7 @@ Simpson's λ, or simply the Simpson index, is calculated as $\displaystyle \lamb
 We cannot calculate either of these for the seaweed data because in order to do so we require abundance data---the seaweed data are presence-absence only. Let's load a fictitious dataset of the diversity of three different communities of plants, with each community corresponding to a different light environment (dim, mid and high light):
 
 ```{r}
-light <- read.csv("../../../../static/data/BCB743/seaweed/light_levels.csv")
+light <- read.csv("../../../../static/BCB743/seaweed/light_levels.csv")
 light
 ```
 

@@ -10,11 +10,11 @@ links:
   - icon: file-csv
     icon_pack: fa
     name: DoubsEnv.csv
-    url: /data/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv
+    url: /BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv
   - icon: file-csv
     icon_pack: fa
     name: DoubsSpe.csv
-    url: /data/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
+    url: /BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
 subtitle: ""
 title: "11a. non-Metric multidimensional scaling (nMDS)"
 weight: 14
@@ -33,7 +33,7 @@ library(tidyverse)
 library(vegan)
 
 # setting up a 'root' file path so I don't have to keep doing it later...
-root <- "../../../../static/data/BCB743/"
+root <- "../../../../static/BCB743/"
 ```
 
 ## The Doubs River data
