@@ -211,7 +211,7 @@ This will serve well as an introduction to the next chapter, which is about desc
 
 > **Task 2:** The next thing we want to do is to subset and filter our data. In the newly created R script, write down some lines of code that will subset and filter the beach birds data in interesitng and useful ways. Always provide ample comments to indicate what it you are doing, and why you're doing it. Hint: you'll want to use the **tidyverse** package.
 
-This will show you what the data for Sex and for flush.dist look like.
+This will show you what the data for `Sex` and for `flush.dist` look like.
 
 ## Data classes
 

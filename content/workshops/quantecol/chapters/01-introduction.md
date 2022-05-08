@@ -16,7 +16,7 @@ weight: 2
 >
 > --- Edward O. Wilson
 
-![NSFW](/collection/quantecol/chapters/01-data_files/NSFW.jpg)
+![NSFW](/workshops/quantecol/chapters/01-introduction_files/NSFW.jpg){width=70%}
 
 (This chapter is in development.)
 

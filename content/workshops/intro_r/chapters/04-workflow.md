@@ -122,9 +122,7 @@ This will of course delete our variable, so we will import it in again using whi
 
 
 ```r
-laminaria <- read_csv("../../../../static/data/laminaria.csv")
-# OR
-laminaria <- read_csv2("../../../../static/data/laminaria.csv")
+laminaria <- read.csv("../../../../static/data/laminaria.csv")
 ```
 
 > **Managing variables**\
@@ -141,12 +139,50 @@ Once the data are in R, you need to check there are no glaring errors. It is use
 head(laminaria)
 ```
 
+```
+R> # A tibble: 6 × 12
+R>   region site        Ind blade_weight blade_length blade_thickness stipe_mass
+R>   <chr>  <chr>     <dbl>        <dbl>        <dbl>           <dbl>      <dbl>
+R> 1 WC     Kommetjie     2         1.9           160            2          1.5 
+R> 2 WC     Kommetjie     3         1.5           120            1.4        2.25
+R> 3 WC     Kommetjie     4         0.55          110            1.5        1.15
+R> 4 WC     Kommetjie     5         1             159            1.5        2.6 
+R> 5 WC     Kommetjie     6         2.3           149            2         NA   
+R> 6 WC     Kommetjie     7         1.6           107            1.75       2.9 
+R> # … with 5 more variables: stipe_length <dbl>, stipe_diameter <dbl>,
+R> #   digits <dbl>, thallus_mass <dbl>, total_length <dbl>
+```
+
 This lists the first six lines of each of the variables in the dataframe as a table. You can similarly retrieve the last six lines of a dataframe by an identical call to the function `tail()`. Of course, this works better when you have fewer than 10 or so variables (columns); for larger data sets, things can get a little messy. If you want more or fewer rows in your head or tail, tell R how many rows it is you want by adding this information to your function call. Try typing:
 
 
 ```r
 head(laminaria, n = 3)
+```
+
+```
+R> # A tibble: 3 × 12
+R>   region site        Ind blade_weight blade_length blade_thickness stipe_mass
+R>   <chr>  <chr>     <dbl>        <dbl>        <dbl>           <dbl>      <dbl>
+R> 1 WC     Kommetjie     2         1.9           160             2         1.5 
+R> 2 WC     Kommetjie     3         1.5           120             1.4       2.25
+R> 3 WC     Kommetjie     4         0.55          110             1.5       1.15
+R> # … with 5 more variables: stipe_length <dbl>, stipe_diameter <dbl>,
+R> #   digits <dbl>, thallus_mass <dbl>, total_length <dbl>
+```
+
+```r
 tail(laminaria, n = 2)
+```
+
+```
+R> # A tibble: 2 × 12
+R>   region site         Ind blade_weight blade_length blade_thickness stipe_mass
+R>   <chr>  <chr>      <dbl>        <dbl>        <dbl>           <dbl>      <dbl>
+R> 1 WC     Rocky Bank    12          2.1          194             1.4       3.75
+R> 2 WC     Rocky Bank    13          1.3          160             1.9       2.45
+R> # … with 5 more variables: stipe_length <dbl>, stipe_diameter <dbl>,
+R> #   digits <dbl>, thallus_mass <dbl>, total_length <dbl>
 ```
 
 You can also check the structure of your data by using the `glimpse()` function:
@@ -154,6 +190,23 @@ You can also check the structure of your data by using the `glimpse()` function:
 
 ```r
 glimpse(laminaria)
+```
+
+```
+R> Rows: 140
+R> Columns: 12
+R> $ region          <chr> "WC", "WC", "WC", "WC", "WC", "WC", "WC", "WC", "WC", …
+R> $ site            <chr> "Kommetjie", "Kommetjie", "Kommetjie", "Kommetjie", "K…
+R> $ Ind             <dbl> 2, 3, 4, 5, 6, 7, 8, 10, 11, 1, 3, 4, 5, 6, 7, 8, 9, 1…
+R> $ blade_weight    <dbl> 1.90, 1.50, 0.55, 1.00, 2.30, 1.60, 0.65, 0.95, 2.30, …
+R> $ blade_length    <dbl> 160, 120, 110, 159, 149, 107, 104, 111, 178, 145, 146,…
+R> $ blade_thickness <dbl> 2.00, 1.40, 1.50, 1.50, 2.00, 1.75, 2.00, 1.25, 2.50, …
+R> $ stipe_mass      <dbl> 1.50, 2.25, 1.15, 2.60, NA, 2.90, 0.75, 1.60, 4.20, 0.…
+R> $ stipe_length    <dbl> 120, 149, 97, 167, 146, 161, 110, 136, 176, 82, 118, 1…
+R> $ stipe_diameter  <dbl> 56.0, 68.5, 69.0, 60.0, 73.0, 63.0, 51.0, 56.0, 76.0, …
+R> $ digits          <dbl> 12, 12, 13, 8, 15, 17, 11, 11, 8, 19, 20, 23, 20, 24, …
+R> $ thallus_mass    <dbl> 3000, 3750, 1700, 3600, 5100, 4500, 1400, 2550, 6500, …
+R> $ total_length    <dbl> 256, 269, 207, 326, 295, 268, 214, 247, 354, 227, 264,…
 ```
 
 This very handy function lists the variables in your dataframe by name, tells you what sorts of data are contained in each variable (*e.g.*, continuous number, discrete factor) and provides an indication of the actual contents of each.
@@ -164,6 +217,52 @@ If we wanted only the names of the variables (columns) in the dataframe, we coul
 ```r
 names(laminaria)
 ```
+
+```
+R>  [1] "region"          "site"            "Ind"             "blade_weight"   
+R>  [5] "blade_length"    "blade_thickness" "stipe_mass"      "stipe_length"   
+R>  [9] "stipe_diameter"  "digits"          "thallus_mass"    "total_length"
+```
+
+Another option, but by no means the only one remaining, is to install a library called **skimr** and to use thew `skim()` function:
+
+
+```r
+library(skimr)
+skim(iris) # using built-in `iris` data
+```
+
+
+Table: Table 1: Data summary
+
+|                         |     |
+|:------------------------|:----|
+|Name                     |iris |
+|Number of rows           |150  |
+|Number of columns        |5    |
+|_______________________  |     |
+|Column type frequency:   |     |
+|factor                   |1    |
+|numeric                  |4    |
+|________________________ |     |
+|Group variables          |None |
+
+
+**Variable type: factor**
+
+|skim_variable | n_missing| complete_rate|ordered | n_unique|top_counts                |
+|:-------------|---------:|-------------:|:-------|--------:|:-------------------------|
+|Species       |         0|             1|FALSE   |        3|set: 50, ver: 50, vir: 50 |
+
+
+**Variable type: numeric**
+
+|skim_variable | n_missing| complete_rate| mean|   sd|  p0| p25|  p50| p75| p100|hist  |
+|:-------------|---------:|-------------:|----:|----:|---:|---:|----:|---:|----:|:-----|
+|Sepal.Length  |         0|             1| 5.84| 0.83| 4.3| 5.1| 5.80| 6.4|  7.9|▆▇▇▅▂ |
+|Sepal.Width   |         0|             1| 3.06| 0.44| 2.0| 2.8| 3.00| 3.3|  4.4|▁▆▇▂▁ |
+|Petal.Length  |         0|             1| 3.76| 1.77| 1.0| 1.6| 4.35| 5.1|  6.9|▇▁▆▇▂ |
+|Petal.Width   |         0|             1| 1.20| 0.76| 0.1| 0.3| 1.30| 1.8|  2.5|▇▁▇▅▃ |
 
 ### Tidyverse sneak peek
 
@@ -510,8 +609,8 @@ installed.packages()[names(sessionInfo()$otherPkgs), "Version"]
 ```
 
 ```
-R>   forcats   stringr     dplyr     purrr     readr     tidyr    tibble   ggplot2 
-R>   "0.5.1"   "1.4.0"   "1.0.8"   "0.3.4"   "2.1.2"   "1.2.0"   "3.1.6"   "3.3.5" 
-R> tidyverse 
-R>   "1.3.1"
+R>     skimr   forcats   stringr     dplyr     purrr     readr     tidyr    tibble 
+R>   "2.1.4"   "0.5.1"   "1.4.0"   "1.0.9"   "0.3.4"   "2.1.2"   "1.2.0"   "3.1.7" 
+R>   ggplot2 tidyverse 
+R>   "3.3.6"   "1.3.1"
 ```

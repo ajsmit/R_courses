@@ -124,9 +124,7 @@ rm(laminaria)
 This will of course delete our variable, so we will import it in again using whichever of the following two lines of code matched our Excel situation.
 
 ```{r, eval=FALSE}
-laminaria <- read_csv("../../../../static/data/laminaria.csv")
-# OR
-laminaria <- read_csv2("../../../../static/data/laminaria.csv")
+laminaria <- read.csv("../../../../static/data/laminaria.csv")
 ```
 
 > **Managing variables**\
@@ -138,20 +136,20 @@ laminaria <- read_csv2("../../../../static/data/laminaria.csv")
 
 Once the data are in R, you need to check there are no glaring errors. It is useful to call up the first few lines of the dataframe using the function `head()`. Try it yourself by typing:
 
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 head(laminaria)
 ```
 
 This lists the first six lines of each of the variables in the dataframe as a table. You can similarly retrieve the last six lines of a dataframe by an identical call to the function `tail()`. Of course, this works better when you have fewer than 10 or so variables (columns); for larger data sets, things can get a little messy. If you want more or fewer rows in your head or tail, tell R how many rows it is you want by adding this information to your function call. Try typing:
 
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 head(laminaria, n = 3)
 tail(laminaria, n = 2)
 ```
 
 You can also check the structure of your data by using the `glimpse()` function:
 
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 glimpse(laminaria)
 ```
 
@@ -159,8 +157,15 @@ This very handy function lists the variables in your dataframe by name, tells yo
 
 If we wanted only the names of the variables (columns) in the dataframe, we could use:
 
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 names(laminaria)
+```
+
+Another option, but by no means the only one remaining, is to install a library called **skimr** and to use thew `skim()` function:
+
+```{r}
+library(skimr)
+skim(iris) # using built-in `iris` data
 ```
 
 ### Tidyverse sneak peek

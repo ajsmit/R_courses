@@ -34,11 +34,11 @@ cascade:
       
       These workshops are scheduled to take place during the first semester of each year. **BCB744** is a *core* module and will be taken by all B.Sc. (Hons.) students. **BCB743** is an *elective* module -- please discuss with your supervisor if taking this module will benefit you.
 
-      | Date                         |      | Module                     |
-      |:-----------------------------|:-----|:---------------------------|
-      | BCB744 Introduction to R     |  ... | 7 -- 11 February 2022      |
-      | BCB744 Biostatistics         |  ... | 28 March -- 8 April 2022   |
-      | BCB743 Quantitative Ecology  |  ... | 20 June -- 29 July 2022    |
+      | Date                                                |     | Module                    |
+      |:----------------------------------------------------|:----|:--------------------------|
+      | [BCB744 Introduction to R](/workshops/intro_r/)     |  >> | 7 -- 11 Feb 2022          |
+      | [BCB744 Biostatistics](/workshops/biostats/)        |  >> | 28 Mar -- 8 April 2022    |
+      | [BCB743 Quantitative Ecology](/workshops/quantecol/)|  >> | 20 Jun -- 29 July 2022    |
 
 ---
 

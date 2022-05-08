@@ -20,6 +20,249 @@ weight: 3
 >
 > --- Stephen J. Gould
 
+## Course structure
+
+These links point to online resources such as datasets and R scripts in support of the video and PDF lecture material. It is essential that you work through these examples and workflows.
+
+{{< rawhtml >}}
+<table>
+    <thead>
+    <tr>
+    <th style="text-align:left">Wk</th>
+    <th style="text-align:left">Lect</th>
+    <th style="text-align:left">Topic</th>
+    <th style="text-align:center">Class</th>
+    <th style="text-align:left">Slides</th>
+    <th style="text-align:center">Reading</th>
+    <th style="text-align:center">Data</th>
+    <th style="text-align:center">Ex</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td style="text-align:left">Wk 1</td>
+    <td style="text-align:left">Lect 1</td>
+    <td style="text-align:left">Introduction</td>
+    <td style="text-align:center"><a href="/workshops/quantecol/chapters/01-introduction/" title="Lecture 1"><i class="fas fa-graduation-cap"></i></a></td>
+    <td style="text-align:center"><a href="/pdf/BCB743/BCB743_01_intro.pdf"><i class="fas fa-file-pdf" title="Lecture 1 slides"></i></a></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"></td>
+    <td style="text-align:left"></td>
+    <td style="text-align:left"><strong>BIODIVERSITY</strong></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:left"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"></td>
+    <td style="text-align:left">Lect 2</td>
+    <td style="text-align:left">Biodiversity (1)</td>
+    <td style="text-align:center"><a href="/workshops/quantecol/02-biodiversity/"><i class="fas fa-graduation-cap" title="Lecture 2"></i></a></td>
+    <td style="text-align:center"><a href="/pdf/BCB743/BCB743_02_biodiversity_1.pdf"><i class="fas fa-file-pdf" title="Lecture 2 slides (1)"></i></a> <a href="/pdf/BCB743/BCB743_02_biodiversity_2.pdf"><i class="fas fa-file-pdf" title="Lecture 2 slides (2)"></i></a></td>
+    <td style="text-align:center"><a href="/pdf/BCB743/Smit_et_al_2013.pdf"><i class="fas fa-file-pdf" title="Smit et al (2013)"></i></a> <a href="/pdf/BCB743/Smit_et_al_2017.pdf"><i class="fas fa-file-pdf" title="Smit et al (2017)"></i></a> <a href="/pdf/BCB743/The_seaweed_data.pdf"><i class="fas fa-file-pdf" title="About the seaweed data"></i></a></td>
+    <td style="text-align:center"><a href="/BCB743/seaweed/SeaweedsSpp.csv/"><i class="fas fa-file-csv" title="SeaweedsSpp.csv"></i></a> <a href="/BCB743/seaweed/light_levels.csv/"><i class="fas fa-file-csv" title="light_levels.csv"></i></a></td>
+    <td style="text-align:center"></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"></td>
+    <td style="text-align:left">Lect 3</td>
+    <td style="text-align:left">Biodiversity (2)</td>
+    <td style="text-align:center"></td>
+    <td style="text-align:left"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    </tr>
+    <tr>
+    <td style="text-align:left">Wk 2</td>
+    <td style="text-align:left">Self study</td>
+    <td style="text-align:left">Ecological theories</td>
+    <td style="text-align:center"></td>
+    <td style="text-align:left"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"></td>
+    <td style="text-align:left"></td>
+    <td style="text-align:left"><strong>MATRICES</strong></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:left"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"></td>
+    <td style="text-align:left">Lect 4</td>
+    <td style="text-align:left">Environmental distance</td>
+    <td style="text-align:center"><a href="/workshops/quantecol/04-env_dist/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
+    <td style="text-align:center"><a href="/pdf/BCB743/BCB743_04_environmental_distance.pdf"><i class="fas fa-file-pdf" title="Lecture 4 slides"></i></a></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"><a href="/BCB743/seaweed/Euclidian_distance_demo_data_xyz.csv/"><i class="fas fa-file-csv" title="Euclidian_distance_demo_data_xyz.csv"></i></a> <a href="/BCB743/seaweed/Euclidian_distance_demo_data_env.csv/"><i class="fas fa-file-csv" title="Euclidian_distance_demo_data_env.csv"></i></a> <a href="/BCB743/seaweed/sites.csv/"><i class="fas fa-file-csv" title="sites.csv"></i></a></td>
+    <td style="text-align:center"></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"></td>
+    <td style="text-align:left">Lect 5</td>
+    <td style="text-align:left">Species dissimilarity</td>
+    <td style="text-align:center"><a href="/workshops/quantecol/05-spp_dissimilarity/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
+    <td style="text-align:center"><a href="/pdf/BCB743/BCB743_05_dissimilarity.pdf"><i class="fas fa-file-pdf" title="Lecture 5 slides"></i></a></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv/"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv/"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a></td>
+    <td style="text-align:center"></td>
+    </tr>
+    <tr>
+    <td style="text-align:left">Wk 3</td>
+    <td style="text-align:left">Self study</td>
+    <td style="text-align:left">Deeper into gradients</td>
+    <td style="text-align:center"><a href="/workshops/quantecol/03-deep_dive/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
+    <td style="text-align:left"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"><a href="/BCB743/seaweed/SeaweedEnv.RData/"><i class="fas fa-file-export" title="SeaweedEnv.RData"></i></a> <a href="/BCB743/seaweed/dists_mat.RData/"><i class="fas fa-file-export" title="dists_mat.RData"></i></a> <a href="/BCB743/seaweed/bioregions.csv/"><i class="fas fa-file-csv" title="bioregions.csv"></i></a></td>
+    <td style="text-align:center"></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"></td>
+    <td style="text-align:left">Lect 6</td>
+    <td style="text-align:left">Correlations et al.</td>
+    <td style="text-align:center"><a href="/workshops/quantecol/06-correlations/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
+    <td style="text-align:center"><a href="/pdf/BCB743/BCB743_06_correlations.pdf"><i class="fas fa-file-pdf" title="Lecture 6 slides"></i></a></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv/"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv/"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a></td>
+    <td style="text-align:center"></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"></td>
+    <td style="text-align:left"></td>
+    <td style="text-align:left"><strong>ORDINATION</strong></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:left"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"></td>
+    <td style="text-align:left">Lect 7</td>
+    <td style="text-align:left">Ordinations</td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"><a href="/pdf/BCB743/BCB743_07_ordination.pdf"><i class="fas fa-file-pdf" title="Lecture 7 slides"></i></a></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"></td>
+    <td style="text-align:left">Lect 8</td>
+    <td style="text-align:left">PCA (1)</td>
+    <td style="text-align:center"><a href="/workshops/quantecol/08-pca/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
+    <td style="text-align:center"><a href="/pdf/BCB743/BCB743_08_PCA.pdf"><i class="fas fa-file-pdf" title="Lecture 8 slides"></i></a></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv/"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv/"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/cleanplot.pca.R/"><i class="fas fa-file-code" title="cleanplot.pca.R"></i></a></td>
+    <td style="text-align:center"></td>
+    </tr>
+    <tr>
+    <td style="text-align:left">Wk 4</td>
+    <td style="text-align:left">Self study</td>
+    <td style="text-align:left">PCA (2)</td>
+    <td style="text-align:center"><a href="/workshops/quantecol/08-pca_sdg/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
+    <td style="text-align:left"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"><a href="/BCB743/WHO/WHO.zip/"><i class="fas fa-file-archive" title="WHO.zip"></i></a></td>
+    <td style="text-align:center"></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"></td>
+    <td style="text-align:left">Lect 9</td>
+    <td style="text-align:left">CA</td>
+    <td style="text-align:center"><a href="/workshops/quantecol/09-ca/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
+    <td style="text-align:center"><a href="/pdf/BCB743/BCB743_09_CCA.pdf"><i class="fas fa-file-pdf" title="Lecture 9 slides"></i></a></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv/"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv/"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a></td>
+    <td style="text-align:center"></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"></td>
+    <td style="text-align:left">Lect 10</td>
+    <td style="text-align:left">PCoA</td>
+    <td style="text-align:center"><a href="/workshops/quantecol/10-pcoa/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
+    <td style="text-align:center"><a href="/pdf/BCB743/BCB743_10_PCoA.pdf"><i class="fas fa-file-pdf" title="Lecture 10 slides"></i></a></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"><a href="/BCB743/seaweed/SeaweedEnv.RData/"><i class="fas fa-file-export" title="SeaweedEnv.RData"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv/"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv/"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a> <a href="/BCB743/seaweed/bioregions.csv/"><i class="fas fa-file-csv" title="bioregions.csv"></i></a></td>
+    <td style="text-align:center"></td>
+    </tr>
+    <tr>
+    <td style="text-align:left">Wk 5</td>
+    <td style="text-align:left">Lect 11</td>
+    <td style="text-align:left">nMDS</td>
+    <td style="text-align:center"><a href="/workshops/quantecol/11-nmds/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
+    <td style="text-align:center"><a href="/pdf/BCB743/BCB743_11_nMDS.pdf"><i class="fas fa-file-pdf" title="Lecture 11 slides"></i></a></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv/"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv/"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a></td>
+    <td style="text-align:center"></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"></td>
+    <td style="text-align:left">Self study</td>
+    <td style="text-align:left">nMDS + PERMANOVA (diatoms)</td>
+    <td style="text-align:center"><a href="/workshops/quantecol/11-nmds_diatoms/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
+     <td style="text-align:center"></td>
+    <td style="text-align:center"><a href="/pdf/BCB743/Mayombo_et_al_2019.pdf"><i class="fas fa-file-pdf" title="Mayombo et al (2019)"></i></a></td>
+    <td style="text-align:center"><a href="/BCB743/diatoms/PB_data_matrix_abrev.csv/"><i class="fas fa-file-csv" title="PB_data_matrix_abrev.csv"></i></a> <a href="/BCB743/diatoms/PB_data_matrix.csv/"><i class="fas fa-file-csv" title="PB_data_matrix.csv"></i></a> <a href="/BCB743/diatoms/PB_diat_env.csv/"><i class="fas fa-file-csv" title="PB_diat_env.csv"></i></a></td>
+    <td style="text-align:center"></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"></td>
+    <td style="text-align:left">Lect 12</td>
+    <td style="text-align:left">CCA &amp; RDA</td>
+    <td style="text-align:center"><a href="/workshops/quantecol/12-constrained_ordination/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
+    <td style="text-align:center"><a href="/pdf/BCB743/BCB743_12_constrained_ordination.pdf"><i class="fas fa-file-pdf" title="Lecture 12 slides"></i></a></td>
+    <td style="text-align:center"><a href="/pdf/BCB743/Smit_et_al_2017.pdf"><i class="fas fa-file-pdf" title="Smit et al (2017)"></i></a> <a href="/pdf/BCB743/The_seaweed_data.pdf"><i class="fas fa-file-pdf" title="About the seaweed data"></i></a></td>
+    <td style="text-align:center"><a href="/BCB743/seaweed/SeaweedsSpp.csv/"><i class="fas fa-file-csv" title="SeaweedsSpp.csv"></i></a> <a href="/BCB743/seaweed/SeaweedsEnv.csv/"><i class="fas fa-file-csv" title="SeaweedsEnv.csv"></i></a> <a href="/BCB743/seaweed/sites.csv/"><i class="fas fa-file-csv" title="sites.csv"></i></a> <a href="/BCB743/seaweed/bioregions.csv/"><i class="fas fa-file-csv" title="bioregions.csv"></i></a></td>
+    <td style="text-align:center"></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"></td>
+    <td style="text-align:left"></td>
+    <td style="text-align:left"><strong>CLUSTER ANALYSIS</strong></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:left"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    </tr>
+    <tr>
+    <td style="text-align:left">Wk 6</td>
+    <td style="text-align:left">Lect 13</td>
+    <td style="text-align:left">Cluster analysis</td>
+    <td style="text-align:center"><a href="/workshops/quantecol/13-cluster_analysis/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
+    <td style="text-align:left"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    </tr>
+    <tr>
+    <td style="text-align:left"></td>
+    <td style="text-align:left">Lect 13</td>
+    <td style="text-align:left">Review &amp; assignment</td>
+    <td style="text-align:center"></td>
+    <td style="text-align:left"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    <td style="text-align:center"></td>
+    </tr>
+    </tbody>
+</table>
+{{< /rawhtml >}}
+
 # Modern ecological problems
 
 **This is a course about community ecology and not so much about population ecology.** Community ecology underpins the vast fields of biodiversity and biogeography, and concerns spatial scales from squares of meters to all of Earth. We can look at historical, contemporary, and future processes that have been implicated in shaping the distribution of life on our planet.
@@ -77,61 +320,3 @@ You will encounter the following functions for the first time in this module:
 -   `vegdist()` -- Dissimilarity Indices for Community Ecologists
 -   `vif.cca()` -- Diagnostic Tools for [Constrained] Ordination (CCA, RDA, DCA, CA, PCA)
 
-These links point to online resources such as datasets and R scripts in support of the video and PDF lecture material. It is essential that you work through these examples and workflows.
-
-## Week 1
-
-### Introduction
-
-These materials are incomplete...
-
--   **[Lecture 1]** Introduction
-
-    -   Ecological data
-    -   Data properties
-    -   What do we do with the data?
-    -   Exploring the data
-
-### Biodiversity
-
--   **[Lecture 2]** Biodiversity
--   **[Lecture 3]** Biodiversity (continue)
-
-## Week 2
-
--   **[Lecture 4]** Biodiversity (continue)
--   **[Self study]** Gradients: What structures biodiversity?
--   **[Self study]** Historical, neutral, and niche theories
-
-### Matrices
-
--   **[Lecture 5]** Environmental distance
--   **[Lecture 6]** Species dissimilarity
--   **[Self study]** Gradients revisited: Deep dive into gradients
-
-## Week 3
-
--   **[Self study]** Correlations and associations
--   **[Lecture 7]** Introduction to ordination (theory only; refer to PDF slides and lecture video)
-
-### Ordinations
-
--   **[Lecture 8]** Principal component analysis (PCA)
-
-## Week 4
-
--   **[Self study]** PCA (continue)
--   **[Self study]** PCA of World Health Organization data on progress towards attaining SDGs
--   **[Lecture 9]** Correspondence analysis (CA)
--   **[Lecture 10]** Principal coordinate analysis (PCoA)
-
-## Week 5
-
--   **[Lecture 11]** non-Metric multi-dimensional scaling (nMDS)
--   **[Self study]** nMDS + PERMANOVA analysis of Mayombo's diatom data
--   **[Lecture 12]** Constrained ordination
--   **[Lecture 13]** Cluster analysis
-
-## Week 6
-
--   **[Lecture 14]** All topics: Review and assignments

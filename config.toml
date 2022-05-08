@@ -49,7 +49,7 @@ enableEmoji = true
   # use a built-in color theme
   # one of: forest / grayscale / peach / plum /
   #         poppy / sky / violet / water
-  theme = "water"
+  theme = "sky"
 
   # or, leave theme empty & make your own palette
   # see docs at https://hugo-apero.netlify.app/blog/color-themes/
@@ -62,12 +62,12 @@ enableEmoji = true
   # serif options: Fraunces / EB Garamond / Bitter
   # sans-serif options: Commissioner / Atkinson Hyperlegible / Metropolis
   # if you import your own fonts, name them here too
-  customtextFontFamily = ""
+  customtextFontFamily = "Atkinson Hyperlegible"
   customheadingFontFamily = ""
   customcodeFontFamily = ""
   # alternatively, leave empty and select basic font options: sans-serif or serif
   # for more http://tachyons.io/docs/typography/font-family/
-  textFontFamily = "Fira Sans"
+  textFontFamily = "" # Fira Sans
   headingFontFamily = "Titillium Web"
   codeFontFamily = "Fira Code"
 
