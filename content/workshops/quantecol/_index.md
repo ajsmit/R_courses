@@ -66,7 +66,7 @@ These links point to online resources such as datasets and R scripts in support 
     <td style="text-align:center"><a href="/workshops/quantecol/02-biodiversity/"><i class="fas fa-graduation-cap" title="Lecture 2"></i></a></td>
     <td style="text-align:center"><a href="/pdf/BCB743/BCB743_02_biodiversity_1.pdf"><i class="fas fa-file-pdf" title="Lecture 2 slides (1)"></i></a> <a href="/pdf/BCB743/BCB743_02_biodiversity_2.pdf"><i class="fas fa-file-pdf" title="Lecture 2 slides (2)"></i></a></td>
     <td style="text-align:center"><a href="/pdf/BCB743/Smit_et_al_2013.pdf"><i class="fas fa-file-pdf" title="Smit et al (2013)"></i></a> <a href="/pdf/BCB743/Smit_et_al_2017.pdf"><i class="fas fa-file-pdf" title="Smit et al (2017)"></i></a> <a href="/pdf/BCB743/The_seaweed_data.pdf"><i class="fas fa-file-pdf" title="About the seaweed data"></i></a></td>
-    <td style="text-align:center"><a href="/BCB743/seaweed/SeaweedsSpp.csv/"><i class="fas fa-file-csv" title="SeaweedsSpp.csv"></i></a> <a href="/BCB743/seaweed/light_levels.csv/"><i class="fas fa-file-csv" title="light_levels.csv"></i></a></td>
+    <td style="text-align:center"><a href="/BCB743/seaweed/SeaweedsSpp.csv"><i class="fas fa-file-csv" title="SeaweedsSpp.csv"></i></a> <a href="/BCB743/seaweed/light_levels.csv"><i class="fas fa-file-csv" title="light_levels.csv"></i></a></td>
     <td style="text-align:center"></td>
     </tr>
     <tr>
@@ -106,7 +106,7 @@ These links point to online resources such as datasets and R scripts in support 
     <td style="text-align:center"><a href="/workshops/quantecol/04-env_dist/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
     <td style="text-align:center"><a href="/pdf/BCB743/BCB743_04_environmental_distance.pdf"><i class="fas fa-file-pdf" title="Lecture 4 slides"></i></a></td>
     <td style="text-align:center"></td>
-    <td style="text-align:center"><a href="/BCB743/seaweed/Euclidian_distance_demo_data_xyz.csv/"><i class="fas fa-file-csv" title="Euclidian_distance_demo_data_xyz.csv"></i></a> <a href="/BCB743/seaweed/Euclidian_distance_demo_data_env.csv/"><i class="fas fa-file-csv" title="Euclidian_distance_demo_data_env.csv"></i></a> <a href="/BCB743/seaweed/sites.csv/"><i class="fas fa-file-csv" title="sites.csv"></i></a></td>
+    <td style="text-align:center"><a href="/BCB743/seaweed/Euclidian_distance_demo_data_xyz.csv"><i class="fas fa-file-csv" title="Euclidian_distance_demo_data_xyz.csv"></i></a> <a href="/BCB743/seaweed/Euclidian_distance_demo_data_env.csv"><i class="fas fa-file-csv" title="Euclidian_distance_demo_data_env.csv"></i></a> <a href="/BCB743/seaweed/sites.csv"><i class="fas fa-file-csv" title="sites.csv"></i></a></td>
     <td style="text-align:center"></td>
     </tr>
     <tr>
@@ -116,7 +116,7 @@ These links point to online resources such as datasets and R scripts in support 
     <td style="text-align:center"><a href="/workshops/quantecol/05-spp_dissimilarity/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
     <td style="text-align:center"><a href="/pdf/BCB743/BCB743_05_dissimilarity.pdf"><i class="fas fa-file-pdf" title="Lecture 5 slides"></i></a></td>
     <td style="text-align:center"></td>
-    <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv/"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv/"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a></td>
+    <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a></td>
     <td style="text-align:center"></td>
     </tr>
     <tr>
@@ -126,7 +126,7 @@ These links point to online resources such as datasets and R scripts in support 
     <td style="text-align:center"><a href="/workshops/quantecol/03-deep_dive/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
     <td style="text-align:left"></td>
     <td style="text-align:center"></td>
-    <td style="text-align:center"><a href="/BCB743/seaweed/SeaweedEnv.RData/"><i class="fas fa-file-export" title="SeaweedEnv.RData"></i></a> <a href="/BCB743/seaweed/dists_mat.RData/"><i class="fas fa-file-export" title="dists_mat.RData"></i></a> <a href="/BCB743/seaweed/bioregions.csv/"><i class="fas fa-file-csv" title="bioregions.csv"></i></a></td>
+    <td style="text-align:center"><a href="/BCB743/seaweed/SeaweedEnv.RData"><i class="fas fa-file-export" title="SeaweedEnv.RData"></i></a> <a href="/BCB743/seaweed/dists_mat.RData"><i class="fas fa-file-export" title="dists_mat.RData"></i></a> <a href="/BCB743/seaweed/bioregions.csv"><i class="fas fa-file-csv" title="bioregions.csv"></i></a></td>
     <td style="text-align:center"></td>
     </tr>
     <tr>
@@ -136,7 +136,7 @@ These links point to online resources such as datasets and R scripts in support 
     <td style="text-align:center"><a href="/workshops/quantecol/06-correlations/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
     <td style="text-align:center"><a href="/pdf/BCB743/BCB743_06_correlations.pdf"><i class="fas fa-file-pdf" title="Lecture 6 slides"></i></a></td>
     <td style="text-align:center"></td>
-    <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv/"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv/"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a></td>
+    <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a></td>
     <td style="text-align:center"></td>
     </tr>
     <tr>
@@ -166,7 +166,7 @@ These links point to online resources such as datasets and R scripts in support 
     <td style="text-align:center"><a href="/workshops/quantecol/08-pca/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
     <td style="text-align:center"><a href="/pdf/BCB743/BCB743_08_PCA.pdf"><i class="fas fa-file-pdf" title="Lecture 8 slides"></i></a></td>
     <td style="text-align:center"></td>
-    <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv/"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv/"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/cleanplot.pca.R/"><i class="fas fa-file-code" title="cleanplot.pca.R"></i></a></td>
+    <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/cleanplot.pca.R/"><i class="fas fa-file-code" title="cleanplot.pca.R"></i></a></td>
     <td style="text-align:center"></td>
     </tr>
     <tr>
@@ -186,7 +186,7 @@ These links point to online resources such as datasets and R scripts in support 
     <td style="text-align:center"><a href="/workshops/quantecol/09-ca/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
     <td style="text-align:center"><a href="/pdf/BCB743/BCB743_09_CCA.pdf"><i class="fas fa-file-pdf" title="Lecture 9 slides"></i></a></td>
     <td style="text-align:center"></td>
-    <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv/"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv/"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a></td>
+    <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a></td>
     <td style="text-align:center"></td>
     </tr>
     <tr>
@@ -196,7 +196,7 @@ These links point to online resources such as datasets and R scripts in support 
     <td style="text-align:center"><a href="/workshops/quantecol/10-pcoa/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
     <td style="text-align:center"><a href="/pdf/BCB743/BCB743_10_PCoA.pdf"><i class="fas fa-file-pdf" title="Lecture 10 slides"></i></a></td>
     <td style="text-align:center"></td>
-    <td style="text-align:center"><a href="/BCB743/seaweed/SeaweedEnv.RData/"><i class="fas fa-file-export" title="SeaweedEnv.RData"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv/"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv/"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a> <a href="/BCB743/seaweed/bioregions.csv/"><i class="fas fa-file-csv" title="bioregions.csv"></i></a></td>
+    <td style="text-align:center"><a href="/BCB743/seaweed/SeaweedEnv.RData"><i class="fas fa-file-export" title="SeaweedEnv.RData"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a> <a href="/BCB743/seaweed/bioregions.csv"><i class="fas fa-file-csv" title="bioregions.csv"></i></a></td>
     <td style="text-align:center"></td>
     </tr>
     <tr>
@@ -206,7 +206,7 @@ These links point to online resources such as datasets and R scripts in support 
     <td style="text-align:center"><a href="/workshops/quantecol/11-nmds/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
     <td style="text-align:center"><a href="/pdf/BCB743/BCB743_11_nMDS.pdf"><i class="fas fa-file-pdf" title="Lecture 11 slides"></i></a></td>
     <td style="text-align:center"></td>
-    <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv/"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv/"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a></td>
+    <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a></td>
     <td style="text-align:center"></td>
     </tr>
     <tr>
@@ -216,7 +216,7 @@ These links point to online resources such as datasets and R scripts in support 
     <td style="text-align:center"><a href="/workshops/quantecol/11-nmds_diatoms/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
      <td style="text-align:center"></td>
     <td style="text-align:center"><a href="/pdf/BCB743/Mayombo_et_al_2019.pdf"><i class="fas fa-file-pdf" title="Mayombo et al (2019)"></i></a></td>
-    <td style="text-align:center"><a href="/BCB743/diatoms/PB_data_matrix_abrev.csv/"><i class="fas fa-file-csv" title="PB_data_matrix_abrev.csv"></i></a> <a href="/BCB743/diatoms/PB_data_matrix.csv/"><i class="fas fa-file-csv" title="PB_data_matrix.csv"></i></a> <a href="/BCB743/diatoms/PB_diat_env.csv/"><i class="fas fa-file-csv" title="PB_diat_env.csv"></i></a></td>
+    <td style="text-align:center"><a href="/BCB743/diatoms/PB_data_matrix_abrev.csv"><i class="fas fa-file-csv" title="PB_data_matrix_abrev.csv"></i></a> <a href="/BCB743/diatoms/PB_data_matrix.csv"><i class="fas fa-file-csv" title="PB_data_matrix.csv"></i></a> <a href="/BCB743/diatoms/PB_diat_env.csv"><i class="fas fa-file-csv" title="PB_diat_env.csv"></i></a></td>
     <td style="text-align:center"></td>
     </tr>
     <tr>
@@ -226,7 +226,7 @@ These links point to online resources such as datasets and R scripts in support 
     <td style="text-align:center"><a href="/workshops/quantecol/12-constrained_ordination/"><i class="fas fa-graduation-cap" aria-hidden="true"></i></a></td>
     <td style="text-align:center"><a href="/pdf/BCB743/BCB743_12_constrained_ordination.pdf"><i class="fas fa-file-pdf" title="Lecture 12 slides"></i></a></td>
     <td style="text-align:center"><a href="/pdf/BCB743/Smit_et_al_2017.pdf"><i class="fas fa-file-pdf" title="Smit et al (2017)"></i></a> <a href="/pdf/BCB743/The_seaweed_data.pdf"><i class="fas fa-file-pdf" title="About the seaweed data"></i></a></td>
-    <td style="text-align:center"><a href="/BCB743/seaweed/SeaweedsSpp.csv/"><i class="fas fa-file-csv" title="SeaweedsSpp.csv"></i></a> <a href="/BCB743/seaweed/SeaweedsEnv.csv/"><i class="fas fa-file-csv" title="SeaweedsEnv.csv"></i></a> <a href="/BCB743/seaweed/sites.csv/"><i class="fas fa-file-csv" title="sites.csv"></i></a> <a href="/BCB743/seaweed/bioregions.csv/"><i class="fas fa-file-csv" title="bioregions.csv"></i></a></td>
+    <td style="text-align:center"><a href="/BCB743/seaweed/SeaweedsSpp.csv"><i class="fas fa-file-csv" title="SeaweedsSpp.csv"></i></a> <a href="/BCB743/seaweed/SeaweedsEnv.csv"><i class="fas fa-file-csv" title="SeaweedsEnv.csv"></i></a> <a href="/BCB743/seaweed/sites.csv"><i class="fas fa-file-csv" title="sites.csv"></i></a> <a href="/BCB743/seaweed/bioregions.csv"><i class="fas fa-file-csv" title="bioregions.csv"></i></a></td>
     <td style="text-align:center"></td>
     </tr>
     <tr>
