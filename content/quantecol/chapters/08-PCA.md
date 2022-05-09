@@ -76,7 +76,7 @@ ggcorrplot(corr, type = 'upper', outline.col = "white",
           lab = TRUE)
 ```
 
-<img src="/quantecol/chapters/08_PCA_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
 Some variables are very correlatated, and they might be ommitted from the subsequent analyses. We say that these variables are 'collinear.' Collinear variables cannot be teased apart in terms of finding out which one is most influential in structuring the community. There are more advanced ways to search for collinear variables (e.g. Variance Inflation Factors, VIF) and in this way we can systematically exclude them from the PCA. See Graham (2003) for a discussion on collinearity. Here we will proceed with all the variables.
 
@@ -111,7 +111,7 @@ ggplot(spa, aes(x = X, y = Y, label = rownames(spa))) +
 ## Warning: Ignoring unknown parameters: check_overlap
 ```
 
-<img src="/quantecol/chapters/08_PCA_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-4-1.png" width="672" />
 
 These site numbers correspond approximately to the ones in Verneaux et al. (2003) but some of the numbers may have been shifted slightly in the example Doubs dataset used here compared to how they were originally numbered in Verneaux's thesis and subsequent publication. This should not affect the interpretation. We can also scale the symbol size by the magnitude of the environmental variables. Lets look at two pairs of variables that are strongly correlated with one-another:
 
@@ -147,7 +147,7 @@ ggarrange(plt1, plt2, plt3, plt4, nrow = 2, ncol = 2,
           common.legend = TRUE, labels = "AUTO")
 ```
 
-<img src="/quantecol/chapters/08_PCA_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
 ### Assignment 4 Questions
 
@@ -324,13 +324,13 @@ In a PCA ordination diagram (called a biplot, because it plots two *things*, viz
 biplot(env_pca, scaling = 1, main = "PCA scaling 1", choices = c(1, 2))
 ```
 
-<img src="/quantecol/chapters/08_PCA_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-11-1.png" width="672" />
 
 ```r
 biplot(env_pca, scaling = 2, main = "PCA scaling 2", choices = c(1, 2))
 ```
 
-<img src="/quantecol/chapters/08_PCA_files/figure-html/unnamed-chunk-11-2.png" width="672" />
+<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-11-2.png" width="672" />
 
 **Scaling 1:** This scaling *emphasises relationships between rows* accurately in low-dimensional ordination space. Distances among objects (samples or sites) in the biplot are approximations of their Euclidian distances in multidimensional space. Objects positioned closer together show a greater degree of environmental dimilarity. The angles among descriptor vectors should not be interpreted as indicating the degree of correlation between the variables.
 
@@ -354,7 +354,7 @@ cleanplot.pca(env_pca, scaling = 1)
 ## the first element will be used
 ```
 
-<img src="/quantecol/chapters/08_PCA_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-12-1.png" width="672" />
 
 ```r
 cleanplot.pca(env_pca, scaling = 2)
@@ -369,7 +369,7 @@ cleanplot.pca(env_pca, scaling = 2)
 ## the first element will be used
 ```
 
-<img src="/quantecol/chapters/08_PCA_files/figure-html/unnamed-chunk-12-2.png" width="672" />
+<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-12-2.png" width="672" />
 
 **At this point it is essential that you refer to *Numerical Ecology in R* (pp. 118 to 126) for help with interpreting the ordination diagrams.**
 
@@ -397,7 +397,7 @@ ordisurf(env_pca ~ bod, env, add = TRUE, col = "turquoise", knots = 1)
 ordisurf(env_pca ~ alt, env, add = TRUE, col = "salmon", knots = 1)
 ```
 
-<img src="/quantecol/chapters/08_PCA_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-13-1.png" width="672" />
 
 ```
 ## 
