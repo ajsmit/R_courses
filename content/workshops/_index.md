@@ -4,7 +4,7 @@ description: "Websites for the BCB744 and BCB743 modules offered as core and ele
 show_author_byline: true
 show_post_date: false
 show_post_thumbnail: true
-subtitle: A collection, minus the blog.
+subtitle:
 thumbnail_left: false
 title: B.Sc. (Hons.) R modules
 layout: list-sidebar
@@ -38,7 +38,6 @@ cascade:
       |:----------------------------------------------------|:----|:--------------------------|
       | [BCB744 Introduction to R](/workshops/intro_r/)     |  >> | 7 -- 11 Feb 2022          |
       | [BCB744 Biostatistics](/workshops/biostats/)        |  >> | 28 Mar -- 8 April 2022    |
-      | [BCB743 Quantitative Ecology](/workshops/quantecol/)|  >> | 20 Jun -- 29 July 2022    |
 
 ---
 

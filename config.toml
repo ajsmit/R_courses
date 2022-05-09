@@ -34,7 +34,7 @@ enableEmoji = true
   description = "A beautiful website about R."
   favicon = "/img/favicon.ico"
   logo = "/img/xaringan-outline.png"
-  mainSections = ["blog", "project", "talk", "collection"]
+  mainSections = ["blog", "project", "collection"]
   navallcaps = true
   # show/hide social icons in site header & footer
   # configure social icons and links below in [[params.social]]
@@ -126,15 +126,20 @@ enableEmoji = true
     url = "/about/"
     weight = 1
   [[menu.header]]
-    name = "BCB Hons"
-    title = "BCB Hons"
+    name = "BCB744"
+    title = "BC744"
     url = "/workshops/"
     weight = 2
   [[menu.header]]
-    name = "Projects"
-    title = "Project Portfolio"
-    url = "/project/"
+    name = "BCB743"
+    title = "BCB743"
+    url = "/quantecol/"
     weight = 3
+  [[menu.header]]
+    name = "Projects"
+    title = "Projects"
+    url = "/project/"
+    weight = 4
 
   # Configure footer
   [[menu.footer]]
