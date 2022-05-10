@@ -31,6 +31,10 @@ links:
     icon_pack: fa
     name: light_levels.csv
     url: /BCB743/seaweed/light_levels.csv
+  - icon: images
+    icon_pack: fas
+    name: Biodiversity Exercises
+    url: /slides/BCB743/02-biodiversity.html
 subtitle: ""
 title: "2. Biodiversity"
 weight: 3

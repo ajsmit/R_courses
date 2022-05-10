@@ -19,7 +19,6 @@ links:
     url: https://ajsmit.github.io/BCB744/Regression_exercises.html
 weight: 8
 ---
----
 
 <!--- # Simple linear regressions --->
 

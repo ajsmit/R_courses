@@ -23,6 +23,10 @@ links:
     icon_pack: fa
     name: bioregions.csv
     url: /BCB743/seaweed/bioregions.csv
+  - icon: images
+    icon_pack: fas
+    name: Integrative Assignment
+    url: /slides/BCB743/10-int_assign.html
 subtitle: ""
 title: "10. Principal Coordinate Analysis (PCoA)"
 weight: 13
@@ -430,13 +434,13 @@ env <- dplyr::slice(env, -8)
 ##         MDS1     MDS2     r2 Pr(>r)    
 ## dfs  0.99710  0.07609 0.7210  0.001 ***
 ## alt -0.99807 -0.06208 0.5659  0.001 ***
-## slo -0.92225  0.38660 0.1078  0.148    
+## slo -0.92225  0.38660 0.1078  0.132    
 ## flo  0.99746 -0.07129 0.5324  0.001 ***
-## pH  -0.42673 -0.90438 0.0480  0.537    
-## har  0.98804  0.15417 0.2769  0.017 *  
-## pho  0.45343  0.89129 0.6912  0.002 ** 
+## pH  -0.42673 -0.90438 0.0480  0.543    
+## har  0.98804  0.15417 0.2769  0.015 *  
+## pho  0.45343  0.89129 0.6912  0.001 ***
 ## nit  0.86338  0.50456 0.6117  0.001 ***
-## amm  0.42719  0.90416 0.7076  0.002 ** 
+## amm  0.42719  0.90416 0.7076  0.001 ***
 ## oxy -0.76847 -0.63989 0.7639  0.001 ***
 ## bod  0.43152  0.90210 0.8561  0.001 ***
 ## ---
@@ -704,21 +708,7 @@ We can extract the various kinds of scores for manual plotting.
 
 ### Integrative Assignment
 
-> In the light of all the possible analyses of the Doubs River study (i.e. the earlier PCA and CA analyses as well as the nMDS, RDA, CCA, and clustering techniques in the coming week), provide a full analysis of the Doubs River fish community structure study, focusing on:
->
-> 1.  the environmental drivers,
->
-> 2.  the fish community composition, and
->
-> 3.  an integrative view of the environmental structuring of the fish community.
->
-> You are welcome to suggest your own analyses, as necessary, to support the approaches already taken in the module. Your analysis must include one or several ordination techniques (with a justification for why they were selected), as well as a clustering approach. The more novelty you bring to the analysis the better for your marks. Critically discuss your findings in the context of the work initially done by Verneaux et al. (2003). Note that a critical discussion necessitates looking at all major findings of Verneaux et al. (2003) in the light of what your own analyses tell you. In doing so, you must support your own reasoning for agreeing or disagreeing by providing substantiating rational reasoning.
->
-> A completely novel (and correct) data and theoretical analysis can earn you marks in excess of 100%.
->
-> Your analysis must be structured as follows: Introduction (with Aims and Objectives), Methods, Results, Discussion, References (minimum 10 references, all of which were published *after* 2003). Unlike previous work in the module, this assignment will be submitted as a professionally formatted MS Word document that follows the author guidelines of South African Journal of Botany. The page limit for the full body of work must not exceed 20 pages (minimum 13 pages), with the Figures/Tables not occupying more than 25% of the total page count. In order to professionally arrange the figures (multiple figures per page, and liberal use of subplots), please make use of the **ggarrange** package.
-
-Submit a R script for the Integrative Assignment by no later than 8:00 on Wednesday 27 July 2022. Label the script as follows: **`BCB743_<Name>_<Surname>_Integrative_Assignment.R`**, e.g. **`BCB743_AJ_Smit_Integrative_Assignment.R`**.
+An integrative assignment needs to be submitted a week after the conclusion of this module. Please refer to the [Integrative Assignment](/slides/BCB743/10-int_assign.html) exercises and start working towards completing the various analyses.
 
 ## References
 

@@ -127,17 +127,17 @@ enableEmoji = true
     weight = 1
   [[menu.header]]
     name = "BCB744"
-    title = "BC744"
+    title = "Intro R & Biostatistics"
     url = "/workshops/"
     weight = 2
   [[menu.header]]
     name = "BCB743"
-    title = "BCB743"
+    title = "Quantitative Ecology"
     url = "/quantecol/"
     weight = 3
   [[menu.header]]
     name = "Projects"
-    title = "Projects"
+    title = "R Projects"
     url = "/project/"
     weight = 4
 

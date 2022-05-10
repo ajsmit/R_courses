@@ -25,7 +25,9 @@ cascade:
 >
 > --- Stephen J. Gould
 
-## Course structure
+# Syllabus & overview
+
+## Syllabus
 
 These links point to online resources such as datasets and R scripts in support of the video and PDF lecture material. It is essential that you work through these examples and workflows.
 
@@ -72,7 +74,7 @@ These links point to online resources such as datasets and R scripts in support 
     <td style="text-align:center"><a href="/pdf/BCB743/BCB743_02_biodiversity_1.pdf"><i class="fas fa-images" title="Lecture 2 slides (1)"></i></a> <a href="/pdf/BCB743/BCB743_02_biodiversity_2.pdf"><i class="fas fa-images" title="Lecture 2 slides (2)"></i></a></td>
     <td style="text-align:center"><a href="/pdf/BCB743/Smit_et_al_2013.pdf"><i class="fas fa-file-pdf" title="Smit et al (2013)"></i></a> <a href="/pdf/BCB743/Smit_et_al_2017.pdf"><i class="fas fa-file-pdf" title="Smit et al (2017)"></i></a> <a href="/pdf/BCB743/The_seaweed_data.pdf"><i class="fas fa-file-pdf" title="About the seaweed data"></i></a></td>
     <td style="text-align:center"><a href="/BCB743/seaweed/SeaweedsSpp.csv"><i class="fas fa-file-csv" title="SeaweedsSpp.csv"></i></a> <a href="/BCB743/seaweed/light_levels.csv"><i class="fas fa-file-csv" title="light_levels.csv"></i></a></td>
-    <td style="text-align:center"><a href="/slides/BCB743/biodiversity.html"><i class="fas fa-balance-scale-right" title="Lecture 2 exercises"></i></a></td>
+    <td style="text-align:center"><a href="/slides/BCB743/02-biodiversity.html"><i class="fas fa-balance-scale-right" title="Lecture 2 exercises"></i></a></td>
     </tr>
     <tr>
     <td style="text-align:left"></td>
@@ -122,7 +124,7 @@ These links point to online resources such as datasets and R scripts in support 
     <td style="text-align:center"><a href="/pdf/BCB743/BCB743_05_dissimilarity.pdf"><i class="fas fa-images" title="Lecture 5 slides"></i></a></td>
     <td style="text-align:center"></td>
     <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a></td>
-    <td style="text-align:center"></td>
+    <td style="text-align:center"><a href="/slides/BCB743/05-spp_dissimilarity.html"><i class="fas fa-balance-scale-right" title="Lecture 5 exercises"></i></a></td>
     </tr>
     <tr>
     <td style="text-align:left">W3</td>
@@ -142,7 +144,7 @@ These links point to online resources such as datasets and R scripts in support 
     <td style="text-align:center"><a href="/pdf/BCB743/BCB743_06_correlations.pdf"><i class="fas fa-images" title="Lecture 6 slides"></i></a></td>
     <td style="text-align:center"></td>
     <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a></td>
-    <td style="text-align:center"></td>
+    <td style="text-align:center"><a href="/slides/BCB743/06-correlations.html"><i class="fas fa-balance-scale-right" title="Lecture 6 exercises"></i></a></td>
     </tr>
     <tr>
     <td style="text-align:left"></td>
@@ -172,7 +174,7 @@ These links point to online resources such as datasets and R scripts in support 
     <td style="text-align:center"><a href="/pdf/BCB743/BCB743_08_PCA.pdf"><i class="fas fa-images" title="Lecture 8 slides"></i></a></td>
     <td style="text-align:center"></td>
     <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/cleanplot.pca.R"><i class="fas fa-file-code" title="cleanplot.pca.R"></i></a></td>
-    <td style="text-align:center"></td>
+    <td style="text-align:center"><a href="/slides/BCB743/08-pca.html"><i class="fas fa-balance-scale-right" title="Lecture 8 exercises"></i></a></td>
     </tr>
     <tr>
     <td style="text-align:left">W4</td>
@@ -182,7 +184,7 @@ These links point to online resources such as datasets and R scripts in support 
     <td style="text-align:left"></td>
     <td style="text-align:center"></td>
     <td style="text-align:center"><a href="/BCB743/WHO/WHO.zip/"><i class="fas fa-file-archive" title="WHO.zip"></i></a></td>
-    <td style="text-align:center"></td>
+    <td style="text-align:center"><a href="/slides/BCB743/08-pca_sdg.html"><i class="fas fa-balance-scale-right" title="Self study exercises"></i></a></td>
     </tr>
     <tr>
     <td style="text-align:left"></td>
@@ -192,7 +194,7 @@ These links point to online resources such as datasets and R scripts in support 
     <td style="text-align:center"><a href="/pdf/BCB743/BCB743_09_CCA.pdf"><i class="fas fa-images" title="Lecture 9 slides"></i></a></td>
     <td style="text-align:center"></td>
     <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a></td>
-    <td style="text-align:center"></td>
+    <td style="text-align:center"><a href="/slides/BCB743/09-ca.html"><i class="fas fa-balance-scale-right" title="Lecture 9 exercises"></i></a></td>
     </tr>
     <tr>
     <td style="text-align:left"></td>
@@ -212,7 +214,7 @@ These links point to online resources such as datasets and R scripts in support 
     <td style="text-align:center"><a href="/pdf/BCB743/BCB743_11_nMDS.pdf"><i class="fas fa-images" title="Lecture 11 slides"></i></a></td>
     <td style="text-align:center"></td>
     <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a></td>
-    <td style="text-align:center"></td>
+    <td style="text-align:center"><a href="/slides/BCB743/11-nmds.html"><i class="fas fa-balance-scale-right" title="Lecture 11 exercises"></i></a></td>
     </tr>
     <tr>
     <td style="text-align:left"></td>
@@ -262,13 +264,13 @@ These links point to online resources such as datasets and R scripts in support 
     <td style="text-align:left"></td>
     <td style="text-align:center"></td>
     <td style="text-align:center"></td>
-    <td style="text-align:center"></td>
+    <td style="text-align:center"><a href="/slides/BCB743/10-int_assign.html"><i class="fas fa-balance-scale-right" title="Integrative assignment"></i></a></td>
     </tr>
     </tbody>
 </table>
 {{< /rawhtml >}}
 
-# Modern ecological problems
+## Modern ecological problems
 
 **This is a course about community ecology and not so much about population ecology.** Community ecology underpins the vast fields of biodiversity and biogeography, and concerns spatial scales from squares of meters to all of Earth. We can look at historical, contemporary, and future processes that have been implicated in shaping the distribution of life on our planet.
 
@@ -282,45 +284,47 @@ These multivariate datasets have far more information in them than can de detect
 
 You will encounter the following functions for the first time in this module:
 
--   `adonis2()` -- Permutational Multivariate Analysis of Variance Using Distance Matrices
--   `anova.betadisper()` -- PERMDIST 2 for Multivariate homogeneity of groups dispersions (variances)
--   `anova.cca()` -- Permutation Test for Constrained Correspondence Analysis, Redundancy Analysis and Constrained Analysis of Principal Coordinates
--   `anova.manyglm()` -- Analysis of Deviance for Multivariate Generalized Linear Model Fits for Abundance Data
--   `beta.pair()` -- Incidence-based pair-wise dissimilarities
--   `betadisper()` -- Multivariate homogeneity of groups dispersions (variances)
--   `betapart.core()` -- Core calculations of betapart
--   `biplot()` -- Biplot of Multivariate Data
--   `capscale()` -- [Partial] Distance-based Redundancy Analysis
--   `cca()` -- [Partial] [Constrained] Correspondence Analysis and Redundancy Analysis
--   `cleanplot.pca()` -- Numerical Ecology in R's PCA plot
--   `daisy()` -- Dissimilarity Matrix Calculation
--   `decostand()` -- Standardization Methods for Community Ecology
--   `diag()` - Matrix Diagonals
--   `diversity()` -- Ecological Diversity Indices
--   `diversityresult()` -- Alternative Diversity Results
--   `fviz_cluster()` -- Visualize Clustering Results
--   `fviz_nbclust()` -- Dertermining and Visualizing the Optimal Number of Clusters
--   `fviz_silhouette()` -- Visualize Silhouette Information from Clustering
--   `geodist()` -- Convert lon-lat coordinates into vector or matrix of geodesic distances in metres
--   `ggcorrplot()` -- Visualization of a correlation matrix using ggplot2
--   `goodness()` -- Diagnostic Tools for [Constrained] Ordination (CCA, RDA, DCA, CA, PCA)
--   `imputePCA()` -- Impute dataset with PCA
--   `lowerTriangle()` -- Extract or replace the upper/lower triangular portion of a matrix
--   `manyglm()` -- Fitting Generalized Linear Models for Multivariate Abundance Data
--   `meanvar.plot()` -- Construct Mean-Variance plots for Multivariate Abundance Data
--   `metaMDS()` -- Nonmetric Multidimensional Scaling with Stable Solution from Random Starts, Axis Scaling and Species Scores
--   `mvabund()` -- Multivariate Abundance Data Objects
--   `ordiellipse()` -- Display Groups or Factor Levels in Ordination Diagrams
--   `ordiplot()` -- Alternative plot and identify Functions for Ordination
--   `ordispider()` -- Display Groups or Factor Levels in Ordination Diagrams
--   `ordisurf()` -- Fit and Plot Smooth Surfaces of Variables on Ordination
--   `pam()` -- Partitioning Around Medoids
--   `permutest()` -- Permutation Test for Constrained Correspondence Analysis, Redundancy Analysis and Constrained Analysis of Principal Coordinates
--   `rda()` -- [Partial] [Constrained] Correspondence Analysis and Redundancy Analysis
--   `RsquareAdj()` -- Adjusted R-square
--   `scores()` -- Get Species or Site Scores from an Ordination
--   `specnumber()` -- Ecological Diversity Indices
--   `stressplot()` -- Goodness of Fit and Shepard Plot for Nonmetric Multidimensional Scaling
--   `t()` -- Matrix Transpose
--   `vegdist()` -- Dissimilarity Indices for Community Ecologists
--   `vif.cca()` -- Diagnostic Tools for [Constrained] Ordination (CCA, RDA, DCA, CA, PCA)
+| Function                 | Description                                        |
+|:-------------------------|----------------------------------------------------|
+| `adonis2()`               | Permutational Multivariate Analysis of Variance Using Distance Matrices |
+| `anova.betadisper()` | PERMDIST 2 for Multivariate homogeneity of groups dispersions (variances) |
+| `anova.cca ()` | Permutation Test for Constrained Correspondence Analysis, Redundancy Analysis and Constrained Analysis of Principal Coordinates |
+| `anova.manyglm()` | Analysis of Deviance for Multivariate Generalized Linear Model Fits for Abundance Data |
+| `beta.pair()` | Incidence-based Pair-wise Dissimilarities |
+| `betadisper()` | Multivariate homogeneity of groups dispersions (variances) |
+| `betapart.core()` | Core Calculations of betapart |
+| `biplot()` | Biplot of Multivariate Data |
+| `capscale()` | [Partial] Distance-based Redundancy Analysis |
+| `cca()` | [Partial] [Constrained] Correspondence Analysis and Redundancy Analysis |
+| `cleanplot.pc()` | Numerical Ecology in R's PCA plot |
+| `daisy()` | Dissimilarity Matrix Calculation |
+| `decostand()` | Standardization Methods for Community Ecology |
+| `diag()` | Matrix Diagonals |
+| `diversity()` | Ecological Diversity Indices |
+| `diversityresult()` | Alternative Diversity Results |
+| `fviz_cluster()` | Visualize Clustering Results |
+| `fviz_nbclust()` | Determining and Visualizing the Optimal Number of Clusters |
+| `fviz_silhouette()` | Visualize Silhouette Information from Clustering |
+| `geodist()` | Convert Lon-Lat Coordinates into Vector or Matrix of Geodesic Distances in Metres |
+| `ggcorrplot()` | Visualization of a Correlation Matrix Using ggplot2 |
+| `goodness()` | Diagnostic Tools for [Constrained] Ordination (CCA, RDA, DCA, CA, PCA) |
+| `imputePCA()` | Impute Dataset with PCA |
+| `lowerTriangle()` | Extract or Replace the Upper/Lower Triangular Portion of a Matrix |
+| `manyglm()` | Fitting Generalized Linear Models for Multivariate Abundance Data |
+| `meanvar.plot()` | Construct Mean-Variance Plots for Multivariate Abundance Data |
+| `metaMDS()` | Nonmetric Multidimensional Scaling with Stable Solution from Random Starts, Axis Scaling and Species Scores |
+| `mvabund()` | Multivariate Abundance Data Objects |
+| `ordiellipse()` | Display Groups or Factor Levels in Ordination Diagrams |
+| `ordiplot()` | Alternative Plot and Identify Functions for Ordination |
+| `ordispider()` | Display Groups or Factor Levels in Ordination Diagrams |
+| `ordisurf()` | Fit and Plot Smooth Surfaces of Variables on Ordination |
+| `pam()` | Partitioning Around Medoids |
+| `permutest()` | Permutation Test for Constrained Correspondence Analysis, Redundancy Analysis and Constrained Analysis of Principal Coordinates |
+| `rda()` | [Partial] [Constrained] Correspondence Analysis and Redundancy Analysis |
+| `RsquareAdj()` | Adjusted R-square |
+| `scores()` | Get Species or Site Scores from an Ordination |
+| `specnumber()` | Ecological Diversity Indices |
+| `stressplot()` | Goodness of Fit and Shepard Plot for Nonmetric Multidimensional Scaling |
+| `t()` | Matrix Transpose |
+| `vegdist()` | Dissimilarity Indices for Community Ecologists |
+| `vif.cca()` | Diagnostic Tools for [Constrained] Ordination (CCA, RDA, DCA, CA, PCA) |
