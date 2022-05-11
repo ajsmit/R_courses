@@ -198,7 +198,7 @@ spp <- dplyr::select(spp, -1)
 
 ## Start calculating
 
-Calculate beta-diversity using the Sørensen index of dissimilarity. This is used throughout; binary Bray-Curtis is equivalent to Sørensen in **vegan**.
+Calculate β-diversity using the Sørensen index of dissimilarity. This is used throughout; binary Bray-Curtis is equivalent to Sørensen in **vegan**.
 
 
 ```r

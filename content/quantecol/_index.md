@@ -59,7 +59,7 @@ These links point to online resources such as datasets and R scripts in support 
     <tr>
     <td style="text-align:left"></td>
     <td style="text-align:left"></td>
-    <td style="text-align:left"><strong>BIODIVERSITY</strong></td>
+    <td style="text-align:left"><i class="fas fa-book-open"></i> <strong>BIODIVERSITY</strong></td>
     <td style="text-align:center"></td>
     <td style="text-align:left"></td>
     <td style="text-align:center"></td>
@@ -88,7 +88,7 @@ These links point to online resources such as datasets and R scripts in support 
     </tr>
     <tr>
     <td style="text-align:left">W2</td>
-    <td style="text-align:left">Self study</td>
+    <td style="text-align:left">Self</td>
     <td style="text-align:left">Ecological theories</td>
     <td style="text-align:center"></td>
     <td style="text-align:left"></td>
@@ -99,7 +99,7 @@ These links point to online resources such as datasets and R scripts in support 
     <tr>
     <td style="text-align:left"></td>
     <td style="text-align:left"></td>
-    <td style="text-align:left"><strong>MATRICES</strong></td>
+    <td style="text-align:left"><i class="fas fa-book-open"></i> <strong>MATRICES</strong></td>
     <td style="text-align:center"></td>
     <td style="text-align:left"></td>
     <td style="text-align:center"></td>
@@ -128,7 +128,7 @@ These links point to online resources such as datasets and R scripts in support 
     </tr>
     <tr>
     <td style="text-align:left">W3</td>
-    <td style="text-align:left">Self study</td>
+    <td style="text-align:left">Self</td>
     <td style="text-align:left">Deeper into gradients</td>
     <td style="text-align:center"><a href="/quantecol/chapters/03-deep_dive/"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></a></td>
     <td style="text-align:left"></td>
@@ -149,7 +149,7 @@ These links point to online resources such as datasets and R scripts in support 
     <tr>
     <td style="text-align:left"></td>
     <td style="text-align:left"></td>
-    <td style="text-align:left"><strong>ORDINATION</strong></td>
+    <td style="text-align:left"><i class="fas fa-book-open"></i> <strong>ORDINATION</strong></td>
     <td style="text-align:center"></td>
     <td style="text-align:left"></td>
     <td style="text-align:center"></td>
@@ -178,7 +178,7 @@ These links point to online resources such as datasets and R scripts in support 
     </tr>
     <tr>
     <td style="text-align:left">W4</td>
-    <td style="text-align:left">Self study</td>
+    <td style="text-align:left">Self</td>
     <td style="text-align:left">PCA (2)</td>
     <td style="text-align:center"><a href="/quantecol/chapters/08-pca_sdg/"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></a></td>
     <td style="text-align:left"></td>
@@ -218,7 +218,7 @@ These links point to online resources such as datasets and R scripts in support 
     </tr>
     <tr>
     <td style="text-align:left"></td>
-    <td style="text-align:left">Self study</td>
+    <td style="text-align:left">Self</td>
     <td style="text-align:left">nMDS + PERMANOVA (diatoms)</td>
     <td style="text-align:center"><a href="/quantecol/chapters/11-nmds_diatoms/"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></a></td>
      <td style="text-align:center"></td>
@@ -239,7 +239,7 @@ These links point to online resources such as datasets and R scripts in support 
     <tr>
     <td style="text-align:left"></td>
     <td style="text-align:left"></td>
-    <td style="text-align:left"><strong>CLUSTER ANALYSIS</strong></td>
+    <td style="text-align:left"><i class="fas fa-book-open"></i> <strong>CLUSTER ANALYSIS</strong></td>
     <td style="text-align:center"></td>
     <td style="text-align:left"></td>
     <td style="text-align:center"></td>
