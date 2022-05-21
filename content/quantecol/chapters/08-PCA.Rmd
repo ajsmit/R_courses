@@ -21,7 +21,7 @@ links:
     url: /R/BCB743/Num_Ecol_R_book_ed1/cleanplot.pca.R
 subtitle: ""
 title: "8a. Principal Component Analysis (PCA)"
-weight: 9
+weight: 10
 ---
 
 <!--- # Topic 8: Principal Component Analysis (PCA) --->

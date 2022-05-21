@@ -21,7 +21,7 @@ links:
     url: /BCB743/diatoms/PB_diat_env.csv
 subtitle: ""
 title: "11b. nMDS of Mayombo's diatom data"
-weight: 15
+weight: 16
 ---
 
 <!-- # Topic 11: nMDS of the diatom data in Mayombo et al. (2019) -->

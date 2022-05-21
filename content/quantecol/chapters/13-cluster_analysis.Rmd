@@ -4,7 +4,7 @@ draft: false
 excerpt: null
 subtitle: ""
 title: "13. Cluster analysis"
-weight: 17
+weight: 18
 ---
 
 <!-- # Topic 13: Cluster analysis -->

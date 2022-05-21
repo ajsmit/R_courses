@@ -17,7 +17,7 @@ links:
     url: /BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
 subtitle: ""
 title: "11a. non-Metric multidimensional scaling (nMDS)"
-weight: 14
+weight: 15
 ---
 
 <!--- # Topic 11: non-Metric multidimensional scaling (nMDS) --->

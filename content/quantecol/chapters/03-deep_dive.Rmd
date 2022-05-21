@@ -17,7 +17,7 @@ links:
     url: /BCB743/seaweed/bioregions.csv
 subtitle: ""
 title: "3. Deep Dive into Gradients"
-weight: 4
+weight: 5
 ---
 
 <!--- # Topic 3: A deeper dive into gradients --->

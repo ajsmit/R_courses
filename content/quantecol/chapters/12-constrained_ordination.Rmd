@@ -33,7 +33,7 @@ links:
     url: /BCB743/seaweed/sites.csv    
 subtitle: ""
 title: "12. Constrained Ordination"
-weight: 16
+weight: 17
 ---
 
 <!--- # Topic 12: Constrained ordination --->

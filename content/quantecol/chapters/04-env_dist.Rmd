@@ -21,7 +21,7 @@ links:
     url: /BCB743/seaweed/sites.csv
 subtitle: ""
 title: 4. Environmental Distance
-weight: 5
+weight: 6
 ---
 
 <!--- # Topic 4: Environmental distance --->

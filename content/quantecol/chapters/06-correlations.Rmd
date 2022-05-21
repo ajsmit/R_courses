@@ -17,7 +17,7 @@ links:
     url: /BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
 subtitle: ""
 title: "6. Correlations and Associations"
-weight: 7
+weight: 8
 ---
 
 <!--- # Topic 6: Correlations and associations --->

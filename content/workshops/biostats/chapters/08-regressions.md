@@ -34,6 +34,22 @@ weight: 8
 </div>
 
 
+```
+## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+```
+
+```
+## ✔ ggplot2 3.3.6     ✔ purrr   0.3.4
+## ✔ tibble  3.1.7     ✔ dplyr   1.0.9
+## ✔ tidyr   1.2.0     ✔ stringr 1.4.0
+## ✔ readr   2.1.2     ✔ forcats 0.5.1
+```
+
+```
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+```
 
 Regressions test the statistical significance of the *dependence* of one continuous variable on one or many independent continuous variables.
 
@@ -43,7 +59,7 @@ The linear regression equation is already known to you. It is:
 
 `$$y_{n}=\beta \cdot x_{n}+\alpha+\epsilon$$`
 
-Coefficients are parameters (statistics) that describe two properties of the linear line that best fit a scatter plot between a dependent variable and the independent variable. The dependent variable, `\(y_{1..n}\)`, may also be called the response variable, and the independent variable, `\(x_{1..n}\)`, the predictor. The regression model consists of an *intercept term*, `\(\alpha\)`, that describes where the fitted line starts and intercepts with the *y*-axis, and the *slope*, `\(\beta\)`, of the line. The amount of variation not explained by a linear relationship of `\(y\)` on `\(x\)` is termed the residual variation, or simply the residual or the error term, and in the above equation it is indicated by `\(\epsilon\)`.
+Coefficients are parameters (statistics) that describe two properties of the linear line that best fit a scatter plot between a dependent variable and the independent continuous variables. The dependent variable, `\(y_{1..n}\)`, may also be called the response variable or predictand, and the independent variable, `\(x_{1..n}\)`, the instrumental variable or predictor. The regression model consists of an *intercept term*, `\(\alpha\)`, that describes where the fitted line starts and intercepts with the *y*-axis, and the *slope*, `\(\beta\)`, of the line. The amount of variation not explained by a linear relationship of `\(y\)` on `\(x\)` is termed the residual variation, or simply the residuals or the error term, and in the above equation it is indicated by `\(\epsilon\)`.
 
 The regression parameters `\(\alpha\)` and `\(\beta\)` are determined by *minimising the error sum of squares* of the error term, `\(\epsilon\)`. It allows us to predict new fitted values of `\(y\)` based on values of `\(x\)`. The error sum of squares is calculated by:
 
@@ -105,34 +121,123 @@ R> Multiple R-squared:  0.8115,	Adjusted R-squared:  0.8108
 R> F-statistic:  1162 on 1 and 270 DF,  p-value: < 2.2e-16
 ```
 
-### The intercept
+The summary outputs shows six components:
 
-The intercept is the best estimate of the starting point of the fitted line on the lefthand side of the graph. You will notice that there is also an estimate for the standard error of the estimate for the intercept.
+**Call.** Shows the regression model as specified in the function call.
 
-### The regression coefficient
+**Residuals.** Provide a quick view of the distribution of the residuals. The residuals will always have a mean of zero. Therefore, the median should not be far from zero, and the minimum and maximum should be roughly equal in absolute value.
 
-The interpretation of the regression coefficient is simple. For every one unit of change in the independent variable (here waiting time) there is a corresponding change in the dependent variable (here the duration of the eruption). This is the *slope* or *gradient*, and it may be positive or negative. In the example the coefficient of determination of the line is denoted by the value 0.076 min.min^-1^ in the column termed `Estimate` and in the row called `waiting` (the latter name will of course depend on the name of the response column in your dataset). The coefficient of determination multiplies the response variable to produce a prediction of the response based on the slope of the relationship between the response and the predictor. It tells us how much one unit in change of the independent variable *determines* the corresponding change in the response variable. There is also a standard error for the estimate.
+**Coefficients.** Shows the various regression coefficients -- i.e. `\(\alpha\)` and `\(\beta\)` in a simple linear model with one predictor -- and their statistical significance. Predictor variables that are significantly associated to the outcome variable are marked by stars.
+
+Insight into the model accuracy is given by the **Residual standard error (RSE)**, **R-squared (R2)** and the **F-statistic**. These are metrics that are used to check how well the overall model fits our data.
+
+We will look at some of these components in turn.
+
+### Coefficients
+
+#### The intercept
+
+The intercept (more precisely, the `\(y\)`-intercept, `\(\alpha\)`) is the best estimate of the starting point of the fitted line on the lefthand side of the graph where it crosses the `\(y\)`-axis. You will notice that there is also an estimate for the standard error of the estimate for the intercept.
+
+There are several hypothesis tests associated with a simple linear regression. All of them assume that the residual error, `\(\epsilon\)`, in the linear regression model is independent of `\(x\)` (i.e. nothing about the structure of the error term can be inferred based on a knowledge of `\(x\)`), is normally distributed, with zero mean and constant variance. We say the residuals are *i.i.d.* (independent and identically distributed, which is a fancy way of saying they are random).
+
+One of the tests looks at the significance of the *intercept*, i.e. it tests the null hypothesis that `\(\alpha=0\)`. Is the value of the `\(y\)`-intercept zero? Rejecting the null hypothesis causes the alternate hypothesis of `\(\alpha \neq 0\)` to be accepted. This test is automatically performed when fitting a linear model in R and asking for a summary of the regression object, but it is insightful and important to know that the test is simply a one-sample *t*-test. In the Old Faithful data, this statistic is in the row indicated by `(Intercept)` under the `Pr(>|t|)` column.
+
+#### The regression coefficient
+
+The interpretation of the regression coefficient, `\(\beta\)`, is simple. For every one unit of change in the independent variable (here waiting time) there is a corresponding average change in the dependent variable (here the duration of the eruption). This is the *slope* or *gradient*, and it may be positive or negative. In the example the slope of the line is denoted by the value 0.076 `\(min.min^{-1}\)` in the column termed `Estimate` and in the row called `waiting` (the latter name will of course depend on the name of the response column in your dataset). The coefficient of determination multiplies the response variable to produce a prediction of the response based on the slope of the relationship between the response and the predictor. It tells us how much one unit in change of the independent variable *determines* the corresponding change in the response variable. There is also a standard error for the estimate.
+
+The second hypothesis test performed when fitting a linear regression model test concens the *regression coefficient*. It looks for whether there is a significant relationship (slope) of `\(y\)` on `\(x\)` by testing the null hypothesis that `\(\beta=0\)`. As before, this is also simply a one-ssample *t*-test. In the regression summary the probability associated with this test is given in the `Coefficients` table in the column called `Pr(>|t|)`. In the Old Faithful data, the *p*-value associated with `waiting` is less than 0.05 and we therefore reject the null hypothesis that `\(\beta=0\)`. So, there is a significant linear relationship of eruption duration on the waiting time between eruptions.
+
+> **Task 1:** Note that there is also a hypothesis test in the `(Intercept)` row. What does this do?
+
+### Residuals
+
+### Overall model accuracy
+
+#### Residual standard error (RSE)
+
+#### R-squared (R2)
+
+The coefficient of determination, the `\(R^{2}\)`, of a linear model is the quotient of the variances of the fitted values, `\(\hat{y_{i}}\)`, and observed values, `\(y_{i}\)`, of the dependent variable. If the mean of the dependent variable is `\(\bar y\)`, then the `\(R^{2}\)` is:
+
+`$$R^{2}=\frac{\sum(\hat{y_{i}} - \bar{y})^{2}}{\sum(y_{i} - \bar{y})^{2}}$$`
+
+In our Old Faithful example, the coefficient of determination is returned together with the summary of the `eruption.lm` object, but it may also be extracted as:
+
+
+```r
+summary(eruption.lm)$r.squared
+```
+
+```
+R> [1] 0.8114608
+```
+
+What does the `\(R^{2}\)` tell us? It tells us the "fraction of variance explained by the model" (from the `summary.lm()` help file). In other words it is the proportion of variation in the dispersion (variance) of the measured dependent variable, `\(y\)`, that can be predicted from the measured independent variable, `\(x\)` (or variables in the case of multiple regressions). It gives us an indication of how well the observed outcome variable is predicted by the observed influential variable, and in the case of a simple linear regression, the geometric relationship of `\(y\)` on `\(x\)` is a straight line. `\(R^{2}\)` can take values from 0 to 1: a value of 0 tells us that there is absolutely no relationship between the two, whilst a value of 1 shows that there is a perfect fit and a scatter of points to denote the `\(y\)` vs. `\(x\)` relationship will all fall perfectly on a straight line. For example, in the following figure there is absolutely no relationship of `\(y\)` on `\(x\)`:
+
+
+```r
+n <- 100
+set.seed(666)
+rand.df <- data.frame(x = seq(1:n),
+                      y = rnorm(n = n, mean = 20, sd = 3))
+
+mod2 <- lm(y ~ x, data = rand.df)
+
+ggplot(data = rand.df, aes(x = x, y = y)) +
+  geom_point(colour = "blue") +
+  stat_smooth(method = "lm", colour = "purple", size = 0.75,
+              fill = "turquoise", alpha = 0.3) +
+  labs(title = "Random normal data",
+       subtitle = "Linear regression",
+       x = "X (independent variable)",
+       y = "Y (dependent variable)") +
+  theme_linedraw()
+```
+
+<img src="/workshops/biostats/chapters/08-regressions_files/figure-html/lm-plot2-1.png" width="70%" />
+
+Here, the slope is 0.001 and the `\(R^{2}\)` is 0. 
+
+<!-- insert a graph of a random relationship of y on x (a fitted line will have have a slope of 0 and the intercept will equal the mean, and the r2 will be 0) -->
+
+<!-- insert a graph of a perfect relationship of y on x, r2 will be 1 -->
+
+Regressions may take on any relationship, not only a linear one. For example, there are parabolic, hyperbolic, logistic, exponential, etc. relationships of `\(y\)` on `\(x\)`, and here, too, does `\(r^{2}\)` tell us the same thing. If we assume that the samples were representatively drawn from a population (i.e. the sample fully captures the relationship of `\(y\)` on `\(x\)` that is present in the entire population), the `\(r^{2}\)` will represent the relationship in the population too.
+
+<!-- maybe give examples of some other mathematical relationships, such as 2nd order polynomial and a sine curve fitted to seasonal data -->
+
+In the case of our Old Faithful data, the `\(r^{2}\)` is 0.811, meaning that the proportion of variance explained is 81.1%; the remaining 18.9% is not (yet) accounted for by the linear relationship. Adding more predictors into the regression (i.e. a multiple regression) might consume some of the unexplained variance and increase the overall `\(r^{2}\)`.
+
+#### F-statistic
 
 ### A graph of the linear regression
 
 
 ```r
-library(tidyverse)
 slope <- round(eruption.lm$coef[2], 3)
 # p.val <- round(coefficients(summary(eruption.lm))[2, 4], 3) # it approx. 0, so...
-p.val = 0.001
+p.val <- 0.001
 r2 <- round(summary(eruption.lm)$r.squared, 3)
 
 ggplot(data = faithful, aes(x = waiting, y = eruptions)) +
   geom_point() +
-  annotate("text", x = 45, y = 5, label = paste0("slope == ", slope, "~(min/min)"), parse = TRUE, hjust = 0) +
-  annotate("text", x = 45, y = 4.75, label = paste0("italic(p) < ", p.val), parse = TRUE, hjust = 0) +
-  annotate("text", x = 45, y = 4.5, label = paste0("italic(r)^2 == ", r2), parse = TRUE, hjust = 0) +
+  annotate("text", x = 45, y = 5,
+           label = paste0("slope == ", slope, "~(min/min)"),
+           parse = TRUE, hjust = 0) +
+  annotate("text", x = 45, y = 4.75,
+           label = paste0("italic(p) < ", p.val),
+           parse = TRUE, hjust = 0) +
+  annotate("text", x = 45, y = 4.5,
+           label = paste0("italic(R)^2 == ", r2),
+           parse = TRUE, hjust = 0) +
   stat_smooth(method = "lm", colour = "salmon") +
   labs(title = "Old Faithful eruption data",
        subtitle = "Linear regression",
        x = "Waiting time (minutes)",
-       y = "Eruption duration (minutes)")
+       y = "Eruption duration (minutes)") +
+  theme_linedraw()
 ```
 
 <img src="/workshops/biostats/chapters/08-regressions_files/figure-html/lm-plot1-1.png" width="70%" />
@@ -140,6 +245,40 @@ ggplot(data = faithful, aes(x = waiting, y = eruptions)) +
 <!-- The **ggpubr** package also provides an option for plotting a linear regression with anotations: -->
 
 
+
+### Confidence interval for linear regression
+
+Again we have to observe the assumption of *i.i.d.* as before. For a given value of `\(x\)`, the 95% confidence interval around the mean of the *observed* dependent variable, `\(\bar{y}\)`, can be obtained as follows:
+
+
+```r
+pred.val <- data.frame(waiting = c(80))
+predict(eruption.lm, pred.val, interval = "confidence")
+```
+
+```
+R>       fit      lwr      upr
+R> 1 4.17622 4.104848 4.247592
+```
+
+So, the 95% confidence interval of the mean eruption duration for the waiting time of 80 minutes is between 4.105 and 4.248 minutes.
+
+### Prediction interval for linear regression
+
+Observe that `\(\epsilon\)` is *i.i.d.* For a given value of `\(x\)`, the interval estimate of the *future* dependent variable, `\(y\)`, is called the prediction interval. The way we do this is similar to finding the confidence interval:
+
+
+```r
+pred.val <- data.frame(waiting = c(80))
+predict(eruption.lm, pred.val, interval = "prediction")
+```
+
+```
+R>       fit      lwr      upr
+R> 1 4.17622 3.196089 5.156351
+```
+
+The intervals are wider. The difference between confidence and prediction intervals is subtle and requires some philosophical consideration. In practice, if you use these intervals to make inferences about the population from which the samples were drawn, use the prediction intervals. If you instead want to describe the samples which you have taken, use the confidence intervals.
 
 ### Predicting from the linear model
 
@@ -186,96 +325,6 @@ predict(eruption.lm, pred.val) # returns waiting time in minutes
 R>        1        2        3 
 R> 2.663661 4.176220 5.688779
 ```
-
-### The coefficient of determination, `\(r^{2}\)`
-
-The coefficient of determination, the `\(r^{2}\)`, of a linear model is the quotient of the variances of the fitted values, `\(\hat{y_{i}}\)`, and observed values, `\(y_{i}\)`, of the dependent variable. If the mean of the dependent variable is `\(\bar y\)`, then the `\(r^{2}\)` is:
-
-`$$r^{2}=\frac{\sum(\hat{y_{i}} - \bar{y})^{2}}{\sum(y_{i} - \bar{y})^{2}}$$`
-
-In our Old Faithful example, the coefficient of determination is returned together with the summary of the `eruption.lm` object, but it may also be extracted as:
-
-
-```r
-summary(eruption.lm)$r.squared
-```
-
-```
-R> [1] 0.8114608
-```
-
-What does the `\(r^{2}\)` tell us? It tells us the "fraction of variance explained by the model" (from the `summary.lm()` help file). In other words it is the proportion of variation in the dispersion (variance) of the measured dependent variable, `\(y\)`, that can be predicted from the measured independent variable, `\(x\)` (or variables in the case of multiple regressions). It gives us an indication of how well the observed outcome variable is predicted by the observed influential variable, and in the case of a simple linear regression, the geometric relationship of `\(y\)` on `\(x\)` is a straight line. `\(r^{2}\)` can take values from 0 to 1: a value of 0 tells us that there is absolutely no relationship between the two, whilst a value of 1 shows that there is a perfect fit and a scatter of points to denote the `\(y\)` vs. `\(x\)` relationship will all fall perfectly on a straight line.
-
-
-```r
-n <- 100
-set.seed(666)
-rand.df <- data.frame(x = seq(1:n),
-                      y = rnorm(n = n, mean = 20, sd = 3))
-ggplot(data = rand.df, aes(x = x, y = y)) +
-  geom_point(colour = "blue") +
-  stat_smooth(method = "lm", colour = "purple", size = 0.75, fill = "turquoise", alpha = 0.3) +
-  labs(title = "Random normal data",
-       subtitle = "Linear regression",
-       x = "X (independent variable)",
-       y = "Y (dependent variable)")
-```
-
-<img src="/workshops/biostats/chapters/08-regressions_files/figure-html/lm-plot2-1.png" width="70%" />
-
-<!-- insert a graph of a random relationship of y on x (a fitted line will have have a slope of 0 and the intercept will equal the mean, and the r2 will be 0) -->
-
-<!-- insert a graph of a perfect relationship of y on x, r2 will be 1 -->
-
-Regressions may take on any relationship, not only a linear one. For example, there are parabolic, hyperbolic, logistic, exponential, etc. relationships of `\(y\)` on `\(x\)`, and here, too, does `\(r^{2}\)` tell us the same thing. If we assume that the samples were representatively drawn from a population (i.e. the sample fully captures the relationship of `\(y\)` on `\(x\)` that is present in the entire population), the `\(r^{2}\)` will represent the relationship in the population too.
-
-<!-- maybe give examples of some other mathematical relationships, such as 2nd order polynomial and a sine curve fitted to seasonal data -->
-
-In the case of our Old Faithful data, the `\(r^{2}\)` is 0.811, meaning that the proportion of variance explained is 81.1%; the remaining 18.9% is not (yet) accounted for by the linear relationship. Adding more predictors into the regression (i.e. a multiple regression) might consume some of the unexplained variance and increase the overall `\(r^{2}\)`.
-
-### Significance test for linear regression
-
-There are several hypothesis tests associated with a simple linear regression. All of them assume that the residual error, `\(\epsilon\)`, in the linear regression model is independent of `\(x\)` (i.e. nothing about the structure of the error term can be inferred based on a knowledge of `\(x\)`), is normally distributed, with zero mean and constant variance. We say the residuals are *i.i.d.* (independent and identically distributed, which is a fancy way of saying they are random).
-
-We can decide whether there is any significant relationship (slope) of `\(y\)` on `\(x\)` by testing the null hypothesis that `\(\beta=0\)`. Rejecting the null hypothesis causes the alternate hypothesis of `\(\beta \neq 0\)` to be accepted. This test is automatically performed when fitting a linear model in R and asking for a summary of the regression object, but it is insightful and important to know that the test is simply a one-sample *t*-test. In the regression summary the probability associated with this test is given in the `Coefficients` table in the column called `Pr(>|t|)`.
-
-In the Old Faithful data, the *p*-value associated with `waiting` is less than 0.05 and we therefore reject the null hypothesis that `\(\beta=0\)`. So, there is a significant linear relationship of eruption duration on the waiting time between eruptions.
-
-> **Task 1:** Note that there is also a hypothesis test in the `(Intercept)` row. What does this do?
-
-### Confidence interval for linear regression
-
-Again we have to observe the assumption of *i.i.d.* as before. For a given value of `\(x\)`, the 95% confidence interval around the mean of the *observed* dependent variable, `\(\bar{y}\)`, can be obtained as follows:
-
-
-```r
-pred.val <- data.frame(waiting = c(80))
-predict(eruption.lm, pred.val, interval = "confidence")
-```
-
-```
-R>       fit      lwr      upr
-R> 1 4.17622 4.104848 4.247592
-```
-
-So, the 95% confidence interval of the mean eruption duration for the waiting time of 80 minutes is between 4.105 and 4.248 minutes.
-
-### Prediction interval for linear regression
-
-Observe that `\(\epsilon\)` is *i.i.d.* For a given value of `\(x\)`, the interval estimate of the *future* dependent variable, `\(y\)`, is called the prediction interval. The way we do this is similar to finding the confidence interval:
-
-
-```r
-pred.val <- data.frame(waiting = c(80))
-predict(eruption.lm, pred.val, interval = "prediction")
-```
-
-```
-R>       fit      lwr      upr
-R> 1 4.17622 3.196089 5.156351
-```
-
-The intervals are wider. The difference between confidence and prediction intervals is subtle and requires some philosophical consideration. In practice, if you use these intervals to make inferences about the population from which the samples were drawn, use the prediction intervals. If you instead want to describe the samples which you have taken, use the confidence intervals.
 
 ## Diagnostic plots for examining the fit of a linear model
 

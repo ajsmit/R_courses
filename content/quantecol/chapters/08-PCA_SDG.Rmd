@@ -9,7 +9,7 @@ links:
     url: /BCB743/WHO/WHO.zip
 subtitle: ""
 title: "8b. PCA of WHO SDGs"
-weight: 11
+weight: 12
 ---
 
 <!-- # Topic 8: PCA of World Health Organization data on progress towards attaining SDGs -->

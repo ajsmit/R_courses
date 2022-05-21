@@ -29,7 +29,7 @@ links:
     url: /slides/BCB743/10-int_assign.html
 subtitle: ""
 title: "10. Principal Coordinate Analysis (PCoA)"
-weight: 13
+weight: 14
 ---
 
 <!--- # Topic 10: Principal Coordinate Analysis (PCoA) --->
