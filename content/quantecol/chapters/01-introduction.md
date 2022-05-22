@@ -24,6 +24,15 @@ weight: 2
 
 (This chapter is in development.)
 
+## Macroecology and quantitative ecology
+
+Macroecology is an all-encompassing view of ecology, which seeks to define the geographical patterns and processes in biodiversity across all spatial scales, from local to global, across time scales from years to millennia, and across all taxonomic hierarchies (from genetic variability within species, up to major higher level taxa, such as families and orders). It attempts to arrive a unifying theory for ecology across all of these scales—e.g. one that can explain all patterns in structure and functioning from microbes to blue whales. Most importantly, perhaps, is that it attempts to offer mechanistic explanations for these patterns. At the heart of all explanation is also deep insights stemming from understanding evolution (facilitated by the growth of phylogenetic datasets -- see below).
+This is a modern development of ecology, whereas up to 20 years ago the focus has been mostly on populations (the dynamics of individuals of one species interacting amongst each other and with their environment) and communities (collections of multiple populations, and how they interact with each other and their environment, and how this affects the structure and dynamics of ecosystems).
+
+On a basic data analytical level, population ecology, community ecology, and macroecology all share the same approach as far as the underlying data are concerned. We start with **tables of species and environmental** conditions at a selection of sites, and these are converted to **distance and dissimilarity matrices**. From here analyses can show insights into how biodiversity is structured, e.g. **species-abundance distributions**, **occupancy-abundancy curves**, **species-area curves**, **distance decay curves**, and **gradient analyses**. 
+
+In the last decade, modern developments in statistical approaches have contributed towards the development of macroecology, because of the growth of **hypotheses-driven multivariate statistical approaches** geared to test for the presence of one or several ecological hypotheses -- this was not seen in population and community ecology so much. Contributing towards the growth of macroecology and the underlying statistical approaches, the deluge of new data across vast scales has also necessitated deeper analytical development, i.e. leveraging statistical tools and also the power of **modern computing infrastructure**. These modern approaches are also bringing into the fold of combined computations based on species and environmental tables also data on the phylogenetic relationships amongst organisms (and hence this brings the context of evolution).
+
 ## Data
 
 ### Properties of ecological datasets

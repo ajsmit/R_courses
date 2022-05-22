@@ -32,11 +32,11 @@ links:
     name: Biodiversity Exercises
     url: /slides/BCB743/02-biodiversity.html
 subtitle: ""
-title: "2a. Measuring Biodiversity"
+title: "2a. Measuring Diversity"
 weight: 3
 ---
 
-In this Chapter we will look at the various measures of biodiversity, viz. α-, β- and γ-diversity.
+In this Chapter we will look at the various measures of biodiversity, viz. α-, β- and γ-diversity. Deeper analysis is and compulsory reading is provided by David Zelený on his [Analysis of community data in R](https://www.davidzeleny.net/anadat-r/doku.php/en:diversity_analysis) website.
 
 <!--- # Topic 2: Measures of biodiversity --->
 
@@ -125,9 +125,9 @@ So, each of the rows corresponds to a site (i.e. each of the coastal sections), 
 
 We can represent α-diversity in three ways:
 
-1.  as species richness (*S*),
+1.  as species richness, `\(S\)`;
 
-2.  as a univariate diversity index, such as Shannon diversity (*H'*) or Simpson's diversity (λ), or
+2.  as a univariate diversity index, such as Shannon diversity, `\(H'\)`, or Simpson's diversity, `\(\lambda\)`; or
 
 3.  as a dissimilarity index, e.g. Bray-Curtis, Jaccard, or Sørensen dissimilarities---see Koleff (2003) for many more; also see `?vegdist`
 
@@ -135,7 +135,7 @@ We will work through each in turn.
 
 #### Species richness
 
-First, species richness. In the seaweed biodiversity data---because we view each coastal section as the local scale (the smallest unit of sampling)---I simply count the number of species within each of the sections. 
+First, species richness, `\(S\)`. In the seaweed biodiversity data---because we view each coastal section as the local scale (the smallest unit of sampling)---I simply count the number of species within each of the sections. 
 
 If the **BiodiversityR** package does not work for you, there is also the `specnumber()` function in **vegan**:
 
@@ -163,13 +163,23 @@ ggplot(data = spp_richness, (aes(x = 1:58, y = richness))) +
 
 <img src="/quantecol/chapters/02a-biodiversity_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 
-In other instances, it makes more sense to calculate the mean species richness of all the sampling units (e.g. quadrats) taken inside the ecosystem of interest. You will have to decide based on your own data.
+In other instances, it makes more sense to calculate the mean species richness of all the sampling units (e.g. quadrats) taken inside the ecosystem of interest. We can also use the the α parameter of [Fisher’s log-series](/quantecol/chapters/02b-biodiversity/#species-abundance-distribution) as a diversity index. You will have to decide based on your own data.
 
 #### Univariate diversity indices
 
-The second way in which we can express α-diversity is to use one of the univariate diversity indices such as Shannon's *H'* or Simpson's λ. Shannon's *H'* is sometimes called Shannon's diversity index, the Shannon--Wiener index, the Shannon--Weaver index, or the Shannon entropy. It is calculated as `\(H' = -\sum_{i=1}^{R} p_{i} \ln p_{i}\)` where `\(p_{i}\)` is the proportion of individuals belonging to the `\(i\)`th species, and `\(R\)` is the species richness.
+The second way in which we can express α-diversity is to use one of the univariate diversity indices such as Shannon's `\(H'\)` or Simpson's `\(\lambda\)`.
 
-Simpson's λ, or simply the Simpson index, is calculated as `\(\displaystyle \lambda = \sum_{i=1}^{R} p_{i}^{2}\)` where `\(R\)` is the species richness and `\(p_{i}\)` is the relative abundance of the `\(i\)`th species.
+The choice of which of the indices to use should be informed by the extent to which one wants to emphasise richness or evenness. Species richness, `\(S\)`, does not consider evenness at all as it is all about richness (obviously). Simpson's `\(\lambda\)` emphasises it evenness lot. Shannon's `\(H'\)` is somewhere in the middle.
+
+Shannon's `\(H'\)` is sometimes called Shannon's diversity, the Shannon-Wiener index, the Shannon-Weaver index, or the Shannon entropy. It is calculated as:
+
+`$$H' = -\sum_{i=1}^{S} p_{i} \ln p_{i}$$`
+where `\(p_{i}\)` is the proportion of individuals belonging to the `\(i\)`th species, and `\(S\)` is the species richness.
+
+Simpson's `\(\lambda\)`, or simply the Simpson index, is calculated as:
+
+`$$\displaystyle \lambda = \sum_{i=1}^{S} p_{i}^{2}$$`
+where `\(S\)` is the species richness and `\(p_{i}\)` is the relative abundance of the `\(i\)`th species.
 
 We cannot calculate either of these for the seaweed data because in order to do so we require abundance data---the seaweed data are presence-absence only. Let's load a fictitious dataset of the diversity of three different communities of plants, with each community corresponding to a different light environment (dim, mid and high light):
 
@@ -215,6 +225,19 @@ light_div
 ## 3 high_light        6    1.59    0.77
 ```
 
+Hill numbers ($q$) come from the work of M.O. Hill (1973); they summarise `\(S\)`, Shannon's `\(H'\)` and Simpson's `\(\lambda\)`. Higher `\(q\)` puts less weight on rare species and weighs abundant ones more. Hill numbers can be used to draw diversity profiles, which allow for an elegant comparison of diversity among communities considering both richness and evenness.
+
+
+#### Species evenness
+
+Evenness refers to the shape of a [species abundance distribution](/quantecol/chapters/02b-biodiversity/#species-abundance-distribution).
+
+One index for evenness is Pielou’s evenness, `\(J\)`: 
+
+`$$J = \frac{H^{\prime}} {log(S)}$$`
+
+where `\(H'\)` is Shannon's diversity index, and `\(S\)` the number of species (i.e. `\(S\)`).
+
 #### Dissimilarity indices
 
 In this section we will cover the dissimilarity indices, which are special cases of diversity indices that use pairwise comparisons between sampling units, habitats, or ecosystems. Both α- and β-diversity can be expressed as dissimilarity indices, but let deal with α-diversity first.
@@ -252,11 +275,11 @@ sor_df[1:10, 1:10] # the first 20 rows and columns
 
 What we see above is a square dissimilarity matrix. The two most important characteristics of the matrix are:
 
-i.  Whereas the raw species data ($Y$) is rectangular (number rows ≠ number columns), the dissimilarity matrix is square (number rows = number columns).
+i.  whereas the raw species data, `\(Y\)`, is rectangular (number rows ≠ number columns), the dissimilarity matrix is square (number rows = number columns);
 
-ii. The diagonal is filled with 0.
+ii. the diagonal is filled with 0;
 
-iii. The matrix is symetrical---it is comprised of symetrical upper and lower triangles.
+iii. the matrix is symmetrical---it is comprised of symetrical upper and lower triangles.
 
 ### Assignment 1 Questions
 
@@ -272,7 +295,7 @@ iii. The matrix is symetrical---it is comprised of symetrical upper and lower tr
 
 ### Gamma diversity
 
-Returning again to the seaweed data, `\(Y\)`, lets now look at λ-diversity---this would simply be the total number of species along the South African coastline in all 58 coastal sections. Since each column represents one species, and the dataset contains data collected at each of the 58 sites (the number of rows), we can simply do:
+Returning again to the seaweed data, `\(Y\)`, lets now look at `\(\lambda\)`-diversity---this would simply be the total number of species along the South African coastline in all 58 coastal sections. Since each column represents one species, and the dataset contains data collected at each of the 58 sites (the number of rows), we can simply do:
 
 
 ```r
@@ -339,9 +362,9 @@ ggplot(data = abs_beta, (aes(x = section_no, y = beta))) +
 
 β-diversity is a concept that describes how species assemblages (communities) measured within the ecosystem of interest vary from place to place, e.g. between the various transects or quadrats used to sample the ecosystem. β-diversity results from habitat heterogeneity (along gradients, or randomly). We have already seen two concepts of β-diversity, viz. true β-diversity and absolute species turnover---both of these rely on knowledge of species richness at local (a measure of α-diversity) and regional (γ-diversity) scales. Much more insight into species assembly processes can be extracted, however, when we view β-diversity as a dissmilarity index. In this view, we will see that there are two processes by which β-diversity might be affected (i.e. in which the patterning of communities over landscapes might arise):
 
-**Process 1:** If a region is comprised of the species A, B, C, ..., M (i.e. γ-diversity is 13), a subset of the regional flora as captured by one quadrat might be species **A**, **D**, E, whereas in another quadrat it might be species **A**, **D**, F. In this instance, the α-diversity is 3 in both instances, and heterogeneity (and hence β-diversity) results from the fact that the first quadrat has species E but the other has species F. In other words, here we have the same number of species in both quadrats, but only two of the species are the same. The process responsible for this form of β-diversity is species 'turnover' ($\beta_\text{sim}$). Turnover refers to processes that cause communities to differ due to species being lost and/or gained from section to section, i.e. the species composition changes between sections without corresponding changes in α-diversity.
+**Process 1:** If a region is comprised of the species A, B, C, ..., M (i.e. γ-diversity is 13), a subset of the regional flora as captured by one quadrat might be species **A**, **D**, E, whereas in another quadrat it might be species **A**, **D**, F. In this instance, the α-diversity is 3 in both instances, and heterogeneity (and hence β-diversity) results from the fact that the first quadrat has species E but the other has species F. In other words, here we have the same number of species in both quadrats, but only two of the species are the same. The process responsible for this form of β-diversity is species 'turnover', `\(\beta_\text{sim}\)`. Turnover refers to processes that cause communities to differ due to species being lost and/or gained from section to section, i.e. the species composition changes between sections without corresponding changes in α-diversity.
 
-**Process 2:** Consider again species A, B, C, ..., M. Now we have the first quadrat with species **A**, **B**, C, D, **G**, H (α-diversity is 6) and the second quadrat has a subset of this, e.g. only species **A**, **B**, **G** (α-diversity 3). Here, β-diversity comes from the fact that even if the two places share the same species, the number of species can still differ amongst the quadrats (i.e. from place to place) due to one quadrat capturing only a subset of species present in the other. This form of β-diversity is called 'nestedness-resultant' β-diversity ($\beta_\text{sne}$), and it refers to processes that cause species to be gained or lost, and the community with the lowest α-diversity is a subset of the richer community.
+**Process 2:** Consider again species A, B, C, ..., M. Now we have the first quadrat with species **A**, **B**, C, D, **G**, H (α-diversity is 6) and the second quadrat has a subset of this, e.g. only species **A**, **B**, **G** (α-diversity 3). Here, β-diversity comes from the fact that even if the two places share the same species, the number of species can still differ amongst the quadrats (i.e. from place to place) due to one quadrat capturing only a subset of species present in the other. This form of β-diversity is called 'nestedness-resultant' β-diversity, `\(\beta_\text{sne}\)`, and it refers to processes that cause species to be gained or lost, and the community with the lowest α-diversity is a subset of the richer community.
 
 The above two examples show that β-diversity is coupled not only with the identity of the species in the quadrats, but also α-diversity---with species richness in particular.
 
