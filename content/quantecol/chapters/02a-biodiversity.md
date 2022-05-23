@@ -225,8 +225,7 @@ light_div
 ## 3 high_light        6    1.59    0.77
 ```
 
-Hill numbers ($q$) come from the work of M.O. Hill (1973); they summarise `\(S\)`, Shannon's `\(H'\)` and Simpson's `\(\lambda\)`. Higher `\(q\)` puts less weight on rare species and weighs abundant ones more. Hill numbers can be used to draw diversity profiles, which allow for an elegant comparison of diversity among communities considering both richness and evenness.
-
+Hill numbers, `\(q\)`, (Hill, 1973) summarise `\(S\)`, Shannon's `\(H'\)` and Simpson's `\(\lambda\)`. Higher `\(q\)` puts less weight on rare species and weighs abundant ones more. Hill numbers can be used to draw diversity profiles, which allow for an elegant comparison of diversity among communities considering both richness and evenness.
 
 #### Species evenness
 
