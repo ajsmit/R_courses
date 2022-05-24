@@ -12,7 +12,7 @@ links:
     name: Shade et al. (2018)
     url: /pdf/BCB743/Shade_et_al_2018.pdf
 subtitle: ""
-title: "2b. Diversity Structure and Patterns"
+title: "2b. Quantifying Structure and Patterns"
 weight: 4
 ---
 
@@ -83,7 +83,7 @@ fish
 plot(fish)
 ```
 
-F.W. Preston (1948) showed that when data from a thoroughly sampled population are transformed into octaves along the $x$-axis (number of species binned into inntervals of 1, 2, 4, 8, 16, 32 etc.), the SAD that results is approximated by a symmetric Gaussian distribution. This is because more thorough sampling makes species that occur with a high frequency more common and those that occur only once or are very rare become either less common will remain completely absent. This SAD is called **Preston's log-normal distribution**. In the **Vegan** package there is an updated version of Preston's approach with a mathematical improvement to better handle ties. It is called `prestondistr()`:
+F.W. Preston (1948) showed that when data from a thoroughly sampled population are transformed into octaves along the $x$-axis (number of species binned into inntervals of 1, 2, 4, 8, 16, 32 etc.), the SAD that results is approximated by a symmetric Gaussian distribution. This is because more thorough sampling makes species that occur with a high frequency more common and those that occur only once or are very rare become either less common will remain completely absent. This SAD is called **Preston's log-normal distribution**. In the **vegan** package there is an updated version of Preston's approach with a mathematical improvement to better handle ties. It is called `prestondistr()`:
 
 ```{r fig.height=3, fig.width=5}
 pres <- prestondistr(BCI[k,])
@@ -92,7 +92,7 @@ plot(pres)
 
 ```
 
-R. H. Whittaker (1965) introduced **rank abundance distribution curves** (sometimes called a dominance-diversity curves or Whittaker plots). Here the $x$-axis has species ranked according to their relative abundance, with the most abundant species at the left and rarest at the right. The $y$-axis represents relative species abundances (often log-transformed). The shape (the steepness and the length of the tail) indicates the relative proportion of dominant and rare species in a community. In vegan we can accomplish fitting this type of SAD with the `radfit()` function. The default plot is somewhat more complicated as it shows brokenstick, preemption, log-Normal, Zipf and Zipf-Mandelbrot models fitted to the ranked species abundance data:
+R. H. Whittaker (1965) introduced **rank abundance distribution curves** (sometimes called a dominance-diversity curves or Whittaker plots). Here the $x$-axis has species ranked according to their relative abundance, with the most abundant species at the left and rarest at the right. The $y$-axis represents relative species abundances (sometimes log-transformed). The shape of the profile as---influenced by the steepness and the length of the tail---indicates the relative proportion of abundant and scarce species in the community. In **vegan** we can accomplish fitting this type of SAD with the `radfit()` function. The default plot is somewhat more complicated as it shows broken-stick, preemption, log-Normal, Zipf and Zipf-Mandelbrot models fitted to the ranked species abundance data:
 
 ```{r}
 rad <- radfit(BCI[k,])

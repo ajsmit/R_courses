@@ -33,11 +33,11 @@ These links point to online resources such as datasets and R scripts in support 
 
 **The table's content is as follows:**
 
-<i class="fas fa-chalkboard-teacher"></i> Indicates worked through example code accompanying the lecture material.</p>
+<i class="fas fa-chalkboard-teacher"></i> Indicates worked-through example code accompanying the lecture material.</p>
 <i class="fas fa-images"></i> Indicates the lecture slides.</p>
 <i class="fas fa-file-pdf"></i> PDF material for further reading (compulsory and examinable).</p>
 <i class="fas fa-file-csv"></i> CSV data files to accompany the code.</p>
-<i class="fas fa-file-export"></i> RData files to go with the worked through code.</p>
+<i class="fas fa-file-export"></i> RData files to go with the worked- through code.</p>
 <i class="fas fa-file-code"></i> R scripts.</p>
 <i class="fas fa-balance-scale-right"></i> Exercices contributing towards continuous assessment.</p>
 
@@ -79,17 +79,17 @@ These links point to online resources such as datasets and R scripts in support 
     <tr>
       <td style="text-align:left"></td>
       <td style="text-align:left">L2</td>
-      <td style="text-align:left">Measuring Biodiversity</td>
+      <td style="text-align:left">Quantifying Diversity</td>
       <td style="text-align:center"><a href="/quantecol/chapters/02a-biodiversity/"><i class="fas fa-chalkboard-teacher" title="Lecture 2"></i></a></td>
       <td style="text-align:center"><a href="/pdf/BCB743/BCB743_02_biodiversity_1.pdf"><i class="fas fa-images" title="Lecture 2 slides (1)"></i></a></td>
-      <td style="text-align:center"><a href="/pdf/BCB743/Smit_et_al_2013.pdf"><i class="fas fa-file-pdf" title="Smit et al (2013)"></i></a> <a href="/pdf/BCB743/Smit_et_al_2017.pdf"><i class="fas fa-file-pdf" title="Smit et al (2017)"></i></a> <a href="/pdf/BCB743/The_seaweed_data.pdf"><i class="fas fa-file-pdf" title="About the seaweed data"></i></a></td>
+      <td style="text-align:center"><a href="/pdf/BCB743/Smit_et_al_2013.pdf"><i class="fas fa-file-pdf" title="Smit et al (2013)"></i></a> <a href="/pdf/BCB743/Smit_et_al_2017.pdf"><i class="fas fa-file-pdf" title="Smit et al (2017)"></i></a> <a href="/pdf/BCB743/Smit_the_seaweed_data.pdf"><i class="fas fa-file-pdf" title="About the seaweed data"></i></a></td>
       <td style="text-align:center"><a href="/BCB743/seaweed/SeaweedsSpp.csv"><i class="fas fa-file-csv" title="SeaweedsSpp.csv"></i></a> <a href="/BCB743/seaweed/light_levels.csv"><i class="fas fa-file-csv" title="light_levels.csv"></i></a></td>
       <td style="text-align:center"><a href="/slides/BCB743/02-biodiversity.html"><i class="fas fa-balance-scale-right" title="Lecture 2 exercises"></i></a></td>
     </tr>
     <tr>
       <td style="text-align:left"></td>
       <td style="text-align:left">L3</td>
-      <td style="text-align:left">Structuring Biodiversity</td>
+      <td style="text-align:left">Quantifying Structure and Pattern</td>
       <td style="text-align:center"><a href="/quantecol/chapters/02b-biodiversity/"><i class="fas fa-chalkboard-teacher" title="Lecture 2"></i></a></td>
       <td style="text-align:center"><a href="/pdf/BCB743/BCB743_02_biodiversity_2.pdf"><i class="fas fa-images" title="Lecture 2 slides (2)"></i></a></td>
       <td style="text-align:center"><a href="/pdf/BCB743/Shade_et_al_2018.pdf"><i class="fas fa-file-pdf" title="Shade et al (2018)"></i></a></td>
@@ -279,6 +279,8 @@ These links point to online resources such as datasets and R scripts in support 
   </tbody>
 </table>
 {{< /rawhtml >}}
+
+**Note that the additional URLs with links to additional reading that appear in the worked-through example code that accompanies the lecture material should *not be seen* as optional. They are there for a reason and should be consulted even though I might not necessarily refer to each of them in class.**
 
 ## Modern ecological problems
 
