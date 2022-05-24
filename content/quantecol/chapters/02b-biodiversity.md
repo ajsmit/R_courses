@@ -12,7 +12,7 @@ links:
     name: Shade et al. (2018)
     url: /pdf/BCB743/Shade_et_al_2018.pdf
 subtitle: ""
-title: "2b. Quantifying Structure and Patterns"
+title: "2b. Quantifying Structure and Pattern"
 weight: 4
 ---
 
@@ -20,7 +20,7 @@ In this Chapter we will explore how diversity is structured. Again refer to Davi
 
 ## Coenoclines, coenoplanes and coenospaces
 
-A **coenocline** is a graphical display of *all species* response curves (see definition, below) *simultaneously* along one environmental gradient. It aids our understanding of the species response curve if we imgine the gradient operating in only one geographical direction. The **coenoplane** concept extends the coenocline to cover two gradients. Again, our visual respresentation can be facilitated if the two gradients are visualised orthogonal (in this case, at right angles) to each other (e.g. east--west and north--south) and they do not interact. A **coenospace** complicates the model substantially, as it can allow for an unspecified number of gradients to operate simulataneously on multiple species at once, and it will probably also capture interactions of environmental drivers on the species.
+A **coenocline** is a graphical display of *all species* response curves (see definition, below) *simultaneously* along one environmental gradient. It aids our understanding of the species response curve if we imagine the gradient operating in only one geographical direction. The **coenoplane** concept extends the coenocline to cover two gradients. Again, our visual representation can be facilitated if the two gradients are visualised orthogonal (in this case, at right angles) to each other (e.g. east--west and north--south) and they do not interact. A **coenospace** complicates the model substantially, as it can allow for an unspecified number of gradients to operate simultaneously on multiple species at once, and it will probably also capture interactions of environmental drivers on the species.
 
 ### Species response curves
 
@@ -28,13 +28,13 @@ Plotting the abundance of a species as a function of position along a gradient i
 
 ### Unimodal species response
 
-The **unimodal** model is an idealised species reponse curve (visualised as a coenocline) where a species has only one mode of abundance. The unimodel model offers a convenient heuristic tool for understanding how species can become structured along environmental gradients. In this type of species response curve the species has one optimal environmental condition where it is most abundant (fewest ecophysiological and ecological stressors). If any aspect of the environment is suboptimal (greater or lesser than the optimum), the species will perform more poorly and it will have a lower abundance.
+The **unimodal** model is an idealised species response curve (visualised as a coenocline) where a species has only one mode of abundance. The unimodal model offers a convenient heuristic tool for understanding how species can become structured along environmental gradients. In this type of species response curve the species has one optimal environmental condition where it is most abundant (fewest ecophysiological and ecological stressors). If any aspect of the environment is suboptimal (greater or lesser than the optimum), the species will perform more poorly and it will have a lower abundance.
 
 The R package **coenocliner** implements the unimodal (and also a beta response model, not covered in the module). Please see the implementation of [**coenocliner** by Gavin Simpson](https://fromthebottomoftheheap.net/2014/07/31/simulating-species-abundance-data-with-the-coenocliner-package/), the author of the package. Download and install the package, and play around with its functionality in order to gain deeper insight into how gradients can structure communities (i.e., sort species).
 
 ## Macroecological patterns
 
-We have seen the distribution of one or several species along gradients, but lets extend the view to ecological patterns and the ecological processes that structure the communities -- sometimes we will see reference to 'community assembly processes' to desribe how species are structured into communities. Let's develop views that are based on all the information contained in the species tables, i.e. abundance, the number of sites, and the diversity of the biota. This deeper view is not necessarily captured if we limit our toolkit to species response curves (but they are certainly also counted, below).
+We have seen the distribution of one or several species along gradients, but lets extend the view to ecological patterns and the ecological processes that structure the communities---sometimes we will see reference to 'community assembly processes' to describe how species are structured into communities. Let's develop views that are based on all the information contained in the species tables, i.e. abundance, the number of sites, and the diversity of the biota. This deeper view is not necessarily captured if we limit our toolkit to species response curves (but they are certainly also counted, below).
 
 Some of you will be familiar with the paper by Shade et al. (2018). Several kinds of ecological patterns are mentioned in the paper, and they can be derived from a species table with abundance data (but *not* presence-absence data!) such as this mites dataset used extensively in the Numerical Ecology with R book:
 
@@ -59,7 +59,7 @@ Some of you will be familiar with the paper by Shade et al. (2018). Several kind
 
 Note that Figure 1 in Shade et al. (2018) starts with a species table where the species are arranged down the rows and the sites along the variables (columns). I, and also the **vegan** package, require that the **species are along the variables and the sites down the rows**. This is the convention that will be used throughout this module.
 
-Univariate diversity measures such as Simpson and Shannon diversity can be prepared from species tables, but we can also use it to calculate measures of beta-diversity that looks at pairwise comparisons (see below).
+Univariate diversity measures such as Simpson and Shannon diversity can be prepared from species tables, but we can also use it to calculate measures of β-diversity that looks at pairwise comparisons (see below).
 
 The patterns that can be derived from such a table include:
 
@@ -70,11 +70,11 @@ The patterns that can be derived from such a table include:
 * rarefaction curves;
 * elevation gradients.
 
-We will calculate each for the mites data.
+We will calculate each for the Barro Colorado Island Tree Counts data that come with **vegan**.
 
 ### Species-abundance distribution
 
-The species abundance distribution (SAD) is a fundamental pattern in ecology. Typical communities have a few species that are very abundant, whereas most of them are quite rare; indeed -- this is perhaps a universal law in ecology. SAD represents this relationship graphically by plotting the abundance rank on the `\(x\)`-axis and the number of species (or some other taxonomic level) along `\(y\)`, as was first done by R.A. Fisher and colleagues (1943). He then fitted the data by log series that ideally capture situations where most of the species are quite rare with only a few very abundant ones -- called **Fisher's log series distribution** -- and is implemented in **vegan** by the `fisherfit()` function:
+The species abundance distribution (SAD) is a fundamental pattern in ecology. Typical communities have a few species that are very abundant, whereas most of them are quite rare; indeed---this is perhaps a universal law in ecology. SAD represents this relationship graphically by plotting the abundance rank on the `\(x\)`-axis and the number of species (or some other taxonomic level) along `\(y\)`, as was first done by R.A. Fisher and colleagues (1943). He then fitted the data by log series that ideally capture situations where most of the species are quite rare with only a few very abundant ones---called **Fisher's log series distribution**---and is implemented in **vegan** by the `fisherfit()` function:
 
 
 ```r
@@ -93,8 +93,8 @@ fish
 ```
 ## 
 ## Fisher log series model
-## No. of species: 93 
-## Fisher alpha:   36.16927
+## No. of species: 105 
+## Fisher alpha:   43.53983
 ```
 
 ```r
@@ -115,15 +115,15 @@ pres
 ## 
 ## Preston lognormal model
 ## Method: maximized likelihood to log2 abundances 
-## No. of species: 93 
+## No. of species: 105 
 ## 
-##      mode     width        S0 
-##  1.029866  1.695599 24.741956 
+##       mode      width         S0 
+##  0.9574541  1.6226595 29.1315004 
 ## 
 ## Frequencies by Octave
-##                0        1        2        3        4       5         6
-## Observed 16.0000 27.00000 21.50000 16.00000 5.500000 6.50000 0.5000000
-## Fitted   20.5744 24.73812 21.00633 12.59731 5.335182 1.59575 0.3370734
+##                 0        1        2        3        4        5         6
+## Observed 20.00000 30.00000 25.50000 16.50000 8.000000 4.000000 1.0000000
+## Fitted   24.47713 29.12149 23.69874 13.19155 5.022556 1.308014 0.2330016
 ```
 
 ```r
@@ -143,14 +143,14 @@ rad
 ```
 ## 
 ## RAD models, family poisson 
-## No. of species 93, total abundance 437
+## No. of species 105, total abundance 442
 ## 
 ##            par1      par2     par3    Deviance AIC      BIC     
-## Null                                   71.4490 341.0108 341.0108
-## Preemption  0.046363                   57.1444 328.7062 331.2388
-## Lognormal   0.94233   1.1186           31.8308 305.3925 310.4577
-## Zipf        0.13172  -0.81947          48.8686 322.4304 327.4956
-## Mandelbrot  2.8626   -1.5964   8.3763   8.7297 284.2914 291.8892
+## Null                                   63.7881 361.7503 361.7503
+## Preemption  0.039086                   60.6770 360.6391 363.2931
+## Lognormal   0.85921   1.0913           20.1649 322.1271 327.4350
+## Zipf        0.12092  -0.79937          28.7972 330.7594 336.0673
+## Mandelbrot  0.90845  -1.3074   5.5974   5.0666 309.0287 316.9906
 ```
 
 ```r
@@ -172,12 +172,12 @@ rad2
 ## 
 ## Deviance for RAD models:
 ## 
-##                  27       44       42       50       22      43
-## Null        74.9255  77.9340  33.7036  66.6294 114.1747 92.4312
-## Preemption  76.2115  63.5966  21.8063  51.5143 110.5156 82.4328
-## Lognormal   23.1209  18.3749  19.6278  21.2540  26.2510 20.2361
-## Zipf        25.9943  29.2166  49.1963  38.8722  15.5222 20.0974
-## Mandelbrot  17.2257  11.5869   4.9471   9.3815   9.6047  9.5133
+##                  33       23       49       47        8      25
+## Null        90.8682  55.4639 102.4194 105.2750  54.2317 63.7881
+## Preemption  77.0177  53.4573  80.8330  81.6840  59.9013 60.6770
+## Lognormal   18.0569  21.9550  29.5229  43.1745  13.9156 20.1649
+## Zipf        23.2245  20.0961  33.2876  48.6464  21.3906 28.7972
+## Mandelbrot   4.7472   7.4609   5.3571   9.4122   6.5744  5.0666
 ```
 
 ```r
@@ -186,4 +186,38 @@ plot(rad2)
 
 <img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-5-1.png" width="672" />
 
-Above, we see that the model selected for capturing the shape of the SAD is Mandelbrot, and it is plotted individually for each of the randomly selected sites. Model selection works through Akaike’s or Schwartz’s Bayesian information criteria (AIC or BIC; AIC is the default -- select the model with the lowest AIC).
+Above, we see that the model selected for capturing the shape of the SAD is Mandelbrot, and it is plotted individually for each of the randomly selected sites. Model selection works through Akaike’s or Schwartz’s Bayesian information criteria (AIC or BIC; AIC is the default---select the model with the lowest AIC).
+
+### Occupancy-abundance curves
+
+### Species-area curves
+
+### Distance-decay curves
+
+### Rarefaction curves
+
+(...under development...)
+
+Species richness, *S*, accumulates with sample size, and sample size may also affect differences in richness (typically more samples taken will yield a greater richness). Rarefaction curves show species richness as a function of number of individuals sampled.
+
+
+```r
+quantile(rowSums(BCI))
+```
+
+```
+##    0%   25%   50%   75%  100% 
+## 340.0 409.0 428.0 443.5 601.0
+```
+
+```r
+Srar <- data.frame(rar = rarefy(BCI, min(rowSums(BCI))))
+
+ggplot(Srar, aes(x = 1:nrow(Srar), y = rar)) +
+  geom_point()
+```
+
+<img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+
+
+### Eelevation and other gradients
