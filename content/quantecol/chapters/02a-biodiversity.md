@@ -36,15 +36,23 @@ title: "2a. Quantifying Diversity"
 weight: 3
 ---
 
-In this Chapter we will look at the various measures of biodiversity, viz. α-, β- and γ-diversity. Deeper analysis is and compulsory reading is provided by David Zelený on his [Analysis of community data in R](https://www.davidzeleny.net/anadat-r/doku.php/en:diversity_analysis) website.
+> ***Biodiversity** The variability among living organisms from all sources including, *inter alia*, terrestrial, marine and other aquatic ecosystems and the ecological complexes of which they are part; this includes diversity within species, between species and of ecosystems.*
+>
+> --- Convention on Biological Diversity
+
+Species diversity is a measure of diversity in a specific habitat, ecological community, or ecosystem. It considers three important concepts about how species are distributed in space: **richness**, **abundance**, and **evenness**.
+
+Note that when ecologists talk about 'biodiversity' they might not necessarily be interested in ALL the plants and animals and things that are neither plant nor animal that occur at a particular place. Some ecologists are interested in ants and moths. Others might find fishes more insightful. Some even like marine mammals! I prefer seaweeds for my own personal reasons. So, the analysis of biodiversity data might often be constrained to some higher-level taxon, such as all angiosperms in a landscape, or reptiles, etc. (but all species are sampled in the higher-level taxon). Some ecological questions benefit from comparisons of diversity assessments among selected taxa (avifauna vs. small mammals, for example), as this focus might address some particular ecological hypothesis---the bird vs. small mammal comparison might reveal something about how barriers such as streams and rivers structure biodiversity patterns. In our examples we will use such focused datasets. 
+
+In this Chapter we start by looking at the various measures of biodiversity, viz. α-, β- and γ-diversity. Deeper analysis is and compulsory reading is provided by David Zelený on his [Analysis of community data in R](https://www.davidzeleny.net/anadat-r/doku.php/en:diversity_analysis) website.
 
 <!--- # Topic 2: Measures of biodiversity --->
 
 ## Three measures of biodiversity
 
-Three measures of biodiversity were coined by [Whittaker in 1972](/pdf/BCB743/Whittaker_1972.pdf), and the concepts were 'modernised' by [Jurasinski et al in 2009](/pdf/BCB743/Jurasinski_et_al_2009.pdf). They represent the measurement of biodiversity across different spatial scales. α- and γ-diversity simply express the total number of species in an area. The first, α-diversity, is a representation of the number of species at the small (local) scale, such as within a quadrat, transect, plot, or trawl. Multiples of these are nested within a larger region (or ecosystem etc.) and serve as replicates, and it is the complete number of species across all of these replicates that indicates the diversity at a larger scale---this is called γ-diversity. β-diversity refers to the change in species composition among samples (sites).
+Three measures of biodiversity were coined by [Whittaker in 1972](/pdf/BCB743/Whittaker_1972.pdf), and the concepts were 'modernised' by [Jurasinski et al in 2009](/pdf/BCB743/Jurasinski_et_al_2009.pdf). They represent the measurement of biodiversity *across different spatial scales*. α- and γ-diversity simply express the total number of species in an area. The first, α-diversity, is a representation of the number of species at the small (local) scale, such as within a quadrat, transect, plot, or trawl. Multiples of these are nested within a larger region (or ecosystem etc.) and serve as replicates, and it is the complete number of species across all of these replicates that indicates the diversity at a larger scale---this is called γ-diversity. β-diversity refers to the change in species composition among samples (sites).
 
-We will use data on the seaweeds of South Africa to demonstrate these ideas. The **vegan** package offers [various functions](/pdf/BCB743/Oksanen_diversity-vegan.pdf) to calculate diversity indices, as desmonstrated below.
+We will start by using data on the seaweeds of South Africa to demonstrate some ideas around diversity measures. The **vegan** package offers [various functions](/pdf/BCB743/Oksanen_diversity-vegan.pdf) to calculate diversity indices, as demonstrated below.
 
 ## The South African seaweed data
 
@@ -62,7 +70,6 @@ library(tidyverse)
 library(betapart)
 library(vegan)
 library(gridExtra)
-# library(BiodiversityR)
 library(grid)
 library(gridBase)
 ```
@@ -156,7 +163,8 @@ Now we make a plot:
 
 ```r
 ggplot(data = spp_richness, (aes(x = 1:58, y = richness))) +
-  geom_line() + xlab("Coastal section, west to east") + ylab("Species richness")
+  geom_line() + xlab("Coastal section, west to east") + ylab("Species richness") +
+  theme_linedraw()
 ```
 
 <div class="figure">
@@ -256,7 +264,6 @@ round(J, 2)
 ## [1] 0.91 0.95 0.89
 ```
 
-
 #### Dissimilarity indices
 
 In this section we will cover the dissimilarity indices, which are special cases of diversity indices that use pairwise comparisons between sampling units, habitats, or ecosystems. Both α- and β-diversity can be expressed as dissimilarity indices, but let deal with α-diversity first.
@@ -333,6 +340,10 @@ We can also use:
 diversityresult(spp, index = 'richness', method = 'pooled')
 ```
 
+<!-- ```{r} -->
+<!-- specpool() -->
+<!-- ``` -->
+
 ### Assignment 1 Questions
 
 > **Question 6:** Why is there a difference between the two?
@@ -356,10 +367,11 @@ true_beta <- data.frame(
 # true_beta
 ggplot(data = true_beta, (aes(x = section_no, y = beta))) +
   geom_line() + xlab("Coastal section, west to east") +
-  ylab("True beta-diversity")
+  ylab("True beta-diversity") +
+  theme_linedraw()
 ```
 
-<img src="/quantecol/chapters/02a-biodiversity_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="/quantecol/chapters/02a-biodiversity_files/figure-html/unnamed-chunk-14-1.png" width="480" />
 
 The second measure of β-diversity is *absolute species turnover*, and to calculate this we simply substract α-diversity for each section from the region's γ-diversity:
 
@@ -372,10 +384,11 @@ abs_beta <- data.frame(
 # abs_beta
 ggplot(data = abs_beta, (aes(x = section_no, y = beta))) +
   geom_line() + xlab("Coastal section, west to east") +
-  ylab("Absolute beta-diversity")
+  ylab("Absolute beta-diversity") +
+  theme_linedraw()
 ```
 
-<img src="/quantecol/chapters/02a-biodiversity_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="/quantecol/chapters/02a-biodiversity_files/figure-html/unnamed-chunk-15-1.png" width="480" />
 
 #### Contemporary definitions β-diversity
 

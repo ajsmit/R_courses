@@ -7,17 +7,13 @@ links:
     icon_pack: fas
     name: non-Metric Multidimensional Scaling Slides
     url: /pdf/BCB743/BCB743_11_nMDS.pdf
-  - icon: file-csv
+  - icon: file-export
     icon_pack: fa
-    name: DoubsEnv.csv
-    url: /BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv
-  - icon: file-csv
-    icon_pack: fa
-    name: DoubsSpe.csv
-    url: /BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
+    name: Doubs.RData
+    url: /BCB743/NEwR-2ed_code_data/NEwR2-Data/Doubs.RData
 subtitle: ""
 title: "11a. non-Metric multidimensional scaling (nMDS)"
-weight: 14
+weight: 15
 ---
 
 <!--- # Topic 11: non-Metric multidimensional scaling (nMDS) --->
@@ -43,8 +39,7 @@ We continue to use the species data:
 
 
 ```r
-spe <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsSpe.csv"))
-spe <- dplyr::select(spe, -1)
+load(paste0(root, "NEwR-2ed_code_data/NEwR2-Data/Doubs.RData"))
 spe <- dplyr::slice(spe, -8)
 ```
 
@@ -57,34 +52,40 @@ spe_nmds <- metaMDS(spe, distance = "bray")
 
 ```
 ## Run 0 stress 0.07477805 
-## Run 1 stress 0.1225935 
-## Run 2 stress 0.07383686 
+## Run 1 stress 0.07429331 
 ## ... New best solution
-## ... Procrustes: rmse 0.01963659  max resid 0.09440103 
-## Run 3 stress 0.1196707 
-## Run 4 stress 0.1121899 
-## Run 5 stress 0.0747841 
-## Run 6 stress 0.0747783 
-## Run 7 stress 0.1139958 
-## Run 8 stress 0.1147992 
-## Run 9 stress 0.08841667 
-## Run 10 stress 0.1232209 
-## Run 11 stress 0.07478399 
-## Run 12 stress 0.07376231 
+## ... Procrustes: rmse 0.02391877  max resid 0.09221927 
+## Run 2 stress 0.1115868 
+## Run 3 stress 0.1240637 
+## Run 4 stress 0.07429346 
+## ... Procrustes: rmse 0.0003282293  max resid 0.001562347 
+## ... Similar to previous best
+## Run 5 stress 0.1196782 
+## Run 6 stress 0.08899014 
+## Run 7 stress 0.1104319 
+## Run 8 stress 0.120581 
+## Run 9 stress 0.07429327 
 ## ... New best solution
-## ... Procrustes: rmse 0.003822843  max resid 0.01445962 
-## Run 13 stress 0.0750669 
-## Run 14 stress 0.08886178 
-## Run 15 stress 0.1125693 
-## Run 16 stress 0.111211 
-## Run 17 stress 0.1228762 
-## Run 18 stress 0.1104419 
-## Run 19 stress 0.1238159 
-## Run 20 stress 0.07477802 
-## *** No convergence -- monoMDS stopping criteria:
-##      1: no. of iterations >= maxit
-##     17: stress ratio > sratmax
-##      2: scale factor of the gradient < sfgrmin
+## ... Procrustes: rmse 4.352446e-05  max resid 0.0002067929 
+## ... Similar to previous best
+## Run 10 stress 0.1139842 
+## Run 11 stress 0.08886178 
+## Run 12 stress 0.07477815 
+## ... Procrustes: rmse 0.02393863  max resid 0.09280131 
+## Run 13 stress 0.07506666 
+## Run 14 stress 0.1104419 
+## Run 15 stress 0.07376248 
+## ... New best solution
+## ... Procrustes: rmse 0.01459962  max resid 0.06330567 
+## Run 16 stress 0.1248198 
+## Run 17 stress 0.07376226 
+## ... New best solution
+## ... Procrustes: rmse 0.0004112123  max resid 0.001978692 
+## ... Similar to previous best
+## Run 18 stress 0.1203425 
+## Run 19 stress 0.074778 
+## Run 20 stress 0.07477846 
+## *** Solution reached
 ```
 
 ```r
@@ -102,9 +103,9 @@ spe_nmds
 ## Distance: bray 
 ## 
 ## Dimensions: 2 
-## Stress:     0.07376231 
+## Stress:     0.07376226 
 ## Stress type 1, weak ties
-## No convergent solutions - best solution after 20 tries
+## Two convergent solutions found after 20 tries
 ## Scaling: centring, PC rotation, halfchange scaling 
 ## Species: expanded scores based on 'spe'
 ```
@@ -182,8 +183,6 @@ with(spe, tmp <- ordisurf(spe_nmds ~ Cogo, bubble = 3,
                           display = "sites", main = "Cogo"))
 abline(h = 0, v = 0, lty = 3)
 
-env <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsEnv.csv"))
-env <- dplyr::select(env, -1)
 env <- dplyr::slice(env, -8)
 
 (spe_nmds_env <- envfit(spe_nmds, env)) 
@@ -194,17 +193,17 @@ env <- dplyr::slice(env, -8)
 ## ***VECTORS
 ## 
 ##        NMDS1    NMDS2     r2 Pr(>r)    
-## dfs  0.97101  0.23903 0.7488  0.001 ***
-## alt -0.98913 -0.14707 0.6115  0.001 ***
-## slo -0.74888  0.66271 0.3267  0.015 *  
-## flo  0.88579  0.46409 0.5684  0.002 ** 
-## pH  -0.26262  0.96490 0.0179  0.789    
-## har  0.96347 -0.26780 0.3773  0.003 ** 
-## pho  0.45938 -0.88824 0.5441  0.001 ***
-## nit  0.87787 -0.47889 0.5819  0.001 ***
-## amm  0.42938 -0.90312 0.5549  0.001 ***
-## oxy -0.74250  0.66985 0.7395  0.001 ***
-## bod  0.44202 -0.89700 0.6575  0.001 ***
+## dfs  0.97102  0.23901 0.7488  0.001 ***
+## ele -0.98913 -0.14701 0.6115  0.001 ***
+## slo -0.74863  0.66299 0.3267  0.019 *  
+## dis  0.88582  0.46403 0.5684  0.001 ***
+## pH  -0.26289  0.96483 0.0179  0.778    
+## har  0.96343 -0.26797 0.3773  0.003 ** 
+## pho  0.45948 -0.88819 0.5441  0.002 ** 
+## nit  0.87794 -0.47878 0.5819  0.001 ***
+## amm  0.42948 -0.90308 0.5548  0.001 ***
+## oxy -0.74258  0.66975 0.7395  0.001 ***
+## bod  0.44212 -0.89696 0.6574  0.001 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## Permutation: free

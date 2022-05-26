@@ -40,14 +40,15 @@ Some of you will be familiar with the paper by Shade et al. (2018). Several kind
 
 ```{r message=FALSE, warning=FALSE, echo=FALSE}
 library(tidyverse)
+library(vegan)
 
-mites <- read.csv('../../../static/BCB743/Num_Ecol_R_book_ed1/mite.txt', sep = "")
+data(mite)
 
 # make a head-tail function
 ht <- function(d) rbind(head(d, 7), tail(d, 7))
 
 # Lets look at a portion of the data:
-ht(mites[, 1:7])
+ht(mite[, 1:7])
 ```
 
 Note that Figure 1 in Shade et al. (2018) starts with a species table where the species are arranged down the rows and the sites along the variables (columns). I, and also the **vegan** package, require that the **species are along the variables and the sites down the rows**. This is the convention that will be used throughout this module.
@@ -94,43 +95,93 @@ plot(pres)
 
 R. H. Whittaker (1965) introduced **rank abundance distribution curves** (sometimes called a dominance-diversity curves or Whittaker plots). Here the $x$-axis has species ranked according to their relative abundance, with the most abundant species at the left and rarest at the right. The $y$-axis represents relative species abundances (sometimes log-transformed). The shape of the profile as---influenced by the steepness and the length of the tail---indicates the relative proportion of abundant and scarce species in the community. In **vegan** we can accomplish fitting this type of SAD with the `radfit()` function. The default plot is somewhat more complicated as it shows broken-stick, preemption, log-Normal, Zipf and Zipf-Mandelbrot models fitted to the ranked species abundance data:
 
-```{r}
+```{r fig.height=3, fig.width=5}
 rad <- radfit(BCI[k,])
 rad
 plot(rad)
 ```
 
-We can also fit the rank abundance distribution curves to several sites at once (previsouly we have done so on only one site):
+We can also fit the rank abundance distribution curves to several sites at once (previously we have done so on only one site):
 
-```{r}
+```{r fig.height=3, fig.width=5}
 m <- sample(nrow(BCI), 6)
 rad2 <- radfit(BCI[m, ])
 rad2
 plot(rad2)
 ```
 
-Above, we see that the model selected for capturing the shape of the SAD is Mandelbrot, and it is plotted individually for each of the randomly selected sites. Model selection works through Akaike’s or Schwartz’s Bayesian information criteria (AIC or BIC; AIC is the default---select the model with the lowest AIC).
+Above, we see that the model selected for capturing the shape of the SAD is the Mandelbrot, and it is plotted individually for each of the randomly selected sites. Model selection works through Akaike’s or Schwartz’s Bayesian information criteria (AIC or BIC; AIC is the default---select the model with the lowest AIC).
+
+[**BiodiversityR**](https://github.com/cran/BiodiversityR) (and [here](http://apps.worldagroforestry.org/downloads/Publications/PDFS/b13695.pdf) and [here](https://rpubs.com/Roeland-KINDT)) also offers options for rank abundance distribution curves; see `rankabundance()`:
+
+```{r  fig.height=3, fig.width=5, message=FALSE, warning=FALSE}
+library(BiodiversityR)
+rankabund <- rankabundance(BCI)
+rankabunplot(rankabund, cex = 0.8, pch = 0.8, col = "red")
+```
+
+Refer to the help files for the respective functions to see their differences.
 
 ### Occupancy-abundance curves
 
-### Species-area curves
+### Species-area (accumulation) and rarefaction curves
 
-### Distance-decay curves
+Species accumulation curves and rarefaction curves both serve the same purpose, that is, to try and estimate the number of unseen species. Within an ecosystem type, one would expect that more and more species would be added (accumulates) as the number of sampled sites increases. This continues to a point where no more new species are added as the number of sampled sites continues to increase (i.e. the curve plateaus). Species accumulation curves, as the name suggests, accomplishes this by adding (accumulation or collecting) more and more sites and counting the average number of species along $y$ each time a new site is added. See Roeland Kindt's description of [how species accumulation curves work](http://apps.worldagroforestry.org/downloads/Publications/PDFS/b13695.pdf) (on p. 41). In the community matrix (the sites × species table), we can do this by successively adding more rows to the curve (seen along the $x$-axis). The `specaccum()` function has many different ways of adding the new sites to the curve, but the default 'exact' seems to be a sensible choice. **BiodiversityR** has the `accumresult()` function that does nearly the same. Let's demonstrate using **vegan**'s function:
 
-### Rarefaction curves
+```{r fig.height=3, fig.width=5}
+sp1 <- specaccum(BCI)
+sp2 <- specaccum(BCI, "random")
 
-(...under development...)
+# par(mfrow = c(2,2), mar = c(4,2,2,1))
+# par(mfrow = c(1,2))
+plot(sp1, ci.type = "polygon", col = "blue", lwd = 2, ci.lty = 0,
+     ci.col = "lightblue", main = "Default: exact",
+     ylab = "No. of species")
 
-Species richness, *S*, accumulates with sample size, and sample size may also affect differences in richness (typically more samples taken will yield a greater richness). Rarefaction curves show species richness as a function of number of individuals sampled.
-
-```{r}
-quantile(rowSums(BCI))
-Srar <- data.frame(rar = rarefy(BCI, min(rowSums(BCI))))
-
-ggplot(Srar, aes(x = 1:nrow(Srar), y = rar)) +
-  geom_point()
-
+## Fit Arrhenius models to all random accumulations
+mods <- fitspecaccum(sp2, "arrh")
+plot(mods, col = "hotpink", ylab = "No. of species")
+boxplot(sp2, col = "yellow", border = "blue", lty = 1, cex = 0.3, add = TRUE)
+sapply(mods$models, AIC)
 ```
 
+```{r fig.height=3, fig.width=5}
+accum <- accumresult(BCI, method = "exact", permutations = 100)
+accumplot(accum)
+```
+
+Rarefaction is a statistical technique used by ecologists to assess species richness (represented as *S*, or diversity indices such as Shannon diversity, $H'$, or Simpson's diversity, $\lambda$) from data on species samples, such as that which we may find in site × species tables. Rarefaction can be used to determine whether a habitat, community, or ecosystem has been sufficiently sampled to fully capture the full complement of species present.
+
+Rarefaction curves may seem similar to species accumulation curves, but there is a difference as I will note below. Species richness, *S*, accumulates with sample size *or* with the number of individuals sampled (across all species). The first way that rarefaction curves are presented is to show species richness as a function of number of individuals sampled. Here the principle demonstrated is that when only a few individuals are sampled, those individuals may belong to only a few species; however, when more individuals are present more species will be represented. The second approach to rarefaction is to plot the number of samples along $x$ and the species richness along the $y$-axis (as in SADs too). So, rarefaction shows how richness accumulates with the number of individuals counted or with the number of samples taken. 
+
+But what really distinguishes rarefaction curves from SADs is that rarefaction randomly re-samples the pool of $N$ samples (that is equal or less than the total community size) a number of times and plots the average number of species found in each resample (1,2, ... $N$) as a function of individuals or samples. The `rarecurve()` function draws a rarefaction curve for each row of the species data table. All these plots are made with base R graphics, but it will be a trivial exercise to reproduce them with **ggplot2**.
+
+We can also use the [**iNEXT**](https://github.com/JohnsonHsieh/iNEXT) package for rarefaction curves. From the package's [Introduction Vignette](https://cran.r-project.org/web/packages/iNEXT/vignettes/Introduction.html):
+ 
+> iNEXT focuses on three measures of Hill numbers of order q: species richness (q = 0), Shannon diversity (q = 1, the exponential of Shannon entropy) and Simpson diversity (q = 2, the inverse of Simpson concentration). For each diversity measure, iNEXT uses the observed sample of abundance or incidence data (called the “reference sample”) to compute diversity estimates and the associated 95% confidence intervals for the following two types of rarefaction and extrapolation (R/E):
+> 
+> 1. Sample‐size‐based R/E sampling curves: iNEXT computes diversity estimates for rarefied and extrapolated samples up to an appropriate size. This type of sampling curve plots the diversity estimates with respect to sample size.
+> 2. Coverage‐based R/E sampling curves: iNEXT computes diversity estimates for rarefied and extrapolated samples with sample completeness (as measured by sample coverage) up to an appropriate coverage. This type of sampling curve plots the diversity estimates with respect to sample coverage.
+>
+>iNEXT also plots the above two types of sampling curves and a sample completeness curve. The sample completeness curve provides a bridge between these two types of curves.
+
+For information about Hill numbers see David Zelený's [Analysis of community data in R](https://www.davidzeleny.net/anadat-r/doku.php/en:diversity_analysis) and Jari Oksanen's coverage of [diversity measures in **vegan**](https://cran.r-project.org/web/packages/vegan/vignettes/diversity-vegan.pdf).
+
+There are four datasets distributed with iNEXT and numerous examples are provided in the [Introduction Vignette](https://cran.r-project.org/web/packages/iNEXT/vignettes/Introduction.html). iNEXT has an 'odd' data format that might seem foreign to **vegan** users. To use iNEXT with dataset suitable for analysis in vegan, we first need to convert BCI data to a species × site matrix:
+
+```{r}
+library(iNEXT)
+
+# transpose the BCI data: 
+BCI_t <- list(BCI = t(BCI))
+str(BCI_t)
+
+BCI_out <- iNEXT(BCI_t, q = c(0, 1, 2), datatype = "incidence_raw")
+ggiNEXT(BCI_out, type = 1, color.var = "order")
+```
+
+The warning is produced because the function expects incidence data (presence-absence), but I'm feeding it abundance (count) data. Nothing serious, as the function converts the abundance data to incidences.
+
+### Distance-decay curves
 
 ### Eelevation and other gradients

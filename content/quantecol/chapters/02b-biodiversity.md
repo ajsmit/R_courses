@@ -40,21 +40,21 @@ Some of you will be familiar with the paper by Shade et al. (2018). Several kind
 
 
 ```
-##    Brachysp Phthirsp Hoplcfpa Rhysardu Atrostri Protopsp Malacfeg
-## 1        17        5        5        3        2        1        4
-## 2         2        7       16        0        6        0        4
-## 3         4        3        1        1        2        0        3
-## 4        23        7       10        2        2        0        4
-## 5         5        8       13        9        0       13        0
-## 6        19        7        5        9        3        2        3
-## 7        17        3        8        2        3        0        3
-## 64        3        0       16        0        0        0        0
-## 65        4        0       10        0        0        0        0
-## 66        8        0       18        0        0        0        0
-## 67        4        0        3        0        0        0        0
-## 68        6        0       22        0        0        0        0
-## 69       20        2        4        0        0        0        0
-## 70        5        0       11        0        0        0        0
+##    Brachy PHTH HPAV RARD SSTR Protopl MEGR
+## 1      17    5    5    3    2       1    4
+## 2       2    7   16    0    6       0    4
+## 3       4    3    1    1    2       0    3
+## 4      23    7   10    2    2       0    4
+## 5       5    8   13    9    0      13    0
+## 6      19    7    5    9    3       2    3
+## 7      17    3    8    2    3       0    3
+## 64      3    0   16    0    0       0    0
+## 65      4    0   10    0    0       0    0
+## 66      8    0   18    0    0       0    0
+## 67      4    0    3    0    0       0    0
+## 68      6    0   22    0    0       0    0
+## 69     20    2    4    0    0       0    0
+## 70      5    0   11    0    0       0    0
 ```
 
 Note that Figure 1 in Shade et al. (2018) starts with a species table where the species are arranged down the rows and the sites along the variables (columns). I, and also the **vegan** package, require that the **species are along the variables and the sites down the rows**. This is the convention that will be used throughout this module.
@@ -93,8 +93,8 @@ fish
 ```
 ## 
 ## Fisher log series model
-## No. of species: 105 
-## Fisher alpha:   43.53983
+## No. of species: 95 
+## Fisher alpha:   39.87658
 ```
 
 ```r
@@ -115,15 +115,15 @@ pres
 ## 
 ## Preston lognormal model
 ## Method: maximized likelihood to log2 abundances 
-## No. of species: 105 
+## No. of species: 95 
 ## 
 ##       mode      width         S0 
-##  0.9574541  1.6226595 29.1315004 
+##  0.9234918  1.6267630 26.4300640 
 ## 
 ## Frequencies by Octave
 ##                 0        1        2        3        4        5         6
-## Observed 20.00000 30.00000 25.50000 16.50000 8.000000 4.000000 1.0000000
-## Fitted   24.47713 29.12149 23.69874 13.19155 5.022556 1.308014 0.2330016
+## Observed 19.00000 27.00000 21.50000 17.00000 7.000000 2.500000 1.0000000
+## Fitted   22.49669 26.40085 21.23279 11.70269 4.420327 1.144228 0.2029835
 ```
 
 ```r
@@ -143,23 +143,23 @@ rad
 ```
 ## 
 ## RAD models, family poisson 
-## No. of species 105, total abundance 442
+## No. of species 95, total abundance 392
 ## 
 ##            par1      par2     par3    Deviance AIC      BIC     
-## Null                                   63.7881 361.7503 361.7503
-## Preemption  0.039086                   60.6770 360.6391 363.2931
-## Lognormal   0.85921   1.0913           20.1649 322.1271 327.4350
-## Zipf        0.12092  -0.79937          28.7972 330.7594 336.0673
-## Mandelbrot  0.90845  -1.3074   5.5974   5.0666 309.0287 316.9906
+## Null                                   56.3132 324.6477 324.6477
+## Preemption  0.042685                   55.8621 326.1966 328.7504
+## Lognormal   0.84069   1.0912           16.1740 288.5085 293.6162
+## Zipf        0.12791  -0.80986          21.0817 293.4161 298.5239
+## Mandelbrot  0.66461  -1.2374   4.1886   6.6132 280.9476 288.6093
 ```
 
 ```r
 plot(rad)
 ```
 
-<img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-4-1.png" width="480" />
 
-We can also fit the rank abundance distribution curves to several sites at once (previsouly we have done so on only one site):
+We can also fit the rank abundance distribution curves to several sites at once (previously we have done so on only one site):
 
 
 ```r
@@ -172,52 +172,152 @@ rad2
 ## 
 ## Deviance for RAD models:
 ## 
-##                  33       23       49       47        8      25
-## Null        90.8682  55.4639 102.4194 105.2750  54.2317 63.7881
-## Preemption  77.0177  53.4573  80.8330  81.6840  59.9013 60.6770
-## Lognormal   18.0569  21.9550  29.5229  43.1745  13.9156 20.1649
-## Zipf        23.2245  20.0961  33.2876  48.6464  21.3906 28.7972
-## Mandelbrot   4.7472   7.4609   5.3571   9.4122   6.5744  5.0666
+##                   4        1        7       19       35      48
+## Null        49.8111  39.5261  44.1321 107.2256 885.2242 59.1791
+## Preemption  39.7817  21.8939  35.5813 116.0772 706.2663 55.8066
+## Lognormal   16.6588  25.1528  15.0446  33.4229 159.4459 16.2187
+## Zipf        47.9108  61.0465  37.1297  17.5444  36.4052 25.3544
+## Mandelbrot   5.5665   4.2271   6.8295  10.4748  36.4052  5.0745
 ```
 
 ```r
 plot(rad2)
 ```
 
-<img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-5-1.png" width="480" />
 
-Above, we see that the model selected for capturing the shape of the SAD is Mandelbrot, and it is plotted individually for each of the randomly selected sites. Model selection works through Akaike’s or Schwartz’s Bayesian information criteria (AIC or BIC; AIC is the default---select the model with the lowest AIC).
+Above, we see that the model selected for capturing the shape of the SAD is the Mandelbrot, and it is plotted individually for each of the randomly selected sites. Model selection works through Akaike’s or Schwartz’s Bayesian information criteria (AIC or BIC; AIC is the default---select the model with the lowest AIC).
+
+[**BiodiversityR**](https://github.com/cran/BiodiversityR) (and [here](http://apps.worldagroforestry.org/downloads/Publications/PDFS/b13695.pdf) and [here](https://rpubs.com/Roeland-KINDT)) also offers options for rank abundance distribution curves; see `rankabundance()`:
+
+
+```r
+library(BiodiversityR)
+rankabund <- rankabundance(BCI)
+rankabunplot(rankabund, cex = 0.8, pch = 0.8, col = "red")
+```
+
+<img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-6-1.png" width="480" />
+
+Refer to the help files for the respective functions to see their differences.
 
 ### Occupancy-abundance curves
 
-### Species-area curves
+### Species-area (accumulation) and rarefaction curves
+
+Species accumulation curves and rarefaction curves both serve the same purpose, that is, to try and estimate the number of unseen species. Within an ecosystem type, one would expect that more and more species would be added (accumulates) as the number of sampled sites increases. This continues to a point where no more new species are added as the number of sampled sites continues to increase (i.e. the curve plateaus). Species accumulation curves, as the name suggests, accomplishes this by adding (accumulation or collecting) more and more sites and counting the average number of species along `\(y\)` each time a new site is added. See Roeland Kindt's description of [how species accumulation curves work](http://apps.worldagroforestry.org/downloads/Publications/PDFS/b13695.pdf) (on p. 41). In the community matrix (the sites × species table), we can do this by successively adding more rows to the curve (seen along the `\(x\)`-axis). The `specaccum()` function has many different ways of adding the new sites to the curve, but the default 'exact' seems to be a sensible choice. **BiodiversityR** has the `accumresult()` function that does nearly the same. Let's demonstrate using **vegan**'s function:
+
+
+```r
+sp1 <- specaccum(BCI)
+```
+
+```
+## Warning in cor(x > 0): the standard deviation is zero
+```
+
+```r
+sp2 <- specaccum(BCI, "random")
+
+# par(mfrow = c(2,2), mar = c(4,2,2,1))
+# par(mfrow = c(1,2))
+plot(sp1, ci.type = "polygon", col = "blue", lwd = 2, ci.lty = 0,
+     ci.col = "lightblue", main = "Default: exact",
+     ylab = "No. of species")
+```
+
+<img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-7-1.png" width="480" />
+
+```r
+## Fit Arrhenius models to all random accumulations
+mods <- fitspecaccum(sp2, "arrh")
+plot(mods, col = "hotpink", ylab = "No. of species")
+boxplot(sp2, col = "yellow", border = "blue", lty = 1, cex = 0.3, add = TRUE)
+```
+
+<img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-7-2.png" width="480" />
+
+```r
+sapply(mods$models, AIC)
+```
+
+```
+##   [1] 341.2981 335.2787 320.4301 308.5353 291.1365 340.1930 357.9873 332.1840
+##   [9] 318.5659 366.6193 351.3844 335.7607 348.3426 302.3093 288.1323 308.8948
+##  [17] 352.8090 317.8931 336.3964 373.8125 329.3544 334.0731 344.2925 375.7244
+##  [25] 348.7604 345.0628 338.4549 268.5416 303.7123 325.3938 331.1292 293.7738
+##  [33] 327.5455 355.0379 349.7843 339.5713 326.3298 351.1487 300.3795 345.1110
+##  [41] 330.8714 358.3487 319.0466 340.2197 344.3764 346.4743 320.1542 302.3948
+##  [49] 309.7505 336.4755 363.6841 306.9264 336.0695 345.3502 329.3734 319.2883
+##  [57] 337.5438 331.3938 326.2044 331.5958 368.0740 313.5700 255.2104 334.2672
+##  [65] 314.4999 324.6643 335.8524 348.6149 346.5143 320.1167 336.9254 293.2337
+##  [73] 336.4260 334.1159 333.8296 341.4761 336.1687 339.0917 371.6713 327.4544
+##  [81] 353.6557 305.7991 330.0735 365.7789 344.3809 343.0189 326.2084 336.1685
+##  [89] 343.7478 308.8636 321.0863 337.2869 337.2085 347.5741 351.1661 335.0564
+##  [97] 346.2892 340.6306 358.8237 357.3155
+```
+
+
+```r
+accum <- accumresult(BCI, method = "exact", permutations = 100)
+accumplot(accum)
+```
+
+<img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-8-1.png" width="480" />
+
+Rarefaction is a statistical technique used by ecologists to assess species richness (represented as *S*, or diversity indices such as Shannon diversity, `\(H'\)`, or Simpson's diversity, `\(\lambda\)`) from data on species samples, such as that which we may find in site × species tables. Rarefaction can be used to determine whether a habitat, community, or ecosystem has been sufficiently sampled to fully capture the full complement of species present.
+
+Rarefaction curves may seem similar to species accumulation curves, but there is a difference as I will note below. Species richness, *S*, accumulates with sample size *or* with the number of individuals sampled (across all species). The first way that rarefaction curves are presented is to show species richness as a function of number of individuals sampled. Here the principle demonstrated is that when only a few individuals are sampled, those individuals may belong to only a few species; however, when more individuals are present more species will be represented. The second approach to rarefaction is to plot the number of samples along `\(x\)` and the species richness along the `\(y\)`-axis (as in SADs too). So, rarefaction shows how richness accumulates with the number of individuals counted or with the number of samples taken. 
+
+But what really distinguishes rarefaction curves from SADs is that rarefaction randomly re-samples the pool of `\(N\)` samples (that is equal or less than the total community size) a number of times and plots the average number of species found in each resample (1,2, ... `\(N\)`) as a function of individuals or samples. The `rarecurve()` function draws a rarefaction curve for each row of the species data table. All these plots are made with base R graphics, but it will be a trivial exercise to reproduce them with **ggplot2**.
+
+We can also use the [**iNEXT**](https://github.com/JohnsonHsieh/iNEXT) package for rarefaction curves. From the package's [Introduction Vignette](https://cran.r-project.org/web/packages/iNEXT/vignettes/Introduction.html):
+ 
+> iNEXT focuses on three measures of Hill numbers of order q: species richness (q = 0), Shannon diversity (q = 1, the exponential of Shannon entropy) and Simpson diversity (q = 2, the inverse of Simpson concentration). For each diversity measure, iNEXT uses the observed sample of abundance or incidence data (called the “reference sample”) to compute diversity estimates and the associated 95% confidence intervals for the following two types of rarefaction and extrapolation (R/E):
+> 
+> 1. Sample‐size‐based R/E sampling curves: iNEXT computes diversity estimates for rarefied and extrapolated samples up to an appropriate size. This type of sampling curve plots the diversity estimates with respect to sample size.
+> 2. Coverage‐based R/E sampling curves: iNEXT computes diversity estimates for rarefied and extrapolated samples with sample completeness (as measured by sample coverage) up to an appropriate coverage. This type of sampling curve plots the diversity estimates with respect to sample coverage.
+>
+>iNEXT also plots the above two types of sampling curves and a sample completeness curve. The sample completeness curve provides a bridge between these two types of curves.
+
+For information about Hill numbers see David Zelený's [Analysis of community data in R](https://www.davidzeleny.net/anadat-r/doku.php/en:diversity_analysis) and Jari Oksanen's coverage of [diversity measures in **vegan**](https://cran.r-project.org/web/packages/vegan/vignettes/diversity-vegan.pdf).
+
+There are four datasets distributed with iNEXT and numerous examples are provided in the [Introduction Vignette](https://cran.r-project.org/web/packages/iNEXT/vignettes/Introduction.html). iNEXT has an 'odd' data format that might seem foreign to **vegan** users. To use iNEXT with dataset suitable for analysis in vegan, we first need to convert BCI data to a species × site matrix:
+
+
+```r
+library(iNEXT)
+
+# transpose the BCI data: 
+BCI_t <- list(BCI = t(BCI))
+str(BCI_t)
+```
+
+```
+## List of 1
+##  $ BCI: int [1:225, 1:50] 0 0 0 0 0 0 2 0 0 0 ...
+##   ..- attr(*, "dimnames")=List of 2
+##   .. ..$ : chr [1:225] "Abarema.macradenia" "Vachellia.melanoceras" "Acalypha.diversifolia" "Acalypha.macrostachya" ...
+##   .. ..$ : chr [1:50] "1" "2" "3" "4" ...
+```
+
+```r
+BCI_out <- iNEXT(BCI_t, q = c(0, 1, 2), datatype = "incidence_raw")
+```
+
+```
+## Warning in FUN(X[[i]], ...): Invalid data type, the element of species by sites
+## presence-absence matrix should be 0 or 1. Set nonzero elements as 1.
+```
+
+```r
+ggiNEXT(BCI_out, type = 1, color.var = "order")
+```
+
+<img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+
+The warning is produced because the function expects incidence data (presence-absence), but I'm feeding it abundance (count) data. Nothing serious, as the function converts the abundance data to incidences.
 
 ### Distance-decay curves
-
-### Rarefaction curves
-
-(...under development...)
-
-Species richness, *S*, accumulates with sample size, and sample size may also affect differences in richness (typically more samples taken will yield a greater richness). Rarefaction curves show species richness as a function of number of individuals sampled.
-
-
-```r
-quantile(rowSums(BCI))
-```
-
-```
-##    0%   25%   50%   75%  100% 
-## 340.0 409.0 428.0 443.5 601.0
-```
-
-```r
-Srar <- data.frame(rar = rarefy(BCI, min(rowSums(BCI))))
-
-ggplot(Srar, aes(x = 1:nrow(Srar), y = rar)) +
-  geom_point()
-```
-
-<img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-6-1.png" width="672" />
-
 
 ### Eelevation and other gradients

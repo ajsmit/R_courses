@@ -7,18 +7,14 @@ links:
     icon_pack: fas
     name: PCA Slides
     url: /pdf/BCB743/BCB743_08_PCA.pdf
-  - icon: file-csv
+  - icon: file-export
     icon_pack: fa
-    name: DoubsEnv.csv
-    url: /BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv
-  - icon: file-csv
-    icon_pack: fa
-    name: DoubsSpe.csv
-    url: /BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
+    name: Doubs.RData
+    url: /BCB743/NEwR-2ed_code_data/NEwR2-Data/Doubs.RData
   - icon: 
     icon_pack: 
     name: cleanplot.pca.R
-    url: /R/BCB743/Num_Ecol_R_book_ed1/cleanplot.pca.R
+    url: /BCB743/NEwR-2ed_code_data/NEwR2-Functions/cleanplot.pca.R
 subtitle: ""
 title: "8a. Principal Component Analysis (PCA)"
 weight: 10
@@ -26,7 +22,7 @@ weight: 10
 
 <!--- # Topic 8: Principal Component Analysis (PCA) --->
 
-PCA is one of many ordination techniques. Depening on the application of technical/scientific discipline it is applied in, you might see it mentioned under 'dimensionality reduction' techniques; other times it is named as a form of 'unsupervised learning.' Regardless of what it is called, ordination refers to multivariate techniques that reduces a multivariate (multi-dimensional) dataset in such a way that when it is projected onto a lower dimensional space, typically 2D or 3D space, any intrinsic structure in the data forms visually-discernable patterns (Pielou, 1984). Ordination summarises community data (e.g. samples of species presence-absence or abundance across muliple sites) by producing a low-dimensional ordination space where similar samples (typically species) plot close together, and dissimilar samples far apart. Dimensions of this low dimensional space represent important and interpretable environmental gradients.
+PCA is one of many ordination techniques. Depending on the application of technical/scientific discipline it is applied in, you might see it mentioned under 'dimensionality reduction' techniques; other times it is named as a form of 'unsupervised learning.' Regardless of what it is called, ordination refers to multivariate techniques that reduces a multivariate (multi-dimensional) dataset in such a way that when it is projected onto a lower dimensional space, typically 2D or 3D space, any intrinsic structure in the data forms visually-discernible patterns (Pielou, 1984). Ordination summarises community data (e.g. samples of species presence-absence or abundance across multiple sites) by producing a low-dimensional ordination space where similar samples (typically species) plot close together, and dissimilar samples far apart. Dimensions of this low dimensional space represent important and interpretable environmental gradients.
 
 In ecology, ordination techniques are used to describe relationships between community structure patterns and underlying environmental gradients. So, we can ask questions such as, "Which environmental variables cause a community to vary across a landscape?" Ordinations allow us to determine the relative importance of different gradients, and graphical presentations of the results can lead to intuitive interpretations of species-environment relationships.
 
@@ -46,15 +42,14 @@ rroot <- "../../../static/BCB743/"
 ## The Doubs River data
 
 ```{r}
-env <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsEnv.csv"))
-env <- dplyr::select(env, -1)
+load(paste0(root, "NEwR-2ed_code_data/NEwR2-Data/Doubs.RData"))
 head(env)
 ```
 
 ## First do a correlation
 
 ```{r}
-# computing a correalation matrix
+# computing a correlation matrix
 corr <- round(cor(env), 1)
 
 # visualization of the correlation matrix
@@ -63,15 +58,13 @@ ggcorrplot(corr, type = 'upper', outline.col = "white",
           lab = TRUE)
 ```
 
-Some variables are very correlatated, and they might be ommitted from the subsequent analyses. We say that these variables are 'collinear.' Collinear variables cannot be teased apart in terms of finding out which one is most influential in structuring the community. There are more advanced ways to search for collinear variables (e.g. Variance Inflation Factors, VIF) and in this way we can systematically exclude them from the PCA. See Graham (2003) for a discussion on collinearity. Here we will proceed with all the variables.
+Some variables are very correlated, and they might be omitted from the subsequent analyses. We say that these variables are 'collinear.' Collinear variables cannot be teased apart in terms of finding out which one is most influential in structuring the community. There are more advanced ways to search for collinear variables (e.g. Variance Inflation Factors, VIF) and in this way we can systematically exclude them from the PCA. See Graham (2003) for a discussion on collinearity. Here we will proceed with all the variables.
 
 ## See the spatial context
 
-The patterns in the data and the correlatons between them will make more sense if we can visualise a spatial context. Thankfully spatial data are available:
+The patterns in the data and the correlations between them will make more sense if we can visualise a spatial context. Thankfully spatial data are available:
 
 ```{r}
-spa <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsSpa.csv"))
-spa <- dplyr::select(spa, -1)
 head(spa)
 ggplot(spa, aes(x = X, y = Y, label = rownames(spa))) +
   geom_point(shape = 1) +
@@ -168,6 +161,8 @@ summary(env_pca)
 
 Graphical representations of ordination results are called ordination diagrams. See David Zelený's [exelent writing on the topic](https://www.davidzeleny.net/anadat-r/doku.php/en:ordiagrams).
 
+Although many of the examples provided here use the default plot options for the ordination---that rely on base graphics---the plots can also be set up in **ggplot2**. This requires some deeper knowledge. I provide some examples scattered throughout the course content, but you may also refer to the step-by-step walk throughs provided by [Roeland Kindt](https://rpubs.com/Roeland-KINDT/694016).
+
 In a PCA ordination diagram (called a biplot, because it plots two *things*, viz. sites as points and envionmental variables as vectors), following the tradition of scatter diagrams in Cartesian coordinate systems, objects are represented as points and variables are displayed as arrows. We first use the standard **vegan** `biplot()` function:
 
 ```{r}
@@ -175,7 +170,7 @@ biplot(env_pca, scaling = 1, main = "PCA scaling 1", choices = c(1, 2))
 biplot(env_pca, scaling = 2, main = "PCA scaling 2", choices = c(1, 2))
 ```
 
-**Scaling 1:** This scaling *emphasises relationships between rows* accurately in low-dimensional ordination space. Distances among objects (samples or sites) in the biplot are approximations of their Euclidian distances in multidimensional space. Objects positioned closer together show a greater degree of environmental dimilarity. The angles among descriptor vectors should not be interpreted as indicating the degree of correlation between the variables.
+**Scaling 1:** This scaling *emphasises relationships between rows* accurately in low-dimensional ordination space. Distances among objects (samples or sites) in the biplot are approximations of their Euclidian distances in multidimensional space. Objects positioned closer together show a greater degree of environmental dissimilarity. The angles among descriptor vectors should not be interpreted as indicating the degree of correlation between the variables.
 
 **Scaling 2:** This scaling *emphasises relationships between columns* accurately in low-dimensional ordination space. Distances among objects (samples or sites) in the biplot are not approximations of their Euclidian distances in multidimensional space. The angles among descriptor vectors can be interpreted as indicating the degree of correlation between the variables.
 
@@ -183,22 +178,22 @@ Now we create biplots using the `cleanplot.pca()` function that comes with *Nume
 
 ```{r}
 # we need to load the function first from its R file:
-source(paste0(rroot, "Num_Ecol_R_book_ed1/cleanplot.pca.R"))
+source(paste0(rroot, "/NEwR-2ed_code_data/NEwR2-Functions/cleanplot.pca.R"))
 cleanplot.pca(env_pca, scaling = 1)
 cleanplot.pca(env_pca, scaling = 2)
 ```
 
 **At this point it is essential that you refer to *Numerical Ecology in R* (pp. 118 to 126) for help with interpreting the ordination diagrams.**
 
-We can plot the underlying environmental gradients using the `ordisurf()` function in **vegan**. We plot the response surfaces for altitude and biological oxygen demand:
+We can plot the underlying environmental gradients using the `ordisurf()` function in **vegan**. We plot the response surfaces for elevation and biological oxygen demand:
 
 ```{r}
 biplot(env_pca, type = c("text", "points"), col = c("black", "black"))
 ordisurf(env_pca ~ bod, env, add = TRUE, col = "turquoise", knots = 1)
-ordisurf(env_pca ~ alt, env, add = TRUE, col = "salmon", knots = 1)
+ordisurf(env_pca ~ ele, env, add = TRUE, col = "salmon", knots = 1)
 ```
 
-We see that the contours form a linear trend surface, i.e. they are perpendicular to their vectors. This is the main weakness of PCA, as community data are nonlinear (in fact, environmental gradients are also seldom very linear, but they can be more linear than species data). In general, therefore, PCA should not be used for community data.
+We see that the contours form a linear trend surface, i.e. they are perpendicular to their vectors. This is the main weakness of PCA, as community data are non-linear (in fact, environmental gradients are also seldom very linear, but they can be more linear than species data). In general, therefore, PCA should not be used for community data.
 
 ### Assignment 4 Questions
 

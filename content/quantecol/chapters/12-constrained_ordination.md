@@ -33,18 +33,18 @@ links:
     url: /BCB743/seaweed/sites.csv    
 subtitle: ""
 title: "12. Constrained Ordination"
-weight: 16
+weight: 17
 ---
 
 <!--- # Topic 12: Constrained ordination --->
 
-Up to now we have applied indirect gradient analyses. The lecture slides mention several constrained ordinations and provide some theory for three of them, viz. **Redundancy Analysis (RDA)**, **Canonical Correspondence Analysis (CCA)**, and **distance-based Reducndancy Analysis (db-RDA)**. Constrained ordination is sometimes called 'direct gradient analysis' or 'canonical' ordination.
+Up to now we have applied indirect gradient analyses. The lecture slides mention several constrained ordinations and provide some theory for three of them, viz. **Redundancy Analysis (RDA)**, **Canonical Correspondence Analysis (CCA)**, and **distance-based Redundancy Analysis (db-RDA)**. Constrained ordination is sometimes called 'direct gradient analysis' or 'canonical' ordination.
 
 Constrained ordination is used to extract and summarise the variation in a set of response variables (species data in the case of ecology) that can be explained by some explanatory variables ('constraints'), such as measurements of environmental properties at the places where the species data were collected from.
 
 **RDA** is a direct gradient analysis that highlights linear relationships between components of response variables, i.e. variables that are 'redundant' with (i.e. 'explained' by) a set of predictors. RDA is an extension of a PCA with a multiple linear regression. The same constraints inherent in a PCA present themselves in an RDA. Use **vegan**'s `rda()` to perform an RDA.
 
-**CCA** is the extension of a CA with multiple regression, and is therefore also based on 𝝌2-metric (dissimilarities). We do not have a choice of spcifying which dissimilarity meric to use. CCA performs best when species distribution follows a unimodal model. Use **vegan**'s `cca()` to perform an RDA.
+**CCA** is the extension of a CA with multiple regression, and is therefore also based on 𝝌2-metric (dissimilarities). We do not have a choice of specifying which dissimilarity meric to use. CCA performs best when species distribution follows a unimodal model. Use **vegan**'s `cca()` to perform an RDA.
 
 **db-RDA** can be viewed as the extension of a PCoA with multiple regressions. As with a PCoA, we also benefit from being able to specify any dissimilarity matrix as input, and hence this approach is more versatile compared to RDA or CCA. I prefer the db-RDA implemented in **vegan**'s `capscale()`. The help file states: "Distance-based redundancy analysis (dbRDA) is an ordination method similar to Redundancy Analysis (rda), but it allows non-Euclidean dissimilarity indices, such as Manhattan or Bray--Curtis distance."
 
@@ -387,11 +387,11 @@ anova(rda_final, by = "axis", parallel = 4) # ... yes!
 ##          Df SumOfSqs        F Pr(>F)    
 ## CAP1      1   5.6179 263.1786  0.001 ***
 ## CAP2      1   1.1242  52.6665  0.001 ***
-## CAP3      1   0.0725   3.3978  0.401    
+## CAP3      1   0.0725   3.3978  0.414    
 ## CAP4      1   0.0050   0.2320  1.000    
 ## CAP5      1   0.0027   0.1274  1.000    
 ## CAP6      1   0.0013   0.0632  1.000    
-## CAP7      1   0.0013   0.0622  1.000    
+## CAP7      1   0.0013   0.0622  0.999    
 ## Residual 50   1.0673                    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
@@ -415,10 +415,10 @@ Extract the significant variables in `\(E3\)` that are influential in the final 
 ## febRange  1   1.0962  51.3541  0.001 ***
 ## febSD     1   0.1850   8.6653  0.001 ***
 ## augMean   1   5.3815 252.1023  0.001 ***
-## augRange  1   0.0903   4.2286  0.020 *  
-## augSD     1   0.0212   0.9918  0.346    
-## annRange  1   0.0196   0.9191  0.368    
-## annSD     1   0.0313   1.4666  0.216    
+## augRange  1   0.0903   4.2286  0.021 *  
+## augSD     1   0.0212   0.9918  0.357    
+## annRange  1   0.0196   0.9191  0.374    
+## annSD     1   0.0313   1.4666  0.234    
 ## Residual 50   1.0673                    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1

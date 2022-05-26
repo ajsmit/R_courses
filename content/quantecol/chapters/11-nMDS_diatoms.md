@@ -21,7 +21,7 @@ links:
     url: /BCB743/diatoms/PB_diat_env.csv
 subtitle: ""
 title: "11b. nMDS of Mayombo's diatom data"
-weight: 15
+weight: 16
 ---
 
 <!-- # Topic 11: nMDS of the diatom data in Mayombo et al. (2019) -->
@@ -284,7 +284,7 @@ permutest(mod.spp) # there is in fact no difference
 ## 
 ## Response: Distances
 ##           Df  Sum Sq  Mean Sq      F N.Perm Pr(>F)
-## Groups     1 0.05876 0.058761 2.6087    999  0.129
+## Groups     1 0.05876 0.058761 2.6087    999  0.123
 ## Residuals 40 0.90101 0.022525
 ```
 
@@ -300,7 +300,7 @@ permutest(mod.size) # nope...
 ## 
 ## Response: Distances
 ##           Df  Sum Sq   Mean Sq      F N.Perm Pr(>F)
-## Groups     1 0.00141 0.0014134 0.0604    999  0.808
+## Groups     1 0.00141 0.0014134 0.0604    999  0.798
 ## Residuals 40 0.93615 0.0234038
 ```
 
@@ -353,45 +353,35 @@ spp.nmds <- metaMDS(spp.log, k = 2,trymax = 100,
 
 ```
 ## Run 0 stress 0.1916291 
-## Run 1 stress 0.1891597 
+## Run 1 stress 0.1925563 
+## Run 2 stress 0.1909532 
 ## ... New best solution
-## ... Procrustes: rmse 0.05937297  max resid 0.2968887 
-## Run 2 stress 0.2077191 
-## Run 3 stress 0.2097169 
-## Run 4 stress 0.1926544 
-## Run 5 stress 0.189832 
-## Run 6 stress 0.2030249 
-## Run 7 stress 0.1891447 
+## ... Procrustes: rmse 0.06181159  max resid 0.2769403 
+## Run 3 stress 0.1891595 
 ## ... New best solution
-## ... Procrustes: rmse 0.006344718  max resid 0.03477564 
-## Run 8 stress 0.1909683 
-## Run 9 stress 0.1992639 
-## Run 10 stress 0.198045 
-## Run 11 stress 0.2283473 
-## Run 12 stress 0.2219912 
+## ... Procrustes: rmse 0.02002955  max resid 0.1137216 
+## Run 4 stress 0.1893165 
+## ... Procrustes: rmse 0.1033366  max resid 0.4069103 
+## Run 5 stress 0.1910098 
+## Run 6 stress 0.1926544 
+## Run 7 stress 0.1914238 
+## Run 8 stress 0.1992636 
+## Run 9 stress 0.1991329 
+## Run 10 stress 0.1909683 
+## Run 11 stress 0.1991326 
+## Run 12 stress 0.2283521 
 ## Run 13 stress 0.1891594 
-## ... Procrustes: rmse 0.006424684  max resid 0.03467783 
-## Run 14 stress 0.1982017 
-## Run 15 stress 0.189316 
-## ... Procrustes: rmse 0.1025015  max resid 0.4098267 
-## Run 16 stress 0.1909532 
-## Run 17 stress 0.1893036 
-## ... Procrustes: rmse 0.103376  max resid 0.4096307 
-## Run 18 stress 0.1891594 
-## ... Procrustes: rmse 0.006414658  max resid 0.03468045 
-## Run 19 stress 0.189304 
-## ... Procrustes: rmse 0.1033763  max resid 0.40981 
-## Run 20 stress 0.1991331 
-## Run 21 stress 0.1898318 
-## Run 22 stress 0.1893038 
-## ... Procrustes: rmse 0.1033802  max resid 0.4098059 
-## Run 23 stress 0.1909533 
-## Run 24 stress 0.1891593 
-## ... Procrustes: rmse 0.006397197  max resid 0.03470911 
-## Run 25 stress 0.1891442 
 ## ... New best solution
-## ... Procrustes: rmse 0.0006980269  max resid 0.00377386 
+## ... Procrustes: rmse 0.0003768105  max resid 0.0020923 
 ## ... Similar to previous best
+## Run 14 stress 0.1909534 
+## Run 15 stress 0.1909532 
+## Run 16 stress 0.1933979 
+## Run 17 stress 0.2417315 
+## Run 18 stress 0.2075515 
+## Run 19 stress 0.1898322 
+## Run 20 stress 0.1893159 
+## ... Procrustes: rmse 0.1033028  max resid 0.4071583 
 ## *** Solution reached
 ```
 
@@ -599,9 +589,9 @@ out$table
 ```
 ##                                      Res.Df Df.diff     wald Pr(>wald)
 ## (Intercept)                              41      NA       NA        NA
-## env$host_spp                             40       1 5.227772     0.299
-## env$host_size                            39       1 7.799205     0.007
-## env$host_spp:env$host_size               38       1 5.434128     0.015
+## env$host_spp                             40       1 5.227772     0.264
+## env$host_size                            39       1 7.799205     0.001
+## env$host_spp:env$host_size               38       1 5.434128     0.010
 ## env$host_spp:env$host_size:env$plant     26      16      NaN     0.001
 ```
 

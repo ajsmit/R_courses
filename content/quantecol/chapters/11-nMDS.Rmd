@@ -7,14 +7,10 @@ links:
     icon_pack: fas
     name: non-Metric Multidimensional Scaling Slides
     url: /pdf/BCB743/BCB743_11_nMDS.pdf
-  - icon: file-csv
+  - icon: file-export
     icon_pack: fa
-    name: DoubsEnv.csv
-    url: /BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv
-  - icon: file-csv
-    icon_pack: fa
-    name: DoubsSpe.csv
-    url: /BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
+    name: Doubs.RData
+    url: /BCB743/NEwR-2ed_code_data/NEwR2-Data/Doubs.RData
 subtitle: ""
 title: "11a. non-Metric multidimensional scaling (nMDS)"
 weight: 15
@@ -41,8 +37,7 @@ root <- "../../../static/BCB743/"
 We continue to use the species data:
 
 ```{r}
-spe <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsSpe.csv"))
-spe <- dplyr::select(spe, -1)
+load(paste0(root, "NEwR-2ed_code_data/NEwR2-Data/Doubs.RData"))
 spe <- dplyr::slice(spe, -8)
 ```
 
@@ -107,8 +102,6 @@ with(spe, tmp <- ordisurf(spe_nmds ~ Cogo, bubble = 3,
                           display = "sites", main = "Cogo"))
 abline(h = 0, v = 0, lty = 3)
 
-env <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsEnv.csv"))
-env <- dplyr::select(env, -1)
 env <- dplyr::slice(env, -8)
 
 (spe_nmds_env <- envfit(spe_nmds, env)) 

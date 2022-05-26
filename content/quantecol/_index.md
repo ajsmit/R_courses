@@ -19,13 +19,12 @@ cascade:
   type: collection
 ---
 
+# Syllabus, overview, and expectations
 <!--- # Introduction --->
 
 > *"We have become, by the power of a glorious evolutionary accident called intelligence, the stewards of life's continuity on earth. We did not ask for this role, but we cannot abjure it. We may not be suited to it, but here we are."*
 >
 > --- Stephen J. Gould
-
-# Syllabus & overview
 
 ## Syllabus
 
@@ -133,7 +132,7 @@ These links point to online resources such as datasets and R scripts in support 
       <td style="text-align:center"><a href="/quantecol/chapters/05-spp_dissimilarity/"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></a></td>
       <td style="text-align:center"><a href="/pdf/BCB743/BCB743_05_dissimilarity.pdf"><i class="fas fa-images" title="Lecture 5 slides"></i></a></td>
       <td style="text-align:center"></td>
-      <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a></td>
+      <td style="text-align:center"><a href="/BCB743/NEwR-2ed_code_data/NEwR2-Data/Doubs.RData"><i class="fas fa-file-export" title="Doubs.RData"></i></a></td>
       <td style="text-align:center"><a href="/slides/BCB743/05-spp_dissimilarity.html"><i class="fas fa-balance-scale-right" title="Lecture 5 exercises"></i></a></td>
     </tr>
     <tr>
@@ -153,7 +152,7 @@ These links point to online resources such as datasets and R scripts in support 
       <td style="text-align:center"><a href="/quantecol/chapters/06-correlations/"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></a></td>
       <td style="text-align:center"><a href="/pdf/BCB743/BCB743_06_correlations.pdf"><i class="fas fa-images" title="Lecture 6 slides"></i></a></td>
       <td style="text-align:center"></td>
-      <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a></td>
+      <td style="text-align:center"><a href="/BCB743/NEwR-2ed_code_data/NEwR2-Data/Doubs.RData"><i class="fas fa-file-export" title="Doubs.RData"></i></a></td>
       <td style="text-align:center"><a href="/slides/BCB743/06-correlations.html"><i class="fas fa-balance-scale-right" title="Lecture 6 exercises"></i></a></td>
     </tr>
     <tr>
@@ -183,7 +182,7 @@ These links point to online resources such as datasets and R scripts in support 
       <td style="text-align:center"><a href="/quantecol/chapters/08-pca/"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></a></td>
       <td style="text-align:center"><a href="/pdf/BCB743/BCB743_08_PCA.pdf"><i class="fas fa-images" title="Lecture 8 slides"></i></a></td>
       <td style="text-align:center"></td>
-      <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/cleanplot.pca.R"><i class="fas fa-file-code" title="cleanplot.pca.R"></i></a></td>
+      <td style="text-align:center"><a href="/BCB743/NEwR-2ed_code_data/NEwR2-Data/Doubs.RData"><i class="fas fa-file-export" title="Doubs.RData"></i></a> <a href="/BCB743/NEwR-2ed_code_data/NEwR2-Functions/cleanplot.pca.R"><i class="fas fa-file-code" title="cleanplot.pca.R"></i></a></td>
       <td style="text-align:center"><a href="/slides/BCB743/08-pca.html"><i class="fas fa-balance-scale-right" title="Lecture 8 exercises"></i></a></td>
     </tr>
     <tr>
@@ -203,7 +202,7 @@ These links point to online resources such as datasets and R scripts in support 
       <td style="text-align:center"><a href="/quantecol/chapters/09-ca/"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></a></td>
       <td style="text-align:center"><a href="/pdf/BCB743/BCB743_09_CCA.pdf"><i class="fas fa-images" title="Lecture 9 slides"></i></a></td>
       <td style="text-align:center"></td>
-      <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a></td>
+      <td style="text-align:center"><a href="/BCB743/NEwR-2ed_code_data/NEwR2-Data/Doubs.RData"><i class="fas fa-file-export" title="Doubs.RData"></i></a></td>
       <td style="text-align:center"><a href="/slides/BCB743/09-ca.html"><i class="fas fa-balance-scale-right" title="Lecture 9 exercises"></i></a></td>
     </tr>
     <tr>
@@ -213,7 +212,7 @@ These links point to online resources such as datasets and R scripts in support 
       <td style="text-align:center"><a href="/quantecol/chapters/10-pcoa/"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></a></td>
       <td style="text-align:center"><a href="/pdf/BCB743/BCB743_10_PCoA.pdf"><i class="fas fa-images" title="Lecture 10 slides"></i></a></td>
       <td style="text-align:center"></td>
-      <td style="text-align:center"><a href="/BCB743/seaweed/SeaweedEnv.RData"><i class="fas fa-file-export" title="SeaweedEnv.RData"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a> <a href="/BCB743/seaweed/bioregions.csv"><i class="fas fa-file-csv" title="bioregions.csv"></i></a></td>
+      <td style="text-align:center"><a href="/BCB743/seaweed/SeaweedEnv.RData"><i class="fas fa-file-export" title="SeaweedEnv.RData"></i></a> <a href="/BCB743/NEwR-2ed_code_data/NEwR2-Data/Doubs.RData"><i class="fas fa-file-export" title="Doubs.RData"></i></a> <a href="/BCB743/seaweed/bioregions.csv"><i class="fas fa-file-csv" title="bioregions.csv"></i></a></td>
       <td style="text-align:center"></td>
     </tr>
     <tr>
@@ -223,7 +222,7 @@ These links point to online resources such as datasets and R scripts in support 
       <td style="text-align:center"><a href="/quantecol/chapters/11-nmds/"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></a></td>
       <td style="text-align:center"><a href="/pdf/BCB743/BCB743_11_nMDS.pdf"><i class="fas fa-images" title="Lecture 11 slides"></i></a></td>
       <td style="text-align:center"></td>
-      <td style="text-align:center"><a href="/BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv"><i class="fas fa-file-csv" title="DoubsEnv.csv"></i></a> <a href="/BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv"><i class="fas fa-file-csv" title="DoubsSpe.csv"></i></a></td>
+      <td style="text-align:center"><a href="/BCB743/NEwR-2ed_code_data/NEwR2-Data/Doubs.RData"><i class="fas fa-file-export" title="Doubs.RData"></i></a></td>
       <td style="text-align:center"><a href="/slides/BCB743/11-nmds.html"><i class="fas fa-balance-scale-right" title="Lecture 11 exercises"></i></a></td>
     </tr>
     <tr>
@@ -280,19 +279,107 @@ These links point to online resources such as datasets and R scripts in support 
 </table>
 {{< /rawhtml >}}
 
-**Note that the additional URLs with links to additional reading that appear in the worked-through example code that accompanies the lecture material should *not be seen* as optional. They are there for a reason and should be consulted even though I might not necessarily refer to each of them in class.**
+## Prerequisites
 
-## Modern ecological problems
+You should have a moderate numerical literacy and have prior programming experience. Such experience will have been obtained in the [BCB744](/workshops/) module, which is a module about doing statistics in R. If you have a reasonable experience in coding and statistical analysis you should find yourself well prepared.
 
-**This is a course about community ecology and not so much about population ecology.** Community ecology underpins the vast fields of biodiversity and biogeography, and concerns spatial scales from squares of meters to all of Earth. We can look at historical, contemporary, and future processes that have been implicated in shaping the distribution of life on our planet.
+## Method of instruction
 
-Community ecologists tend to analyse how multiple environmental factors act as drivers that influence the distribution of tens or hundreds of species. These data tend to often be messy (not in the sense of untidy data as per the 'tidyverse' definition of tidy data, but it can be that too!) and statistical considerations need to be understood within the context of the data available to us. This translates to errors of measurement and errors due to extreme values, the presence of a few very rare or very abundant species, autocorrelated residuals (due to repeated sampling, for example), colinearity, etc. These challenges make to application of 'basic' statistical approaches problematic, and a new branch of inferential and exploratory statistical needs to be followed. These approaches involve techniques that allow us to work with all the data at once, and because it can simultaneously analyse all the variables (multiple environmental drivers acting on multiple species at multiple places and across multiple times), this group of statistics is called 'multivariate statistics.' There are two main groups of multivariate statistics: 'classifications' and 'ordinations.' Classification generally concerns placing samples (species or environments) into groups or hierarchies of groups, while ordination is best suited for analyses that involve arranging samples along gradients. Often they complement each other, but we shall see later that each approach has its own strengths. Irrespective of the analysis, the data share a few characteristics.
+You are provided with reading material (lecture slides, code, website content) that you are expected to consume **prior to the class**. Classes will involve brief introductions to new concepts, and will be followed by working on exercises in class that cover those concepts. The workshop is designed to be as interactive as possible, so while you are working on exercises the tutor and I will circulate among you and engage with you to help you understand any material and the associated code you are uncomfortable with. Often this will result in discussions of novel applications and alternative approaches to the data analysis challenges you are required to solve. More challenging concepts might emerge during the assignments (typically these will be submitted the following day), and any such challenges will be dealt with in class prior to learning new concepts.
 
-These multivariate datasets have far more information in them than can de detected by the human eye and univariate statistics.
+Although the module is theory-heavy, a large part of it is also about coding. It is up to you to take your coding skills to the next level and move beyond what I teach in class. Coding is a bit like learning a language, and as such programming is a skill that is best learned by doing.
 
-<img src="/quantecol/_index_files/more_than_meets_the_eye.jpeg" alt="More than meets the eye" width="80%"/>
+## Learning cooperatively
 
-# Function list
+Discuss the BCB743 workshop activities with your peers as you work on them. Use also the WhatsApp group set up for the module for discussion purposes (I might assist via this medium if neccesary if your questions/comments have relevance to the whole class). You will learn more in this module if you work with your friends than if you do not. Ask questions, answer questions, and share ideas liberally. Please identify your work partners by name on all assignments (if you decide to work in pairs).
+
+**Cooperative learning is not a licence for plagiarism. Plagiarism is a serious offence and will be dealt with concisely. Consequences of cheating are severe---they range from a 0% for the assignment or exam up to dismissal from the course for a second offense.**
+
+## Software
+
+In this course we will rely entirely on [R](https://cran.r-project.org/) running within the [RStudio](https://www.rstudio.com/) IDE. The use of R was covered extensively in the [BCB744](http://localhost:4321/workshops/) module where the [installation process](http://localhost:4321/workshops/intro_r/chapters/02-rstudio/) was discussed. We will primarily use the [**vegan**](https://cran.r-project.org/web/packages/vegan/index.html) package, but some useful functions are also provided by the package [**BiodiversityR**](https://github.com/cran/BiodiversityR) (and [here](http://apps.worldagroforestry.org/downloads/Publications/PDFS/b13695.pdf) and [here](https://rpubs.com/Roeland-KINDT)). Various other R packages offer overlapping and additional methods, but **vegan** should accommodate >90% of your Quantitative Ecology needs.
+
+## Computers
+
+You are encouraged to provide your own laptops and to install the neccesary software before the module starts. Limited support can be provided if required. There are also computers with R and RStudio (and the neccesary add-on libraries) available in the 5th floor lab in the BCB Department.
+
+## Reading
+
+You are **expected to read additional material** in support of the content covered in class and on this website.
+
+A **compulsory** reference is [Numerical Ecology with R](http://adn.biol.umontreal.ca/~numericalecology/numecolR/) by Daniel Borcard, François Gillet and Pierre Legendre. Much of the class' content and many of the examples (and code) that I use have been adapted from this source. It should be considered the 'gold standard' reference for Quantitative Ecology.
+
+A second **highly recommended text** is the book [Tree Diversity Analysis](http://apps.worldagroforestry.org/downloads/Publications/PDFS/b13695.pdf) by Roeland Kindt and Richard Coe.
+
+I can also recommend a few websites with excellent content, such as:
+
+* David Zelený's [Analysis of Community Ecology Data in R](https://www.davidzeleny.net/anadat-r/doku.php)
+* Mike Palmer's [Ordination Methods for Ecologists](http://ordination.okstate.edu/)
+* [GUide to STatistical Analysis in Microbial Ecology (GUSTA ME)](https://sites.google.com/site/mb3gustame/)
+
+Note that the URLs with links to additional reading that appear with the worked-through example code should **not be seen as optional**. They are there for a reason and should be consulted even though I might not necessarily refer to each of them in class.
+
+Use these materials liberally.
+
+## Datasets used in this module
+
+Note that the links provided might not necessarily lead to the **vegan** help page.
+
+|  | Dataset                                                    | Source                                                |
+|:-|------------------------------------------------------------|-------------------------------------------------------|
+| 1| Vegetation and Environment in Dutch Dune Meadows           | [**vegan**](https://www.davidzeleny.net/anadat-r/doku.php/en:data:dune) |
+| 2| Oribatid Mite Data with Explanatory Variables              | [**vegan**](http://adn.biol.umontreal.ca/~numericalecology/data/oribates.html) |    
+| 3| The Doubs River data                                       | [**Numerical Ecology with R**](https://www.davidzeleny.net/anadat-r/doku.php/en:data:doubs) |
+| 4| The Barro Colorado Island tree counts                      | [**vegan**](https://www.davidzeleny.net/anadat-r/doku.php/en:data:bci) |
+| 5| John Bolton, Rob Anderson, and Herre Stegenga's seaweed data | [**Smit et al., 2017**](https://www.frontiersin.org/articles/10.3389/fmars.2017.00404/) |
+| 6| Serge Mayombo's diatoms data                               | [**Mayombo et al., 2019**](https://www.tandfonline.com/doi/abs/10.2989/1814232X.2019.1592778) |
+| 7| World Health Organization Sustainable Development Goals data | [**WHO**](https://www.who.int/data)    
+
+## Attendance
+
+This workhop-based, hands on course can only deliver acceptible outcomes if you attend all classes. The schedule is set and cannot be changed. Sometimes an occasional absence cannot be avoided. Please be curtious and notify the myself or the tutor in advance of any absence. If you work with a partner in class, notify them too. Keep up with the reading assignments while you are away and we will all work with you to get you back up to speed on what you miss. If you do miss a class, however, the assignments must still be submitted on time (see 'Assessment Policy,' above).
+
+Since you may decide to work in collaboration with a peer on tasks and assignments, please keep this person informed at all times in case some emergency makes you unavailable for a period of time. Someone might depend on your input and contributions---do not leave someone in the lurch so that they cannot complete a task in your absence.
+
+## Assessment policy
+
+Continuous assessments (CA) and an exam will provide a final mark for the module. The weighting of the CA and the exam is 0.6 and 0.4, respectively. All assessments are open book, so consult your code and reading material if and when you need to.
+
+### Continuous assessment
+
+Quantitative Ecology is about working with real-world datasets. To this end, a series of mini-projects (assessments) involving real data are a required part of the BCB743. You may work alone or with a single partner on all projects (in which case you will share the same mark). All assignments are due by the date and time indicated, and due care must be taken that they are submitted as instructed (i.e. paying attention to naming conventions and the format of the files submitted---typically this will be in R Markdown (.Rmd) and the knitted output (I prefer .html)).
+
+The Continuous Assessment (CA) is comprised of the material indicated in the Syllabus by the <i class="fas fa-balance-scale-right" title="Lecture 2 exercises"></i> icon. There are seven smaller assessments (each weighted 0.1) and one slightly more demanding Integrative Assessment (weighted 0.3) at the end of the module.
+
+Random quizzes will not form part of the CA for BCB743.
+
+### Exam
+
+The exam will be a 48-hour affair that you can do in the comfort of your home. It will involve the analysis of real world data, and it is expected that the submission includes 1) statements of aims, objectives, and hypotheses; 2) the full and detailed methods followed by analyses together with all code, 3) full reporting of results in a manner suited for peer reviewed publications; 4) graphical support highlighting the patterns observed (again with the code), and 5) a discussion if and when required. The allocation of marks to the various sections is:
+
+1. Aims, objectives, and hypotheses: 5%
+2. Methods and analyses: 45%
+3. Results: 20%
+4. Graphs: 15%
+5. Dicsussion: 15%
+
+### Submission of assignments and exams
+
+A statement such as the one below accompanies every assignment---pay attention, as failing to observe this instruction may result in a loss of marks (i.e. if an assignment remains ungraded because the owner of the material cannot be identified):
+
+Submit a R script wherein you provide answers to Questions 1--9 by no later than 8:00 tomorrow. Label the script as follows (e.g.): **BCB743_AJ_Smit_Assignment_2.R**.
+
+### Late submission of CA
+
+Late assignments will be penalised 10% per day and will not be accepted more than 48 hours late, unless evidence such as a doctor's note, a death certificate, or another documented emergency can be provided. If you know in advance that a submission will be late, please discuss this and seek prior approval. This policy is based on the idea that in order to learn how to translate your human thoughts into computer language (coding) you should be working with them at multiple times each week---ideally daily. Time has been allocated in class for working on assignments and students are expected to continue to work on the assignments outside of class. Successfully completing (and passing) this module requires that you finish assignments based on what we have covered in class by the following class period. Work diligently from the onset so that even if something unexpected happens at the last minute you should already be close to done. This approach also allows rapid feedback to be provided to you, which can only be accomplished by returning assignments quickly and punctually.
+
+## Support
+
+It's expected that some tricky aspects of the module will take time to master, and the best way to master problematic material is to practice, practice some more, and then to ask questions. Trying for 10 minutes and then giving up is not good enough. I'll be more sympathetic to your cause if you can demonstrate having tried for a full day before giving up and asking me. When you ask questions about some challenge, this is the way to do it---explain to me your numerous attempts at trying to solve the problem, and explain how these various attempts have failed. *I will not help you if you have not tried to help yourself first* (maybe with advice from friends). There will be time in class to do this, typically before we embark on a new topic. You are also encouraged to bring up related questions that arise in your own B.Sc. (Hons.) research project.
+
+Should you require more time with me, find out when I am 'free' and set an appointment by sending me a calendar invitation. I am happy to have a personal meeting with you via Zoom, but I prefer face-to-face in my office.
+
+## Function list
 
 You will encounter the following functions for the first time in this module:
 

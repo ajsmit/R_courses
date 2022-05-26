@@ -9,7 +9,7 @@ links:
     url: /pdf/BCB743/BCB743_07_ordination.pdf
 subtitle: ""
 title: "7. Ordination"
-weight: 8
+weight: 9
 ---
 
 <!--- # Topic 7: Ordination --->
@@ -31,8 +31,8 @@ Please refer to:
 
 ## Direct gradient analysis
 
-Any ordination approach in which important gradients are hypothesised. Likely evidence for the existence of gradients is measured and captured in a complementary environmental dataset that has the same spatial structure (rows) as the species dataset. Direct gradient analysis is performed using linear or nonlinear regression approaches that relate the ordinations performed on the species and their matching environmental variables.
+Any ordination approach in which important gradients are hypothesised. Likely evidence for the existence of gradients is measured and captured in a complementary environmental dataset that has the same spatial structure (rows) as the species dataset. Direct gradient analysis is performed using linear or non-linear regression approaches that relate the ordinations performed on the species and their matching environmental variables.
 
-* Reducndancy Analysis
+* Redundancy Analysis
 * Constrained Correspondence Analysis
 * [distance-based Redundancy Analysis](http://localhost:4321/quantecol/chapters/12-constrained_ordination/)

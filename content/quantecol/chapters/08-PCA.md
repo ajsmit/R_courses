@@ -7,26 +7,22 @@ links:
     icon_pack: fas
     name: PCA Slides
     url: /pdf/BCB743/BCB743_08_PCA.pdf
-  - icon: file-csv
+  - icon: file-export
     icon_pack: fa
-    name: DoubsEnv.csv
-    url: /BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv
-  - icon: file-csv
-    icon_pack: fa
-    name: DoubsSpe.csv
-    url: /BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
+    name: Doubs.RData
+    url: /BCB743/NEwR-2ed_code_data/NEwR2-Data/Doubs.RData
   - icon: 
     icon_pack: 
     name: cleanplot.pca.R
-    url: /R/BCB743/Num_Ecol_R_book_ed1/cleanplot.pca.R
+    url: /BCB743/NEwR-2ed_code_data/NEwR2-Functions/cleanplot.pca.R
 subtitle: ""
 title: "8a. Principal Component Analysis (PCA)"
-weight: 9
+weight: 10
 ---
 
 <!--- # Topic 8: Principal Component Analysis (PCA) --->
 
-PCA is one of many ordination techniques. Depening on the application of technical/scientific discipline it is applied in, you might see it mentioned under 'dimensionality reduction' techniques; other times it is named as a form of 'unsupervised learning.' Regardless of what it is called, ordination refers to multivariate techniques that reduces a multivariate (multi-dimensional) dataset in such a way that when it is projected onto a lower dimensional space, typically 2D or 3D space, any intrinsic structure in the data forms visually-discernable patterns (Pielou, 1984). Ordination summarises community data (e.g. samples of species presence-absence or abundance across muliple sites) by producing a low-dimensional ordination space where similar samples (typically species) plot close together, and dissimilar samples far apart. Dimensions of this low dimensional space represent important and interpretable environmental gradients.
+PCA is one of many ordination techniques. Depending on the application of technical/scientific discipline it is applied in, you might see it mentioned under 'dimensionality reduction' techniques; other times it is named as a form of 'unsupervised learning.' Regardless of what it is called, ordination refers to multivariate techniques that reduces a multivariate (multi-dimensional) dataset in such a way that when it is projected onto a lower dimensional space, typically 2D or 3D space, any intrinsic structure in the data forms visually-discernible patterns (Pielou, 1984). Ordination summarises community data (e.g. samples of species presence-absence or abundance across multiple sites) by producing a low-dimensional ordination space where similar samples (typically species) plot close together, and dissimilar samples far apart. Dimensions of this low dimensional space represent important and interpretable environmental gradients.
 
 In ecology, ordination techniques are used to describe relationships between community structure patterns and underlying environmental gradients. So, we can ask questions such as, "Which environmental variables cause a community to vary across a landscape?" Ordinations allow us to determine the relative importance of different gradients, and graphical presentations of the results can lead to intuitive interpretations of species-environment relationships.
 
@@ -48,13 +44,12 @@ rroot <- "../../../static/BCB743/"
 
 
 ```r
-env <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsEnv.csv"))
-env <- dplyr::select(env, -1)
+load(paste0(root, "NEwR-2ed_code_data/NEwR2-Data/Doubs.RData"))
 head(env)
 ```
 
 ```
-##    dfs alt  slo  flo  pH har  pho  nit  amm  oxy bod
+##    dfs ele  slo  dis  pH har  pho  nit  amm  oxy bod
 ## 1  0.3 934 48.0 0.84 7.9  45 0.01 0.20 0.00 12.2 2.7
 ## 2  2.2 932  3.0 1.00 8.0  40 0.02 0.20 0.10 10.3 1.9
 ## 3 10.2 914  3.7 1.80 8.3  52 0.05 0.22 0.05 10.5 3.5
@@ -67,7 +62,7 @@ head(env)
 
 
 ```r
-# computing a correalation matrix
+# computing a correlation matrix
 corr <- round(cor(env), 1)
 
 # visualization of the correlation matrix
@@ -78,16 +73,14 @@ ggcorrplot(corr, type = 'upper', outline.col = "white",
 
 <img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-3-1.png" width="672" />
 
-Some variables are very correlatated, and they might be ommitted from the subsequent analyses. We say that these variables are 'collinear.' Collinear variables cannot be teased apart in terms of finding out which one is most influential in structuring the community. There are more advanced ways to search for collinear variables (e.g. Variance Inflation Factors, VIF) and in this way we can systematically exclude them from the PCA. See Graham (2003) for a discussion on collinearity. Here we will proceed with all the variables.
+Some variables are very correlated, and they might be omitted from the subsequent analyses. We say that these variables are 'collinear.' Collinear variables cannot be teased apart in terms of finding out which one is most influential in structuring the community. There are more advanced ways to search for collinear variables (e.g. Variance Inflation Factors, VIF) and in this way we can systematically exclude them from the PCA. See Graham (2003) for a discussion on collinearity. Here we will proceed with all the variables.
 
 ## See the spatial context
 
-The patterns in the data and the correlatons between them will make more sense if we can visualise a spatial context. Thankfully spatial data are available:
+The patterns in the data and the correlations between them will make more sense if we can visualise a spatial context. Thankfully spatial data are available:
 
 
 ```r
-spa <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsSpa.csv"))
-spa <- dplyr::select(spa, -1)
 head(spa)
 ```
 
@@ -260,9 +253,9 @@ summary(env_pca)
 ## 
 ##          PC1     PC2      PC3      PC4      PC5      PC6
 ## dfs  1.08657  0.5342 -0.27333 -0.13477  0.07336 -0.22566
-## alt -1.04396 -0.6148  0.20712  0.12854  0.14610 -0.02111
+## ele -1.04396 -0.6148  0.20712  0.12854  0.14610 -0.02111
 ## slo -0.57703 -0.4893 -0.63490 -0.71684  0.33349  0.11782
-## flo  0.95843  0.6608 -0.32456 -0.16183  0.11542 -0.13935
+## dis  0.95843  0.6608 -0.32456 -0.16183  0.11542 -0.13935
 ## pH  -0.06364  0.4629  1.01317 -0.58606  0.17094 -0.07360
 ## har  0.90118  0.5850  0.06449  0.25696  0.30995  0.53390
 ## pho  1.05821 -0.6014  0.13866 -0.17883 -0.11125  0.13751
@@ -274,37 +267,37 @@ summary(env_pca)
 ## 
 ## Site scores (weighted sums of species scores)
 ## 
-##            PC1      PC2      PC3      PC4       PC5       PC6
-## sit1  -1.41274 -1.40098 -2.03484 -2.67759  1.117150  0.184951
-## sit2  -1.03725 -0.77955  0.24400  0.25635 -1.192043 -1.849810
-## sit3  -0.94507 -0.46765  1.25042 -0.49330 -0.234194 -1.319198
-## sit4  -0.87371 -0.26988  0.19304  0.51979 -0.494639  0.116092
-## sit5  -0.42088 -0.66944  0.83191  0.71729  0.867751  0.112219
-## sit6  -0.77224 -0.72067 -0.07357  0.77902 -0.386130 -0.654273
-## sit7  -0.77466 -0.08103  0.39630  0.19224  0.416470  1.026304
-## sit8  -0.28840 -0.60589  0.83822  1.01440  1.707316  0.295861
-## sit9  -0.28305 -0.47710  0.39908  1.13075  0.882098  0.002961
-## sit10 -0.48714 -0.41860 -1.27555  0.90267  0.013704  0.542270
-## sit11 -0.26940  0.45384  0.09119 -0.15127 -0.233814  1.157483
-## sit12 -0.43834  0.36049 -0.52352  0.57279 -0.650095  0.817673
-## sit13 -0.37794  0.70379  0.10339  0.06127 -0.101571  1.376623
-## sit14 -0.23878  0.75522  0.83648 -0.55822 -0.011527  1.221217
-## sit15 -0.30425  0.95026  1.80274 -1.48211  0.135021  0.031795
-## sit16 -0.13354  0.33951 -0.23252  0.19177 -0.667112  0.227348
-## sit17  0.10111  0.32379 -0.20380  0.18495 -0.676546  0.364915
-## sit18  0.06913  0.37913 -0.25881  0.06998 -0.851379  0.289054
-## sit19  0.05746  0.43915  0.04566 -0.32171 -0.899449 -0.090759
-## sit20  0.17478  0.39927 -0.36244 -0.15647 -1.300718 -0.093396
-## sit21  0.16944  0.35608 -0.73929  0.42751 -0.509249 -0.653892
-## sit22  0.14898  0.55339 -0.08008 -0.04972  0.196636 -0.621753
-## sit23  1.39778 -1.19102  0.66424 -0.46178  0.252908  0.573369
-## sit24  0.99357 -0.52036  0.07186  0.48088  1.068785 -0.373991
-## sit25  2.22002 -2.03168  0.17940 -0.52606 -1.148014  0.786506
-## sit26  0.89388 -0.10410 -0.61440  0.42034  0.343649 -0.800522
-## sit27  0.64866  0.41296 -0.17444 -0.26105  0.274443 -1.259099
-## sit28  0.77100  0.82592  0.43387 -1.00092 -0.001674 -0.703378
-## sit29  0.66413  1.11562 -1.58043  0.65099  0.650327 -0.020001
-## sit30  0.74743  1.36955 -0.22810 -0.43281  1.431895 -0.686570
+##         PC1      PC2      PC3      PC4       PC5       PC6
+## 1  -1.41274 -1.40098 -2.03484 -2.67759  1.117150  0.184951
+## 2  -1.03725 -0.77955  0.24400  0.25635 -1.192043 -1.849810
+## 3  -0.94507 -0.46765  1.25042 -0.49330 -0.234194 -1.319198
+## 4  -0.87371 -0.26988  0.19304  0.51979 -0.494639  0.116092
+## 5  -0.42088 -0.66944  0.83191  0.71729  0.867751  0.112219
+## 6  -0.77224 -0.72067 -0.07357  0.77902 -0.386130 -0.654273
+## 7  -0.77466 -0.08103  0.39630  0.19224  0.416470  1.026304
+## 8  -0.28840 -0.60589  0.83822  1.01440  1.707316  0.295861
+## 9  -0.28305 -0.47710  0.39908  1.13075  0.882098  0.002961
+## 10 -0.48714 -0.41860 -1.27555  0.90267  0.013704  0.542270
+## 11 -0.26940  0.45384  0.09119 -0.15127 -0.233814  1.157483
+## 12 -0.43834  0.36049 -0.52352  0.57279 -0.650095  0.817673
+## 13 -0.37794  0.70379  0.10339  0.06127 -0.101571  1.376623
+## 14 -0.23878  0.75522  0.83648 -0.55822 -0.011527  1.221217
+## 15 -0.30425  0.95026  1.80274 -1.48211  0.135021  0.031795
+## 16 -0.13354  0.33951 -0.23252  0.19177 -0.667112  0.227348
+## 17  0.10111  0.32379 -0.20380  0.18495 -0.676546  0.364915
+## 18  0.06913  0.37913 -0.25881  0.06998 -0.851379  0.289054
+## 19  0.05746  0.43915  0.04566 -0.32171 -0.899449 -0.090759
+## 20  0.17478  0.39927 -0.36244 -0.15647 -1.300718 -0.093396
+## 21  0.16944  0.35608 -0.73929  0.42751 -0.509249 -0.653892
+## 22  0.14898  0.55339 -0.08008 -0.04972  0.196636 -0.621753
+## 23  1.39778 -1.19102  0.66424 -0.46178  0.252908  0.573369
+## 24  0.99357 -0.52036  0.07186  0.48088  1.068785 -0.373991
+## 25  2.22002 -2.03168  0.17940 -0.52606 -1.148014  0.786506
+## 26  0.89388 -0.10410 -0.61440  0.42034  0.343649 -0.800522
+## 27  0.64866  0.41296 -0.17444 -0.26105  0.274443 -1.259099
+## 28  0.77100  0.82592  0.43387 -1.00092 -0.001674 -0.703378
+## 29  0.66413  1.11562 -1.58043  0.65099  0.650327 -0.020001
+## 30  0.74743  1.36955 -0.22810 -0.43281  1.431895 -0.686570
 ```
 
 **Species scores** are the loadings (a.k.a. rotated and scaled eigenvectors) that indicate the *strength of contribution* of the original environmental variables to the new variables, the Principal Components (PC1, PC2, etc.). Even though we work with environmental data here, these scores are still called species scores by the software---don't let the name confuse you! They indicate how much each of the original environmental variables contribute to PC1, PC2, etc. The larger (more positive) and smaller (more negative) values indicate a greater contribution, albeit in opposite directions. In the example, PC1 is made up of uneven contributions from most of the original variables, with the largest value being nitrate (1.15013) and smallest oxygen (-0.97459). Nitrate and oxygen therefore contribute most towards the differences between sites so that places with more nitrate are also the places with the lowest dissolved oxygen concentration. This makes ecological sense too. pH and slope are the least important variables, i.e. they are least able to explain the differences between sites along PC1. Given the strength of PC1 (it explains 54.3% of the inertia), one might hypothesise that its constituent variables, particularly nitrate and oxygen, influence many aspects of the community. ***The species scores are presented as arrows on the ordination diagrams*** (see below). Longer vectors have a greater influence (are stronger drivers) on environmental (and possibly species) differences between sites, and their direction indicates along which PC axes their influence is greatest.
@@ -316,6 +309,8 @@ summary(env_pca)
 ## Graphical represenations of ordinations
 
 Graphical representations of ordination results are called ordination diagrams. See David Zelený's [exelent writing on the topic](https://www.davidzeleny.net/anadat-r/doku.php/en:ordiagrams).
+
+Although many of the examples provided here use the default plot options for the ordination---that rely on base graphics---the plots can also be set up in **ggplot2**. This requires some deeper knowledge. I provide some examples scattered throughout the course content, but you may also refer to the step-by-step walk throughs provided by [Roeland Kindt](https://rpubs.com/Roeland-KINDT/694016).
 
 In a PCA ordination diagram (called a biplot, because it plots two *things*, viz. sites as points and envionmental variables as vectors), following the tradition of scatter diagrams in Cartesian coordinate systems, objects are represented as points and variables are displayed as arrows. We first use the standard **vegan** `biplot()` function:
 
@@ -332,7 +327,7 @@ biplot(env_pca, scaling = 2, main = "PCA scaling 2", choices = c(1, 2))
 
 <img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-11-2.png" width="672" />
 
-**Scaling 1:** This scaling *emphasises relationships between rows* accurately in low-dimensional ordination space. Distances among objects (samples or sites) in the biplot are approximations of their Euclidian distances in multidimensional space. Objects positioned closer together show a greater degree of environmental dimilarity. The angles among descriptor vectors should not be interpreted as indicating the degree of correlation between the variables.
+**Scaling 1:** This scaling *emphasises relationships between rows* accurately in low-dimensional ordination space. Distances among objects (samples or sites) in the biplot are approximations of their Euclidian distances in multidimensional space. Objects positioned closer together show a greater degree of environmental dissimilarity. The angles among descriptor vectors should not be interpreted as indicating the degree of correlation between the variables.
 
 **Scaling 2:** This scaling *emphasises relationships between columns* accurately in low-dimensional ordination space. Distances among objects (samples or sites) in the biplot are not approximations of their Euclidian distances in multidimensional space. The angles among descriptor vectors can be interpreted as indicating the degree of correlation between the variables.
 
@@ -341,17 +336,8 @@ Now we create biplots using the `cleanplot.pca()` function that comes with *Nume
 
 ```r
 # we need to load the function first from its R file:
-source(paste0(rroot, "Num_Ecol_R_book_ed1/cleanplot.pca.R"))
+source(paste0(rroot, "/NEwR-2ed_code_data/NEwR2-Functions/cleanplot.pca.R"))
 cleanplot.pca(env_pca, scaling = 1)
-```
-
-```
-## circle2 = TRUE
-```
-
-```
-## Warning in if (class(mat) == "matrix") {: the condition has length > 1 and only
-## the first element will be used
 ```
 
 <img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-12-1.png" width="672" />
@@ -360,20 +346,11 @@ cleanplot.pca(env_pca, scaling = 1)
 cleanplot.pca(env_pca, scaling = 2)
 ```
 
-```
-## circle2 = TRUE
-```
-
-```
-## Warning in if (class(mat) == "matrix") {: the condition has length > 1 and only
-## the first element will be used
-```
-
 <img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-12-2.png" width="672" />
 
 **At this point it is essential that you refer to *Numerical Ecology in R* (pp. 118 to 126) for help with interpreting the ordination diagrams.**
 
-We can plot the underlying environmental gradients using the `ordisurf()` function in **vegan**. We plot the response surfaces for altitude and biological oxygen demand:
+We can plot the underlying environmental gradients using the `ordisurf()` function in **vegan**. We plot the response surfaces for elevation and biological oxygen demand:
 
 
 ```r
@@ -394,7 +371,7 @@ ordisurf(env_pca ~ bod, env, add = TRUE, col = "turquoise", knots = 1)
 ```
 
 ```r
-ordisurf(env_pca ~ alt, env, add = TRUE, col = "salmon", knots = 1)
+ordisurf(env_pca ~ ele, env, add = TRUE, col = "salmon", knots = 1)
 ```
 
 <img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-13-1.png" width="672" />
@@ -411,7 +388,7 @@ ordisurf(env_pca ~ alt, env, add = TRUE, col = "salmon", knots = 1)
 ## REML score: 160.6339
 ```
 
-We see that the contours form a linear trend surface, i.e. they are perpendicular to their vectors. This is the main weakness of PCA, as community data are nonlinear (in fact, environmental gradients are also seldom very linear, but they can be more linear than species data). In general, therefore, PCA should not be used for community data.
+We see that the contours form a linear trend surface, i.e. they are perpendicular to their vectors. This is the main weakness of PCA, as community data are non-linear (in fact, environmental gradients are also seldom very linear, but they can be more linear than species data). In general, therefore, PCA should not be used for community data.
 
 ### Assignment 4 Questions
 

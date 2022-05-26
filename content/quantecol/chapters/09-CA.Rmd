@@ -7,14 +7,10 @@ links:
     icon_pack: fas
     name: Correspendence Analysis Slides
     url: /pdf/BCB743/BCB743_09_CCA.pdf
-  - icon: file-csv
+  - icon: file-export
     icon_pack: fa
-    name: DoubsEnv.csv
-    url: /BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv
-  - icon: file-csv
-    icon_pack: fa
-    name: DoubsSpe.csv
-    url: /BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
+    name: Doubs.RData
+    url: /BCB743/NEwR-2ed_code_data/NEwR2-Data/Doubs.RData
 subtitle: ""
 title: "9. Correspondence Analysis (CA)"
 weight: 12
@@ -22,7 +18,7 @@ weight: 12
 
 <!--- # Topic 9: Correspondence Analysis (CA) --->
 
-CA is an eigenvalue method that can be applied to calculate the degree of 'correspondence' between the rows and columns of a presence-absence or abundance species table. We say that CA maximises the correspondence between species scores and sample scores, whereas a PCA maximises the variance explained. The technique is best applied to a species dataset where the species (in the columns) show unimodal distributions across sites (down the rows). CA represents the distances among sites and among species by the $\chi^{2}$ distance metric (rather than Euclidian distances in PCA), which does not suffer from the [double-zero problem](https://www.davidzeleny.net/anadat-r/doku.php/en:similarity#:~:text=Chi%2Dsquare%20distances.-,Double%2Dzero%20problem,which%20similarity%2Fdistance%20is%20calculated.&text=The%20fact%20that%20the%20mesic,or%20difference%20between%20both%20samples.). Some ecologists argue that CA might be too much influenced by rare species. In ordination diagrams, species and sites are also represented by points as per usual convention. The relative positions of these points (species vs sites, species vs. other species, or sites vs. other sites) indicate how strongly they 'correspond' to one another.
+CA is an eigenvalue method that can be applied to calculate the degree of 'correspondence' between the rows and columns of a presence-absence or abundance species table. We say that CA maximises the correspondence between species scores and sample scores, whereas a PCA maximises the variance explained. The technique is best applied to a species dataset where the species (in the columns) show unimodal distributions across sites (down the rows). CA represents the distances among sites and among species by the $\chi^{2}$ distance metric (rather than Euclidean distances in PCA), which does not suffer from the [double-zero problem](https://www.davidzeleny.net/anadat-r/doku.php/en:similarity#:~:text=Chi%2Dsquare%20distances.-,Double%2Dzero%20problem,which%20similarity%2Fdistance%20is%20calculated.&text=The%20fact%20that%20the%20mesic,or%20difference%20between%20both%20samples.). Some ecologists argue that CA might be too much influenced by rare species. In ordination diagrams, species and sites are also represented by points as per usual convention. The relative positions of these points (species vs. sites, species vs. other species, or sites vs. other sites) indicate how strongly they 'correspond' to one another.
 
 CA therefore finds the ordination space that answers questions such as, "Which sites do my species prefer?" or "Which sites to my species correspond to?" (from [GUSTA ME](https://sites.google.com/site/mb3gustame/indirect-gradient-analysis/ca)). Also see David Zelený's [Analysis of community ecology data in R](https://www.davidzeleny.net/anadat-r/doku.php/en:ca_dca).
 
@@ -41,8 +37,7 @@ root <- "../../../static/BCB743/"
 This time we work with the species data:
 
 ```{r}
-spe <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsSpe.csv"))
-spe <- dplyr::select(spe, -1)
+load(paste0(root, "NEwR-2ed_code_data/NEwR2-Data/Doubs.RData"))
 head(spe, 8)
 ```
 
@@ -131,35 +126,37 @@ Below are biplots with site and species scores for four selected species. The pl
 require('viridis')
 palette(viridis(8))
 par(mar = c(4, 4, 0.9, 0.5) + .1, mfrow = c(2, 2))
-with(spe, tmp <- ordisurf(spe_ca ~ Satr, bubble = 3,
+
+tmp <- ordisurf(spe_ca ~ Satr, spe, bubble = 3,
                           family = quasipoisson, knots = 2, col = 6,
-                          display = "sites", main = "Satr"))
+                          display = "sites", main = "Satr")
 abline(h = 0, v = 0, lty = 3)
-with(spe, tmp <- ordisurf(spe_ca ~ Scer, bubble = 3,
+
+tmp <- ordisurf(spe_ca ~ Scer, spe, bubble = 3,
                           family = quasipoisson, knots = 2, col = 6,
-                          display = "sites", main = "Scer"))
+                          display = "sites", main = "Scer")
 abline(h = 0, v = 0, lty = 3)
-with(spe, tmp <- ordisurf(spe_ca ~ Teso, bubble = 3,
+
+tmp <- ordisurf(spe_ca ~ Teso, spe, bubble = 3,
                           family = quasipoisson, knots = 2, col = 6,
-                          display = "sites", main = "Teso"))
+                          display = "sites", main = "Teso")
 abline(h = 0, v = 0, lty = 3)
-with(spe, tmp <- ordisurf(spe_ca ~ Cogo, bubble = 3,
+
+tmp <- ordisurf(spe_ca ~ Cogo, spe, bubble = 3,
                           family = quasipoisson, knots = 2, col = 6,
-                          display = "sites", main = "Cogo"))
+                          display = "sites", main = "Cogo")
 abline(h = 0, v = 0, lty = 3)
 
 # a posteriori projection of environmental variables in a CA
-env <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsEnv.csv"))
-env <- dplyr::select(env, -1)
-
 # we removed the 8th row in spe, so do it here too
 env <- dplyr::slice(env, -8)
 
 # the last plot produced (CA scaling 2) must be active
 # scaling 2 is default
 (spe_ca_env <- envfit(spe_ca, env, scaling = 2))
+plot(spe_ca) # default scaling = 2
 plot(spe_ca_env, col = "grey40")
-plot(spe_ca_env, p.max = 0.05, col = "red") # plot significant variables with a different colour
+plot(spe_ca_env, p.max = 0.05, col = "turquoise") # plot significant variables with a different colour
 ```
 
 ### Assignment 6 Questions

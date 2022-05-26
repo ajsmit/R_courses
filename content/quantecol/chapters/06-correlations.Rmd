@@ -7,14 +7,10 @@ links:
     icon_pack: fas
     name: Correlations Slides
     url: /pdf/BCB743/BCB743_06_correlations.pdf
-  - icon: file-csv
+  - icon: file-export
     icon_pack: fa
-    name: DoubsEnv.csv
-    url: /BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv
-  - icon: file-csv
-    icon_pack: fa
-    name: DoubsSpe.csv
-    url: /BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
+    name: Doubs.RData
+    url: /BCB743/NEwR-2ed_code_data/NEwR2-Data/Doubs.RData
 subtitle: ""
 title: "6. Correlations and Associations"
 weight: 8
@@ -40,11 +36,9 @@ The background to the data is described by David Zelený on his excellent [websi
 ### Correlations between environmental variables
 
 ```{r}
-env <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsEnv.csv"))
+load(paste0(root, "NEwR-2ed_code_data/NEwR2-Data/Doubs.RData"))
+
 head(env, 1)
-# drop the first column
-env <- dplyr::select(env, -1)
-head(env)
 ```
 
 We use [correlations](https://ajsmit.netlify.app/workshops/quantecol/chapters/06-correlations/) to establish how the environmental variables relate to one another across the sample sites. We do not need to standardise as one would do for the calculation of Euclidian distances, but in some instances data transformations might be necessary:
@@ -72,15 +66,13 @@ rcorr(as.matrix(env))
 The Doubs River fish species dataset is an example of abundance data and it will serve well to examine the properties of an association matrix:
 
 ```{r}
-spp <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsSpe.csv"))
-spp <- dplyr::select(spp, -1)
-head(spp)
+head(spe)
 ```
 
 In order to calculate an association matrix for the fish species we first need to transpose the data:
 
 ```{r}
-spp_t <- t(spp)
+spe_t <- t(spe)
 ```
 
 ### Assignment 3 Questions
@@ -92,14 +84,14 @@ spp_t <- t(spp)
 Now we can calculate the association matrix:
 
 ```{r}
-spp_assoc1 <- vegdist(spp_t, method = "jaccard")
+spe_assoc1 <- vegdist(spe_t, method = "jaccard")
  # display only a portion of the data...
-as.matrix((spp_assoc1))[1:10, 1:10]
+as.matrix((spe_assoc1))[1:10, 1:10]
 ```
 
 ```{r}
-spp_assoc2 <- vegdist(spp_t, method = "jaccard", binary = TRUE)
-as.matrix((spp_assoc2))[1:10, 1:10]
+spe_assoc2 <- vegdist(spe_t, method = "jaccard", binary = TRUE)
+as.matrix((spe_assoc2))[1:10, 1:10]
 ```
 
 ### Assignment 3 Questions

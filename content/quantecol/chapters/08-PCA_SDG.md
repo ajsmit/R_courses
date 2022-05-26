@@ -9,7 +9,7 @@ links:
     url: /BCB743/WHO/WHO.zip
 subtitle: ""
 title: "8b. PCA of WHO SDGs"
-weight: 11
+weight: 12
 ---
 
 <!-- # Topic 8: PCA of World Health Organization data on progress towards attaining SDGs -->
@@ -33,7 +33,7 @@ root <- "../../../static/BCB743/WHO/"
 
 ## Define and load the data
 
-**Note** The combined data and SDG descriptors are in the zip file. They are called `SDG_complete.csv` and `SDG_description.csv`, respectively. There is no need to work through the entire process below; you can simply start with loading the combined data. See the section *Scale and center the data and do the PCA*, below.
+**Note** The combined data and SDG descriptors are in the zip file. They are called `SDG_complete.csv` and `SDG_description.csv`, respectively. There is no need to work through the entire process below; you can simply start with loading the combined data. See the section *Scale and centre the data and do the PCA*, below.
 
 SDG 1.a [Domestic general government health expenditure (GGHE-D) as percentage of general government expenditure (GGE) (%)](https://www.who.int/data/gho/data/indicators/indicator-details/GHO/domestic-general-government-health-expenditure-(gghe-d)-as-percentage-of-general-government-expenditure-(gge))
 

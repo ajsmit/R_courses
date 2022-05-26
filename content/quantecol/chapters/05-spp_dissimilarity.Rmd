@@ -7,14 +7,10 @@ links:
     icon_pack: fas
     name: Dissimilarities Slides
     url: /pdf/BCB743/BCB743_05_dissimilarity.pdf
-  - icon: file-csv
+  - icon: file-export
     icon_pack: fa
-    name: DoubsEnv.csv
-    url: /BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv
-  - icon: file-csv
-    icon_pack: fa
-    name: DoubsSpe.csv
-    url: /BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
+    name: Doubs.RData
+    url: /BCB743/NEwR-2ed_code_data/NEwR2-Data/Doubs.RData
 subtitle: ""
 title: "5. Species Dissimilarities"
 weight: 7
@@ -30,7 +26,7 @@ To test your understanding of this important topic, please address the following
 
 ### Assignment 2 Questions
 
-Using the Doubs species data in [Numerical Ecology with R](https://github.com/ajsmit/Quantitative_Ecology/tree/main/Num_Ecol_R_book_ed1):
+Using the Doubs species data in [Numerical Ecology with R](http://adn.biol.umontreal.ca/~numericalecology/numecolR/):
 
 > **Question 1:** Look at the dataset and explain its structure in words.
 >

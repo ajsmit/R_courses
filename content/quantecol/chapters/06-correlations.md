@@ -7,17 +7,13 @@ links:
     icon_pack: fas
     name: Correlations Slides
     url: /pdf/BCB743/BCB743_06_correlations.pdf
-  - icon: file-csv
+  - icon: file-export
     icon_pack: fa
-    name: DoubsEnv.csv
-    url: /BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv
-  - icon: file-csv
-    icon_pack: fa
-    name: DoubsSpe.csv
-    url: /BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
+    name: Doubs.RData
+    url: /BCB743/NEwR-2ed_code_data/NEwR2-Data/Doubs.RData
 subtitle: ""
 title: "6. Correlations and Associations"
-weight: 7
+weight: 8
 ---
 
 <!--- # Topic 6: Correlations and associations --->
@@ -42,29 +38,14 @@ The background to the data is described by David Zelený on his excellent [websi
 
 
 ```r
-env <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsEnv.csv"))
+load(paste0(root, "NEwR-2ed_code_data/NEwR2-Data/Doubs.RData"))
+
 head(env, 1)
 ```
 
 ```
-##   X dfs alt slo  flo  pH har  pho nit amm  oxy bod
-## 1 1 0.3 934  48 0.84 7.9  45 0.01 0.2   0 12.2 2.7
-```
-
-```r
-# drop the first column
-env <- dplyr::select(env, -1)
-head(env)
-```
-
-```
-##    dfs alt  slo  flo  pH har  pho  nit  amm  oxy bod
-## 1  0.3 934 48.0 0.84 7.9  45 0.01 0.20 0.00 12.2 2.7
-## 2  2.2 932  3.0 1.00 8.0  40 0.02 0.20 0.10 10.3 1.9
-## 3 10.2 914  3.7 1.80 8.3  52 0.05 0.22 0.05 10.5 3.5
-## 4 18.5 854  3.2 2.53 8.0  72 0.10 0.21 0.00 11.0 1.3
-## 5 21.5 849  2.3 2.64 8.1  84 0.38 0.52 0.20  8.0 6.2
-## 6 32.4 846  3.2 2.86 7.9  60 0.20 0.15 0.00 10.2 5.3
+##   dfs ele slo  dis  pH har  pho nit amm  oxy bod
+## 1 0.3 934  48 0.84 7.9  45 0.01 0.2   0 12.2 2.7
 ```
 
 We use [correlations](https://ajsmit.netlify.app/workshops/quantecol/chapters/06-correlations/) to establish how the environmental variables relate to one another across the sample sites. We do not need to standardise as one would do for the calculation of Euclidian distances, but in some instances data transformations might be necessary:
@@ -75,11 +56,11 @@ round(cor(env), 2)
 ```
 
 ```
-##       dfs   alt   slo   flo    pH   har   pho   nit   amm   oxy   bod
+##       dfs   ele   slo   dis    pH   har   pho   nit   amm   oxy   bod
 ## dfs  1.00 -0.94 -0.38  0.95  0.01  0.70  0.48  0.75  0.41 -0.51  0.39
-## alt -0.94  1.00  0.44 -0.87 -0.04 -0.74 -0.44 -0.76 -0.38  0.36 -0.34
+## ele -0.94  1.00  0.44 -0.87 -0.04 -0.74 -0.44 -0.76 -0.38  0.36 -0.34
 ## slo -0.38  0.44  1.00 -0.34 -0.22 -0.53 -0.19 -0.31 -0.17  0.31 -0.18
-## flo  0.95 -0.87 -0.34  1.00  0.02  0.70  0.39  0.61  0.29 -0.36  0.25
+## dis  0.95 -0.87 -0.34  1.00  0.02  0.70  0.39  0.61  0.29 -0.36  0.25
 ## pH   0.01 -0.04 -0.22  0.02  1.00  0.09 -0.08 -0.05 -0.12  0.18 -0.15
 ## har  0.70 -0.74 -0.53  0.70  0.09  1.00  0.36  0.51  0.29 -0.38  0.34
 ## pho  0.48 -0.44 -0.19  0.39 -0.08  0.36  1.00  0.80  0.97 -0.72  0.89
@@ -97,11 +78,11 @@ rcorr(as.matrix(env))
 ```
 
 ```
-##       dfs   alt   slo   flo    pH   har   pho   nit   amm   oxy   bod
+##       dfs   ele   slo   dis    pH   har   pho   nit   amm   oxy   bod
 ## dfs  1.00 -0.94 -0.38  0.95  0.01  0.70  0.48  0.75  0.41 -0.51  0.39
-## alt -0.94  1.00  0.44 -0.87 -0.04 -0.74 -0.44 -0.76 -0.38  0.36 -0.34
+## ele -0.94  1.00  0.44 -0.87 -0.04 -0.74 -0.44 -0.76 -0.38  0.36 -0.34
 ## slo -0.38  0.44  1.00 -0.34 -0.22 -0.53 -0.19 -0.31 -0.17  0.31 -0.18
-## flo  0.95 -0.87 -0.34  1.00  0.02  0.70  0.39  0.61  0.29 -0.36  0.25
+## dis  0.95 -0.87 -0.34  1.00  0.02  0.70  0.39  0.61  0.29 -0.36  0.25
 ## pH   0.01 -0.04 -0.22  0.02  1.00  0.09 -0.08 -0.05 -0.12  0.18 -0.15
 ## har  0.70 -0.74 -0.53  0.70  0.09  1.00  0.36  0.51  0.29 -0.38  0.34
 ## pho  0.48 -0.44 -0.19  0.39 -0.08  0.36  1.00  0.80  0.97 -0.72  0.89
@@ -114,11 +95,11 @@ rcorr(as.matrix(env))
 ## 
 ## 
 ## P
-##     dfs    alt    slo    flo    pH     har    pho    nit    amm    oxy   
+##     dfs    ele    slo    dis    pH     har    pho    nit    amm    oxy   
 ## dfs        0.0000 0.0365 0.0000 0.9771 0.0000 0.0076 0.0000 0.0251 0.0040
-## alt 0.0000        0.0146 0.0000 0.8447 0.0000 0.0144 0.0000 0.0376 0.0493
+## ele 0.0000        0.0146 0.0000 0.8447 0.0000 0.0144 0.0000 0.0376 0.0493
 ## slo 0.0365 0.0146        0.0625 0.2362 0.0028 0.3067 0.0997 0.3593 0.1006
-## flo 0.0000 0.0000 0.0625        0.9147 0.0000 0.0355 0.0004 0.1136 0.0522
+## dis 0.0000 0.0000 0.0625        0.9147 0.0000 0.0355 0.0004 0.1136 0.0522
 ## pH  0.9771 0.8447 0.2362 0.9147        0.6405 0.6619 0.7976 0.5134 0.3494
 ## har 0.0000 0.0000 0.0028 0.0000 0.6405        0.0481 0.0039 0.1191 0.0370
 ## pho 0.0076 0.0144 0.3067 0.0355 0.6619 0.0481        0.0000 0.0000 0.0000
@@ -128,9 +109,9 @@ rcorr(as.matrix(env))
 ## bod 0.0309 0.0677 0.3546 0.1770 0.4232 0.0619 0.0000 0.0001 0.0000 0.0000
 ##     bod   
 ## dfs 0.0309
-## alt 0.0677
+## ele 0.0677
 ## slo 0.3546
-## flo 0.1770
+## dis 0.1770
 ## pH  0.4232
 ## har 0.0619
 ## pho 0.0000
@@ -154,9 +135,7 @@ The Doubs River fish species dataset is an example of abundance data and it will
 
 
 ```r
-spp <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsSpe.csv"))
-spp <- dplyr::select(spp, -1)
-head(spp)
+head(spe)
 ```
 
 ```
@@ -180,7 +159,7 @@ In order to calculate an association matrix for the fish species we first need t
 
 
 ```r
-spp_t <- t(spp)
+spe_t <- t(spe)
 ```
 
 ### Assignment 3 Questions
@@ -193,9 +172,9 @@ Now we can calculate the association matrix:
 
 
 ```r
-spp_assoc1 <- vegdist(spp_t, method = "jaccard")
+spe_assoc1 <- vegdist(spe_t, method = "jaccard")
  # display only a portion of the data...
-as.matrix((spp_assoc1))[1:10, 1:10]
+as.matrix((spe_assoc1))[1:10, 1:10]
 ```
 
 ```
@@ -225,8 +204,8 @@ as.matrix((spp_assoc1))[1:10, 1:10]
 
 
 ```r
-spp_assoc2 <- vegdist(spp_t, method = "jaccard", binary = TRUE)
-as.matrix((spp_assoc2))[1:10, 1:10]
+spe_assoc2 <- vegdist(spe_t, method = "jaccard", binary = TRUE)
+as.matrix((spe_assoc2))[1:10, 1:10]
 ```
 
 ```

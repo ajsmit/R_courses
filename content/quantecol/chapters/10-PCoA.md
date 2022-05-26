@@ -7,14 +7,10 @@ links:
     icon_pack: fas
     name: Principal Coordinate Analysis Slides
     url: /pdf/BCB743/BCB743_10_PCoA.pdf
-  - icon: file-csv
+  - icon: file-export
     icon_pack: fa
-    name: DoubsEnv.csv
-    url: /BCB743/Num_Ecol_R_book_ed1/DoubsEnv.csv
-  - icon: file-csv
-    icon_pack: fa
-    name: DoubsSpe.csv
-    url: /BCB743/Num_Ecol_R_book_ed1/DoubsSpe.csv
+    name: Doubs.RData
+    url: /BCB743/NEwR-2ed_code_data/NEwR2-Data/Doubs.RData
   - icon: file
     icon_pack: far
     name: SeaweedsEnv.RData
@@ -29,14 +25,14 @@ links:
     url: /slides/BCB743/10-int_assign.html
 subtitle: ""
 title: "10. Principal Coordinate Analysis (PCoA)"
-weight: 13
+weight: 14
 ---
 
 <!--- # Topic 10: Principal Coordinate Analysis (PCoA) --->
 
 Rather than using raw data as in a CA, PCoA takes a (dis)similarity matrix as input; in other words, any of the dissimilarities calculated by **vegan**'s `vegdist()` function can be used, which is great as they are well-suited to species data. If dissimilarities are Euclidean distances, then PCoA is equal to PCA. Another thing that makes a PCoA more useful is that (dis)similarity matrices calculated from quantitative, semi-quantitative, qualitative, and mixed variables can be handled.
 
-PCoA scaling takes a set of dissimilarities and returns a set of points such that when plotted in 2D or 3D space the distances between the points are approximately equal to the dissimilarities. In other words, it tries to represent species dissimilarities as Euclidian distances.
+PCoA scaling takes a set of dissimilarities and returns a set of points such that when plotted in 2D or 3D space the distances between the points are approximately equal to the dissimilarities. In other words, it tries to represent species dissimilarities as Euclidean distances.
 
 ## Set-up the analysis environment
 
@@ -55,8 +51,8 @@ We continue to use the species data:
 
 
 ```r
-spe <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsSpe.csv"))
-spe <- dplyr::select(spe, -1)
+load(paste0(root, "NEwR-2ed_code_data/NEwR2-Data/Doubs.RData"))
+# remove the 8th row because it sums to zero
 spe <- dplyr::slice(spe, -8)
 ```
 
@@ -325,7 +321,7 @@ We can unpack what is inside the results, and there we can see that we can acces
 
 
 ```r
-# str(spe_pcoa) # not shown due to length of output
+str(spe_pcoa) # not shown due to length of output
 ```
 
 The percentage inertia explained by the first three axes is therefore:
@@ -420,8 +416,6 @@ with(spe, tmp <- ordisurf(spe_pcoa ~ Cogo, bubble = 3,
                           display = "sites", main = "Cogo"))
 abline(h = 0, v = 0, lty = 3)
 
-env <- read.csv(paste0(root, "Num_Ecol_R_book_ed1/DoubsEnv.csv"))
-env <- dplyr::select(env, -1)
 env <- dplyr::slice(env, -8)
 
 (spe_pcoa_env <- envfit(spe_pcoa, env, scaling = 2)) 
@@ -433,11 +427,11 @@ env <- dplyr::slice(env, -8)
 ## 
 ##         MDS1     MDS2     r2 Pr(>r)    
 ## dfs  0.99710  0.07609 0.7210  0.001 ***
-## alt -0.99807 -0.06208 0.5659  0.001 ***
-## slo -0.92225  0.38660 0.1078  0.132    
-## flo  0.99746 -0.07129 0.5324  0.001 ***
-## pH  -0.42673 -0.90438 0.0480  0.543    
-## har  0.98804  0.15417 0.2769  0.015 *  
+## ele -0.99807 -0.06208 0.5659  0.001 ***
+## slo -0.92225  0.38660 0.1078  0.142    
+## dis  0.99746 -0.07129 0.5324  0.001 ***
+## pH  -0.42673 -0.90438 0.0480  0.520    
+## har  0.98804  0.15417 0.2769  0.017 *  
 ## pho  0.45343  0.89129 0.6912  0.001 ***
 ## nit  0.86338  0.50456 0.6117  0.001 ***
 ## amm  0.42719  0.90416 0.7076  0.001 ***
