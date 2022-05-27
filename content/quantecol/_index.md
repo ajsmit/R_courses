@@ -30,16 +30,6 @@ cascade:
 
 These links point to online resources such as datasets and R scripts in support of the video and PDF lecture material. It is essential that you work through these examples and workflows.
 
-**The table's content is as follows:**
-
-<i class="fas fa-chalkboard-teacher"></i> Indicates worked-through example code accompanying the lecture material.</p>
-<i class="fas fa-images"></i> Indicates the lecture slides.</p>
-<i class="fas fa-file-pdf"></i> PDF material for further reading (compulsory and examinable).</p>
-<i class="fas fa-file-csv"></i> CSV data files to accompany the code.</p>
-<i class="fas fa-file-export"></i> RData files to go with the worked- through code.</p>
-<i class="fas fa-file-code"></i> R scripts.</p>
-<i class="fas fa-balance-scale-right"></i> Exercices contributing towards continuous assessment.</p>
-
 {{< rawhtml >}}
 <table>
   <thead>
@@ -279,6 +269,36 @@ These links point to online resources such as datasets and R scripts in support 
 </table>
 {{< /rawhtml >}}
 
+
+**The icons in the table indicate the following:**
+
+<i class="fas fa-chalkboard-teacher"></i> Worked-through example code accompanying the lecture material.</p>
+<i class="fas fa-images"></i> The lecture slides.</p>
+<i class="fas fa-file-pdf"></i> PDF material for further reading (compulsory and examinable).</p>
+<i class="fas fa-file-csv"></i> CSV data files to accompany the code.</p>
+<i class="fas fa-file-export"></i> RData files to go with the worked- through code.</p>
+<i class="fas fa-file-code"></i> R scripts.</p>
+<i class="fas fa-balance-scale-right"></i> Exercices contributing towards continuous assessment.</p>
+
+ See [**Reading**](/quantecol/#reading) for additional information.
+
+### Main outcomes
+
+By the end of this module, students will be able to:
+1.	understand the concepts of alpha, beta and gamma diversity;
+2.	know and understand the current hypotheses that attempt to explain species assembly processes in space and time (e.g. neutral and niche mechanisms);
+3.	collect ecological data at the appropriate scale, which would lend themselves to a quantitative analysis of points 1 and 2, above;
+4.	use the R software and associated packages to undertake the analyses required in point 3, above;
+5.	interpret the outcomes of the above analyses and use it to quantitatively characterise points 1 and 2, above; 
+6.	to communicate the findings by written and oral means.
+
+### Main content
+
+**Core theoretical framework** Ecological hypotheses underlying the processes of species assembly in space and time, including neutral and niche-based mechanisms, and historical events; overview of the currently known and understood distributional patterns of major groups of organisms at global, regional and local scales; consideration of sampling designs aimed at capturing these patterns and drivers so as to arrive at a processed based understanding of species assembly.
+
+**Field-activities** Data collection aimed at a quantitative test of the relevant hypotheses, above.
+Statistical/software competence: the management and analysis of ecological data; reproducible and collaborative research; the use of R as a tool for the analysis multivariate ecological data; multivariate techniques such as nMDS, PCA, RDA and cluster analysis; graphical data summaries and visualisations.
+
 ## Prerequisites
 
 You should have a moderate numerical literacy and have prior programming experience. Such experience will have been obtained in the [BCB744](/workshops/) module, which is a module about doing statistics in R. If you have a reasonable experience in coding and statistical analysis you should find yourself well prepared.
@@ -289,11 +309,15 @@ You are provided with reading material (lecture slides, code, website content) t
 
 Although the module is theory-heavy, a large part of it is also about coding. It is up to you to take your coding skills to the next level and move beyond what I teach in class. Coding is a bit like learning a language, and as such programming is a skill that is best learned by doing.
 
-## Learning cooperatively
+## Learning colaboratively
 
-Discuss the BCB743 workshop activities with your peers as you work on them. Use also the WhatsApp group set up for the module for discussion purposes (I might assist via this medium if neccesary if your questions/comments have relevance to the whole class). You will learn more in this module if you work with your friends than if you do not. Ask questions, answer questions, and share ideas liberally. Please identify your work partners by name on all assignments (if you decide to work in pairs).
+Discuss the BCB743 workshop activities with your peers as you work on them. Use also the WhatsApp group set up for the module for discussion purposes (I might assist via this medium if neccesary if your questions/comments have relevance to the whole class). A better option is to use [GitHub Issues](/quantecol/#help-via-bcb744-and-bcb743-issues-on-github). You will learn more in this module if you work with your friends than if you do not. Ask questions, answer questions, and share ideas liberally. Please identify your work partners by name on all assignments (if you decide to work in pairs).
 
 **Cooperative learning is not a licence for plagiarism. Plagiarism is a serious offence and will be dealt with concisely. Consequences of cheating are severe---they range from a 0% for the assignment or exam up to dismissal from the course for a second offense.**
+
+### Reusing code found elsewhere
+
+A huge volume of code is available on the web and it can be adapted to solve your own problems. You may make use of any online resources (e.g. form [StackOverflow](https://stackoverflow.com/), a thoroughly-used source of discussion about [R code](https://stackoverflow.com/questions/tagged/r))---but you **MUST** clearly indicate (cite) that your solution relies on found code, regardless to what extent you have modified it to your own needs. Reused code that is discovered via a web search and which is not explicitly cited is plagiarism and it will be treated as such. On assignments you may not directly share code with your peers in this workshop.
 
 ## Software
 
@@ -303,41 +327,9 @@ In this course we will rely entirely on [R](https://cran.r-project.org/) running
 
 You are encouraged to provide your own laptops and to install the neccesary software before the module starts. Limited support can be provided if required. There are also computers with R and RStudio (and the neccesary add-on libraries) available in the 5th floor lab in the BCB Department.
 
-## Reading
-
-You are **expected to read additional material** in support of the content covered in class and on this website.
-
-A **compulsory** reference is [Numerical Ecology with R](http://adn.biol.umontreal.ca/~numericalecology/numecolR/) by Daniel Borcard, François Gillet and Pierre Legendre. Much of the class' content and many of the examples (and code) that I use have been adapted from this source. It should be considered the 'gold standard' reference for Quantitative Ecology.
-
-A second **highly recommended text** is the book [Tree Diversity Analysis](http://apps.worldagroforestry.org/downloads/Publications/PDFS/b13695.pdf) by Roeland Kindt and Richard Coe.
-
-I can also recommend a few websites with excellent content, such as:
-
-* David Zelený's [Analysis of Community Ecology Data in R](https://www.davidzeleny.net/anadat-r/doku.php)
-* Mike Palmer's [Ordination Methods for Ecologists](http://ordination.okstate.edu/)
-* [GUide to STatistical Analysis in Microbial Ecology (GUSTA ME)](https://sites.google.com/site/mb3gustame/)
-
-Note that the URLs with links to additional reading that appear with the worked-through example code should **not be seen as optional**. They are there for a reason and should be consulted even though I might not necessarily refer to each of them in class.
-
-Use these materials liberally.
-
-## Datasets used in this module
-
-Note that the links provided might not necessarily lead to the **vegan** help page.
-
-|  | Dataset                                                    | Source                                                |
-|:-|------------------------------------------------------------|-------------------------------------------------------|
-| 1| Vegetation and Environment in Dutch Dune Meadows           | [**vegan**](https://www.davidzeleny.net/anadat-r/doku.php/en:data:dune) |
-| 2| Oribatid Mite Data with Explanatory Variables              | [**vegan**](http://adn.biol.umontreal.ca/~numericalecology/data/oribates.html) |    
-| 3| The Doubs River data                                       | [**Numerical Ecology with R**](https://www.davidzeleny.net/anadat-r/doku.php/en:data:doubs) |
-| 4| The Barro Colorado Island tree counts                      | [**vegan**](https://www.davidzeleny.net/anadat-r/doku.php/en:data:bci) |
-| 5| John Bolton, Rob Anderson, and Herre Stegenga's seaweed data | [**Smit et al., 2017**](https://www.frontiersin.org/articles/10.3389/fmars.2017.00404/) |
-| 6| Serge Mayombo's diatoms data                               | [**Mayombo et al., 2019**](https://www.tandfonline.com/doi/abs/10.2989/1814232X.2019.1592778) |
-| 7| World Health Organization Sustainable Development Goals data | [**WHO**](https://www.who.int/data)    
-
 ## Attendance
 
-This workhop-based, hands on course can only deliver acceptible outcomes if you attend all classes. The schedule is set and cannot be changed. Sometimes an occasional absence cannot be avoided. Please be curtious and notify the myself or the tutor in advance of any absence. If you work with a partner in class, notify them too. Keep up with the reading assignments while you are away and we will all work with you to get you back up to speed on what you miss. If you do miss a class, however, the assignments must still be submitted on time (see 'Assessment Policy,' above).
+This workhop-based, hands on course can only deliver acceptible outcomes if you attend all classes. The schedule is set and cannot be changed. Sometimes an occasional absence cannot be avoided. Please be curtious and notify myself or the tutor in advance of any absence. If you work with a partner in class, notify them too. Keep up with the reading assignments while you are away and we will all work with you to get you back up to speed on what you miss. If you do miss a class, however, the assignments must still be submitted on time (also see [**Late submission of CA**](/quantecol/#late-submission-of-ca)).
 
 Since you may decide to work in collaboration with a peer on tasks and assignments, please keep this person informed at all times in case some emergency makes you unavailable for a period of time. Someone might depend on your input and contributions---do not leave someone in the lurch so that they cannot complete a task in your absence.
 
@@ -347,9 +339,9 @@ Continuous assessments (CA) and an exam will provide a final mark for the module
 
 ### Continuous assessment
 
-Quantitative Ecology is about working with real-world datasets. To this end, a series of mini-projects (assessments) involving real data are a required part of the BCB743. You may work alone or with a single partner on all projects (in which case you will share the same mark). All assignments are due by the date and time indicated, and due care must be taken that they are submitted as instructed (i.e. paying attention to naming conventions and the format of the files submitted---typically this will be in R Markdown (.Rmd) and the knitted output (I prefer .html)).
+Quantitative Ecology is about working with real-world datasets. To this end, a series of mini-projects (assessments) involving real data are a required part of the BCB743. You may work alone or with a single partner on all projects (in which case you will share the same mark). All assignments are due by the date and time indicated, and due care must be taken that they are submitted as instructed, i.e. paying attention to naming conventions and the format of the files submitted---typically this will be in R Markdown (.Rmd) and the knitted output (I prefer .html).
 
-The Continuous Assessment (CA) is comprised of the material indicated in the Syllabus by the <i class="fas fa-balance-scale-right" title="Lecture 2 exercises"></i> icon. There are seven smaller assessments (each weighted 0.1) and one slightly more demanding Integrative Assessment (weighted 0.3) at the end of the module.
+The Continuous Assessment (CA) is comprised of the material indicated in the Syllabus by the <i class="fas fa-balance-scale-right"></i> icon. There are seven smaller assessments (each weighted 0.1) and one slightly more demanding Integrative Assessment (weighted 0.3) at the end of the module.
 
 Random quizzes will not form part of the CA for BCB743.
 
@@ -379,51 +371,108 @@ It's expected that some tricky aspects of the module will take time to master, a
 
 Should you require more time with me, find out when I am 'free' and set an appointment by sending me a calendar invitation. I am happy to have a personal meeting with you via Zoom, but I prefer face-to-face in my office.
 
-## Function list
+### Help via BCB744 and BCB743 Issues on GitHub
 
-You will encounter the following functions for the first time in this module:
+All discussion for the BCB744 and BCB743 workshops will be held in the [Issues](https://github.com/ajsmit/R_courses/issues) of [this repository](https://github.com/ajsmit/R_courses). Please post all content-related questions there, and use email only for personal matters. Note that this is a public repository, so be professional in your writing here (grammar, etc.).
 
-| Function              | Description                                        |
-|:----------------------|----------------------------------------------------|
-| `adonis2()`           | Permutational Multivariate Analysis of Variance Using Distance Matrices |
-| `anova.betadisper()`  | PERMDIST 2 for Multivariate homogeneity of groups dispersions (variances) |
-| `anova.cca ()`        | Permutation Test for CCA, RDA and CA of Principal Coordinates |
-| `anova.manyglm()`     | Analysis of Deviance for Multivariate Generalized Linear Model Fits for Abundance Data |
-| `beta.pair()`         | Incidence-based Pair-wise Dissimilarities |
-| `betadisper()`        | Multivariate homogeneity of groups dispersions (variances) |
-| `betapart.core()`     | Core Calculations of betapart |
-| `biplot()`            | Biplot of Multivariate Data |
-| `capscale()`          | [Partial] Distance-based Redundancy Analysis |
-| `cca()`               | [Partial] [Constrained] Correspondence Analysis and Redundancy Analysis |
-| `cleanplot.pc()`      | Numerical Ecology in R's PCA Plot |
-| `daisy()`             | Dissimilarity Matrix Calculation |
-| `decostand()`         | Standardization Methods for Community Ecology |
-| `diag()`              | Matrix Diagonals |
-| `diversity()`         | Ecological Diversity Indices |
-| `diversityresult()`   | Alternative Diversity Results |
-| `fviz_cluster()`      | Visualize Clustering Results |
-| `fviz_nbclust()`      | Determining and Visualizing the Optimal Number of Clusters |
-| `fviz_silhouette()`   | Visualize Silhouette Information from Clustering |
-| `geodist()`           | Convert Lon-Lat Coordinates into Vector or Matrix of Geodesic Distances in Metres |
-| `ggcorrplot()`        | Visualization of a Correlation Matrix Using ggplot2 |
-| `goodness()`          | Diagnostic Tools for [Constrained] Ordination (CCA, RDA, DCA, CA, PCA) |
-| `imputePCA()`         | Impute Dataset with PCA |
-| `lowerTriangle()`     | Extract or Replace the Upper/Lower Triangular Portion of a Matrix |
-| `manyglm()`           | Fitting Generalized Linear Models for Multivariate Abundance Data |
-| `meanvar.plot()`      | Construct Mean-Variance Plots for Multivariate Abundance Data |
-| `metaMDS()`           | Nonmetric Multidimensional Scaling with Stable Solution from Random Starts, Axis Scaling and Species Scores |
-| `mvabund()`           | Multivariate Abundance Data Objects |
-| `ordiellipse()`       | Display Groups or Factor Levels in Ordination Diagrams |
-| `ordiplot()`          | Alternative Plot and Identify Functions for Ordination |
-| `ordispider()`        | Display Groups or Factor Levels in Ordination Diagrams |
-| `ordisurf()`          | Fit and Plot Smooth Surfaces of Variables on Ordination |
-| `pam()`               | Partitioning Around Medoids |
-| `permutest()`         | Permutation Test for CCA, RDA and CA of Principal Coordinates |
-| `rda()`               | [Partial] [Constrained] Correspondence Analysis and Redundancy Analysis |
-| `RsquareAdj()`        | Adjusted R-square |
-| `scores()`            | Get Species or Site Scores from an Ordination |
-| `specnumber()`        | Ecological Diversity Indices |
-| `stressplot()`        | Goodness of Fit and Shepard Plot for Nonmetric Multidimensional Scaling |
-| `t()`                 | Matrix Transpose |
-| `vegdist()`           | Dissimilarity Indices for Community Ecologists |
-| `vif.cca()`           | Diagnostic Tools for [Constrained] Ordination (CCA, RDA, DCA, CA, PCA) |
+To start a new thread, create a **New issue**. Tag your peers using their handle---@ajsmit, for example---to get their attention.
+
+Once a question has been answered, the issue will be closed, so lots of good answers might end up in closed issues. Don't forget to look there when looking for answers---you can use the **Search** feature on this repository to find answers that might have been offered by the same or similar problem experienced by someone else in the past.
+
+**Guidelines for posting questions:**
+
+- First search existing issues (open or closed) for answers. If the question has already been answered, you're done! If there is an open issue, feel free to contribute to it. Or feel free to open a closed issue if you believe the answer is not satisfactory.
+- Give your issue an informative title.
+    + Good: "Error: could not find function "ggplot""
+    + Bad: "My code does not work!”
+Note that you can edit an issue’s title after it's been posted.
+- Format your questions nicely using markdown and code formatting. Preview your issue prior to posting.
+- As I explained above, your peers and I will more sympathetic to your cause if you can show *all the things you have tried as you, yourself, tried to fix the issue first*.
+- Include code and example data so the person trying to help you have something to work with (and which results in the error, perhaps)
+- Where appropriate, provide links to specific files, or even lines within them, in the body of your issue. This will help your peers understand your question. Note that only the teaching team will have access to private repos.
+- (Optional) Tag someone or some group of people. Start by typing their GitHub username prefixed with the @ symbol. Of course this supposes that each of you have a GitHub account and username.
+- Hit **Submit new issue** when you're ready to post.
+
+## Reading
+
+You are **expected to read additional material** in support of the content covered in class and on this website.
+
+A **compulsory** reference is [Numerical Ecology with R](http://adn.biol.umontreal.ca/~numericalecology/numecolR/) by Daniel Borcard, François Gillet and Pierre Legendre. Much of the class' content and many of the examples (and code) that I use have been adapted from this source. It should be considered the 'gold standard' reference for Quantitative Ecology.
+
+A second **highly recommended text** is the book [Tree Diversity Analysis](http://apps.worldagroforestry.org/downloads/Publications/PDFS/b13695.pdf) by Roeland Kindt and Richard Coe.
+
+I can also recommend a few websites with excellent content, such as:
+
+* David Zelený's [Analysis of Community Ecology Data in R](https://www.davidzeleny.net/anadat-r/doku.php)
+* Mike Palmer's [Ordination Methods for Ecologists](http://ordination.okstate.edu/)
+* [GUide to STatistical Analysis in Microbial Ecology (GUSTA ME)](https://sites.google.com/site/mb3gustame/)
+
+Note that the URLs with links to additional reading that appear with the worked-through example code should **not be seen as optional**. They are there for a reason and should be consulted even though I might not necessarily refer to each of them in class.
+
+Use these materials liberally.
+
+Should you want to download the source code for the BCB743 (and BCB744 website), you may find it on [<i class="fab fa-github"></i> GitHub](https://github.com/ajsmit/R_courses).
+
+## Datasets used in this module
+
+Note that the links provided might not necessarily lead to the **vegan** help page.
+
+|  | Dataset                                                    | Source                                                |
+|:-|------------------------------------------------------------|-------------------------------------------------------|
+| 1| Vegetation and Environment in Dutch Dune Meadows           | [**vegan**](https://www.davidzeleny.net/anadat-r/doku.php/en:data:dune) |
+| 2| Oribatid Mite Data with Explanatory Variables              | [**vegan**](http://adn.biol.umontreal.ca/~numericalecology/data/oribates.html) |    
+| 3| The Doubs River Data                                       | [**Numerical Ecology with R**](https://www.davidzeleny.net/anadat-r/doku.php/en:data:doubs) |
+| 4| The Barro Colorado Island Tree Counts                      | [**vegan**](https://www.davidzeleny.net/anadat-r/doku.php/en:data:bci) |
+| 5| John Bolton, Rob Anderson, and Herre Stegenga's Seaweed Data | [**Smit et al., 2017**](https://www.frontiersin.org/articles/10.3389/fmars.2017.00404/) |
+| 6| Serge Mayombo's Diatoms Data                               | [**Mayombo et al., 2019**](https://www.tandfonline.com/doi/abs/10.2989/1814232X.2019.1592778) |
+| 7| World Health Organization Sustainable Development Goals Data | [**WHO**](https://www.who.int/data)    
+
+
+  <!-- ## Function list
+
+  You will encounter the following functions for the first time in this module:
+
+  | Function              | Description                                        |
+  |:----------------------|----------------------------------------------------|
+  | `adonis2()`           | Permutational Multivariate Analysis of Variance Using Distance Matrices |
+  | `anova.betadisper()`  | PERMDIST 2 for Multivariate homogeneity of groups dispersions (variances) |
+  | `anova.cca ()`        | Permutation Test for CCA, RDA and CA of Principal Coordinates |
+  | `anova.manyglm()`     | Analysis of Deviance for Multivariate Generalized Linear Model Fits for Abundance Data |
+  | `beta.pair()`         | Incidence-based Pair-wise Dissimilarities |
+  | `betadisper()`        | Multivariate homogeneity of groups dispersions (variances) |
+  | `betapart.core()`     | Core Calculations of betapart |
+  | `biplot()`            | Biplot of Multivariate Data |
+  | `capscale()`          | [Partial] Distance-based Redundancy Analysis |
+  | `cca()`               | [Partial] [Constrained] Correspondence Analysis and Redundancy Analysis |
+  | `cleanplot.pc()`      | Numerical Ecology in R's PCA Plot |
+  | `daisy()`             | Dissimilarity Matrix Calculation |
+  | `decostand()`         | Standardization Methods for Community Ecology |
+  | `diag()`              | Matrix Diagonals |
+  | `diversity()`         | Ecological Diversity Indices |
+  | `diversityresult()`   | Alternative Diversity Results |
+  | `fviz_cluster()`      | Visualize Clustering Results |
+  | `fviz_nbclust()`      | Determining and Visualizing the Optimal Number of Clusters |
+  | `fviz_silhouette()`   | Visualize Silhouette Information from Clustering |
+  | `geodist()`           | Convert Lon-Lat Coordinates into Vector or Matrix of Geodesic Distances in Metres |
+  | `ggcorrplot()`        | Visualization of a Correlation Matrix Using ggplot2 |
+  | `goodness()`          | Diagnostic Tools for [Constrained] Ordination (CCA, RDA, DCA, CA, PCA) |
+  | `imputePCA()`         | Impute Dataset with PCA |
+  | `lowerTriangle()`     | Extract or Replace the Upper/Lower Triangular Portion of a Matrix |
+  | `manyglm()`           | Fitting Generalized Linear Models for Multivariate Abundance Data |
+  | `meanvar.plot()`      | Construct Mean-Variance Plots for Multivariate Abundance Data |
+  | `metaMDS()`           | Nonmetric Multidimensional Scaling with Stable Solution from Random Starts, Axis Scaling and Species Scores |
+  | `mvabund()`           | Multivariate Abundance Data Objects |
+  | `ordiellipse()`       | Display Groups or Factor Levels in Ordination Diagrams |
+  | `ordiplot()`          | Alternative Plot and Identify Functions for Ordination |
+  | `ordispider()`        | Display Groups or Factor Levels in Ordination Diagrams |
+  | `ordisurf()`          | Fit and Plot Smooth Surfaces of Variables on Ordination |
+  | `pam()`               | Partitioning Around Medoids |
+  | `permutest()`         | Permutation Test for CCA, RDA and CA of Principal Coordinates |
+  | `rda()`               | [Partial] [Constrained] Correspondence Analysis and Redundancy Analysis |
+  | `RsquareAdj()`        | Adjusted R-square |
+  | `scores()`            | Get Species or Site Scores from an Ordination |
+  | `specnumber()`        | Ecological Diversity Indices |
+  | `stressplot()`        | Goodness of Fit and Shepard Plot for Nonmetric Multidimensional Scaling |
+  | `t()`                 | Matrix Transpose |
+  | `vegdist()`           | Dissimilarity Indices for Community Ecologists |
+  | `vif.cca()`           | Diagnostic Tools for [Constrained] Ordination (CCA, RDA, DCA, CA, PCA) | -->
