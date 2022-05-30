@@ -93,8 +93,8 @@ fish
 ```
 ## 
 ## Fisher log series model
-## No. of species: 95 
-## Fisher alpha:   39.87658
+## No. of species: 77 
+## Fisher alpha:   27.62298
 ```
 
 ```r
@@ -115,15 +115,15 @@ pres
 ## 
 ## Preston lognormal model
 ## Method: maximized likelihood to log2 abundances 
-## No. of species: 95 
+## No. of species: 77 
 ## 
-##       mode      width         S0 
-##  0.9234918  1.6267630 26.4300640 
+##      mode     width        S0 
+##  1.159698  1.812746 19.185790 
 ## 
 ## Frequencies by Octave
 ##                 0        1        2        3        4        5         6
-## Observed 19.00000 27.00000 21.50000 17.00000 7.000000 2.500000 1.0000000
-## Fitted   22.49669 26.40085 21.23279 11.70269 4.420327 1.144228 0.2029835
+## Observed 13.00000 19.50000 17.00000 13.50000 7.000000 6.000000 1.0000000
+## Fitted   15.63531 19.11148 17.23134 11.45989 5.621847 2.034297 0.5429834
 ```
 
 ```r
@@ -143,14 +143,14 @@ rad
 ```
 ## 
 ## RAD models, family poisson 
-## No. of species 95, total abundance 392
+## No. of species 77, total abundance 421
 ## 
 ##            par1      par2     par3    Deviance AIC      BIC     
-## Null                                   56.3132 324.6477 324.6477
-## Preemption  0.042685                   55.8621 326.1966 328.7504
-## Lognormal   0.84069   1.0912           16.1740 288.5085 293.6162
-## Zipf        0.12791  -0.80986          21.0817 293.4161 298.5239
-## Mandelbrot  0.66461  -1.2374   4.1886   6.6132 280.9476 288.6093
+## Null                                   58.0173 289.3316 289.3316
+## Preemption  0.057526                   36.3342 269.6484 271.9922
+## Lognormal   1.0827    1.1321           27.2199 262.5342 267.2218
+## Zipf        0.14503  -0.83716          54.0606 289.3748 294.0625
+## Mandelbrot  13.63    -1.9881   11.711   5.7227 243.0369 250.0683
 ```
 
 ```r
@@ -172,12 +172,12 @@ rad2
 ## 
 ## Deviance for RAD models:
 ## 
-##                   4        1        7       19       35      48
-## Null        49.8111  39.5261  44.1321 107.2256 885.2242 59.1791
-## Preemption  39.7817  21.8939  35.5813 116.0772 706.2663 55.8066
-## Lognormal   16.6588  25.1528  15.0446  33.4229 159.4459 16.2187
-## Zipf        47.9108  61.0465  37.1297  17.5444  36.4052 25.3544
-## Mandelbrot   5.5665   4.2271   6.8295  10.4748  36.4052  5.0745
+##                  30       12       45        2       47      14
+## Null       109.9125  97.0832 114.1829  46.7795 105.2750 56.5086
+## Preemption 108.6913  90.2032  82.1220  29.5066  81.6840 51.9274
+## Lognormal   21.5828  27.1559  24.4013  18.8511  43.1745 20.5253
+## Zipf        17.4005  17.1743  32.6148  48.4277  48.6464 35.4959
+## Mandelbrot   7.7313   6.0875   7.7853   4.7586   9.4122  8.0679
 ```
 
 ```r
@@ -194,7 +194,7 @@ Above, we see that the model selected for capturing the shape of the SAD is the 
 ```r
 library(BiodiversityR)
 rankabund <- rankabundance(BCI)
-rankabunplot(rankabund, cex = 0.8, pch = 0.8, col = "red")
+rankabunplot(rankabund, cex = 0.8, pch = 0.8, col = "salmon")
 ```
 
 <img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-6-1.png" width="480" />
@@ -202,6 +202,39 @@ rankabunplot(rankabund, cex = 0.8, pch = 0.8, col = "red")
 Refer to the help files for the respective functions to see their differences.
 
 ### Occupancy-abundance curves
+
+Occupancy-abundance relationships are used to infer niche specialisation patterns in the sampling region. The hypothesis (almost a theory) is that species that tend to have high local abundance within one site also tend to occupy many sites.
+
+
+```r
+library(ggpubr)
+BCI_OA <- data.frame(occ = colSums(BCI),
+                     ab = apply(BCI, MARGIN = 2, mean))
+
+plt1 <- ggplot(BCI_OA, aes(x = ab, y = occ)) +
+  geom_point() +
+  scale_x_log10() +
+  scale_y_log10() +
+  labs(title = "Barro Colorado Island Tree Counts",
+     x = "Log (abundance)", y = "Log (occupancy)") +
+  theme_linedraw()
+
+plt2 <- ggplot(BCI_OA, aes(x = log(ab))) +
+  geom_histogram(col = "black", fill = "turquoise", bins = 15) +
+  labs(title = "Barro Colorado Island Tree Counts",
+     x = "Log (abundance)") +
+  theme_linedraw()
+
+plt3 <- ggplot(BCI_OA, aes(x = log(occ))) +
+  geom_histogram(col = "black", fill = "salmon", bins = 15) +
+  labs(title = "Barro Colorado Island Tree Counts",
+     x = "Log (occupancy)") +
+  theme_linedraw()
+
+ggarrange(plt1, plt2, plt3, nrow = 3)
+```
+
+<img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-7-1.png" width="480" />
 
 ### Species-area (accumulation) and rarefaction curves
 
@@ -226,7 +259,7 @@ plot(sp1, ci.type = "polygon", col = "blue", lwd = 2, ci.lty = 0,
      ylab = "No. of species")
 ```
 
-<img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-7-1.png" width="480" />
+<img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-8-1.png" width="480" />
 
 ```r
 ## Fit Arrhenius models to all random accumulations
@@ -235,26 +268,26 @@ plot(mods, col = "hotpink", ylab = "No. of species")
 boxplot(sp2, col = "yellow", border = "blue", lty = 1, cex = 0.3, add = TRUE)
 ```
 
-<img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-7-2.png" width="480" />
+<img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-8-2.png" width="480" />
 
 ```r
 sapply(mods$models, AIC)
 ```
 
 ```
-##   [1] 341.2981 335.2787 320.4301 308.5353 291.1365 340.1930 357.9873 332.1840
-##   [9] 318.5659 366.6193 351.3844 335.7607 348.3426 302.3093 288.1323 308.8948
-##  [17] 352.8090 317.8931 336.3964 373.8125 329.3544 334.0731 344.2925 375.7244
-##  [25] 348.7604 345.0628 338.4549 268.5416 303.7123 325.3938 331.1292 293.7738
-##  [33] 327.5455 355.0379 349.7843 339.5713 326.3298 351.1487 300.3795 345.1110
-##  [41] 330.8714 358.3487 319.0466 340.2197 344.3764 346.4743 320.1542 302.3948
-##  [49] 309.7505 336.4755 363.6841 306.9264 336.0695 345.3502 329.3734 319.2883
-##  [57] 337.5438 331.3938 326.2044 331.5958 368.0740 313.5700 255.2104 334.2672
-##  [65] 314.4999 324.6643 335.8524 348.6149 346.5143 320.1167 336.9254 293.2337
-##  [73] 336.4260 334.1159 333.8296 341.4761 336.1687 339.0917 371.6713 327.4544
-##  [81] 353.6557 305.7991 330.0735 365.7789 344.3809 343.0189 326.2084 336.1685
-##  [89] 343.7478 308.8636 321.0863 337.2869 337.2085 347.5741 351.1661 335.0564
-##  [97] 346.2892 340.6306 358.8237 357.3155
+##   [1] 322.7071 308.0307 326.1059 345.1316 311.2403 350.9010 331.8758 353.6134
+##   [9] 343.6867 300.4062 277.3350 326.8261 353.7400 333.5661 345.1964 307.1611
+##  [17] 337.7994 315.0815 344.3542 349.2597 337.0767 361.8861 350.9876 306.4465
+##  [25] 344.7917 327.5933 330.8688 325.6508 348.5961 328.0685 341.8859 335.9847
+##  [33] 354.8380 354.7685 322.7127 331.6956 331.3510 349.4619 345.1428 340.3122
+##  [41] 294.7701 370.6056 305.5314 329.2304 340.6074 289.8180 328.7100 352.3945
+##  [49] 319.1702 298.2687 335.1122 275.8272 314.9710 294.3424 343.0762 355.5532
+##  [57] 324.5369 322.1104 357.0261 347.1883 305.5711 333.2753 321.5978 332.8631
+##  [65] 324.7571 340.2275 343.5097 310.9758 357.0215 354.1713 363.2884 329.3238
+##  [73] 326.9312 362.3362 318.6507 326.8958 288.0712 333.4761 306.6337 286.3334
+##  [81] 344.6820 365.5858 316.8893 316.9515 349.4585 319.5920 343.3735 340.4702
+##  [89] 349.6063 323.7812 325.5328 341.8555 329.5725 358.8580 335.0133 353.9419
+##  [97] 327.1301 352.9177 344.8019 320.4868
 ```
 
 
@@ -263,13 +296,13 @@ accum <- accumresult(BCI, method = "exact", permutations = 100)
 accumplot(accum)
 ```
 
-<img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-8-1.png" width="480" />
+<img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-9-1.png" width="480" />
 
 Rarefaction is a statistical technique used by ecologists to assess species richness (represented as *S*, or diversity indices such as Shannon diversity, `\(H'\)`, or Simpson's diversity, `\(\lambda\)`) from data on species samples, such as that which we may find in site × species tables. Rarefaction can be used to determine whether a habitat, community, or ecosystem has been sufficiently sampled to fully capture the full complement of species present.
 
 Rarefaction curves may seem similar to species accumulation curves, but there is a difference as I will note below. Species richness, *S*, accumulates with sample size *or* with the number of individuals sampled (across all species). The first way that rarefaction curves are presented is to show species richness as a function of number of individuals sampled. Here the principle demonstrated is that when only a few individuals are sampled, those individuals may belong to only a few species; however, when more individuals are present more species will be represented. The second approach to rarefaction is to plot the number of samples along `\(x\)` and the species richness along the `\(y\)`-axis (as in SADs too). So, rarefaction shows how richness accumulates with the number of individuals counted or with the number of samples taken. 
 
-But what really distinguishes rarefaction curves from SADs is that rarefaction randomly re-samples the pool of `\(N\)` samples (that is equal or less than the total community size) a number of times and plots the average number of species found in each resample (1,2, ... `\(N\)`) as a function of individuals or samples. The `rarecurve()` function draws a rarefaction curve for each row of the species data table. All these plots are made with base R graphics, but it will be a trivial exercise to reproduce them with **ggplot2**.
+But what really distinguishes rarefaction curves from SADs is that rarefaction randomly re-samples the pool of `\(n\)` samples (that is equal or less than the total community size) a number of times and plots the average number of species found in each resample (1,2, ..., `\(n\)`) as a function of individuals or samples. The `rarecurve()` function draws a rarefaction curve for each row of the species data table. All these plots are made with base R graphics, but it will be a trivial exercise to reproduce them with **ggplot2**.
 
 We can also use the [**iNEXT**](https://github.com/JohnsonHsieh/iNEXT) package for rarefaction curves. From the package's [Introduction Vignette](https://cran.r-project.org/web/packages/iNEXT/vignettes/Introduction.html):
  
@@ -314,10 +347,14 @@ BCI_out <- iNEXT(BCI_t, q = c(0, 1, 2), datatype = "incidence_raw")
 ggiNEXT(BCI_out, type = 1, color.var = "order")
 ```
 
-<img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="/quantecol/chapters/02b-biodiversity_files/figure-html/unnamed-chunk-10-1.png" width="480" />
 
 The warning is produced because the function expects incidence data (presence-absence), but I'm feeding it abundance (count) data. Nothing serious, as the function converts the abundance data to incidences.
 
 ### Distance-decay curves
 
+The principles of distance decay relationships are clearly captured in analyses of  [β-diversity](http://localhost:4321/quantecol/chapters/02a-biodiversity/#%ce%b2-diversity)---see specifically **turnover**, `\(\beta_\text{sim}\)`. Distance decay is the primary explanation for the spatial pattern of β-diversity along the South African coast in [Smit et al. (2017)](/pdf/BCB743/Smit_et_al_2017.pdf). We dive deeper into distance decay calculation in the next Chapter, [Deep Dive into Gradients](/quantecol/chapters/03-deep_dive/).
+
 ### Eelevation and other gradients
+
+Elevation gradients and other gradients such as change in species composition with depth in the ocean are specific cases of distance decay and the same principles apply in these cases.

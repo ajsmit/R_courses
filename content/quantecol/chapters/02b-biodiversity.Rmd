@@ -117,12 +117,43 @@ Above, we see that the model selected for capturing the shape of the SAD is the 
 ```{r  fig.height=3, fig.width=5, message=FALSE, warning=FALSE}
 library(BiodiversityR)
 rankabund <- rankabundance(BCI)
-rankabunplot(rankabund, cex = 0.8, pch = 0.8, col = "red")
+rankabunplot(rankabund, cex = 0.8, pch = 0.8, col = "salmon")
 ```
 
 Refer to the help files for the respective functions to see their differences.
 
 ### Occupancy-abundance curves
+
+Occupancy-abundance relationships are used to infer niche specialisation patterns in the sampling region. The hypothesis (almost a theory) is that species that tend to have high local abundance within one site also tend to occupy many sites.
+
+```{r fig.height=4, fig.width=5, message=FALSE, warning=FALSE}
+library(ggpubr)
+BCI_OA <- data.frame(occ = colSums(BCI),
+                     ab = apply(BCI, MARGIN = 2, mean))
+
+plt1 <- ggplot(BCI_OA, aes(x = ab, y = occ)) +
+  geom_point() +
+  scale_x_log10() +
+  scale_y_log10() +
+  labs(title = "Barro Colorado Island Tree Counts",
+     x = "Log (abundance)", y = "Log (occupancy)") +
+  theme_linedraw()
+
+plt2 <- ggplot(BCI_OA, aes(x = log(ab))) +
+  geom_histogram(col = "black", fill = "turquoise", bins = 15) +
+  labs(title = "Barro Colorado Island Tree Counts",
+     x = "Log (abundance)") +
+  theme_linedraw()
+
+plt3 <- ggplot(BCI_OA, aes(x = log(occ))) +
+  geom_histogram(col = "black", fill = "salmon", bins = 15) +
+  labs(title = "Barro Colorado Island Tree Counts",
+     x = "Log (occupancy)") +
+  theme_linedraw()
+
+ggarrange(plt1, plt2, plt3, nrow = 3)
+
+```
 
 ### Species-area (accumulation) and rarefaction curves
 
@@ -154,7 +185,7 @@ Rarefaction is a statistical technique used by ecologists to assess species rich
 
 Rarefaction curves may seem similar to species accumulation curves, but there is a difference as I will note below. Species richness, *S*, accumulates with sample size *or* with the number of individuals sampled (across all species). The first way that rarefaction curves are presented is to show species richness as a function of number of individuals sampled. Here the principle demonstrated is that when only a few individuals are sampled, those individuals may belong to only a few species; however, when more individuals are present more species will be represented. The second approach to rarefaction is to plot the number of samples along $x$ and the species richness along the $y$-axis (as in SADs too). So, rarefaction shows how richness accumulates with the number of individuals counted or with the number of samples taken. 
 
-But what really distinguishes rarefaction curves from SADs is that rarefaction randomly re-samples the pool of $N$ samples (that is equal or less than the total community size) a number of times and plots the average number of species found in each resample (1,2, ... $N$) as a function of individuals or samples. The `rarecurve()` function draws a rarefaction curve for each row of the species data table. All these plots are made with base R graphics, but it will be a trivial exercise to reproduce them with **ggplot2**.
+But what really distinguishes rarefaction curves from SADs is that rarefaction randomly re-samples the pool of $n$ samples (that is equal or less than the total community size) a number of times and plots the average number of species found in each resample (1,2, ..., $n$) as a function of individuals or samples. The `rarecurve()` function draws a rarefaction curve for each row of the species data table. All these plots are made with base R graphics, but it will be a trivial exercise to reproduce them with **ggplot2**.
 
 We can also use the [**iNEXT**](https://github.com/JohnsonHsieh/iNEXT) package for rarefaction curves. From the package's [Introduction Vignette](https://cran.r-project.org/web/packages/iNEXT/vignettes/Introduction.html):
  
@@ -169,7 +200,7 @@ For information about Hill numbers see David Zelený's [Analysis of community da
 
 There are four datasets distributed with iNEXT and numerous examples are provided in the [Introduction Vignette](https://cran.r-project.org/web/packages/iNEXT/vignettes/Introduction.html). iNEXT has an 'odd' data format that might seem foreign to **vegan** users. To use iNEXT with dataset suitable for analysis in vegan, we first need to convert BCI data to a species × site matrix:
 
-```{r}
+```{r fig.height=3, fig.width=5, scale = 1.2}
 library(iNEXT)
 
 # transpose the BCI data: 
@@ -184,4 +215,8 @@ The warning is produced because the function expects incidence data (presence-ab
 
 ### Distance-decay curves
 
+The principles of distance decay relationships are clearly captured in analyses of  [β-diversity](http://localhost:4321/quantecol/chapters/02a-biodiversity/#%ce%b2-diversity)---see specifically **turnover**, $\beta_\text{sim}$. Distance decay is the primary explanation for the spatial pattern of β-diversity along the South African coast in [Smit et al. (2017)](/pdf/BCB743/Smit_et_al_2017.pdf). We dive deeper into distance decay calculation in the next Chapter, [Deep Dive into Gradients](/quantecol/chapters/03-deep_dive/).
+
 ### Eelevation and other gradients
+
+Elevation gradients and other gradients such as change in species composition with depth in the ocean are specific cases of distance decay and the same principles apply in these cases.
