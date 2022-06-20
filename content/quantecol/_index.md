@@ -51,7 +51,7 @@ These links point to online resources such as datasets and R scripts in support 
       <td style="text-align:left">Introduction</td>
       <td style="text-align:center"><a href="/quantecol/chapters/01-introduction/" title="Lecture 1"><i class="fas fa-chalkboard-teacher"></i></a></td>
       <td style="text-align:center"><a href="/pdf/BCB743/BCB743_01_intro.pdf"><i class="fas fa-images" title="Lecture 1 slides"></i></a></td>
-      <td style="text-align:center"></td>
+      <td style="text-align:center"><a href="/pdf/BCB743/BES-Data-Guide-2017_web.pdf"><i class="fas fa-images" title="BES Data Guide"></i></a> <a href="/pdf/BCB743/BES-Reproducible-Code-2017.pdf"><i class="fas fa-images" title="BES Reproducible Code"></i></a></td>
       <td style="text-align:center"></td>
       <td style="text-align:center"></td>
     </tr>
