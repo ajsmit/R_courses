@@ -278,7 +278,7 @@ These links point to online resources such as datasets and R scripts in support 
 <i class="fas fa-file-csv"></i> CSV data files to accompany the code.</p>
 <i class="fas fa-file-export"></i> RData files to go with the worked- through code.</p>
 <i class="fas fa-file-code"></i> R scripts.</p>
-<i class="fas fa-balance-scale-right"></i> Exercices contributing towards continuous assessment.</p>
+<i class="fas fa-balance-scale-right"></i> Exercises contributing towards continuous assessment.</p>
 
  See [**Reading**](/quantecol/#reading) for additional information.
 
@@ -290,7 +290,7 @@ By the end of this module, students will be able to:
 3.	collect ecological data at the appropriate scale, which would lend themselves to a quantitative analysis of points 1 and 2, above;
 4.	use the R software and associated packages to undertake the analyses required in point 3, above;
 5.	interpret the outcomes of the above analyses and use it to quantitatively characterise points 1 and 2, above; 
-6.	to communicate the findings by written and oral means.
+6.	communicate the findings by written and oral means.
 
 ### Main content
 
