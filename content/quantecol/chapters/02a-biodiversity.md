@@ -69,6 +69,7 @@ This is **R**, so first I need to find, install and load various packages. Some 
 library(tidyverse)
 library(betapart)
 library(vegan)
+library(BiodiversityR)
 library(gridExtra)
 library(grid)
 library(gridBase)
@@ -282,6 +283,14 @@ The **vegan** function `vegdist()` provides access to the dissimilarity indices.
 ```r
 sor <- vegdist(spp, binary = TRUE) # binary = TRUE sets to presence/absence data
 sor_df <- round(as.matrix(sor), 4)
+dim(sor_df)
+```
+
+```
+## [1] 58 58
+```
+
+```r
 sor_df[1:10, 1:10] # the first 20 rows and columns
 ```
 
@@ -338,6 +347,11 @@ We can also use:
 
 ```r
 diversityresult(spp, index = 'richness', method = 'pooled')
+```
+
+```
+##        richness
+## pooled      846
 ```
 
 <!-- ```{r} -->
