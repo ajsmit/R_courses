@@ -13,7 +13,7 @@ links:
     url: /BCB743/NEwR-2ed_code_data/NEwR2-Data/Doubs.RData
 subtitle: ""
 title: "9. Correspondence Analysis (CA)"
-weight: 12
+weight: 13
 ---
 
 <!--- # Topic 9: Correspondence Analysis (CA) --->

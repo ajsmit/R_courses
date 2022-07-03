@@ -22,7 +22,7 @@ weight: 10
 
 <!--- # Topic 8: Principal Component Analysis (PCA) --->
 
-PCA is one of many ordination techniques. Depending on the application of technical/scientific discipline it is applied in, you might see it mentioned under 'dimensionality reduction' techniques; other times it is named as a form of 'unsupervised learning.' Regardless of what it is called, ordination refers to multivariate techniques that reduces a multivariate (multi-dimensional) dataset in such a way that when it is projected onto a lower dimensional space, typically 2D or 3D space, any intrinsic structure in the data forms visually-discernible patterns (Pielou, 1984). Ordination summarises community data (e.g. samples of species presence-absence or abundance across multiple sites) by producing a low-dimensional ordination space where similar samples (typically species) plot close together, and dissimilar samples far apart. Dimensions of this low dimensional space represent important and interpretable environmental gradients.
+Principal Component Analysis (PCA) is one of many ordination techniques. Depending on the application of technical/scientific discipline it is applied in, you might see it mentioned under **dimensionality reduction** techniques; other times it is named as a form of **unsupervised learning**. Regardless of what it is called, ordination refers to a suite of multivariate techniques that reduces a multivariate (multi-dimensional) dataset in such a way that when it is projected onto a lower dimensional space, typically 2D or 3D space, any intrinsic structure in the data forms visually-discernible patterns (Pielou, 1984). Ordination summarises community data (e.g. samples of species presence-absence or abundance across multiple sites) by producing a low-dimensional ordination space where similar samples (typically species) plot close together, and dissimilar samples far apart. Dimensions of this low dimensional space represent important and interpretable environmental gradients.
 
 In ecology, ordination techniques are used to describe relationships between community structure patterns and underlying environmental gradients. So, we can ask questions such as, "Which environmental variables cause a community to vary across a landscape?" Ordinations allow us to determine the relative importance of different gradients, and graphical presentations of the results can lead to intuitive interpretations of species-environment relationships.
 
@@ -54,24 +54,24 @@ corr <- round(cor(env), 1)
 
 # visualization of the correlation matrix
 ggcorrplot(corr, type = 'upper', outline.col = "white",
-          colors = c("#1679a1", "white", "#f8766d"),
-          lab = TRUE)
+           colors = c("#1679a1", "white", "#f8766d"),
+           lab = TRUE)
 ```
 
-Some variables are very correlated, and they might be omitted from the subsequent analyses. We say that these variables are 'collinear.' Collinear variables cannot be teased apart in terms of finding out which one is most influential in structuring the community. There are more advanced ways to search for collinear variables (e.g. Variance Inflation Factors, VIF) and in this way we can systematically exclude them from the PCA. See Graham (2003) for a discussion on collinearity. Here we will proceed with all the variables.
+Some variables are very correlated, and they might be omitted from the subsequent analyses. We say that these variables are 'collinear.' Collinear variables cannot be teased apart in terms of finding out which one is most influential in structuring the community. There are more advanced ways to search for collinear variables (e.g. Variance Inflation Factors, VIF) and in this way we can systematically exclude them from the PCA. See [Graham (2003)](/pdf/BCB743/Graham_2003.pdf) for a discussion on collinearity. Here we will proceed with all the variables.
 
 ## See the spatial context
 
 The patterns in the data and the correlations between them will make more sense if we can visualise a spatial context. Thankfully spatial data are available:
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 head(spa)
 ggplot(spa, aes(x = X, y = Y, label = rownames(spa))) +
   geom_point(shape = 1) +
   geom_label(vjust = 0, nudge_y = 0.5, check_overlap = TRUE)
 ```
 
-These site numbers correspond approximately to the ones in Verneaux et al. (2003) but some of the numbers may have been shifted slightly in the example Doubs dataset used here compared to how they were originally numbered in Verneaux's thesis and subsequent publication. This should not affect the interpretation. We can also scale the symbol size by the magnitude of the environmental variables. Lets look at two pairs of variables that are strongly correlated with one-another:
+These site numbers correspond approximately to the ones in [Verneaux et al. (2003)](/pdf/BCB743/Verneaux_et_al_2003_Doubs.pdf) but some of the numbers may have been shifted slightly in the example Doubs dataset used here compared to how they were originally numbered in Verneaux's thesis and subsequent publication. This should not affect the interpretation. We can also scale the symbol size by the magnitude of the environmental variables. Lets look at two pairs of variables that are strongly correlated with one-another:
 
 ```{r}
 # We scale the data first so as to better represent the full
@@ -112,14 +112,14 @@ ggarrange(plt1, plt2, plt3, plt4, nrow = 2, ncol = 2,
 
 ## Do the PCA
 
-We use the function `rda()` to do the PCA. This is the same function that we will use later for a Redundancy Analysis, but when used without specifying constrants (as we do here) it amounts to simply doing a PCA. Typically we standardise environmental data to unit variance, but the PCA accomplishes this step automagically when the argument `scale = TRUE`. PCA can also be applied directly to the raw quantitative data. When applied to environmental data (as we typically do with a PCA) it works with correlations amongst the scaled variables. PCA preserves Euclidean distance and the relationships detected are linear, and for this reason it is not typically applied to species data without suitable transformations. In fact, in this module we will seldom apply a PCA to species data at all.
+We use the function `rda()` to do the PCA, but it can also be performed in base R with the functions `prcomp()` and `princomp()`. This is the same function that we will use later for a Redundancy Analysis, but when used without specifying constraints (as we do here) it amounts to simply doing a PCA. Typically we standardise environmental data to unit variance, but the PCA accomplishes this step automagically when the argument `scale = TRUE`. PCA can also be applied directly to the raw quantitative data. When applied to environmental data (as we typically do with a PCA) it works with correlations amongst the scaled variables. PCA preserves Euclidean distance and the relationships detected are linear, and for this reason it is not typically applied to species data without suitable transformations. In fact, in this module we will seldom apply a PCA to species data at all.
 
 ```{r}
 env_pca <- rda(env, scale = TRUE)
 env_pca
 ```
 
-Ecologists use the term **inertia** as a synonym for 'variation'. In PCA, when we use a correlation matrix (as we do here), the inertia is the sum of the diagonal values of the correlation matrix, which is simply the number of variables (11 in this example). When a PCA uses a covariance matrix the inertia is the sum of the variances of the variables.
+Ecologists use the term **inertia** as a synonym for 'variation', but some PCA software (such as R's `prcomp()` and `princomp()`) simply uses the term `sdev` for standard deviations. In PCA, when we use a correlation matrix (as we do here), the inertia is the sum of the diagonal values of the correlation matrix, which is simply the number of variables (11 in this example). When a PCA uses a covariance matrix the inertia is the sum of the variances of the variables.
 
 You will also see in the output the mention of the term '**unconstrained**'. In a PCA the analysis is always unconstrained (i.e. not influenced by some environmental variables).
 
@@ -170,6 +170,8 @@ biplot(env_pca, scaling = 1, main = "PCA scaling 1", choices = c(1, 2))
 biplot(env_pca, scaling = 2, main = "PCA scaling 2", choices = c(1, 2))
 ```
 
+**Note:** We can also construct a biplot in `ggplot()` as we will see in [this example](/quantecol/chapters/08-pca_examples/#a-ggplot-biplot).
+
 **Scaling 1:** This scaling *emphasises relationships between rows* accurately in low-dimensional ordination space. Distances among objects (samples or sites) in the biplot are approximations of their Euclidian distances in multidimensional space. Objects positioned closer together show a greater degree of environmental dissimilarity. The angles among descriptor vectors should not be interpreted as indicating the degree of correlation between the variables.
 
 **Scaling 2:** This scaling *emphasises relationships between columns* accurately in low-dimensional ordination space. Distances among objects (samples or sites) in the biplot are not approximations of their Euclidian distances in multidimensional space. The angles among descriptor vectors can be interpreted as indicating the degree of correlation between the variables.
@@ -206,3 +208,7 @@ Submit a R script wherein you provide answers to Questions 1--5 by no later than
 ## References
 
 Graham, M. H. (2003). Confronting multicollinearity in ecological multiple regression. Ecology 84, 2809--2815.
+
+To add:
+Pielou 1984
+Verneaux et al. 2003

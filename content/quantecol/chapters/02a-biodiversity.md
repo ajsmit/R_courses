@@ -135,7 +135,7 @@ We can represent α-diversity in three ways:
 
 2.  as a univariate diversity index, such as the α parameter of [Fisher’s log-series](/quantecol/chapters/02b-biodiversity/#species-abundance-distribution), Shannon diversity, `\(H'\)`, or Simpson's diversity, `\(\lambda\)`; or
 
-3.  as a dissimilarity index, e.g. Bray-Curtis, Jaccard, or Sørensen dissimilarities---see Koleff (2003) for many more; also see `?vegdist`
+3.  as a dissimilarity index, e.g. Bray-Curtis, Jaccard, or Sørensen dissimilarities---see [Koleff (2003)](/pdf/BCB743/Koleff_et_al_2003.pdf) for many more; also see `?vegdist`
 
 We will work through each in turn.
 
@@ -472,7 +472,7 @@ round(Y2[1:10, 1:10], 4)
 
 ### Assignment 1 Questions
 
-> **Question 8:** Plot species turnover as a function of Section number, and provide a mechanistic exaplanation for the pattern observed.
+> **Question 8:** Plot species turnover as a function of Section number, and provide a mechanistic explanation for the pattern observed.
 >
 > **Question 9:** Based on an assessment of literature on the topic, provide a discussion of nestedness-resultant β-diversity. Use either a marine or terrestrial example to explain this mode of structuring biodiversity.
 

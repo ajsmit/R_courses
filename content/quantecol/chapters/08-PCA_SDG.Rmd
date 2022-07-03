@@ -8,7 +8,7 @@ links:
     name: The WHO Data
     url: /BCB743/WHO/WHO.zip
 subtitle: ""
-title: "8b. PCA of WHO SDGs"
+title: "8c. PCA of WHO SDGs"
 weight: 12
 ---
 
