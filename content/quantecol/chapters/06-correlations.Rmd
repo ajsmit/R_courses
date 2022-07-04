@@ -14,6 +14,12 @@ links:
 subtitle: ""
 title: "6. Correlations and Associations"
 weight: 8
+editor_options: 
+  chunk_output_type: console
+output: 
+  html_document: 
+    toc: yes
+    fig_caption: yes
 ---
 
 <!--- # Topic 6: Correlations and associations --->
@@ -38,13 +44,14 @@ The background to the data is described by David Zelený on his excellent [websi
 ```{r}
 load(paste0(root, "NEwR-2ed_code_data/NEwR2-Data/Doubs.RData"))
 
-head(env, 1)
+head(env, 5)
 ```
 
 We use [correlations](https://ajsmit.netlify.app/workshops/quantecol/chapters/06-correlations/) to establish how the environmental variables relate to one another across the sample sites. We do not need to standardise as one would do for the calculation of Euclidian distances, but in some instances data transformations might be necessary:
 
 ```{r}
-round(cor(env), 2)
+env_cor <- round(cor(env), 2)
+env_cor
 ```
 
 Or if we want to see the associated *p*-values to establish a statistical significance:
@@ -52,6 +59,15 @@ Or if we want to see the associated *p*-values to establish a statistical signif
 ```{r}
 rcorr(as.matrix(env))
 ```
+
+We can also do a visual exploration (see Question 1, below).
+
+<!-- ```{r} -->
+<!-- library(ggcorrplot) -->
+<!-- ggcorrplot(env_cor, type = 'upper', outline.col = "white", -->
+<!--            colors = c("#00AFBB", "white", "#FC4E07"), -->
+<!--            lab = TRUE) -->
+<!-- ``` -->
 
 ### Assignment 3 Questions
 
@@ -69,7 +85,7 @@ The Doubs River fish species dataset is an example of abundance data and it will
 head(spe)
 ```
 
-In order to calculate an association matrix for the fish species we first need to transpose the data:
+In order to calculate an association matrix for the fish species we first need to **transpose** the data:
 
 ```{r}
 spe_t <- t(spe)

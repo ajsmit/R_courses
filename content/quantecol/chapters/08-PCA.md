@@ -325,7 +325,7 @@ biplot(env_pca, scaling = 2, main = "PCA scaling 2", choices = c(1, 2))
 
 **Note:** We can also construct a biplot in `ggplot()` as we will see in [this example](/quantecol/chapters/08-pca_examples/#a-ggplot-biplot).
 
-**Scaling 1:** This scaling *emphasises relationships between rows* accurately in low-dimensional ordination space. Distances among objects (samples or sites) in the biplot are approximations of their Euclidian distances in multidimensional space. Objects positioned closer together show a greater degree of environmental dissimilarity. The angles among descriptor vectors should not be interpreted as indicating the degree of correlation between the variables.
+**Scaling 1:** This scaling *emphasises relationships between rows* accurately in low-dimensional ordination space. Distances among objects (samples or sites) in the biplot are approximations of their Euclidian distances in multidimensional space. Objects positioned further apart show a greater degree of environmental dissimilarity. The angles among descriptor vectors should not be interpreted as indicating the degree of correlation between the variables.
 
 **Scaling 2:** This scaling *emphasises relationships between columns* accurately in low-dimensional ordination space. Distances among objects (samples or sites) in the biplot are not approximations of their Euclidian distances in multidimensional space. The angles among descriptor vectors can be interpreted as indicating the degree of correlation between the variables.
 
@@ -386,7 +386,7 @@ ordisurf(env_pca ~ ele, env, add = TRUE, col = "salmon", knots = 1)
 ## REML score: 160.6339
 ```
 
-We see that the contours form a linear trend surface, i.e. they are perpendicular to their vectors. This is the main weakness of PCA, as community data are non-linear (in fact, environmental gradients are also seldom very linear, but they can be more linear than species data). In general, therefore, PCA should not be used for community data.
+We see that the contours form a linear trend surface, i.e. they are perpendicular to their vectors. This is the main weakness of PCA, as community data are non-linear (in fact, environmental gradients are also seldom very linear, but they can be more linear than species data). In general, therefore, PCA should not be used for community data.
 
 ### Assignment 4 Questions
 

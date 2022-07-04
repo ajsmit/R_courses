@@ -14,6 +14,12 @@ links:
 subtitle: ""
 title: "6. Correlations and Associations"
 weight: 8
+editor_options: 
+  chunk_output_type: console
+output: 
+  html_document: 
+    toc: yes
+    fig_caption: yes
 ---
 
 <!--- # Topic 6: Correlations and associations --->
@@ -40,19 +46,24 @@ The background to the data is described by David Zelený on his excellent [websi
 ```r
 load(paste0(root, "NEwR-2ed_code_data/NEwR2-Data/Doubs.RData"))
 
-head(env, 1)
+head(env, 5)
 ```
 
 ```
-##   dfs ele slo  dis  pH har  pho nit amm  oxy bod
-## 1 0.3 934  48 0.84 7.9  45 0.01 0.2   0 12.2 2.7
+##    dfs ele  slo  dis  pH har  pho  nit  amm  oxy bod
+## 1  0.3 934 48.0 0.84 7.9  45 0.01 0.20 0.00 12.2 2.7
+## 2  2.2 932  3.0 1.00 8.0  40 0.02 0.20 0.10 10.3 1.9
+## 3 10.2 914  3.7 1.80 8.3  52 0.05 0.22 0.05 10.5 3.5
+## 4 18.5 854  3.2 2.53 8.0  72 0.10 0.21 0.00 11.0 1.3
+## 5 21.5 849  2.3 2.64 8.1  84 0.38 0.52 0.20  8.0 6.2
 ```
 
 We use [correlations](https://ajsmit.netlify.app/workshops/quantecol/chapters/06-correlations/) to establish how the environmental variables relate to one another across the sample sites. We do not need to standardise as one would do for the calculation of Euclidian distances, but in some instances data transformations might be necessary:
 
 
 ```r
-round(cor(env), 2)
+env_cor <- round(cor(env), 2)
+env_cor
 ```
 
 ```
@@ -121,6 +132,15 @@ rcorr(as.matrix(env))
 ## bod
 ```
 
+We can also do a visual exploration (see Question 1, below).
+
+<!-- ```{r} -->
+<!-- library(ggcorrplot) -->
+<!-- ggcorrplot(env_cor, type = 'upper', outline.col = "white", -->
+<!--            colors = c("#00AFBB", "white", "#FC4E07"), -->
+<!--            lab = TRUE) -->
+<!-- ``` -->
+
 ### Assignment 3 Questions
 
 > **Question 1:** Create a plot of pairwise correlations.
@@ -155,7 +175,7 @@ head(spe)
 ## 6    0    0    0    0    2    0    0    0    1    0    0    0
 ```
 
-In order to calculate an association matrix for the fish species we first need to transpose the data:
+In order to calculate an association matrix for the fish species we first need to **transpose** the data:
 
 
 ```r

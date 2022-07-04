@@ -168,7 +168,7 @@ These links point to online resources such as datasets and R scripts in support 
     <tr>
       <td style="text-align:left"></td>
       <td style="text-align:left">L8</td>
-      <td style="text-align:left">PCA (a) Ecological example</td>
+      <td style="text-align:left">PCA (a)</td>
       <td style="text-align:center"><a href="/quantecol/chapters/08-pca/"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></a></td>
       <td style="text-align:center"><a href="/pdf/BCB743/BCB743_08_PCA.pdf"><i class="fas fa-images" title="Lecture 8 slides"></i></a></td>
       <td style="text-align:center"></td>
@@ -178,7 +178,17 @@ These links point to online resources such as datasets and R scripts in support 
     <tr>
       <td style="text-align:left"></td>
       <td style="text-align:left">Self</td>
-      <td style="text-align:left">PCA (b) Other examples</td>
+      <td style="text-align:left">PCA (b) Additional examples</td>
+      <td style="text-align:center"><a href="/quantecol/chapters/08-pca_examples/"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></a></td>
+      <td style="text-align:left"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+      <td style="text-align:center"></td>
+    </tr>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">Self</td>
+      <td style="text-align:left">PCA (c) WHO SDGs</td>
       <td style="text-align:center"><a href="/quantecol/chapters/08-pca_sdg/"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></a></td>
       <td style="text-align:left"></td>
       <td style="text-align:center"></td>
@@ -187,16 +197,6 @@ These links point to online resources such as datasets and R scripts in support 
     </tr>
     <tr>
       <td style="text-align:left">W4</td>
-      <td style="text-align:left">Self</td>
-      <td style="text-align:left">PCA (c) World Health Organization</td>
-      <td style="text-align:center"><a href="/quantecol/chapters/08-pca_sdg/"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></a></td>
-      <td style="text-align:left"></td>
-      <td style="text-align:center"></td>
-      <td style="text-align:center"><a href="/BCB743/WHO/WHO.zip/"><i class="fas fa-file-archive" title="WHO.zip"></i></a></td>
-      <td style="text-align:center"><a href="/slides/BCB743/08-pca_sdg.html"><i class="fas fa-balance-scale-right" title="Self study exercises"></i></a></td>
-    </tr>
-    <tr>
-      <td style="text-align:left"></td>
       <td style="text-align:left">L9</td>
       <td style="text-align:left">CA</td>
       <td style="text-align:center"><a href="/quantecol/chapters/09-ca/"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></a></td>
@@ -267,7 +267,7 @@ These links point to online resources such as datasets and R scripts in support 
     </tr>
     <tr>
       <td style="text-align:left"></td>
-      <td style="text-align:left">L13</td>
+      <td style="text-align:left">L14</td>
       <td style="text-align:left">Review &amp; assignment</td>
       <td style="text-align:center"></td>
       <td style="text-align:left"></td>
