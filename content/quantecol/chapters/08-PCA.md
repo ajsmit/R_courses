@@ -100,7 +100,7 @@ ggplot(spa, aes(x = X, y = Y, label = rownames(spa))) +
   geom_label(vjust = 0, nudge_y = 0.5, check_overlap = TRUE)
 ```
 
-<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-4-1.png" width="672" />
+<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-4-1.png" width="384" />
 
 These site numbers correspond approximately to the ones in [Verneaux et al. (2003)](/pdf/BCB743/Verneaux_et_al_2003_Doubs.pdf) but some of the numbers may have been shifted slightly in the example Doubs dataset used here compared to how they were originally numbered in Verneaux's thesis and subsequent publication. This should not affect the interpretation. We can also scale the symbol size by the magnitude of the environmental variables. Lets look at two pairs of variables that are strongly correlated with one-another:
 
@@ -310,7 +310,7 @@ In ecology, it is customary to plot the Site and Species Scores as ordination di
 
 Now I will construct some primitive graphs of the Site and Species Score to demonstrate how to interpret the eigenvectors associated with each eigenvalue. We will tyipcally not do this kind of graphical display---for plots suitable for publication see the [Biplots](/quantecol/chapters/08-pca/#biplots) section, below.
 
-The first thing we need to do is extract the Species and Site Scores in a manner that makes them convenient for plotting. To do this, we can apply the `scores()` function to the PCA object, `env_pca` and assign the output to tidied dataframes. The `scores()` function can tidy the data to some extent, but I make it even tidier in subsequent steps by creating long format data (rather than wide) using the `pivot_longer()` function. Various other bits of code lines accomplish additional restructuring of the data to make datasets that are fully compliant for creating the kind of figure I have in mind:
+The first thing we need to do is extract the Species and Site Scores in a manner that makes them convenient for plotting. To do this, we can apply the `scores()` function to the PCA object, `env_pca`, and assign the output to tidied dataframes. The `scores()` function can tidy the data to some extent, but I make it even tidier in subsequent steps by creating long format data (rather than wide) using the `pivot_longer()` function. Various other bits of code lines accomplish additional restructuring of the data to make datasets that are fully compliant for creating the kind of figure I have in mind:
 
 
 ```r
@@ -377,18 +377,45 @@ head(site_sc)
 
 
 ```r
-# var explained along PC1 used for labeling the x-axis:
+# var explained along PC1, PC2, and PC3 for adding to plot:
 PC1_var <- round(env_pca$CA$eig[1] / sum(env_pca$CA$eig) * 100, 1)
-
-# var explained along PC2 used for labeling the y-axis:
 PC2_var <- round(env_pca$CA$eig[2] / sum(env_pca$CA$eig) * 100, 1)
-
-# var explained along PC3 used for labeling the y-axis:
 PC3_var <- round(env_pca$CA$eig[3] / sum(env_pca$CA$eig) * 100, 1)
 ```
 
+How do we know how many reduced axes are influential and should be kept? Commonly recommended is the **broken stick** method---keep the principal components whose eigenvalues are higher than corresponding random broken stick components:
 
-Now we can assemble a plot. It seems somewhat complex, but the code can easily be deciphered.
+
+```r
+# make a scree plot using the vegan function:
+screeplot(env_pca, bstick = TRUE, type = "lines")
+```
+
+<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-13-1.png" width="384" />
+
+```r
+# or assemble from scratch in ggplot2:
+# extract eigenvalues and calc the broken stick values...
+scree_dat <- data.frame(eigenvalue = env_pca$CA$eig,
+                        bstick = bstick(env_pca))
+scree_dat$axis <- rownames(scree_dat)
+rownames(scree_dat) <- NULL
+scree_dat <- scree_dat |> 
+  mutate(axis = factor(axis, levels = paste0(rep("PC", 11), seq(1:11))))
+
+ggplot(data = scree_dat, aes(x = axis, y = eigenvalue)) +
+  geom_point() +
+  geom_line(aes(group = 1)) +
+  geom_point(aes(y = bstick), colour = "red") +
+  geom_line(aes(y = bstick, group = 1), colour = "red") +
+  labs(x = "Principal component", y = "Inertia")
+```
+
+<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-13-2.png" width="384" />
+
+In the plot, above, the red line is the broken stick components and the black line the eigenvalues for the different PCs. See Numerical Ecology with R pp. 121-122 for more information about how to decide how many PCs to retain.
+
+Now we can assemble a plot, and in it focus on the first to PCs. It seems somewhat complex, but the code can easily be deciphered.
 
 
 ```r
@@ -424,48 +451,48 @@ ggplot(data = site_sc, aes(x = PC_axis, y = score)) +
   )
 ```
 
-<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-14-1.png" width="672" />
 
 Although you will never see a graph like this one, examining it is nevertheless informative. What I did was:
 
-* plot each new PC axes, shown on the vertical axis, that represent the reduced, simplified ecological space; these PC axes are ranked from most important (PC1) to least important (PC11), and each one's ability to explain some property of the environment is ranked by the magnitude of their eigenvalues
+* **plot all new PC axes on the vertical axis**; they represent the reduced, simplified ecological space; these PC axes are ranked from most important (PC1) to least important (PC11)---and each one's ability to explain some property of the environment is ranked by the magnitude of their eigenvalues
     * PC1 explains 54.3% of the total variation in the environmental dataset
     * PC2 explains an additional 19.7% of the remaining variance left over after accounting for the influence of PC1
     * the cumulative % variance explained by PC1 and PC2 is 74%
 * for each PC axis I plot
-    * the Site scores as coloured points
+    * the **Site scores as coloured points**
         * the colours indicate the sampled sites' numbers
         * the points indicate the spread of the sites across linear Euclidian space with respect to the main environmental gradients represented by each PC axis
-    * the Species scores as arrows
+    * the **Species scores as arrows**
         * I only plot the top two most heavily loaded absolute eigenvectors
         * the main environmental gradients are represented by the arrows
         * the gradient represented is annotated by text giving the name of the environmental variables
         * the location of the arrow heads is located in Euclidian space at the coordinates provided by the Species scores
         * the longer the arrow, the more influence it has on causing the sites to spread out in Euclidian space
-        * the arrows point in the direction where the magnitude of the environmental variable is greater, and in the opposite direction the magnitude of the variable is less; for example, sites are spread out along PC1 primarily due to the influence of the variables nitrate and distance from source such that the sites further down the river (more yellow) tend to have a higher nitrate concentration and have a larger distance from source, and sites closer to the source (more blue) have a smaller distance from source and lower nitrate concentration
-
-However, it will be more informative if we represent the coordinates given by the eigenvectors (Species and Site scores) as points on a 2D place where the axes are made from PC1 and PC2 (or PC1 and PC3...). Sites now will be spread out not along a 1D line, but over 2D space along *x* and *y* directions, and the arrows will point at angles across this 2D Euclidian space. This is called a **biplot**. In this way, we can more clearly see how combinations of variables influence the spatial arrangement of sites. The Euclidian representation in reduced space will reflect the actual relative arrangement of sites in geographical space where the environmental variables actually operate.
+        * the arrows point in the direction where the magnitude of the environmental variable is greater, and in the opposite direction the magnitude of the variable is less; for example, sites are spread out along PC1 primarily due to the influence of the variables nitrate and distance from source such that the sites further down the river (more yellow) tend to have a higher nitrate concentration and have a larger distance from source, and sites closer to the source (more blue) have a smaller distance from source and lower nitrate concentration.
 
 ### Biplots
 
-Graphical representations of ordination results are called ordination diagrams, or biplots. See David Zelený's [exelent writing on the topic](https://www.davidzeleny.net/anadat-r/doku.php/en:ordiagrams).
+It will be more informative if we represent the coordinates given by the eigenvectors (Species and Site scores) as points on a 2D plane where the axes are made from PC1 and PC2 (or PC1 and PC3...). Sites now will be spread out not along a 1D line but over 2D space along *x* and *y* directions, and the arrows will point at angles across this 2D Euclidian space. This is called a **biplot** because it plots two things, *viz*. **sites as points** and **envionmental variables as vectors**. In this way, we can more clearly see how combinations of variables influence the spatial arrangement of sites---arrows point in the direction of the gradient and sites spread out along the the arrow in both positive (indicated by arrow head) and negative directions (extend an imaginary line in the opposite direction from the arrow head). Do not attach too much meaning to the loadings plotted along the *x* and *y* axes as their sole purpose is to define the Euclidian 'landscape' across which sites are scattered. In this Euclidian representation of a reduced space, the arrangement of sites will represent the *actual* relative arrangement of sites in geographical space where the environmental variables actually operate. As indicated before, sites that plot far apart along a particular gradient (arrow) differ greatly in terms of the particular environmental property (inidcated by the arrow) that the sites exhibit.
+
+Graphical representations of ordination results are called ordination diagrams, and biplots are key examples of such diagrams. See David Zelený's [exelent writing on the topic](https://www.davidzeleny.net/anadat-r/doku.php/en:ordiagrams).
 
 Although many of the examples provided here use the default plot options for the ordination---that rely on base graphics---the plots can also be set up in **ggplot2**. This requires some deeper knowledge. I provide some examples scattered throughout the course content (e.g. [here](/quantecol/chapters/08-pca_examples/#a-ggplot-biplot)), but you may also refer to the step-by-step walk throughs provided by [Roeland Kindt](https://rpubs.com/Roeland-KINDT/694016).
 
-In a PCA ordination diagram (called a biplot, because it plots two *things*, viz. sites as points and envionmental variables as vectors), following the tradition of scatter diagrams in Cartesian coordinate systems, objects are represented as points and variables are displayed as arrows. We first use the standard **vegan** `biplot()` function:
+In a PCA ordination diagram, following the tradition of scatter diagrams in Cartesian coordinate systems, objects are represented as points and variables are displayed as arrows. We first use the standard **vegan** `biplot()` function:
 
 
 ```r
 biplot(env_pca, scaling = 1, main = "PCA scaling 1", choices = c(1, 2))
 ```
 
-<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-14-1.png" width="672" />
+<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-15-1.png" width="672" />
 
 ```r
 biplot(env_pca, scaling = 2, main = "PCA scaling 2", choices = c(1, 2))
 ```
 
-<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-14-2.png" width="672" />
+<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-15-2.png" width="672" />
 
 **Scaling 1:** This scaling *emphasises relationships between rows* accurately in low-dimensional ordination space. Distances among objects (samples or sites) in the biplot are approximations of their Euclidian distances in multidimensional space. Objects positioned further apart show a greater degree of environmental dissimilarity. The angles among descriptor vectors should not be interpreted as indicating the degree of correlation between the variables.
 
@@ -480,13 +507,13 @@ source(paste0(rroot, "/NEwR-2ed_code_data/NEwR2-Functions/cleanplot.pca.R"))
 cleanplot.pca(env_pca, scaling = 1)
 ```
 
-<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
 ```r
 cleanplot.pca(env_pca, scaling = 2)
 ```
 
-<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-15-2.png" width="672" />
+<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-16-2.png" width="672" />
 
 **At this point it is essential that you refer to *Numerical Ecology in R* (pp. 118 to 126) for help with interpreting the ordination diagrams.**
 
@@ -514,7 +541,7 @@ ordisurf(env_pca ~ bod, env, add = TRUE, col = "turquoise", knots = 1)
 ordisurf(env_pca ~ ele, env, add = TRUE, col = "salmon", knots = 1)
 ```
 
-<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="/quantecol/chapters/08-PCA_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
 ```
 ## 
