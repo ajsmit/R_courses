@@ -68,7 +68,7 @@ These links point to online resources such as datasets and R scripts in support 
     <tr>
       <td style="text-align:left"></td>
       <td style="text-align:left">L2</td>
-      <td style="text-align:left">Quantifying Diversity</td>
+      <td style="text-align:left">Quantifying diversity</td>
       <td style="text-align:center"><a href="/quantecol/chapters/02a-biodiversity/"><i class="fas fa-chalkboard-teacher" title="Lecture 2"></i></a></td>
       <td style="text-align:center"><a href="/pdf/BCB743/BCB743_02_biodiversity_1.pdf"><i class="fas fa-images" title="Lecture 2 slides (1)"></i></a></td>
       <td style="text-align:center"><a href="/pdf/BCB743/Smit_et_al_2013.pdf"><i class="fas fa-file-pdf" title="Smit et al (2013)"></i></a> <a href="/pdf/BCB743/Smit_et_al_2017.pdf"><i class="fas fa-file-pdf" title="Smit et al (2017)"></i></a> <a href="/pdf/BCB743/Smit_the_seaweed_data.pdf"><i class="fas fa-file-pdf" title="About the seaweed data"></i></a></td>
@@ -78,7 +78,7 @@ These links point to online resources such as datasets and R scripts in support 
     <tr>
       <td style="text-align:left"></td>
       <td style="text-align:left">L3</td>
-      <td style="text-align:left">Quantifying Structure and Pattern</td>
+      <td style="text-align:left">Quantifying structure and pattern</td>
       <td style="text-align:center"><a href="/quantecol/chapters/02b-biodiversity/"><i class="fas fa-chalkboard-teacher" title="Lecture 2"></i></a></td>
       <td style="text-align:center"><a href="/pdf/BCB743/BCB743_02_biodiversity_2.pdf"><i class="fas fa-images" title="Lecture 2 slides (2)"></i></a></td>
       <td style="text-align:center"><a href="/pdf/BCB743/Shade_et_al_2018.pdf"><i class="fas fa-file-pdf" title="Shade et al (2018)"></i></a></td>

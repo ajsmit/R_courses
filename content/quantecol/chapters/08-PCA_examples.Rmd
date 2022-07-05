@@ -133,6 +133,8 @@ biplot(iris_pca, type = c("text", "points"))
 Assemble a biplot from scratch in **ggplot2**. This requires that we extract from the `iris_pca` object all the necessary components and layer them one-by-one using `ggplot()`:
 
 ```{r}
+library(ggforce)
+
 # species scores (actually morph properties here) for biplot arrows:
 iris_spp_scores <- data.frame(scores(iris_pca, display = "species"))
 
@@ -149,6 +151,10 @@ PC1_var <- round(iris_pca$CA$eig[1] / sum(iris_pca$CA$eig) * 100, 1)
 # var explained along PC2 used for labeling the y-axis:
 PC2_var <- round(iris_pca$CA$eig[2] / sum(iris_pca$CA$eig) * 100, 1)
 
+# calculate the radius of the circle of equilibrium contribution
+# (Num Ecol with R, p. 125):
+r <- sqrt(2 / 11)
+
 # species scores (actually indiv measurements here) for biplot points:
 iris_site_scores <- data.frame(scores(iris_pca, display = "sites"))
 iris_site_scores$Species <- iris$Species
@@ -157,6 +163,9 @@ ggplot(iris_site_scores, aes(x = PC1, y = PC2)) +
   geom_hline(aes(yintercept = 0), linetype = "dashed") +
   geom_vline(aes(xintercept = 0), linetype = "dashed") +
   geom_point(aes(colour = Species), shape = 9) +
+  geom_circle(aes(x0 = 0, y0 = 0, r = r),
+              linetype = 'dashed', color='red',
+              lwd=0.8, inherit.aes = FALSE) +
   geom_segment(data = iris_spp_scores, aes(x = xy_start, y = xy_start,
                                            xend = PC1, yend = PC2),
                lineend = "butt",

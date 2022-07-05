@@ -112,7 +112,7 @@ ggarrange(plt1, plt2, plt3, plt4, nrow = 2, ncol = 2,
 
 ## Do the PCA
 
-We use the function `rda()` to do the PCA, but it can also be performed in base R with the functions `prcomp()` and `princomp()`. This is the same function that we will use later for a Redundancy Analysis, but when used without specifying constraints (as we do here) it amounts to simply doing a PCA. Typically we standardise environmental data to unit variance, but the PCA accomplishes this step automagically when the argument `scale = TRUE`. PCA can also be applied directly to the raw quantitative data. When applied to environmental data (as we typically do with a PCA) it works with correlations amongst the scaled variables. PCA preserves Euclidean distance and the relationships detected are linear, and for this reason it is not typically applied to species data without suitable transformations. In fact, in this module we will seldom apply a PCA to species data at all.
+We use the function `rda()` to do the PCA, but it can also be performed in base R with the functions `prcomp()` and `princomp()`. `rda()` is the same function that we will use later for a Redundancy Analysis, but when used without specifying constraints (as we do here) it amounts to simply doing a PCA. Typically we standardise environmental data to unit variance, but the PCA done by the `rda()` function accomplishes this step automagically when `scale = TRUE`. When applied to environmental data (as we typically do with a PCA) it works with correlations amongst the scaled variables. PCA preserves Euclidean distance and the relationships detected are linear, and for this reason it is not typically applied to species data without suitable transformations. In fact, in this module we will seldom apply a PCA to species data at all.
 
 ```{r}
 env_pca <- rda(env, scale = TRUE)
@@ -121,9 +121,9 @@ env_pca
 
 Ecologists use the term **inertia** as a synonym for 'variation', but some PCA software (such as R's `prcomp()` and `princomp()`) simply uses the term `sdev` for standard deviations. In PCA, when we use a correlation matrix (as we do here), the inertia is the sum of the diagonal values of the correlation matrix, which is simply the number of variables (11 in this example). When a PCA uses a covariance matrix the inertia is the sum of the variances of the variables.
 
-You will also see in the output the mention of the term '**unconstrained**'. In a PCA the analysis is always unconstrained (i.e. not influenced by some environmental variables).
+You will also see in the output the mention of the term '**unconstrained**'. In a PCA the analysis is always unconstrained (i.e. not influenced by some *a priori* defined variables we hypothesise to explain the between site patterns in the multivariate data).
 
-The section headed **Eigenvalues for unconstrained axes** shows the relative importance of the resultant reduced axes, and they can be used to determine the proportion of the total inertia (sum of the eigenvalues) captured by any one of the axes. The first eigenvalue (the one associated with PC1) always explains the most variation (the largest fraction), and each subsequent one explains the largest proportion of the *remaining* variance. We say the axes are *orthogonal* and ranked in decreasing order of importance. The sum of all eigenvalue is the total inertia, so collectively they theoretically can explain all of the variation in the dataset (but clearly they *should not* be used to explain *all* the variance). To extract the first eigenvalue we can do:
+The section headed **Eigenvalues for unconstrained axes** shows the relative importance of the resultant reduced axes, and they can be used to determine the proportion of the total inertia (sum of the eigenvalues) captured by any one of the axes. The first eigenvalue (the one associated with PC1) always explains the most variation (the largest fraction), and each subsequent one explains the largest proportion of the **remaining** variance. We say the axes are **orthogonal** and ranked in decreasing order of importance. The sum of all eigenvalues is the total inertia, so collectively they theoretically can explain all of the variation in the dataset (but clearly they **should not** be used to explain **all** the variance). To extract the first eigenvalue we can do:
 
 ```{r}
 round(env_pca$CA$eig[1], 3)
@@ -151,17 +151,130 @@ We can show the same information as part of a more verbose summary. Here we see 
 summary(env_pca)
 ```
 
-**Species scores** are the loadings (a.k.a. rotated and scaled eigenvectors) that indicate the *strength of contribution* of the original environmental variables to the new variables, the Principal Components (PC1, PC2, etc.). Even though we work with environmental data here, these scores are still called species scores by the software---don't let the name confuse you! They indicate how much each of the original environmental variables contribute to PC1, PC2, etc. The larger (more positive) and smaller (more negative) values indicate a greater contribution, albeit in opposite directions. In the example, PC1 is made up of uneven contributions from most of the original variables, with the largest value being nitrate (1.15013) and smallest oxygen (-0.97459). Nitrate and oxygen therefore contribute most towards the differences between sites so that places with more nitrate are also the places with the lowest dissolved oxygen concentration. This makes ecological sense too. pH and slope are the least important variables, i.e. they are least able to explain the differences between sites along PC1. Given the strength of PC1 (it explains 54.3% of the inertia), one might hypothesise that its constituent variables, particularly nitrate and oxygen, influence many aspects of the community. ***The species scores are presented as arrows on the ordination diagrams*** (see below). Longer vectors have a greater influence (are stronger drivers) on environmental (and possibly species) differences between sites, and their direction indicates along which PC axes their influence is greatest.
+**Species scores** are the loadings (a.k.a. rotated and scaled eigenvectors) that indicate the *strength of contribution* of the original environmental variables to the new variables, the Principal Components (PC1, PC2, etc.). Even though we work with environmental data here, these scores are still called species scores by the software---don't let the name confuse you! (Why do you think this is?) They indicate how much each of the original environmental variables contribute to PC1, PC2, etc. The larger (more positive) and smaller (more negative) values indicate a greater contribution, albeit in opposite directions. In the example, PC1 is made up of uneven contributions from most of the original variables, with the largest value being nitrate (1.15013) and smallest oxygen (-0.97459). Nitrate and oxygen therefore contribute most towards the differences between sites so that places with more nitrate are also the places with the lowest dissolved oxygen concentration. This makes ecological sense too. pH and slope are the least important variables, i.e. they are least able to explain the differences between sites along PC1. Given the strength of PC1 (it explains 54.3% of the inertia), one might hypothesise that its constituent variables, particularly nitrate and oxygen, influence many aspects of the community. ***The species scores are presented as arrows on the ordination diagrams*** (see below). Longer vectors have a greater influence (are stronger drivers) on environmental (and possibly species) differences between sites, and their direction indicates along which PC axes their influence is greatest.
 
 **Site scores** are the scaled and rotated coordinates of the objects (sites or samples, one for each row of the raw data table). ***They are used to plot the position of the sites in 2D or 3D ordination space***. Sites spread further apart from others in this space differ much in terms of the environmental conditions. How far they spread apart depends on the major environmental gradients indicated by the species scores---i.e. along PC1, sites that are spread far apart in this dimension experience very different concentrations of nitrate and oxygen (see the species scores for the identity of the influential variables).
+
+In ecology, it is customary to plot the Site and Species Scores as ordination diagrams called **biplots** for a few of the reduced axes. We will get to this below.
 
 **Scaling 1** and **Scaling 2**, depending on what was specified in the `rda()` function call, are useful for whether one wants to interpret species (scaling 1) or variables (scaling 2). When calling scaling 1, the distances between points plotted on the ordination diagram will retain their Euclidian distances, which allows for better interpretation of how sites relate to one-another. Calling scaling 2 preserves more accurately the angles between variables with the consequence that in the biplot smaller angles between variable vectors will reflect stronger correlations. More on scaling below.
 
 ## Graphical represenations of ordinations
 
-Graphical representations of ordination results are called ordination diagrams. See David Zelený's [exelent writing on the topic](https://www.davidzeleny.net/anadat-r/doku.php/en:ordiagrams).
+### Plots along one-dimension
 
-Although many of the examples provided here use the default plot options for the ordination---that rely on base graphics---the plots can also be set up in **ggplot2**. This requires some deeper knowledge. I provide some examples scattered throughout the course content, but you may also refer to the step-by-step walk throughs provided by [Roeland Kindt](https://rpubs.com/Roeland-KINDT/694016).
+Now I will construct some primitive graphs of the Site and Species Score to demonstrate how to interpret the eigenvectors associated with each eigenvalue. We will tyipcally not do this kind of graphical display---for plots suitable for publication see the [Biplots](/quantecol/chapters/08-pca/#biplots) section, below.
+
+The first thing we need to do is extract the Species and Site Scores in a manner that makes them convenient for plotting. To do this, we can apply the `scores()` function to the PCA object, `env_pca` and assign the output to tidied dataframes. The `scores()` function can tidy the data to some extent, but I make it even tidier in subsequent steps by creating long format data (rather than wide) using the `pivot_longer()` function. Various other bits of code lines accomplish additional restructuring of the data to make datasets that are fully compliant for creating the kind of figure I have in mind:
+
+```{r}
+# species scores first by setting 'display' to species
+# we are interested in all axes (PC1 to PC11) so set the 'choices' argument
+# appropriately (see `?scores`):
+spp_sc <- scores(env_pca, display = "species", choices = seq(1:11), tidy = TRUE)
+
+# now pivot longer to make the data even tidier:
+spp_sc <- spp_sc |> 
+  select(-score) |> # remove column
+  pivot_longer(cols = PC1:PC11, # pivot
+               names_to = "PC_axis",
+               values_to = "score") |> 
+  group_by(PC_axis) |> 
+  mutate(rank = rank(abs(score)), # rank absolute scores
+         origin = 0, # create a column for start of arrows
+         PC_axis = factor(PC_axis, levels = paste0(rep("PC", 11), seq(1:11)))) |> 
+          # above, reorder the factor levels so PC axis plot in right order
+  filter(rank >= 10) |> # keep only 2 higheest ranked scores
+  ungroup()
+
+head(spp_sc)
+
+# now the site scores:
+site_sc <- scores(env_pca, display = "sites", choices = seq(1:11), tidy = TRUE)
+
+site_sc <- site_sc |> 
+  select(-score) |> 
+  pivot_longer(cols = PC1:PC11,
+               names_to = "PC_axis",
+               values_to = "score") |> 
+  mutate(label = as.numeric(label),
+         PC_axis = factor(PC_axis, levels = paste0(rep("PC", 11), seq(1:11))))
+
+head(site_sc)
+```
+
+```{r}
+# var explained along PC1 used for labeling the x-axis:
+PC1_var <- round(env_pca$CA$eig[1] / sum(env_pca$CA$eig) * 100, 1)
+
+# var explained along PC2 used for labeling the y-axis:
+PC2_var <- round(env_pca$CA$eig[2] / sum(env_pca$CA$eig) * 100, 1)
+
+# var explained along PC3 used for labeling the y-axis:
+PC3_var <- round(env_pca$CA$eig[3] / sum(env_pca$CA$eig) * 100, 1)
+```
+
+
+Now we can assemble a plot. It seems somewhat complex, but the code can easily be deciphered.
+
+```{r}
+library(ggrepel)
+
+ggplot(data = site_sc, aes(x = PC_axis, y = score)) +
+  geom_hline(aes(yintercept = 0), linetype = "dashed") +
+  geom_jitter(shape = 19, width = 0.09, aes(colour = label)) +
+  scale_colour_viridis_c(name = "Site no.") +
+  geom_segment(data = spp_sc, aes(x = PC_axis, y = origin,
+                                  xend = PC_axis, yend = score),
+               lineend = "butt",
+               arrow = arrow(length = unit(3, "mm"),
+                             type = "open",
+                             angle = 30),
+               alpha = 0.5, colour = "red4") +
+  geom_text_repel(data = spp_sc, aes(label = label), size = 2.8,
+                  direction = "y") +
+  annotate(geom = "text", x = 1, y = -2.5, size = 2.8, colour = "red4",
+           label = paste0(PC1_var, "% var. expl.")) +
+    annotate(geom = "text", x = 2, y = -2.5, size = 2.8, colour = "red4",
+           label = paste0(PC2_var, "% var. expl.")) +
+    annotate(geom = "text", x = 3, y = -2.5, size = 2.8, colour = "red4",
+           label = paste0(PC3_var, "% var. expl.")) +
+  coord_flip() +
+  labs(x = NULL, y = "Score") +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_line(colour = "pink", linetype = "dashed"),
+    legend.position = c(0.075, 0.75),
+    legend.box.background = element_rect(colour = "black")
+  )
+```
+
+Although you will never see a graph like this one, examining it is nevertheless informative. What I did was:
+
+* plot each new PC axes, shown on the vertical axis, that represent the reduced, simplified ecological space; these PC axes are ranked from most important (PC1) to least important (PC11), and each one's ability to explain some property of the environment is ranked by the magnitude of their eigenvalues
+    * PC1 explains 54.3% of the total variation in the environmental dataset
+    * PC2 explains an additional 19.7% of the remaining variance left over after accounting for the influence of PC1
+    * the cumulative % variance explained by PC1 and PC2 is 74%
+* for each PC axis I plot
+    * the Site scores as coloured points
+        * the colours indicate the sampled sites' numbers
+        * the points indicate the spread of the sites across linear Euclidian space with respect to the main environmental gradients represented by each PC axis
+    * the Species scores as arrows
+        * I only plot the top two most heavily loaded absolute eigenvectors
+        * the main environmental gradients are represented by the arrows
+        * the gradient represented is annotated by text giving the name of the environmental variables
+        * the location of the arrow heads is located in Euclidian space at the coordinates provided by the Species scores
+        * the longer the arrow, the more influence it has on causing the sites to spread out in Euclidian space
+        * the arrows point in the direction where the magnitude of the environmental variable is greater, and in the opposite direction the magnitude of the variable is less; for example, sites are spread out along PC1 primarily due to the influence of the variables nitrate and distance from source such that the sites further down the river (more yellow) tend to have a higher nitrate concentration and have a larger distance from source, and sites closer to the source (more blue) have a smaller distance from source and lower nitrate concentration
+
+However, it will be more informative if we represent the coordinates given by the eigenvectors (Species and Site scores) as points on a 2D place where the axes are made from PC1 and PC2 (or PC1 and PC3...). Sites now will be spread out not along a 1D line, but over 2D space along *x* and *y* directions, and the arrows will point at angles across this 2D Euclidian space. This is called a **biplot**. In this way, we can more clearly see how combinations of variables influence the spatial arrangement of sites. The Euclidian representation in reduced space will reflect the actual relative arrangement of sites in geographical space where the environmental variables actually operate.
+
+### Biplots
+
+Graphical representations of ordination results are called ordination diagrams, or biplots. See David Zelený's [exelent writing on the topic](https://www.davidzeleny.net/anadat-r/doku.php/en:ordiagrams).
+
+Although many of the examples provided here use the default plot options for the ordination---that rely on base graphics---the plots can also be set up in **ggplot2**. This requires some deeper knowledge. I provide some examples scattered throughout the course content (e.g. [here](/quantecol/chapters/08-pca_examples/#a-ggplot-biplot)), but you may also refer to the step-by-step walk throughs provided by [Roeland Kindt](https://rpubs.com/Roeland-KINDT/694016).
 
 In a PCA ordination diagram (called a biplot, because it plots two *things*, viz. sites as points and envionmental variables as vectors), following the tradition of scatter diagrams in Cartesian coordinate systems, objects are represented as points and variables are displayed as arrows. We first use the standard **vegan** `biplot()` function:
 
@@ -169,8 +282,6 @@ In a PCA ordination diagram (called a biplot, because it plots two *things*, viz
 biplot(env_pca, scaling = 1, main = "PCA scaling 1", choices = c(1, 2))
 biplot(env_pca, scaling = 2, main = "PCA scaling 2", choices = c(1, 2))
 ```
-
-**Note:** We can also construct a biplot in `ggplot()` as we will see in [this example](/quantecol/chapters/08-pca_examples/#a-ggplot-biplot).
 
 **Scaling 1:** This scaling *emphasises relationships between rows* accurately in low-dimensional ordination space. Distances among objects (samples or sites) in the biplot are approximations of their Euclidian distances in multidimensional space. Objects positioned further apart show a greater degree of environmental dissimilarity. The angles among descriptor vectors should not be interpreted as indicating the degree of correlation between the variables.
 
