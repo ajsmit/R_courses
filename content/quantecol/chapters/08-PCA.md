@@ -308,7 +308,7 @@ In ecology, it is customary to plot the Site and Species Scores as ordination di
 
 ### Plots along one-dimension
 
-Now I will construct some primitive graphs of the Site and Species Score to demonstrate how to interpret the eigenvectors associated with each eigenvalue. We will tyipcally not do this kind of graphical display---for plots suitable for publication see the [Biplots](/quantecol/chapters/08-pca/#biplots) section, below.
+Now I will construct some primitive graphs of the Site and Species Scores to demonstrate how to interpret the eigenvectors associated with each eigenvalue. We will tyipcally not do this kind of graphical display---for plots suitable for publication see the [Biplots](/quantecol/chapters/08-pca/#biplots) section, below.
 
 The first thing we need to do is extract the Species and Site Scores in a manner that makes them convenient for plotting. To do this, we can apply the `scores()` function to the PCA object, `env_pca`, and assign the output to tidied dataframes. The `scores()` function can tidy the data to some extent, but I make it even tidier in subsequent steps by creating long format data (rather than wide) using the `pivot_longer()` function. Various other bits of code lines accomplish additional restructuring of the data to make datasets that are fully compliant for creating the kind of figure I have in mind:
 
@@ -415,7 +415,7 @@ ggplot(data = scree_dat, aes(x = axis, y = eigenvalue)) +
 
 In the plot, above, the red line is the broken stick components and the black line the eigenvalues for the different PCs. See Numerical Ecology with R pp. 121-122 for more information about how to decide how many PCs to retain.
 
-Now we can assemble a plot, and in it focus on the first to PCs. It seems somewhat complex, but the code can easily be deciphered.
+Now we can assemble a plot, and in it focus on the first two PCs. It seems somewhat complex, but the code can easily be deciphered if you read through it 'layer-by-layer':
 
 
 ```r
@@ -436,9 +436,9 @@ ggplot(data = site_sc, aes(x = PC_axis, y = score)) +
                   direction = "y") +
   annotate(geom = "text", x = 1, y = -2.5, size = 2.8, colour = "red4",
            label = paste0(PC1_var, "% var. expl.")) +
-    annotate(geom = "text", x = 2, y = -2.5, size = 2.8, colour = "red4",
+  annotate(geom = "text", x = 2, y = -2.5, size = 2.8, colour = "red4",
            label = paste0(PC2_var, "% var. expl.")) +
-    annotate(geom = "text", x = 3, y = -2.5, size = 2.8, colour = "red4",
+  annotate(geom = "text", x = 3, y = -2.5, size = 2.8, colour = "red4",
            label = paste0(PC3_var, "% var. expl.")) +
   coord_flip() +
   labs(x = NULL, y = "Score") +
