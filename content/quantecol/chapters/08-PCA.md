@@ -498,7 +498,7 @@ biplot(env_pca, scaling = 2, main = "PCA scaling 2", choices = c(1, 2))
 
 **Scaling 2:** This scaling *emphasises relationships between columns* accurately in low-dimensional ordination space. Distances among objects (samples or sites) in the biplot are not approximations of their Euclidian distances in multidimensional space. The angles among descriptor vectors can be interpreted as indicating the degree of correlation between the variables.
 
-Now we create biplots using the `cleanplot.pca()` function that comes with *Numerical Ecology in R* book:
+Now we create biplots using the `cleanplot.pca()` function that comes with the *Numerical Ecology in R* book. The figures are more or less the same, except the plot showing the Site scores with Scaling 1 adds a 'circle of equilibrium contribution' (see Numerical Ecolology with R, p. 125). We only assign importance to the arrows that extend beyond the radius of the circle:
 
 
 ```r
