@@ -114,6 +114,8 @@ The biplots for the above ordination are given here:
 ```{r}
 plot(spe_ca, scaling = 1, main = "CA fish abundances - biplot scaling 1")
 plot(spe_ca, scaling = 2, main = "CA fish abundances - biplot scaling 2")
+dev.off()
+dev.new()
 ```
 
 **Scaling 1:** This scaling *emphasises relationships between rows* accurately in low-dimensional ordination space. Distances among objects (samples or sites) in the biplot are approximations of their $\chi^{2}$ distances in multidimensional space. Objects found near a point representing a species are likely to contain a high contribution of that species.
@@ -161,7 +163,7 @@ plot(spe_ca_env, p.max = 0.05, col = "turquoise") # plot significant variables w
 
 ### Assignment 6 Questions
 
-> **Question 1.** How would you explain the patterns seen in the four panels of the above figure?
+> **Question 1.** How would you explain the patterns seen in the last five panels above?
 >
 > **Question 2.** Apply approaches taken from the analysis shown immediately above to these datasets: 1. [bird communities along elevation gradient in Yushan Mountain, Taiwan](https://www.davidzeleny.net/anadat-r/doku.php/en:data:ybirds); 2. [alpine plant communities in Aravo, France](https://www.davidzeleny.net/anadat-r/doku.php/en:data:aravo).
 >

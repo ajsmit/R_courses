@@ -153,6 +153,7 @@ text(pl2, "sites", col = "red4", cex = 0.9)
 We can also fit response surfaces using `ordisurf()`:
 
 ```{r}
+dev.off()
 require('viridis')
 palette(viridis(8))
 par(mar = c(4, 4, 0.9, 0.5) + .1, mfrow = c(2, 2))
