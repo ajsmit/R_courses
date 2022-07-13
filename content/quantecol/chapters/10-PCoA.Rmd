@@ -66,8 +66,9 @@ spe_bray <- vegdist(spe)
 
 <!-- The **vegan** function `cmdscale()` can be used for PCoA: -->
 
-The book *Numerical Ecology in R* uses a built-in function `cmdscale()` or the function `pcoa()` in **ape** for its PCoA calculation. The **vegan** function `capscale()` can also be used for PCoA, and this is the approach I take here. The 'CAP' in `capscale()` stands for 'Canonical Analysis of Principal Coordinates'. `capscale()` works differently from `rda()` or `cca()` in that we can only specify the input via a formula interface. See `?capscale` for information. To run a PCoA without constraints we use `1` on the righthand side of the formula, with the dissimilarity matrix on the left. Here is how:
+The book *Numerical Ecology in R* uses a built-in function `cmdscale()` or the function `pcoa()` in **ape** for its PCoA calculation. The **vegan** function `capscale()` can also be used for PCoA, and this is the approach I take here. The 'CAP' in `capscale()` stands for 'Canonical Analysis of Principal Coordinates'. `capscale()` works differently from `rda()` or `cca()` in that we can only specify the input via a formula interface. See `?capscale` for information. To run a PCoA without constraints we use `1` on the righthand side of the formula, with the dissimilarity matrix on the left. Here is how, and i give three options for doing the analysis:
 
+### Option 1---supply a precalculated dissimilarity matrix
 ```{r}
 # spe_pcoa <- cmdscale(spe_bray, k = nrow(spe) - 1, eig = TRUE)
 spe_pcoa <- capscale(spe_bray ~ 1)
@@ -80,6 +81,7 @@ When we do a `summary()` of the output we see that the results are similar to th
 summary(spe_pcoa)
 ```
 
+### Option 2---supply the raw data to `capscale()`
 We can provide the raw species table instead and request that `capscale()` calculates the required dissimilarity indices by automagically calling `vegdist()`. The advantage of this approach is that it adds species scores as weighted sums of (residual) community matrix, whereas only providing the pre-calculated dissimilarity matrix provides no fixed method for adding species scores. **I advocate providing a raw species table to `capscale()` to retain the species information**. This avoids many problems later on, such as having to calculate the weighted species scores ourselves.
 
 ```{r}
@@ -92,6 +94,18 @@ spe_pcoa
 ```{r}
 summary(spe_pcoa)
 ```
+
+### Option 3---use pre-made dissimilarity matrix and add species back using `sppscores()`
+Another approach to add back the species information into the ordination object produced by supplying the pre-made dissimialrity matrix to `capscale()`:
+
+```{r}
+spe_pcoa <- capscale(spe_bray ~ 1)
+sppscores(spe_pcoa) <- spe
+
+summary(spe_pcoa)
+```
+
+<!-- The Option 3 approach might be useful if we want to calculate some dissimilarity matrix using a function that does not reside within the **vegan** universe (see, for example, [Handling mixed variable types](http://localhost:4321/quantecol/chapters/10-pcoa/#handling-mixed-variable-types)). -->
 
 We can unpack what is inside the results, and there we can see that we can access the eigenvalues as we did for PCA and CA:
 
@@ -189,16 +203,20 @@ Now we calculate the Gower distances and proceed with the PCoA as before:
 ```{r}
 library(cluster)
 
-E_gower <- daisy(E, metric = "gower")
+# cannot use mixed var  types
+# E_gower <- vegdist(E, method = "gower") 
+
+# can handle mixed var types... use instead of vegdist() gower dissimilarity
+E_gower <- daisy(E, metric = "gower") 
+
 summary(E_gower)
 
 E_mat <- as.matrix(E_gower)
 E_mat[1:5, 1:5]
 
 E_pcoa <- capscale(E_mat ~ 1)
-```
 
-```{r}
+# sadly this means that the names in the Spcies scores are now missing
 summary(E_pcoa)
 ```
 
@@ -207,6 +225,10 @@ We can extract the various kinds of scores for manual plotting.
 ### Integrative Assignment
 
 An integrative assignment needs to be submitted a week after the conclusion of this module. Please refer to the [Integrative Assignment](/slides/BCB743/10-int_assign.html) exercises and start working towards completing the various analyses.
+
+```{r}
+load(paste0(root, "NEwR-2ed_code_data/NEwR2-Data/mite.RData"))
+```
 
 ## References
 
