@@ -18,7 +18,7 @@ links:
   - icon: file-pdf
     icon_pack: far
     name: The Seaweed Data
-    url: /pdf/BCB743/The_seaweed_data.pdf
+    url: /pdf/BCB743/Smit_the_seaweed_data.pdf
   - icon: file-csv
     icon_pack: fa
     name: SeaweedsSpp.csv
