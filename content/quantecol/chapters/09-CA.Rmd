@@ -125,45 +125,43 @@ dev.new()
 Below are biplots with site and species scores for four selected species. The plots are augmented with response surfaces made with penalised splines for each species showing i) where it are most abundant and ii) the direction of the response (here non-linear). On the last panel (bottom right) I also project vectors for the environmental drivers and mark the ones with the greatest influence in red. Lastly, the point size scales with species scores:
 
 ```{r}
-require('viridis')
+library(viridis)
 palette(viridis(8))
 par(mar = c(4, 4, 0.9, 0.5) + .1, mfrow = c(2, 2))
-
-tmp <- ordisurf(spe_ca ~ Satr, spe, bubble = 3,
+with(spe, ordisurf(spe_ca ~ Satr, bubble = 3,
                           family = quasipoisson, knots = 2, col = 6,
-                          display = "sites", main = "Satr")
+                          display = "sites", main = "Satr", plot = TRUE))
 abline(h = 0, v = 0, lty = 3)
-
-tmp <- ordisurf(spe_ca ~ Scer, spe, bubble = 3,
+with(spe, ordisurf(spe_ca ~ Scer, bubble = 3,
                           family = quasipoisson, knots = 2, col = 6,
-                          display = "sites", main = "Scer")
+                          display = "sites", main = "Scer"))
 abline(h = 0, v = 0, lty = 3)
-
-tmp <- ordisurf(spe_ca ~ Teso, spe, bubble = 3,
+with(spe, ordisurf(spe_ca ~ Teso, bubble = 3,
                           family = quasipoisson, knots = 2, col = 6,
-                          display = "sites", main = "Teso")
+                          display = "sites", main = "Teso"))
 abline(h = 0, v = 0, lty = 3)
-
-tmp <- ordisurf(spe_ca ~ Cogo, spe, bubble = 3,
+with(spe, ordisurf(spe_ca ~ Cogo, bubble = 3,
                           family = quasipoisson, knots = 2, col = 6,
-                          display = "sites", main = "Cogo")
+                          display = "sites", main = "Cogo"))
 abline(h = 0, v = 0, lty = 3)
 
 # a posteriori projection of environmental variables in a CA
+env <- dplyr::select(env, -1)
+
 # we removed the 8th row in spe, so do it here too
 env <- dplyr::slice(env, -8)
 
 # the last plot produced (CA scaling 2) must be active
 # scaling 2 is default
 (spe_ca_env <- envfit(spe_ca, env, scaling = 2))
-plot(spe_ca) # default scaling = 2
+
 plot(spe_ca_env, col = "grey40")
-plot(spe_ca_env, p.max = 0.05, col = "turquoise") # plot significant variables with a different colour
+plot(spe_ca_env, p.max = 0.05, col = "red") # plot significant variables with a different colour
 ```
 
 ### Assignment 6 Questions
 
-> **Question 1.** How would you explain the patterns seen in the last five panels above?
+> **Question 1.** How would you explain the patterns seen in the last four panels immediately above?
 >
 > **Question 2.** Apply approaches taken from the analysis shown immediately above to these datasets: 1. [bird communities along elevation gradient in Yushan Mountain, Taiwan](https://www.davidzeleny.net/anadat-r/doku.php/en:data:ybirds); 2. [alpine plant communities in Aravo, France](https://www.davidzeleny.net/anadat-r/doku.php/en:data:aravo).
 >
