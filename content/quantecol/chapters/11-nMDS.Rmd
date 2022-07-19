@@ -48,8 +48,17 @@ spe_nmds <- metaMDS(spe, distance = "bray")
 spe_nmds
 ```
 
+As always, reading the help file for (accessible as `?metaMDS`) is invaluable (as are the help files for all other ordination techniques).
+
+There's a summary method available, but it is not particularly useful and I don't display the output here:
+
 ```{r, eval=FALSE}
-summary(spe_nmds) # not useful
+summary(spe_nmds)
+```
+Although `summary(spe_nmds)` does not return anything interesting, the species and site scores are nevertheless available directly through the `scores()` command, and they can be plotted as layer in **ggplot2** if need be:
+
+```{r}
+scores(spe_nmds)
 ```
 
 See *Numerical Ecology in R* (pp. 145 to 149) for information about the interpretation of a nMDSand the ordination diagrams shown below.
@@ -61,7 +70,7 @@ We create the ordination diagrammes as before, but new concepts introduced here 
 ```{r}
 par(mfrow = c(2, 2))
 stressplot(spe_nmds, main = "Shepard plot")
-ordiplot(spe_nmds, type = "t", cex = 1.5,
+ordiplot(spe_nmds, type = "t", cex = 0.6,
          main = paste0("nMDS stress = ", round(spe_nmds$stress, 2)))
 gof = goodness(spe_nmds)
 plot(spe_nmds, type = "t", main = "Goodness of fit")
