@@ -9,6 +9,10 @@ links:
     url: /pdf/BCB743/BCB743_02_biodiversity_1.pdf
   - icon: file-pdf
     icon_pack: far
+    name: Vegan -- ecological diversity
+    url: /pdf/BCB743/Oksanen_intro-vegan.pdf
+  - icon: file-pdf
+    icon_pack: far
     name: Smit et al. (2017)
     url: /pdf/BCB743/Smit_et_al_2017.pdf
   - icon: file-pdf

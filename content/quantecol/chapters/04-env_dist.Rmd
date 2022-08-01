@@ -44,7 +44,7 @@ The toy data have arbitrary columns to demonstrate the Euclidean distance calcul
 
 $$ d(a,b) = \sqrt{(a_x - b_x)^2 + (a_y - b_y)^2 + (a_z - b_z)^2} $$
 
-The distance is found between every pair of points named ***a*** to ***g*** whose locations are marked by the 'coordinates' $x$, $y$, and $z$---i.e. this is an example of 3-dimensional data (a space or volume, as opposed to 2D data situated on a $x$, $y$ place). We might also call each coordinate a 'variable' (sometimes called a 'dimension') and hence we have multivariate or multidimensional data.
+The distance is found between every pair of sites named ***a*** to ***g*** whose locations are marked by the 'coordinates' $x$, $y$, and $z$---i.e. this is an example of 3-dimensional data (a space or volume, as opposed to 2D data situated on a $x$, $y$ place). We might also call each coordinate a 'variable' (sometimes called a 'dimension') and hence we have multivariate or multidimensional data.
 
 Let's load the dataset and find the size of the dataframe:
 

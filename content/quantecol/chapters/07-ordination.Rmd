@@ -7,6 +7,10 @@ links:
     icon_pack: fas
     name: Ordination Slides
     url: /pdf/BCB743/BCB743_07_ordination.pdf
+  - icon: file-pdf
+    icon_pack: far
+    name: Vegan -- an introduction to ordination
+    url: /pdf/BCB743/Oksanen_intro-vegan.pdf
 subtitle: ""
 title: "7. Ordination"
 weight: 9
@@ -35,4 +39,4 @@ Any ordination approach in which important gradients are hypothesised. Likely ev
 
 * Redundancy Analysis
 * Constrained Correspondence Analysis
-* [distance-based Redundancy Analysis](http://localhost:4321/quantecol/chapters/12-constrained_ordination/)
+* [distance-based Redundancy Analysis](/quantecol/chapters/12-constrained_ordination/)

@@ -78,6 +78,8 @@ points(spe_nmds, display = "sites", cex = gof * 200)
 # ...bigger bubbles indicate a worse fit
 ```
 
+A good rule of thumb: stress <0.05 provides an excellent representation in reduced dimensions, <0.1 is great, <0.2 is so-so, and stress <0.3 provides a poor representation.
+
 We can also build ordination plots from scratch to suit specific needs:
 
 ```{r}
