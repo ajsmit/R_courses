@@ -19,6 +19,8 @@ cascade:
   type: collection
 ---
 
+![Cats!](/BDC334/images/Curiosity.jpeg)
+
 # BDC334 Labs
 
 The Practical (or Labs) material for the BDC334 module appears here. Not all material is yet available online, but it will be added systematically as we work through the module each week.
