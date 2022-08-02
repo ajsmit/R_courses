@@ -31,7 +31,7 @@ These data sets are usually arrange in a **matrix**, which---in the case of comm
 
 A very clear example of environmental and species datasets is the Doubs River dataset. Please refer to [David Zelený's website for an explanation](https://www.davidzeleny.net/anadat-r/doku.php/en:data:doubs) of these data. These data demonstrate nicely how one of the basic drivers of biodiversity patterning---gradients---can be seen operating on in a real world case study. It offers neat insight also into the properties of species and environmental tables and the dissimilarity and distance atrices derived from them.
 
-Download the data here:
+Download the Doubs River data here:
 
 {{< rawhtml >}}
 <table>
@@ -74,11 +74,11 @@ To fix this annoyance is not too tricky as is domenstrated [here](https://www.av
 
 ### Looking at the files' content
 
-After importing it we see something that resembles the next figure. We see the table (or spreadsheet) view of the species data. The species codes representing 27 species of fish appear as column headers (not all species' data are visible as the data are truncated to the right) and in rows 2 through 31 (30 rows) are each of the samples---in this case, there is one sample per site down the length of the river.
+After importing the Doubs River data we see something that resembles the next two figures. First, in `DoubsSpe.csv`, we see the table (or spreadsheet) view of the species data. The species codes for 27 species of fish appear as column headers (not all species' data are visible as the data are truncated to the right) and in rows 2 through 31 (30 rows) are each of the samples---in this case, there is one sample per site down the length of the river.
 
 ![**Figure 1.**](/BDC334/images/DoubsSpe_table.png)
 
-Next we see the table view of the environmental data. The names of the 11 environmental variables appear as column headers and there are 30 rows, one for each of the samples---the samples match that of the species data.
+`DoubsEnv.csv` contains the environmental data as seen in the next figure. The names of the 11 environmental variables appear as column headers and there are 30 rows, one for each of the samples---the samples match that of the species data.
 
 ![Figure 2](/BDC334/images/DoubsEnv_table.png)
 
@@ -106,7 +106,7 @@ Many community data matrices share some general characteristics:
 
 ## Ecological gradients
 
-Although there are manny ways in which species can respond to their environment, one of the most striking responses can be seen along environmental gradients. We will explore this concept next as we discuss coenoclines and unimodal species distribution models.
+Although there are many ways in which species can respond to their environment, one of the most striking responses can be seen along environmental gradients. We will explore this concept next as we discuss coenoclines and unimodal species distribution models.
 
 ### Coenoclines, coenoplanes, and coenospaces
 
@@ -206,7 +206,7 @@ At the start of the analysis, before we go deeper into seeing the patterns in th
 
 ### Lab tasks
 
-> **Task 2:** Create an $x-y$ plot of the geographical coordinates.
+> **Task 2:** Create an $x-y$ plot of the geographical coordinates in `DoubsSpa.csv`.
 > 
 > **Task 3:** Using some graphs that plot the trends of the environmental variables along the length of the river, describe the patterns in some of the environmental variables and offer explanations for how they might be responsible for affecting species distributions down the length of the Doubs River. Which three variable do you think will be be able to explain the trends in the species data?
 
@@ -218,13 +218,15 @@ Let us consider various kinds of distance matrices under the headings **Distance
 
 ### Distances
 
-The most common **distance metric** is **Euclidian distance**. Euclidian distance is the ‘ordinary’ straight-line distance between two points in Euclidean space. Working with geographical coordinates over small areas of Earth's space, Euclidian distance is not too dissimilar from actual geographical distance, so the concept is quite intuitive to understand. In its simplest form it is a planar area, which you know of as a graph with $x$- and $y$-axes). So, in 2D and 3D space it gives distances in cartesian units between points on plane $x$, $y$ or in volume $x$, $y$, $z$; a linear relationship exists between the units in the physical realm and the units in Euclidian space. The implication is that on a map or on a graph, short distances between pairs of points indicate that there are also a short geographic distances between these points on Earth.
+A frequently used **distance metric** is **Euclidian distance**. Euclidian distance is the ‘ordinary straight-line' distance between two points in Euclidean space. Working with geographical coordinates over small areas of Earth's surface, Euclidian distance is very similar (i.e. almost directly proportional) to the actual geographical distance, so the concept is quite intuitive to understand. In its simplest form it is a planar cartesian area, which you know of as a graph with $x$- and $y$-axes). So, in 2D and 3D space it gives distances in cartesian units between points on plane $x$, $y$ or in volume $x$, $y$, $z$; a linear relationship exists between the units in the physical realm and the units in Euclidian space. The implication is that on a map or on a graph, short distances between pairs of points indicate that there are also a short geographic distances between these points on Earth.
 
 Euclidian distance is calculated using the Pythagorean theorem and it is typically applied to standardised environmental data (not species data):
 
-$$ d(a,b) = \sqrt{(a_x - b_x)^2 + (a_y - b_y)^2 + (a_z - b_z)^2} $$
+$$d(a,b) = \sqrt{(a_x - b_x)^2 + (a_y - b_y)^2 + (a_z - b_z)^2} $$
 
-In the above equation, this 'distance' is calculated between a pair of sites, ***a*** and ***b***, whose locations are marked by the coordinates $x$, $y$, and $z$---i.e. this is an example of 3-dimensional data (a space or volume, as opposed to 2D data situated on a $x$, $y$ place). We might also call each coordinate a 'variable' such as pH or temperature (sometimes called a 'dimension').
+In the above equation, this 'distance' is calculated between a pair of sites, ***a*** and ***b***, whose locations are marked by the coordinates $x$, $y$, and $z$---i.e. this is an example of 3-dimensional data (a space or volume, as opposed to 2D data situated on a $x$, $y$ place). We might also call each coordinate a 'variable' such as temperature, pH, or light intensity (sometimes also called 'dimensions').
+
+$$d(a,b) = \sqrt{(a_{temp} - b_{temp})^2 + (a_{pH} - b_{pH})^2 + (a_{light} - b_{light})^2} $$
 
 Let's [download some example data](/BDC334/data/Euclidian_distance_demo_data_xyz.csv) and calculate the distance between every pair of sites named ***a*** to ***g***.
 
