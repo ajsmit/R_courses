@@ -25,7 +25,9 @@ cascade:
 
 The Practical (or Labs) material for the BDC334 module appears here. Not all material is yet available online, but it will be added systematically as we work through the module each week.
 
-Please use the menu on the left to access the Labs. Lab 1 starts in the second week of the module in Term 3. You have until the following Monday 07:00 to complete all the material.
+Please use the links below to access the Labs. Lab 1 starts in the second week of the module in Term 3. You have until the following Monday 07:00 to complete all the material.
+
+[Lab 1](/BDC334/pages/01-introduction.html)
 
 Please ensure that you read through each Lab before the start of our face-to-face session in the Life Science Computer Lab at 13:10 on Mondays.
 

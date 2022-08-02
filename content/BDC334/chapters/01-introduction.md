@@ -62,7 +62,19 @@ Download the data here:
 </table>
 {{< /rawhtml >}}
 
-These data are made available in CSV format but we can view it in MS Excel. After importing it we see something that resembles the next figure. We see the table (or spreadsheet) view of the species data. The species codes representing 27 species of fish appear as column headers (not all species' data are visible as the data are truncated to the right) and in rows 2 through 31 (30 rows) are each of the samples---in this case, there is one sample per site down the length of the river.
+### Note about CSV files and resultant complications during import
+
+These data are made available in CSV format but we can open and view it in MS Excel. 'CSV' means *comma separated value*. It is a plain text file that can be edited in any text editor (such as Notepad on MS Windows, or VS Code, VIM, emacs, etc. on all platforms). The figure shows what a CSV files looks like in a plain text editor, VS Code, on my computer. Once imported it will look similar to the one seen under [Distances](/bdc334/chapters/01-introduction/#distances) in the 'Pairwise matrices' section below, but the latter does not have decimals:
+
+![**Figure 0.**](/BDC334/images/csv_file.png)
+
+CSV is a common format used in the scientific disciplines as it is compatible with many software. Globally, scientists use a period '.' as decimal point separator. You can see this in the file above. Commas are used exclusively as field separators (separating the columns you'll see once opened in MS Excel). This creates a bit of a problem for South Africans, who are indoctrinated from a young age to use commas as decimal point separators---this is to conform with the regional (South African) expectation that dictates commas be used as decimals. So, when you import a CSV file for the first time you'll likely see gibberish because your computer will probably be set up to honour the regional (locale) expectation of commas as decimal points (and 'R' for currency, metric units of measurements, etc.). So, you need to know how to fix this to prevent upsetting me (it is a pet peeve and frustrates me endlessly) and yourselves. 
+
+To fix this annoyance is not too tricky as is domenstrated [here](https://www.avantixlearning.ca/microsoft-excel/how-to-change-commas-to-decimal-points-and-vice-versa-in-excel/). Follow the instruction under '**Changing commas to decimals and vice versa by changing Excel Options**'. Better still, change the global system settings as explained elsewhere in the same article. Do this before importing the CSV file.
+
+### Looking at the files' content
+
+After importing it we see something that resembles the next figure. We see the table (or spreadsheet) view of the species data. The species codes representing 27 species of fish appear as column headers (not all species' data are visible as the data are truncated to the right) and in rows 2 through 31 (30 rows) are each of the samples---in this case, there is one sample per site down the length of the river.
 
 ![**Figure 1.**](/BDC334/images/DoubsSpe_table.png)
 
@@ -166,7 +178,9 @@ We can calculate Euclidian distance in Excel using some buil-in functions:
 
 ### Correlations
 
-We use correlations to establish how the environmental variables relate to one another across the sample sites. We do not need to standardise as one would do for the calculation of Euclidian distances. Correlations values (so called `\(r\)`-values) vary in magnitude from -1 (a perfect inverse relationship) through 0 (no relationship whatsoever) to 1 (a perfect positive linear lrelationship).
+We use correlations to establish the extent to which environmental variables relate to one another across the sample sites. Note, therefore, that correlations performed to a sites × variable table are done between columns (variables), not rows as in the Euclidian distance calculation, which compares the rows (sites). We do not need to standardise as one would do for the calculation of Euclidian distances. Correlation coefficients (so called `\(r\)`-values) vary in magnitude from -1 (a perfect inverse relationship) through 0 (no relationship whatsoever) to 1 (a perfect positive linear lrelationship).
+
+The resultant pairwise correlation matrix shows the names of the environmental variables as both column and row names. Contrast this with what is presented as row and column names in the distance matrix.
 
 ![**Figure 8.**](/BDC334/images/Correlation_env_calc.png)
 
@@ -180,7 +194,7 @@ We use correlations to establish how the environmental variables relate to one a
 >
 > **Task 7:** If you found this exercise annoying, explain why. What could be done to ease your experience of the calculations? Or if you loved it, state why.
 
-### Associations, similarities and dissimilarities
+### Associations, similarities, and dissimilarities
 
 We will discuss and calculate association, similarity and dissimilarity matrices in Lab 2.
 
