@@ -28,6 +28,7 @@ The Practical (or Labs) material for the BDC334 module appears here. Not all mat
 Please use the links below to access the Labs. Lab 1 starts in the second week of the module in Term 3. You have until the following Monday 07:00 to complete all the material.
 
 [Lab 1](/BDC334/pages/01-introduction.html)
+[Lab 2a](/BDC334/pages/02-r_rstudio.html)
 
 Please ensure that you read through each Lab before the start of our face-to-face session in the Life Science Computer Lab at 13:10 on Mondays.
 
