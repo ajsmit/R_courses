@@ -117,7 +117,7 @@ Download the Doubs River data here:
 </table>
 {{< /rawhtml >}}
 
-### Note about CSV files and resultant complications during import
+### Note about CSV files and MS Excel
 
 These data are made available in CSV format but we can open and view it
 in MS Excel. 'CSV' means *comma separated value*. It is a plain text
@@ -421,7 +421,7 @@ variables relate to one another across the sample sites. Note,
 therefore, that correlations performed to a sites × variable table are
 done between columns (variables), not rows as in the Euclidian distance
 calculation, which compares the rows (sites). We do not need to
-standardise as one would do for the calculation of Euclidian distances.
+standardise as one would do for the calculation of Euclidian distances (but it will do no harm if you do).
 Correlation coefficients (so called `\(r\)`-values) vary in magnitude from
 -1 (a perfect inverse relationship) through 0 (no relationship
 whatsoever) to 1 (a perfect positive linear relationship).
@@ -459,7 +459,7 @@ what is presented as row and column names in the distance matrix.
 ### Associations, similarities, and dissimilarities
 
 We will discuss and calculate association, similarity and dissimilarity
-matrices in Lab 2.
+matrices in Lab 3.
 
 <!-- Two samples with similar species composition are ecologically similar, while two samples that share few species are ecologically distant. In Figure 4.1, below, the data displayed in Figure 2.1 have been converted into a dissimilarity distance matrix of dimension `\(30 \times 27\)`. The are a few things of interest in this matrix: -->
 
