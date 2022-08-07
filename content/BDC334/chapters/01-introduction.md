@@ -437,6 +437,11 @@ environmental variables as both column and row names. Contrast this with
 what is presented as row and column names in the distance matrix.
 
 ![**Figure 8.**](/BDC334/images/Correlation_env_calc.png)
+### Associations, similarities, and dissimilarities
+
+Thus far we have worked with environmental data. Associations, similarities, and dissimilarities extend the pair-wise matrix idea to species data. We will discuss and calculate these matrices in Lab 3.
+
+That's it for this week, Folks! I'll leave you with some lovely exercises to take you through the rest of the week.
 
 ### Lab 1 Tasks
 
@@ -462,10 +467,32 @@ what is presented as row and column names in the distance matrix.
 > could be done to ease your experience of the calculations? Or if you
 > loved it, state why.
 
-### Associations, similarities, and dissimilarities
+#### Take note
 
-We will discuss and calculate association, similarity and dissimilarity
-matrices in Lab 3.
+The Lab 1 assignment on Ecological Data was discussed on Monday 1 August and is due at **07:00 on Monday 8 August 2022**.
+
+Submit your appropriately named spreadsheet and MS Word documents on iKamva when ready.
+
+Provide a **neat and thoroughly annotated** MS Excel spreadsheet which
+outlines the graphs and all calculations and which displays the
+resultant distance matrix. Use separate tabs for the different
+questions. Written answers must be typed in an MS Word document. Please
+make sure you follow the formatting specifications *precisely* as shown
+in the file [**BDC334 Example essay format.docx**](/BDC334/assets/BDC334_Example_essay_format.docx) that was circulated at
+the beginning of the module. Feel free to use the file as a template.
+
+Please label the MS Excel and MS Word files as follows:
+
+* **BDC334_<first_name>_<last_name>_Assignment_1.xlsx**, and
+
+* **BDC334_<first_name>_<last_name>_Assignment_1.docx**
+
+(the '<' and '>' must be omitted as they are used in the example as field indicators only).
+
+Failing to follow these instructions carefully, precisely, and
+thoroughly will cause you to lose marks, which could cause a significant
+drop in your score as formatting counts for 15% of the final mark (out
+of 100%).
 
 <!-- Two samples with similar species composition are ecologically similar, while two samples that share few species are ecologically distant. In Figure 4.1, below, the data displayed in Figure 2.1 have been converted into a dissimilarity distance matrix of dimension `\(30 \times 27\)`. The are a few things of interest in this matrix: -->
 
@@ -479,24 +506,3 @@ matrices in Lab 3.
 
 <!-- * All information about the particular species present within each sample are now gone since that information has been collapsed to a dissimilarity measure. -->
 
-## Take note
-
-Provide a **neat and thoroughly annotated** MS Excel spreadsheet which
-outlines the graphs and all calculations, and which displays the
-resultant distance matrix. Use separate tabs for the different
-questions. Written answers must be typed in a MS Word document. Please
-make sure you follow the formatting specifications *precisely* as shown
-in the file **BDC334 Example essay format.docx** that was circulated at
-the beginning of the module. Feel free to use the file as a template.
-
-Please label the MS Excel and MS Word files as follows:
-
-**BDC334_<first_name>_<last_name>_Assignment_1.xlsx** and
-**BDC334_<first_name>_<last_name>_Assignment_1.docx** (the '<'
-and '>' must be omitted as they are used in the example as field
-indicators only).
-
-Failing to follow these instructions carefully, precisely, and
-thoroughly will cause you to lose marks, which could cause a significant
-drop in your score as formatting counts for 15% of the final mark (out
-of 100%).
