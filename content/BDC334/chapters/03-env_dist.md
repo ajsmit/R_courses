@@ -438,13 +438,19 @@ ggarrange(plt1, plt2, nrow = 2)
 
 > **Task 4:** Do a full analysis of the Doubs River environmental data using Euclidian distances and correlations. Demonstrate graphically any clear spatial patterns that you mind find, and offer a full suite of mechanistic explanations for the patterns you see. It is sufficient to submit a fully annotated R script (not a MS Word or Excel file).
 
-### Take note
+#### Take note
 
-Please label the files as follows:
+The Lab 2 assignment on Ecological Data was discussed on Monday 8 August and is due at **07:00 on Monday 15 August 2022**.
 
-**BDC334_<first_name>_<last_name>_Assignment_2.R** (the '<'
-and '>' must be omitted as they are used in the example as field
-indicators only).
+Provide a **neat and thoroughly annotated** R file which outlines the graphs and all calculations and which displays the resultant distance matrix. Written answers must be typed in the same file as comments. 
+
+Please label the R files as follows:
+
+* **BDC334_<first_name>_<last_name>_Assignment_2.R**
+
+(the '<' and '>' must be omitted as they are used in the example as field indicators only).
+
+Submit your appropriately named R documents on iKamva when ready.
 
 Failing to follow these instructions carefully, precisely, and
 thoroughly will cause you to lose marks, which could cause a significant
