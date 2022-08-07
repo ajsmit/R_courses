@@ -119,7 +119,8 @@ Download the Doubs River data here:
 </table>
 {{< /rawhtml >}}
 
-* **In Lab 1 (below) and [Lab 2](/bdc334/chapters/03-env_dist/) we will consider the environmental data---first in MS Excel (Lab 1) and then in R (Lab 2)**
+* **In Lab 1 (below) and [Lab 2](/bdc334/chapters/03-env_dist/) we will consider the environmental data---the former uses MS Excel and the latter R.**
+
 * **In [Lab 3](/bdc334/chapters/04-biodiversity/) we will analyse the species data.**
 
 ### Note about CSV files and MS Excel
