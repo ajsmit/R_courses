@@ -19,7 +19,7 @@ links:
     icon_pack: fa
     name: Sites Data
     url: /BCB743/seaweed/sites.csv
-subtitle: ""
+subtitle: "Environmental Data"
 title: "Lab 2b: Environmental Distance"
 weight: 3
 ---

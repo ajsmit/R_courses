@@ -2,7 +2,7 @@
 date: "2022-08-01"
 draft: false
 excerpt: null
-subtitle: ""
+subtitle: "Environmental Data"
 title: "Lab 1: Ecological Data"
 weight: 1
 ---
@@ -77,6 +77,8 @@ observation. Samples may be quadrats, transects, stations, sites, traps,
 seine net tows, trawls, grids cells on a map, etc. It is important to be
 clear and unambiguous about the basic unit of the samples.
 
+### The Doubs River data    
+
 A very clear example of environmental and species datasets is the Doubs
 River dataset. Please refer to [David Zelený's website for an
 explanation](https://www.davidzeleny.net/anadat-r/doku.php/en:data:doubs)
@@ -116,6 +118,9 @@ Download the Doubs River data here:
   </tbody>
 </table>
 {{< /rawhtml >}}
+
+* **In Lab 1 (below) and [Lab 2](/bdc334/chapters/03-env_dist/) we will consider the environmental data---first in MS Excel (Lab 1) and then in R (Lab 2)**
+* **In [Lab 3](/bdc334/chapters/04-biodiversity/) we will analyse the species data.**
 
 ### Note about CSV files and MS Excel
 
@@ -202,7 +207,7 @@ resultant values by the standard deviation of the columns.
 
 ### Lab 1 Tasks
 
-> **Task 1:** Standardise the environmental data in MS Excel.
+> **Task 1:** Standardise the Doubs River environmental data in MS Excel.
 
 ### Properties of species datasets
 
@@ -405,7 +410,7 @@ analyses (again, this is the topic of an Honours module on
 > **Task 2:** Create an $x-y$ plot of the geographical coordinates in
 > `DoubsSpa.csv`.
 >
-> **Task 3:** Using some graphs that plot the trends of the
+> **Task 3:** Using some graphs that plot the trends of the Doubs River
 > environmental variables along the length of the river, describe the
 > patterns in some of the environmental variables and offer explanations
 > for how they might be responsible for affecting species distributions

@@ -2,7 +2,7 @@
 date: "2022-08-01"
 draft: false
 excerpt: null
-subtitle: ""
+subtitle: "A Basic Intro to the Software"
 title: "Lab 2a: R and RStudio"
 weight: 2
 ---

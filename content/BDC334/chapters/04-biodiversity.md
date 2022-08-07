@@ -27,7 +27,7 @@ links:
     icon_pack: fa
     name: light_levels.csv
     url: /BCB743/seaweed/light_levels.csv
-subtitle: ""
+subtitle: "Species Data"
 title: "Lab 3: Quantifying Diversity"
 weight: 4
 ---
