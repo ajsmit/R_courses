@@ -70,13 +70,14 @@ SDGs[1:5, 1:8]
 
 ```
 ## # A tibble: 5 × 8
-##   ParentLocation       Location other_1 other_2 SDG1.a SDG16.1 SDG3.1_1 SDG3.2_1
-##   <chr>                <chr>      <dbl>   <dbl>  <dbl>   <dbl>    <dbl>    <dbl>
-## 1 Eastern Mediterrane… Afghani…    61.6    15.6   2.14    9.02      673   135.  
-## 2 Europe               Albania     77.8    21.1   9.62    3.78       16     7.55
-## 3 Africa               Algeria     76.5    21.8  10.7     1.66      113    38.0 
-## 4 Africa               Angola      61.7    16.7   5.43    9.82      246   125.  
-## 5 Americas             Antigua…    76.1    20.4  11.6     2.42       43     5.94
+##   ParentLocation        Location  other_1 other_2 SDG1.a SDG16.1 SDG3.…¹ SDG3.…²
+##   <chr>                 <chr>       <dbl>   <dbl>  <dbl>   <dbl>   <dbl>   <dbl>
+## 1 Eastern Mediterranean Afghanis…    61.6    15.6   2.14    9.02     673  135.  
+## 2 Europe                Albania      77.8    21.1   9.62    3.78      16    7.55
+## 3 Africa                Algeria      76.5    21.8  10.7     1.66     113   38.0 
+## 4 Africa                Angola       61.7    16.7   5.43    9.82     246  125.  
+## 5 Americas              Antigua …    76.1    20.4  11.6     2.42      43    5.94
+## # … with abbreviated variable names ¹​SDG3.1_1, ²​SDG3.2_1
 ```
 
 The parent locations:
@@ -227,18 +228,19 @@ SDGs_centroids
 
 ```
 ## # A tibble: 3 × 39
-##   cluster other_1 other_2 SDG1.a SDG16.1 SDG3.1_1 SDG3.2_1 SDG3.2_2 SDG3.2_3
-##     <int>   <dbl>   <dbl>  <dbl>   <dbl>    <dbl>    <dbl>    <dbl>    <dbl>
-## 1       1    62.4    16.7   5.43    8.88      396    90.0    214.     152.  
-## 2       2    73.2    19.6   9.64    4.4        60    19.8     33.9     28.1 
-## 3       3    80.4    23.2  13.3     1.28        7     2.78     4.73     4.00
-## # … with 30 more variables: SDG3.3_1 <dbl>, SDG3.3_2 <dbl>, SDG3.3_3 <dbl>,
-## #   SDG3.3_4 <dbl>, SDG3.3_5 <dbl>, SDG3.4_1 <dbl>, SDG3.4_2 <dbl>,
-## #   SDG3.4_3 <dbl>, SDG3.4_4 <dbl>, SDG3.4_5 <dbl>, SDG3.4_6 <dbl>,
-## #   SDG3.5 <dbl>, SDG3.6 <dbl>, SDG3.8_1 <dbl>, SDG3.8_2 <dbl>, SDG3.9_1 <dbl>,
-## #   SDG3.9_3 <dbl>, SDG3.b_1 <dbl>, SDG3.b_2 <dbl>, SDG3.b_3 <dbl>,
-## #   SDG3.b_4 <dbl>, SDG3.c_1 <dbl>, SDG3.c_2 <dbl>, SDG3.c_3 <dbl>,
-## #   SDG3.c_4 <dbl>, SDG3.d_1 <dbl>, SDG3.7 <dbl>, SDG3.a <dbl>, …
+##   cluster other_1 other_2 SDG1.a SDG16.1 SDG3.…¹ SDG3.…² SDG3.…³ SDG3.…⁴ SDG3.…⁵
+##     <int>   <dbl>   <dbl>  <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>   <dbl>
+## 1       1    62.4    16.7   5.43    8.88     396   90.0   214.    152.     0.665
+## 2       2    73.2    19.6   9.64    4.4       60   19.8    33.9    28.1    0.135
+## 3       3    80.4    23.2  13.3     1.28       7    2.78    4.73    4.00   0.055
+## # … with 29 more variables: SDG3.3_2 <dbl>, SDG3.3_3 <dbl>, SDG3.3_4 <dbl>,
+## #   SDG3.3_5 <dbl>, SDG3.4_1 <dbl>, SDG3.4_2 <dbl>, SDG3.4_3 <dbl>,
+## #   SDG3.4_4 <dbl>, SDG3.4_5 <dbl>, SDG3.4_6 <dbl>, SDG3.5 <dbl>, SDG3.6 <dbl>,
+## #   SDG3.8_1 <dbl>, SDG3.8_2 <dbl>, SDG3.9_1 <dbl>, SDG3.9_3 <dbl>,
+## #   SDG3.b_1 <dbl>, SDG3.b_2 <dbl>, SDG3.b_3 <dbl>, SDG3.b_4 <dbl>,
+## #   SDG3.c_1 <dbl>, SDG3.c_2 <dbl>, SDG3.c_3 <dbl>, SDG3.c_4 <dbl>,
+## #   SDG3.d_1 <dbl>, SDG3.7 <dbl>, SDG3.a <dbl>, SDG3.1_2 <dbl>, …
+## # ℹ Use `colnames()` to see all variable names
 ```
 
 `pam()` can also provide the most representative example countries of each cluster. Note that the values inside are very different from that produced when we calculated the medians because `medoids` report the standardised data:

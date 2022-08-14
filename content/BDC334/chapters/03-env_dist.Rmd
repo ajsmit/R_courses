@@ -255,7 +255,7 @@ ggarrange(plt1, plt2, nrow = 2)
 
 ### Lab 2 Tasks
 
-> **Task 4:** Do a full analysis of the Doubs River environmental data using Euclidian distances and correlations. Demonstrate graphically any clear spatial patterns that you mind find, and offer a full suite of mechanistic explanations for the patterns you see. It is sufficient to submit a fully annotated R script (not a MS Word or Excel file).
+> **Task 4:** Do a full analysis of the Doubs River environmental data using Euclidian distances and correlations. Demonstrate graphically any clear spatial patterns that you might find, and offer a full suite of mechanistic explanations for the patterns you see. It is sufficient to submit a fully annotated R script (not a MS Word or Excel file).
 
 #### Take note
 
