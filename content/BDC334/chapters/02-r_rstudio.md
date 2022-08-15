@@ -15,6 +15,8 @@ weight: 2
 >
 > --- Charles Darwin
 
+![Why?](/BDC334/images/Why.jpeg)
+
 ## Download and install R and RStudio
 
 ### Step 1: Install R
