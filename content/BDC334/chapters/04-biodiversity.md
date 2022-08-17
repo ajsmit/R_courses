@@ -567,6 +567,10 @@ nestedness-resultant component implies processes that cause species to
 be gained or lost without replacement, and the community with the lowest
 `\(\alpha\)`-diversity is a subset of the richer community.
 
+According to Nekola and White (1999) on p. 868, there are *two causes* of ecological distance decay. 'Ecological' is key to the first cause---it is environmental filtering that results in a decrease in similarity as the distance between sites increases. We sometimes call this the **niche difference model**. Such patterns are typically visible along strong environmental gradients such as elevation slopes (mountains), latitude, or depth in the ocean, to name only three. It is also the dominant mechanism underlying island biogeography.
+
+The second cause of distance decay *sensu* Nekola and White (1999) involves aspects of the spatial configuration and context of the habitats, and some temporal considerations. Here, the evolutionary differences between species---specifically around those traits that affect their ability to disperse---are more at play and are the primary influences of distance decay rates that might vary between species. Let us first consider some properties of a hypothetical homogeneous landscape that create some impediment (resistance) to the propagation of some species (hypothetically species A, B, and C) across its surface, but which are less effective in impeding other species (D, E, and F). For argument's sake, all species (A, ..., F) share similar environmental tolerances to the prevailing environmental conditions, so one can argue that the niche difference model (environmental filtering) does not explain distributional patterns. Given a particular founding or disturbance event, species D, E, and F will in a relatively shorter time span be able to become evenly distributed (relatively similar abundances everywhere) across this landscape. But the less vagile (in terms of dispersal ability) species A, B, and C will develop a steeper gradient of decreasing species abundances away from the founding populations (resulting from, for example, adaptive radiation), and they will require a longer period of time for them to become homogeneously dispersed across the landscape. In this regard, historical events have a strong influence on setting up distributional patterns that can be mistaken for gradients, but which in reality exist because insufficient time has been available to ensure full dispersal. Studying the influence of such past events is called 'historic biogeography.' In reality landscapes are seldom homogeneous in their spatial template (e.g. there are hills and valleys), and variable dispersal mechanisms and abilities will interact with this heterogeneous landscape to form interesting patterns of communities, and the ecologist will have an interesting time figuring out the relative importance of actual gradients vs. those that result from evolved traits that affect their dispersal ability and which interact with the environment. And then there are the 'neutral theories' which I have not said anything about (but which are seen in the `\(\beta_\text{sne}\)` for of `\(\beta\)`-diversity). Biological interactions also affect community structure, and this too has gone entirely unaccounted for in this module.
+
 How do we calculate the turnover and nestedness-resultant components of
 `\(\beta\)`-diversity? The **betapart** package (Baselga et al. 2022) comes to the
 rescue. We decompose the dissimilarity into the `\(\beta_\text{sim}\)` and
@@ -735,8 +739,8 @@ fish
 ```
 ## 
 ## Fisher log series model
-## No. of species: 99 
-## Fisher alpha:   41.58728
+## No. of species: 80 
+## Fisher alpha:   27.17138
 ```
 
 ```r
@@ -760,15 +764,18 @@ pres
 ## 
 ## Preston lognormal model
 ## Method: maximized likelihood to log2 abundances 
-## No. of species: 99 
+## No. of species: 80 
 ## 
 ##        mode       width          S0 
-##  0.65421134  1.78312827 26.90588977 
+##  0.65292852  1.96367267 20.31518846 
 ## 
 ## Frequencies by Octave
-##                 0         1         2        3          4         5          6
-## Observed 21.50000 32.500000 18.500000 12.00000 10.5000000 3.0000000 1.00000000
-## Fitted   25.15461 26.404706 20.237413 11.32501  4.6273474 1.3804973 0.30071073
+##                  0         1         2          3         4         5
+## Observed 15.000000 22.500000 22.000000 14.5000000 1.0000000 1.0000000
+## Fitted   19.222653 20.000339 16.055855  9.9449269 4.7527155 1.7524842
+##                   6          7
+## Observed 2.00000000 2.00000000
+## Fitted   0.49858413 0.10944473
 ```
 
 ```r
@@ -791,14 +798,14 @@ rad
 ```
 ## 
 ## RAD models, family poisson 
-## No. of species 99, total abundance 408
+## No. of species 80, total abundance 489
 ## 
-##            par1       par2      par3     Deviance AIC      BIC     
-## Null                                      73.6615 348.7733 348.7733
-## Preemption  0.0434324                     63.7061 340.8179 343.4130
-## Lognormal   0.795481   1.13236            25.0216 304.1334 309.3237
-## Zipf        0.1318    -0.827423           33.1562 312.2680 317.4582
-## Mandelbrot  1.39228   -1.42375   6.31962  13.5717 294.6835 302.4689
+##            par1       par2     par3      Deviance AIC      BIC     
+## Null                                     334.1719 562.8468 562.8468
+## Preemption  0.0757466                    286.8052 517.4801 519.8621
+## Lognormal   0.645198   1.57365            91.7757 324.4506 329.2147
+## Zipf        0.249836  -1.11923            45.3871 278.0620 282.8261
+## Mandelbrot  0.457278  -1.30269  0.749021  38.3832 273.0581 280.2042
 ```
 
 ```r
@@ -823,12 +830,12 @@ rad2
 ## 
 ## Deviance for RAD models:
 ## 
-##                   34        36        25        19        13       12
-## Null        96.95685  85.96010  63.78814 107.22557  52.62073 97.08320
-## Preemption  94.60082  70.06446  60.67696 116.07722  57.73722 90.20319
-## Lognormal   23.24708  28.58323  20.16488  33.42287  15.82183 27.15587
-## Zipf        20.79592  37.05192  28.79720  17.54440  22.80056 17.17434
-## Mandelbrot   6.22696   5.89265   5.06656  10.47481  12.17009  6.08749
+##                    4        12        11        23        29      13
+## Null        49.81106  97.08320  57.51171  55.46391 117.88023 52.6207
+## Preemption  39.78172  90.20319  52.52029  53.45734 124.43806 57.7372
+## Lognormal   16.65883  27.15587  15.61695  21.95502  36.78259 15.8218
+## Zipf        47.91083  17.17434  25.70936  20.09608  15.44613 22.8006
+## Mandelbrot   5.56645   6.08749   6.38425   7.46086  13.86053 12.1701
 ```
 
 ```r
@@ -941,21 +948,21 @@ sapply(mods$models, AIC)
 ```
 
 ```
-##   [1] 349.66723 337.28245 326.55795 328.61019 280.83566 301.45116 336.35842
-##   [8] 333.18043 301.12631 330.68788 333.45070 359.71004 349.21962 310.82372
-##  [15] 336.69462 356.42885 322.65754 346.47617 356.19774 313.96820 300.50711
-##  [22] 291.67677 321.57586 332.68308 348.38338 342.19999 344.60372 361.93251
-##  [29] 346.72651 340.16623 338.36469 332.73557 319.78460 364.14886 329.34174
-##  [36] 330.75827 359.39647 351.42587 325.85949 336.96494 341.90829 337.05881
-##  [43] 322.12974 349.04460 322.26500 328.72990 351.18660 312.03551 350.14694
-##  [50] 348.28031 324.47840 316.51496 374.80781 315.32644 311.11513 369.84409
-##  [57] 294.64893 344.71637 325.81194 311.51166 348.80564 322.91066 326.31803
-##  [64] 347.31635 325.94958 354.77580 332.15828 312.03651 318.85808 331.84558
-##  [71] 347.98873 377.28605 344.30697 330.70056 324.39655 327.60290 345.61486
-##  [78] 341.23160 300.81966 330.45808 356.07820 332.09474 363.81205 316.37677
-##  [85] 330.03319 362.66602 329.12608 335.72656 329.03620 327.23352 338.94745
-##  [92] 293.70095 350.68722 352.07789 326.09308 352.04387 319.01776 363.36743
-##  [99] 324.63938 309.54570
+##   [1] 363.94373 356.56993 306.03618 353.55806 329.81963 324.65664 338.55564
+##   [8] 339.46678 343.96943 344.98668 358.63162 333.72987 321.97126 336.51071
+##  [15] 345.06236 343.66526 349.34938 349.70853 314.35047 341.78232 335.58559
+##  [22] 315.56292 337.69525 346.62656 336.25204 322.09887 331.94470 337.41865
+##  [29] 360.73290 323.78970 362.90879 328.63626 351.82799 314.75795 364.31045
+##  [36] 329.46312 325.39621 352.04958 300.80194 283.87953 335.42087 358.66071
+##  [43] 307.56083 367.79403 313.97123 358.90619 327.86680 342.79054 319.79616
+##  [50] 330.07699 336.87244 319.23468 333.91712 336.00303 337.05647 346.18671
+##  [57] 345.56117 372.31648 309.73343 303.11837 315.47420 330.85373 285.66667
+##  [64] 345.02829 332.81091 318.01510 295.42702 343.59445 334.59648 335.39688
+##  [71] 318.69437 294.09585 358.27914 318.88910 325.38661 293.01425 343.16631
+##  [78] 325.91991 325.95222 308.65259 339.96248 307.29768 353.49293 357.57317
+##  [85] 296.06623 317.11904 344.39377 330.44946 357.74660 328.61163 351.89798
+##  [92] 309.53835 344.35697 336.10387 302.64133 338.79916 319.11426 292.20436
+##  [99] 340.29523 274.47866
 ```
 
 
